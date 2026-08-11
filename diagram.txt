@@ -1,0 +1,118 @@
+ASSEMBLEUI/
+│
+├── docs/
+│
+├── packages/
+│   │
+│   ├── react/
+│   │   │
+│   │   ├── foundation/
+│   │   │   ├── reset.scss
+│   │   │   ├── normalize.scss
+│   │   │   ├── typography.scss
+│   │   │   ├── globals.scss
+│   │   │   └── index.scss
+│   │   │
+│   │   ├── design-system/
+│   │   │   ├── tokens/
+│   │   │   ├── themes/
+│   │   │   └── icons/
+│   │   │
+│   │   ├── styles/
+│   │   │   ├── functions/
+│   │   │   ├── mixins/
+│   │   │   ├── responsive/
+│   │   │   ├── layouts/
+│   │   │   └── utilities/
+│   │   │
+│   │   ├── core/
+│   │   │   ├── hooks/
+│   │   │   ├── utils/
+│   │   │   ├── contexts/
+│   │   │   └── providers/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── forms/
+│   │   │   │   ├── Button/
+│   │   │   │   │   ├── Button.jsx
+│   │   │   │   │   ├── Button.scss
+│   │   │   │   │   ├── Button.test.jsx
+│   │   │   │   │   ├── Button.docs.md
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── IconButton/
+│   │   │   │   ├── Input/
+│   │   │   │   ├── Password/
+│   │   │   │   ├── Textarea/
+│   │   │   │   ├── Checkbox/
+│   │   │   │   ├── Radio/
+│   │   │   │   ├── Switch/
+│   │   │   │   ├── Select/
+│   │   │   │   ├── Slider/
+│   │   │   │   └── Search/
+│   │   │   │
+│   │   │   ├── base/
+│   │   │   │   ├── Box/
+│   │   │   │   ├── Text/
+│   │   │   │   ├── Flex/
+│   │   │   │   ├── Grid/
+│   │   │   │   ├── Stack/
+│   │   │   │   ├── Container/
+│   │   │   │   ├── Spacer/
+│   │   │   │   └── AspectRatio/
+│   │   │   │
+│   │   │   ├── navigation/
+│   │   │   │   ├── Navbar/
+│   │   │   │   ├── Sidebar/
+│   │   │   │   ├── Menu/
+│   │   │   │   ├── Tabs/
+│   │   │   │   ├── Breadcrumb/
+│   │   │   │   ├── Pagination/
+│   │   │   │   └── Stepper/
+│   │   │   │
+│   │   │   ├── feedback/
+│   │   │   │   ├── Alert/
+│   │   │   │   ├── Toast/
+│   │   │   │   ├── Spinner/
+│   │   │   │   ├── Skeleton/
+│   │   │   │   ├── Progress/
+│   │   │   │   └── EmptyState/
+│   │   │   │
+│   │   │   ├── overlay/
+│   │   │   │   ├── Modal/
+│   │   │   │   ├── Dialog/
+│   │   │   │   ├── Drawer/
+│   │   │   │   ├── Popover/
+│   │   │   │   ├── Tooltip/
+│   │   │   │   └── Dropdown/
+│   │   │   │
+│   │   │   ├── data-display/
+│   │   │   │   ├── Card/
+│   │   │   │   ├── Table/
+│   │   │   │   ├── List/
+│   │   │   │   ├── Accordion/
+│   │   │   │   ├── Timeline/
+│   │   │   │   ├── Tree/
+│   │   │   │   ├── Statistic/
+│   │   │   │   └── DescriptionList/
+│   │   │   │
+│   │   │   ├── media/
+│   │   │   │   ├── Image/
+│   │   │   │   ├── Avatar/
+│   │   │   │   ├── AvatarGroup/
+│   │   │   │   ├── Carousel/
+│   │   │   │   ├── Gallery/
+│   │   │   │   └── Video/
+│   │   │   │
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── patterns/
+│   │   │
+│   │   └── index.ts
+│   │
+│   └── icons/
+│
+├── demo/
+├── tests/
+├── scripts/
+├── .github/
+└── package.json
