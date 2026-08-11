@@ -85,7 +85,7 @@ ASSEMBLEUI/
 │   │   │   │   ├── Tooltip/
 │   │   │   │   └── Dropdown/
 │   │   │   │
-│   │   │   ├── data-display/
+│   │   │   ├── display/
 │   │   │   │   ├── Card/
 │   │   │   │   ├── Table/
 │   │   │   │   ├── List/
