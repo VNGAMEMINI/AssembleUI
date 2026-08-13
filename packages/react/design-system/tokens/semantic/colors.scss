@@ -1,0 +1,17 @@
+:root {
+  --aui-color-primary: #{$blue-600};
+  --aui-color-primary-hover: #{$blue-700};
+
+  --aui-color-background: #ffffff;
+  --aui-color-surface: #{$gray-50};
+
+  --aui-color-text: #{$gray-900};
+  --aui-color-text-muted: #{$gray-600};
+
+  --aui-color-border: #{$gray-200};
+
+  --aui-color-success: #16a34a;
+  --aui-color-warning: #ca8a04;
+  --aui-color-danger: #dc2626;
+  --aui-color-info: #2563eb;
+}
