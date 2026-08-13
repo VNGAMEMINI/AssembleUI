@@ -1,0 +1,50 @@
+{
+  "name": "assembleui",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VNGAMEMINI/AssembleUI.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/VNGAMEMINI/AssembleUI/issues"
+  },
+  "homepage": "https://github.com/VNGAMEMINI/AssembleUI#readme",
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^latest",
+    "jsdom": "^30.0.1",
+    "sass": "^latest",
+    "typescript": "^latest",
+    "vite": "^latest",
+    "vitest": "^latest"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
