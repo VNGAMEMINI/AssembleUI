@@ -11,7 +11,7 @@ ASSEMBLEUI/
 │   │   │   ├── normalize.scss
 │   │   │   ├── typography.scss
 │   │   │   ├── globals.scss
-│   │   │   └── index.scss
+│   │   │   └── index.scssd
 │   │   │
 │   │   ├── design-system/
 │   │   │   ├── tokens/
