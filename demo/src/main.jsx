@@ -1,12 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "../styles/main.scss";
+// import { Button } from "@assemble-ui/react";
+import "@assemble-ui/react/styles";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
+    <h1>
+      Hello AssembleUI
+    </h1>
   );
 }
 

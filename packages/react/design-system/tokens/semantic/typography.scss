@@ -1,11 +1,11 @@
-@use "../primitives/typography.scss" as typography;
+@use "../primitives/typography.scss" as *;
 
 :root {
-  --aui-text-body-size: #{typography.$font-size-md};
+  --aui-text-body-size: #{$font-size-md};
 
-  --aui-text-body-weight: #{typography.$font-weight-normal};
+  --aui-text-body-weight: #{$font-weight-normal};
 
-  --aui-text-heading-weight: #{typography.$font-weight-semibold};
+  --aui-text-heading-weight: #{$font-weight-semibold};
 
-  --aui-text-caption-size: #{typography.$font-size-sm};
+  --aui-text-caption-size: #{$font-size-sm};
 }

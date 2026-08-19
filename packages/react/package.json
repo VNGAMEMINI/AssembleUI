@@ -1,19 +1,16 @@
 {
-  "name": "@assembleui/react",
-  "version": "0.0.1",
-  "private": false,
+  "name": "@assemble-ui/react",
+  "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "style": "./dist/styles.css",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    },
+    "./styles": "./dist/styles.css"
   }
 }
