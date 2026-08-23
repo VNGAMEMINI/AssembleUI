@@ -1,3 +1,3 @@
-export * from "./classNames";
-export * from "./mergeRefs";
-export * from "./generateId";
+export * from "./classNames/classNames";
+export * from "./mergeRefs/mergeRefs";
+export * from "./generateId/generateId";

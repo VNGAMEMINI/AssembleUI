@@ -6,13 +6,21 @@ export default defineConfig({
 
   build: {
     lib: {
-      entry: "src/index.ts",
+      entry: "packages/react/index.ts",
       formats: ["es"],
       fileName: "index"
     },
 
+    outDir: "packages/react/dist",
+    emptyOutDir: true,
+
     rollupOptions: {
-      external: ["react", "react-dom"]
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime"
+      ]
     }
   }
 });

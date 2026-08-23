@@ -18,7 +18,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run typecheck && vite build && npm run build:types && npm run build:styles",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build:styles": "npm --workspace @assemble-ui/react run build:styles",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
@@ -37,12 +39,14 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^latest",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
     "jsdom": "^30.0.1",
-    "sass": "^latest",
-    "typescript": "^latest",
-    "vite": "^latest",
-    "vitest": "^latest"
+    "sass": "^1.102.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1",
+    "vitest": "^4.1.10"
   },
   "workspaces": [
     "packages/*"

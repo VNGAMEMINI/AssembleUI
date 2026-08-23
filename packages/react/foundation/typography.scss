@@ -1,16 +1,11 @@
 /* packages/react/foundation/typography.scss */
 
 html {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--aui-font-family-base);
 }
 
 body {
-  line-height: 1.5;
+  line-height: var(--aui-line-height-normal);
   text-rendering: optimizeLegibility;
 }
 
@@ -20,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: var(--aui-font-weight-semibold);
 }
 
 button,

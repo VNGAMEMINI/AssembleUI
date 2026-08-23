@@ -1,0 +1,20 @@
+.aui-stack {
+  display: flex;
+}
+
+.aui-stack--vertical {
+  flex-direction: column;
+}
+
+.aui-stack--horizontal {
+  flex-direction: row;
+}
+
+.aui-stack--spacing-0 { gap: var(--aui-spacing-0); }
+.aui-stack--spacing-1 { gap: var(--aui-spacing-1); }
+.aui-stack--spacing-2 { gap: var(--aui-spacing-2); }
+.aui-stack--spacing-3 { gap: var(--aui-spacing-3); }
+.aui-stack--spacing-4 { gap: var(--aui-spacing-4); }
+.aui-stack--spacing-5 { gap: var(--aui-spacing-5); }
+.aui-stack--spacing-6 { gap: var(--aui-spacing-6); }
+.aui-stack--spacing-8 { gap: var(--aui-spacing-8); }

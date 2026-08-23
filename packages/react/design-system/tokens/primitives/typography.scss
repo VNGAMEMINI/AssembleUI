@@ -9,3 +9,18 @@ $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
+
+:root {
+  --aui-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --aui-font-size-xs: #{$font-size-xs};
+  --aui-font-size-sm: #{$font-size-sm};
+  --aui-font-size-md: #{$font-size-md};
+  --aui-font-size-lg: #{$font-size-lg};
+  --aui-font-size-xl: #{$font-size-xl};
+  --aui-font-size-2xl: #{$font-size-2xl};
+  --aui-font-weight-normal: #{$font-weight-normal};
+  --aui-font-weight-medium: #{$font-weight-medium};
+  --aui-font-weight-semibold: #{$font-weight-semibold};
+  --aui-font-weight-bold: #{$font-weight-bold};
+  --aui-line-height-normal: 1.5;
+}

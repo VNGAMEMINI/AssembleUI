@@ -1,0 +1,7 @@
+$border-width-none: 0;
+$border-width-default: 1px;
+
+:root {
+  --aui-border-width-none: #{$border-width-none};
+  --aui-border-width-default: #{$border-width-default};
+}

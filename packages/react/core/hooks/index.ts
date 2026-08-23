@@ -1,3 +1,3 @@
-export * from "./useTheme";
-export * from "./useDisclosure";
-export * from "./useMediaQuery";
+export * from "./useTheme/useTheme";
+export * from "./useDisclosure/useDisclosure";
+export * from "./useMediaQuery/useMediaQuery";

@@ -3,3 +3,9 @@ $shadow-sm: 0 1px 2px rgb(0 0 0 / 5%);
 $shadow-md: 0 4px 6px rgb(0 0 0 / 10%);
 
 $shadow-lg: 0 10px 15px rgb(0 0 0 / 10%);
+
+:root {
+  --aui-shadow-sm: #{$shadow-sm};
+  --aui-shadow-md: #{$shadow-md};
+  --aui-shadow-lg: #{$shadow-lg};
+}

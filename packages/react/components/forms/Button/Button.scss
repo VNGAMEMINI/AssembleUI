@@ -1,0 +1,57 @@
+@use "../../../styles/mixins/focus";
+@use "../../../styles/mixins/interactive";
+
+.aui-button {
+  align-items: center;
+  border: var(--aui-border-width-default) solid var(--aui-color-primary);
+  border-radius: var(--aui-radius-md);
+  display: inline-flex;
+  font-size: var(--aui-font-size-md);
+  font-weight: var(--aui-font-weight-medium);
+  gap: var(--aui-spacing-2);
+  justify-content: center;
+  line-height: var(--aui-line-height-normal);
+
+  @include focus.focus-ring;
+  @include interactive.interactive;
+}
+
+.aui-button--primary {
+  background: var(--aui-color-primary);
+  color: var(--aui-color-on-primary);
+}
+
+.aui-button--secondary {
+  background: var(--aui-surface-elevated);
+  border-color: var(--aui-color-border);
+  color: var(--aui-color-text);
+}
+
+.aui-button--danger {
+  background: var(--aui-color-danger);
+  border-color: var(--aui-color-danger);
+  color: var(--aui-color-on-danger);
+}
+
+.aui-button--ghost {
+  background: var(--aui-color-transparent);
+  border-color: var(--aui-color-transparent);
+  color: var(--aui-color-primary);
+}
+
+.aui-button--sm {
+  padding: var(--aui-spacing-1) var(--aui-spacing-3);
+}
+
+.aui-button--md {
+  padding: var(--aui-spacing-2) var(--aui-spacing-4);
+}
+
+.aui-button--lg {
+  padding: var(--aui-spacing-3) var(--aui-spacing-5);
+}
+
+.aui-button:disabled {
+  cursor: not-allowed;
+  opacity: var(--aui-state-disabled-opacity);
+}

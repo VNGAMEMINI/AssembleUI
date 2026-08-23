@@ -1,5 +1,11 @@
 
-@use "./semantic/colors";
-@use "./semantic/typography";
-@use "./semantic/surfaces";
-@use "./semantic/states";
+@use "./primitives/spacing" as primitive-spacing;
+@use "./primitives/radius" as primitive-radius;
+@use "./primitives/typography" as primitive-typography;
+@use "./primitives/shadows" as primitive-shadows;
+@use "./primitives/motion" as primitive-motion;
+@use "./primitives/border" as primitive-border;
+@use "./semantic/colors" as semantic-colors;
+@use "./semantic/typography" as semantic-typography;
+@use "./semantic/surfaces" as semantic-surfaces;
+@use "./semantic/states" as semantic-states;

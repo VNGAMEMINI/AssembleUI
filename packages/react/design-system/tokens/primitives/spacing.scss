@@ -9,3 +9,17 @@ $spacing-8: 2rem;
 $spacing-10: 2.5rem;
 $spacing-12: 3rem;
 $spacing-16: 4rem;
+
+:root {
+  --aui-spacing-0: #{$spacing-0};
+  --aui-spacing-1: #{$spacing-1};
+  --aui-spacing-2: #{$spacing-2};
+  --aui-spacing-3: #{$spacing-3};
+  --aui-spacing-4: #{$spacing-4};
+  --aui-spacing-5: #{$spacing-5};
+  --aui-spacing-6: #{$spacing-6};
+  --aui-spacing-8: #{$spacing-8};
+  --aui-spacing-10: #{$spacing-10};
+  --aui-spacing-12: #{$spacing-12};
+  --aui-spacing-16: #{$spacing-16};
+}

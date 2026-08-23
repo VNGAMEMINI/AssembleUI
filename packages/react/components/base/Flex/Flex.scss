@@ -1,0 +1,60 @@
+.aui-flex {
+  display: flex;
+}
+
+.aui-flex--row {
+  flex-direction: row;
+}
+
+.aui-flex--column {
+  flex-direction: column;
+}
+
+.aui-flex--align-start {
+  align-items: flex-start;
+}
+
+.aui-flex--align-center {
+  align-items: center;
+}
+
+.aui-flex--align-end {
+  align-items: flex-end;
+}
+
+.aui-flex--align-stretch {
+  align-items: stretch;
+}
+
+.aui-flex--justify-start {
+  justify-content: flex-start;
+}
+
+.aui-flex--justify-center {
+  justify-content: center;
+}
+
+.aui-flex--justify-end {
+  justify-content: flex-end;
+}
+
+.aui-flex--justify-between {
+  justify-content: space-between;
+}
+
+.aui-flex--justify-around {
+  justify-content: space-around;
+}
+
+.aui-flex--wrap {
+  flex-wrap: wrap;
+}
+
+.aui-flex--gap-0 { gap: var(--aui-spacing-0); }
+.aui-flex--gap-1 { gap: var(--aui-spacing-1); }
+.aui-flex--gap-2 { gap: var(--aui-spacing-2); }
+.aui-flex--gap-3 { gap: var(--aui-spacing-3); }
+.aui-flex--gap-4 { gap: var(--aui-spacing-4); }
+.aui-flex--gap-5 { gap: var(--aui-spacing-5); }
+.aui-flex--gap-6 { gap: var(--aui-spacing-6); }
+.aui-flex--gap-8 { gap: var(--aui-spacing-8); }

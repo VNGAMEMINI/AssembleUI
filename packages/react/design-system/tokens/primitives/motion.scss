@@ -3,3 +3,10 @@ $duration-normal: 200ms;
 $duration-slow: 300ms;
 
 $ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+:root {
+  --aui-motion-duration-fast: #{$duration-fast};
+  --aui-motion-duration-normal: #{$duration-normal};
+  --aui-motion-duration-slow: #{$duration-slow};
+  --aui-motion-ease-standard: #{$ease-standard};
+}

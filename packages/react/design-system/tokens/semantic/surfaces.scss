@@ -1,7 +1,9 @@
+@use "../primitives/colors" as *;
+
 :root {
   --aui-surface-page: var(--aui-color-background);
 
   --aui-surface-default: var(--aui-color-surface);
 
-  --aui-surface-elevated: #ffffff;
+  --aui-surface-elevated: #{$white};
 }
