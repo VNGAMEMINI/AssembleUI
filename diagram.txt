@@ -13,7 +13,7 @@ ASSEMBLEUI/
 │   │   │   ├── globals.scss
 │   │   │   └── index.scssd
 │   │   │
-│   │   ├── design-system/
+│   │   ├── design/
 │   │   │   ├── tokens/
 │   │   │   ├── themes/
 │   │   │   └── icons/
