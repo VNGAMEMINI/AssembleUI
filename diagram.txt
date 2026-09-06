@@ -1,54 +1,47 @@
-ASSEMBLEUI/
+packages/react/
 │
-├── docs/
+├── accessibility/
 │
-├── packages/
-│   │
-│   ├── react/
-│   │   │
-│   │   ├── foundation/
-│   │   │   ├── reset.scss
-│   │   │   ├── normalize.scss
-│   │   │   ├── typography.scss
-│   │   │   ├── globals.scss
-│   │   │   └── index.scssd
-│   │   │
-│   │   ├── design/
-│   │   │   ├── tokens/
-│   │   │   ├── themes/
-│   │   │   └── icons/
-│   │   │
-│   │   ├── styles/
-│   │   │   ├── functions/
-│   │   │   ├── mixins/
-│   │   │   ├── responsive/
-│   │   │   ├── layouts/
-│   │   │   └── utilities/
-│   │   │
-│   │   ├── core/
-│   │   │   ├── hooks/
-│   │   │   ├── utils/
-│   │   │   ├── contexts/
-│   │   │   └── providers/
-│   │   │
-│   │   ├── components/
-│   │   │   ├── forms/
-│   │   │   ├── navigation/
-│   │   │   ├── feedback/
-│   │   │   ├── layout/
-│   │   │   ├── data/
-│   │   │   │
-│   │   │   └── index.ts
-│   │   │
-│   │   ├── patterns/
-│   │   ├── templates/
-│   │   │
-│   │   └── index.ts
-│   │
-│   └── icons/
+├── core/
 │
-├── demo/
-├── tests/
-├── scripts/
-├── .github/
-└── package.json
+├── foundation/
+│   ├── tokens/
+│   ├── primitives/
+│   └── theme/
+│
+├── hooks/
+│
+├── types/
+│
+├── utils/
+│
+├── components/
+│   ├── data/
+│   ├── feedback/
+│   ├── forms/
+│   ├── layout/
+│   ├── navigation/
+│   └── index.ts
+│
+├── patterns/
+│   ├── data/
+│   ├── feedback/
+│   ├── forms/
+│   ├── navigation/
+│   └── index.ts
+│
+├── templates/
+│   ├── application/
+│   ├── authentication/
+│   ├── content/
+│   └── index.ts
+│
+├── registry/
+│   ├── components.ts
+│   ├── patterns.ts
+│   ├── templates.ts
+│   └── index.ts
+│
+├── styles/
+│
+└── index.ts
