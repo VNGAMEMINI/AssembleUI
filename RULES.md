@@ -1,713 +1,144 @@
 # RULES.md
 
-> This document defines the mandatory development rules of AssembleUI.
->
-> Every source file, component, hook, utility, pattern, template, documentation and generated code **must comply with these rules**.
->
-> If any generated code violates a rule in this document, the generated code is considered **incorrect**.
+Mandatory engineering rules for AssembleUI.
 
----
+## 1. Architecture
 
-# Priority
+The system is layered:
 
-When rules conflict, follow this priority:
-
-```
-Architecture
-        ↓
-Internal Standards
-        ↓
-API Design
-        ↓
-Design Tokens
-        ↓
-Performance
-        ↓
-Developer Convenience
-```
-
-Convenience must never override Architecture.
-
----
-
-# Rule 1 — Architecture First
-
-Everything must follow the official architecture.
-
-```
+```text
 Foundation
-        ↓
+    ↓
 Design System
-        ↓
+    ↓
 Style Engine
-        ↓
+    ↓
 Core
-        ↓
-Components
-        ↓
-Patterns
-        ↓
-Templates
-        ↓
+    ↓
+Component
+    ↓
+Pattern
+    ↓
+Template
+    ↓
 Application
 ```
 
-Never reverse dependencies.
+Dependencies must not reverse direction.
 
----
+## 2. Composition boundaries
 
-# Rule 2 — Single Responsibility
+```text
+Pattern  → Component   ✅
+Template → Pattern      ✅
 
-Every module has one responsibility.
-
-Correct
-
-```
-Component
-
-↓
-
-UI
+Component → Component  ❌
+Component → Pattern    ❌
+Component → Template   ❌
+Pattern   → Pattern    ❌
+Pattern   → Template   ❌
+Template  → Template   ❌
 ```
 
-```
-Hook
+A Component may accept `children`; that does not make it a Pattern. Composition of Components belongs in Patterns.
 
-↓
+## 3. Component independence
 
-Logic
-```
+A Component is an independent UI building block.
 
-```
-Utility
+It may depend on:
 
-↓
+- Core hooks/utilities.
+- Design System values.
+- Style Engine primitives.
+- Foundation conventions.
+- Its own props and children.
 
-Helper
-```
+It must not import another Component.
 
-Incorrect
+## 4. Style boundary
 
-```
-Component
+Component implementation files must never import SCSS.
 
-↓
-
-UI
-
-↓
-
-Business Logic
-
-↓
-
-API Request
-```
-
----
-
-# Rule 3 — No Circular Dependency
-
-Forbidden
-
-```
-Button
-
-↓
-
-Modal
-
-↓
-
-Button
-```
-
-Forbidden
-
-```
-Component
-
-↓
-
-Pattern
-
-↓
-
-Component
-```
-
-Dependencies must always move downward.
-
----
-
-# Rule 4 — Public API Only
-
-Never import internal implementation.
-
-Correct
+Forbidden:
 
 ```ts
-import { Button } from "@assembleui/react";
+import "./Button.scss";
 ```
 
-Correct
+The application owns the style entry:
 
-```ts
-import { Button } from "@/components";
+```text
+main.scss
+   ↓
+@assemble-ui/react/styles
 ```
 
-Forbidden
+Component SCSS may remain colocated beside the Component, but its import belongs to the style graph, not the React graph.
 
-```ts
-import Button from "@/components/Button/Button";
-```
+## 5. Design Tokens
 
----
+Visual values must come from Design Tokens or semantic CSS variables.
 
-# Rule 5 — No Hardcoded Values
-
-Never write
+Prefer:
 
 ```scss
-padding: 16px;
-
-color: #2563eb;
-```
-
-Always use
-
-```scss
-padding: var(--aui-spacing-md);
-
 color: var(--aui-color-primary);
+padding: var(--aui-spacing-4);
 ```
 
-Everything must come from Design Tokens.
+Do not duplicate token values inside Components.
 
----
+Theme definitions are allowed to contain concrete values because a Theme is the source of those values.
 
-# Rule 6 — Component Never Owns Style
+## 6. Themes
 
-Component renders UI only.
+Themes change Design System variables, not Component implementations.
 
-Style comes from
-
-```
-Foundation
-
-↓
-
-Tokens
-
-↓
-
+```text
 Theme
-
-↓
-
-Style Engine
+  ↓
+CSS Variables
+  ↓
+Component Styles
 ```
 
-Component must not generate CSS dynamically.
+## 7. Core
 
----
+Core contains reusable UI infrastructure only:
 
-# Rule 7 — Theme Never Changes Component
-
-Theme changes Tokens.
-
-Never Component.
-
-Correct
-
-```
-Theme
-
-↓
-
-Tokens
-
-↓
-
-Component
+```text
+core/
+├── hooks/
+├── contexts/
+├── providers/
+└── utils/
 ```
 
-Wrong
+No business logic, API calls, routing or application state belongs in Core.
 
-```
-Theme
+## 8. Public API
 
-↓
-
-Button.tsx
-```
-
----
-
-# Rule 8 — Component Independence
-
-Each Component must be independent.
-
-Allowed
-
-```
-Button
-
-↓
-
-Core
-
-↓
-
-Style Engine
-```
-
-Forbidden
-
-```
-Button
-
-↓
-
-Hero
-```
-
----
-
-# Rule 9 — Pattern Composition
-
-Patterns may only compose Components.
-
-Correct
-
-```
-Navbar
-
-↓
-
-Logo
-
-↓
-
-Menu
-
-↓
-
-Button
-```
-
-Never duplicate UI.
-
----
-
-# Rule 10 — Template Composition
-
-Templates may only compose Patterns.
-
-Correct
-
-```
-Landing
-
-↓
-
-Hero
-
-↓
-
-Pricing
-
-↓
-
-Footer
-```
-
-Templates never create reusable Components.
-
----
-
-# Rule 11 — Hooks Contain Logic Only
-
-Hooks
-
-Allowed
-
-```
-State
-
-Effects
-
-Memo
-
-Callbacks
-```
-
-Forbidden
-
-```
-JSX
-
-CSS
-
-DOM Rendering
-```
-
----
-
-# Rule 12 — Utilities Must Be Pure
-
-Utility functions
-
-Must
-
-- deterministic
-- reusable
-- stateless
-
-Must not
-
-- mutate globals
-- manipulate DOM
-- depend on React
-
----
-
-# Rule 13 — API Consistency
-
-Every public Component should follow
-
-```
-variant
-
-size
-
-children
-
-className
-
-ref
-```
-
-Naming must stay consistent across the library.
-
----
-
-# Rule 14 — Accessibility Is Mandatory
-
-Every Component must support
-
-- Semantic HTML
-- Keyboard Navigation
-- Focus Management
-- Screen Reader
-- ARIA
-
-Accessibility cannot be optional.
-
----
-
-# Rule 15 — Performance By Design
-
-Always prefer
-
-- Tree Shaking
-- Lazy Loading
-- CSS Variables
-- Memoization
-- Small Bundle
-
-Never add unnecessary runtime logic.
-
----
-
-# Rule 16 — Documentation Required
-
-Public modules require
-
-- Documentation
-- Examples
-- API Reference
-- Accessibility Notes
-- Best Practices
-
-No documentation.
-
-↓
-
-Not complete.
-
----
-
-# Rule 17 — Testing Required
-
-Every public module requires
-
-- Render Test
-- Props Test
-- Event Test
-- Accessibility Test
-
-Tests are required before release.
-
----
-
-# Rule 18 — TypeScript First
-
-Never use
+Consumers use package exports:
 
 ```ts
-any;
+import { Button } from "@assemble-ui/react";
 ```
 
-Prefer
+Internal source paths are not part of the public API.
 
-- interface
-- generic
-- union
-- unknown
+## 9. Accessibility
 
-Public APIs must be strongly typed.
+Every interactive Component must define its accessibility behavior as part of its Component Contract.
 
----
+## 10. TypeScript first
 
-# Rule 19 — One Public Entry
+Public React APIs are typed. Runtime JavaScript duplicates are not maintained beside TypeScript source files.
 
-Each module exposes one public entry.
+## 11. Testing
 
-Correct
+Architecture tests must protect dependency boundaries. Component tests must cover behavior and accessibility-relevant states.
 
-```
-Button/
+## 12. Documentation
 
-Button.tsx
-
-Button.scss
-
-index.ts
-```
-
-External users import only through
-
-```
-index.ts
-```
-
----
-
-# Rule 20 — Keep Components Small
-
-Preferred
-
-```
-Button
-
-Card
-
-Badge
-
-Avatar
-```
-
-Avoid giant Components with dozens of responsibilities.
-
----
-
-# Rule 21 — Reuse Before Creating
-
-Before creating a new Component ask
-
-```
-Can existing Components solve this?
-```
-
-If yes
-
-↓
-
-Compose.
-
-Don't duplicate.
-
----
-
-# Rule 22 — No Business Logic
-
-AssembleUI is a UI Library.
-
-Forbidden
-
-```
-Authentication
-
-Database
-
-Payment
-
-API Client
-
-State Management
-```
-
-Business logic belongs to Applications.
-
----
-
-# Rule 23 — Stable API
-
-Never rename public Props without migration.
-
-Wrong
-
-```
-variant
-
-↓
-
-type
-```
-
-Breaking changes require
-
-- Migration Guide
-- Changelog
-- Version Update
-
----
-
-# Rule 24 — Documentation Reflects Source
-
-Documentation must match implementation.
-
-Never document features that do not exist.
-
-Never hide breaking changes.
-
----
-
-# Rule 25 — Every Change Preserves Architecture
-
-Before merging ask
-
-```
-Does this break Architecture?
-
-Does this break API?
-
-Does this break Performance?
-
-Does this break Reusability?
-
-Does this break Design Tokens?
-```
-
-If yes
-
-↓
-
-Redesign.
-
----
-
-# Golden Rules
-
-Always
-
-✔ Small Modules
-
-✔ Composition
-
-✔ Reusability
-
-✔ Type Safety
-
-✔ Accessibility
-
-✔ Performance
-
-✔ Documentation
-
-✔ Testing
-
-✔ Design Tokens
-
-✔ Stable API
-
-Never
-
-✘ Hardcode Values
-
-✘ Circular Dependency
-
-✘ Duplicate Components
-
-✘ Large Components
-
-✘ Business Logic
-
-✘ Public API Breaking
-
-✘ Theme-specific Components
-
-✘ Hidden Side Effects
-
----
-
-# Decision Tree
-
-Whenever multiple implementations are possible:
-
-```
-Architecture
-
-↓
-
-Consistency
-
-↓
-
-Simplicity
-
-↓
-
-Reusability
-
-↓
-
-Performance
-
-↓
-
-Scalability
-
-↓
-
-Developer Convenience
-```
-
-Never violate a higher priority to satisfy a lower priority.
-
----
-
-# Final Principle
-
-Every file in AssembleUI must be:
-
-```
-Independent
-
-Composable
-
-Reusable
-
-Typed
-
-Documented
-
-Tested
-
-Accessible
-
-Performant
-```
-
-If a generated file cannot be dropped into the repository without breaking the architecture or coding standards, it is **not considered valid AssembleUI code**.
+Architecture changes must update the relevant documentation. Documentation must describe the source architecture that actually exists.

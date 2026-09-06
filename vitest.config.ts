@@ -1,6 +1,8 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import path from "node:path";
+
+const packageRoot = path.resolve(import.meta.dirname, "./packages/react");
 
 export default defineConfig({
   plugins: [react()],
@@ -13,8 +15,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./packages/react"),
-      "@assembleui/react": path.resolve(__dirname, "./packages/react"),
+      "@assembleui/react": path.join(packageRoot, "index.ts"),
+      "@assembleui/react/styles": path.join(packageRoot, "index.scss"),
+      "@assembleui/react/": `${packageRoot}/`,
+      "@": packageRoot,
     },
   },
 });

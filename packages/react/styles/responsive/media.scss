@@ -1,5 +1,12 @@
+@use "sass:map";
+@use "./breakpoints";
+
 @mixin media($breakpoint) {
-  @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if not map.has-key(breakpoints.$breakpoints, $breakpoint) {
+    @error "Unknown AssembleUI breakpoint: #{$breakpoint}";
+  }
+
+  @media (min-width: map.get(breakpoints.$breakpoints, $breakpoint)) {
     @content;
   }
 }

@@ -1,4 +1,4 @@
-/* Custom theme can be extended */
+/* Custom theme is an extension point for consumers. */
 [data-aui-theme="custom"] {
-  /* Extend or override any variables here */
+  /* Consumers may override --aui-* variables here. */
 }

@@ -1,15 +1,22 @@
-type Value = string | number | boolean | undefined | null;
-type Arg = Value | Arg[];
+type ClassValue = string | number | boolean | null | undefined | ClassValue[];
 
-function classNames(...args: Arg[]): string {
-  return args
-    .flat(Infinity)
-    .filter(
-      (item): item is string | number =>
-        typeof item === "string" || typeof item === "number",
-    )
-    .map(String)
-    .join(" ");
+function classNames(...values: ClassValue[]): string {
+  const result: string[] = [];
+
+  const append = (value: ClassValue): void => {
+    if (Array.isArray(value)) {
+      value.forEach(append);
+      return;
+    }
+
+    if (typeof value === "string" || typeof value === "number") {
+      result.push(String(value));
+    }
+  };
+
+  values.forEach(append);
+  return result.join(" ");
 }
 
 export { classNames };
+export type { ClassValue };

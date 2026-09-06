@@ -1,14 +1,15 @@
-import type { ForwardedRef } from "react";
-
-type Ref<T> = ForwardedRef<T> | ((instance: T) => void) | null;
+import type { Ref } from "react";
 
 function mergeRefs<T>(...refs: Ref<T>[]): (instance: T | null) => void {
-  return (instance: T | null) => {
+  return (instance) => {
     refs.forEach((ref) => {
       if (typeof ref === "function") {
         ref(instance);
-      } else if (ref && "current" in ref) {
-        ref.current = instance;
+        return;
+      }
+
+      if (ref !== null) {
+        (ref as { current: T | null }).current = instance;
       }
     });
   };

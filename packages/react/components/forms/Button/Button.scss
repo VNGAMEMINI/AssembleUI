@@ -1,0 +1,73 @@
+@use "../../../styles/mixins/focus" as focus;
+@use "../../../styles/mixins/interactive" as interactive;
+
+.aui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aui-spacing-2);
+  min-width: max-content;
+  border: 1px solid transparent;
+  border-radius: var(--aui-radius-md);
+  font-family: var(--aui-font-family-base);
+  font-weight: var(--aui-font-weight-medium);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  @include interactive.interactive;
+  @include focus.focus-ring;
+
+  &:disabled {
+    opacity: var(--aui-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &--sm {
+    min-height: 2rem;
+    padding: 0 var(--aui-spacing-3);
+    font-size: var(--aui-font-size-sm);
+  }
+
+  &--md {
+    min-height: 2.5rem;
+    padding: 0 var(--aui-spacing-4);
+    font-size: var(--aui-font-size-md);
+  }
+
+  &--lg {
+    min-height: 3rem;
+    padding: 0 var(--aui-spacing-5);
+    font-size: var(--aui-font-size-lg);
+  }
+
+  &--primary {
+    background: var(--aui-color-primary);
+    color: var(--aui-color-on-primary);
+  }
+
+  &--secondary {
+    background: var(--aui-color-surface);
+    border-color: var(--aui-color-border);
+    color: var(--aui-color-text);
+  }
+
+  &--outline {
+    background: transparent;
+    border-color: var(--aui-color-primary);
+    color: var(--aui-color-primary);
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--aui-color-primary);
+  }
+
+  &--danger {
+    background: var(--aui-color-danger);
+    color: var(--aui-color-on-danger);
+  }
+
+  &--loading {
+    cursor: wait;
+  }
+}

@@ -16,17 +16,9 @@ function useDisclosure({
 }: UseDisclosureProps = {}): UseDisclosureReturn {
   const [isOpen, setIsOpen] = useState(defaultIsOpen);
 
-  const onOpen = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
-  const onClose = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  const onToggle = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
+  const onOpen = useCallback(() => setIsOpen(true), []);
+  const onClose = useCallback(() => setIsOpen(false), []);
+  const onToggle = useCallback(() => setIsOpen((value) => !value), []);
 
   return { isOpen, onOpen, onClose, onToggle };
 }

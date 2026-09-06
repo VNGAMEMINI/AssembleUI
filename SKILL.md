@@ -1,450 +1,106 @@
 # AssembleUI Skill
 
-> This document defines the development rules, architecture and coding standards for AssembleUI.
->
-> Every generated code, component, pattern, template and documentation **must follow this file**.
+This document is the operating contract for generating or modifying AssembleUI code.
 
----
+## 1. Architecture
 
-# Project Overview
-
-AssembleUI is a modular React UI ecosystem.
-
-Core principles:
-
-- Simple
-- Reusable
-- Composable
-- Flexible
-- Performant
-- Scalable
-
----
-
-# Documentation
-
-Always follow the documentation in this order.
-
-```
-00 Introduction
-01 Getting Started
-02 Project Structure
-03 Foundation
-04 Design Tokens
-05 Style Engine
-06 Components
-07 Templates
-08 Themes
-09 Hooks
-10 Utils
-11 Performance
-12 Build
-13 Testing
-14 Accessibility
-15 Contributing
-16 Roadmap
-17 Ecosystem
-18 Architecture
-19 API Design
-20 Philosophy
-21 Internal Standards
-```
-
----
-
-# Architecture
-
-Always follow
-
-```
+```text
 Foundation
-      ↓
+    ↓
 Design System
-      ↓
+    ↓
 Style Engine
-      ↓
+    ↓
 Core
-      ↓
+    ↓
 Components
-      ↓
+    ↓
 Patterns
-      ↓
+    ↓
 Templates
-      ↓
+    ↓
 Application
 ```
 
-Never reverse dependencies.
+Composition boundaries are strict:
 
----
+```text
+Pattern  → Component   ✅
+Template → Pattern      ✅
 
-# Folder Structure
-
+Component → Component  ❌
+Component → Pattern    ❌
+Component → Template   ❌
+Pattern   → Pattern    ❌
+Pattern   → Template   ❌
+Template  → Template   ❌
 ```
+
+## 2. Folder structure
+
+```text
 packages/react/
-
-foundation/
-
-design-system/
-
-styles/
-
-core/
-
-components/
-
-patterns/
-
-templates/
+├── foundation/
+├── design-system/
+├── styles/
+├── core/
+├── components/
+├── patterns/
+├── templates/
+└── types/
 ```
 
-Never change this structure.
+Do not introduce an overlapping layer for convenience.
 
----
+## 3. Component generation
 
-# Component Rules
+Every implemented Component should have:
 
-Each component must
-
-- have one responsibility
-- use TypeScript
-- use Design Tokens
-- support Theme
-- support Accessibility
-- have Documentation
-- have Unit Test
-
-Each component folder
-
-```
+```text
 Component/
-
-Component.tsx
-
-Component.scss
-
-Component.test.tsx
-
-Component.docs.md
-
-index.ts
+├── Component.tsx
+├── Component.scss
+├── Component.test.tsx
+├── Component.docs.md
+└── index.ts
 ```
 
----
+The React file must not import the SCSS file.
 
-# Style Rules
+## 4. Style generation
 
-Component never contains hardcoded values.
-
-Wrong
+The public style graph is loaded by the application:
 
 ```scss
-padding: 16px;
+@use "@assemble-ui/react/styles";
 ```
 
-Correct
+Keep React and Sass dependency graphs separate.
+
+## 5. Design System
+
+Use semantic CSS variables for component styles:
 
 ```scss
-padding: spacing(md);
+color: var(--aui-color-primary);
+padding: var(--aui-spacing-4);
 ```
 
-or
+Theme changes variables, not Component implementations.
 
-```scss
-padding: var(--aui-spacing-md);
+## 6. Core
+
+Hooks, contexts, providers and utilities contain reusable UI infrastructure only. Do not place business logic, API requests or application-specific state in Core.
+
+## 7. Quality gates
+
+Before completing a change, run:
+
+```bash
+npm run typecheck
+npm test -- --run
+npm run build
+npm --prefix demo run build
 ```
 
----
-
-# Theme Rules
-
-Never use
-
-```scss
-#2563eb
-```
-
-Always use
-
-```
-Design Tokens
-
-↓
-
-Theme
-
-↓
-
-CSS Variables
-```
-
----
-
-# API Rules
-
-Component API should be
-
-```
-variant
-
-size
-
-children
-
-className
-
-ref
-```
-
-Support
-
-- controlled
-- uncontrolled
-- native html props
-
----
-
-# Hook Rules
-
-Hook only contains logic.
-
-Never render UI.
-
----
-
-# Utility Rules
-
-Utility must be
-
-- pure
-- reusable
-- independent
-
----
-
-# Pattern Rules
-
-Pattern is built from Components.
-
-Never create duplicated UI.
-
----
-
-# Template Rules
-
-Template is built from Patterns.
-
-Never implement business logic.
-
----
-
-# Accessibility Rules
-
-Every component must support
-
-- semantic html
-- keyboard
-- focus
-- aria
-- screen reader
-
----
-
-# Performance Rules
-
-Always prefer
-
-- tree shaking
-- lazy loading
-- memoization
-- css variables
-
-Never optimize by sacrificing readability.
-
----
-
-# Documentation Rules
-
-Every public module requires
-
-- overview
-- api
-- examples
-- accessibility
-- best practices
-
----
-
-# Testing Rules
-
-Every public module requires
-
-- render test
-- interaction test
-- accessibility test
-
----
-
-# Coding Style
-
-Prefer
-
-Small modules
-
-↓
-
-Composable modules
-
-↓
-
-Reusable modules
-
-Avoid
-
-Large components
-
-↓
-
-Deep dependency
-
-↓
-
-Hardcoded values
-
----
-
-# Dependency Rules
-
-Allowed
-
-```
-Component
-
-↓
-
-Core
-```
-
-Allowed
-
-```
-Pattern
-
-↓
-
-Component
-```
-
-Allowed
-
-```
-Template
-
-↓
-
-Pattern
-```
-
-Forbidden
-
-```
-Component
-
-↓
-
-Pattern
-```
-
-Forbidden
-
-```
-Pattern
-
-↓
-
-Template
-```
-
-Forbidden
-
-```
-Core
-
-↓
-
-Component
-```
-
----
-
-# Import Rules
-
-Public import only.
-
-Correct
-
-```ts
-import { Button } from "@assembleui/react";
-```
-
-Never
-
-```ts
-import Button from "../Button/Button";
-```
-
----
-
-# Code Generation Rules
-
-When generating code
-
-- never break architecture
-- never hardcode values
-- never duplicate components
-- always use Design Tokens
-- always support Theme
-- always support Accessibility
-- always generate TypeScript
-- always generate documentation
-- always generate tests if required
-
----
-
-# Decision Priority
-
-When multiple implementations are possible, always choose:
-
-```
-Architecture
-
-↓
-
-Simplicity
-
-↓
-
-Consistency
-
-↓
-
-Reusability
-
-↓
-
-Performance
-
-↓
-
-Scalability
-```
-
-Never sacrifice architecture for convenience.
-
----
-
-# Final Goal
-
-Every generated file should integrate seamlessly into AssembleUI without requiring architectural changes.
-
-All generated code must feel like it was written by the original AssembleUI maintainers.
+All checks must pass.
