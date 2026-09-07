@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: "packages/react/index.ts",
       formats: ["es"],
-      fileName: "index"
+      fileName: "index",
     },
 
     outDir: "packages/react/dist",
@@ -19,8 +19,8 @@ export default defineConfig({
         "react",
         "react-dom",
         "react/jsx-runtime",
-        "react/jsx-dev-runtime"
-      ]
-    }
-  }
+        "react/jsx-dev-runtime",
+      ],
+    },
+  },
 });

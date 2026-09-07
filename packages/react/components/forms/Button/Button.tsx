@@ -1,7 +1,5 @@
 import type { ButtonProps } from "./Button.types";
 
-import "./Button.scss";
-
 export function Button({
   variant = "primary",
   size = "medium",
@@ -14,17 +12,13 @@ export function Button({
     "aui-button",
     `aui-button--${variant}`,
     `aui-button--${size}`,
-    className
+    className,
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <button
-      {...props}
-      className={classes}
-      disabled={disabled}
-    >
+    <button {...props} className={classes} disabled={disabled}>
       {children}
     </button>
   );

@@ -1,33 +1,33 @@
-import { createContext as e, forwardRef as t, useCallback as n, useContext as r, useEffect as i, useState as a } from "react";
-import { jsx as o } from "react/jsx-runtime";
+import { createContext as e, useCallback as t, useContext as n, useEffect as r, useState as i } from "react";
+import { jsx as a } from "react/jsx-runtime";
 //#region packages/react/core/contexts/ThemeContext.tsx
-var s = e(void 0);
+var o = e(void 0);
 //#endregion
 //#region packages/react/core/hooks/useTheme/useTheme.ts
-function c() {
-	let e = r(s);
+function s() {
+	let e = n(o);
 	if (e === void 0) throw Error("useTheme must be used within a ThemeProvider");
 	return e;
 }
 //#endregion
 //#region packages/react/core/hooks/useDisclosure/useDisclosure.ts
-function l({ defaultIsOpen: e = !1 } = {}) {
-	let [t, r] = a(e);
+function c({ defaultIsOpen: e = !1 } = {}) {
+	let [n, r] = i(e);
 	return {
-		isOpen: t,
-		onOpen: n(() => r(!0), []),
-		onClose: n(() => r(!1), []),
-		onToggle: n(() => r((e) => !e), [])
+		isOpen: n,
+		onOpen: t(() => r(!0), []),
+		onClose: t(() => r(!1), []),
+		onToggle: t(() => r((e) => !e), [])
 	};
 }
 //#endregion
 //#region packages/react/core/hooks/useMediaQuery/useMediaQuery.ts
-function u(e) {
+function l(e) {
 	return typeof window > "u" || typeof window.matchMedia != "function" ? !1 : window.matchMedia(e).matches;
 }
-function d(e) {
-	let [t, n] = a(() => u(e));
-	return i(() => {
+function u(e) {
+	let [t, n] = i(() => l(e));
+	return r(() => {
 		if (typeof window.matchMedia != "function") return;
 		let t = window.matchMedia(e), r = (e) => n(e.matches);
 		return n(t.matches), t.addEventListener("change", r), () => t.removeEventListener("change", r);
@@ -35,7 +35,7 @@ function d(e) {
 }
 //#endregion
 //#region packages/react/core/utils/classNames/classNames.ts
-function f(...e) {
+function d(...e) {
 	let t = [], n = (e) => {
 		if (Array.isArray(e)) {
 			e.forEach(n);
@@ -47,7 +47,7 @@ function f(...e) {
 }
 //#endregion
 //#region packages/react/core/utils/mergeRefs/mergeRefs.ts
-function p(...e) {
+function f(...e) {
 	return (t) => {
 		e.forEach((e) => {
 			if (typeof e == "function") {
@@ -60,23 +60,23 @@ function p(...e) {
 }
 //#endregion
 //#region packages/react/core/utils/generateId/generateId.ts
-var m = 0;
-function h(e) {
-	return m += 1, e ? `${e}-${m}` : `aui-${m}`;
+var p = 0;
+function m(e) {
+	return p += 1, e ? `${e}-${p}` : `aui-${p}`;
 }
-function g() {
-	m = 0;
+function h() {
+	p = 0;
 }
 //#endregion
 //#region packages/react/core/providers/ThemeProvider.tsx
-function _({ children: e, defaultTheme: t = "light" }) {
-	let [n, r] = a(t);
-	return /* @__PURE__ */ o(s.Provider, {
+function g({ children: e, defaultTheme: t = "light" }) {
+	let [n, r] = i(t);
+	return /* @__PURE__ */ a(o.Provider, {
 		value: {
 			theme: n,
 			setTheme: r
 		},
-		children: /* @__PURE__ */ o("div", {
+		children: /* @__PURE__ */ a("div", {
 			"data-aui-theme": n,
 			children: e
 		})
@@ -84,18 +84,19 @@ function _({ children: e, defaultTheme: t = "light" }) {
 }
 //#endregion
 //#region packages/react/components/forms/Button/Button.tsx
-var v = t(({ variant: e = "primary", size: t = "md", loading: n = !1, disabled: r = !1, className: i, children: a, type: s = "button", ...c }, l) => {
-	let u = r || n;
-	return /* @__PURE__ */ o("button", {
-		...c,
-		ref: l,
-		type: s,
-		className: f("aui-button", `aui-button--${e}`, `aui-button--${t}`, n && "aui-button--loading", i),
-		disabled: u,
-		"aria-busy": n || void 0,
-		children: a
+function _({ variant: e = "primary", size: t = "medium", className: n, children: r, disabled: i, ...o }) {
+	let s = [
+		"aui-button",
+		`aui-button--${e}`,
+		`aui-button--${t}`,
+		n
+	].filter(Boolean).join(" ");
+	return /* @__PURE__ */ a("button", {
+		...o,
+		className: s,
+		disabled: i,
+		children: r
 	});
-});
-v.displayName = "Button";
+}
 //#endregion
-export { v as Button, s as ThemeContext, _ as ThemeProvider, f as classNames, h as generateId, p as mergeRefs, g as resetGenerateId, l as useDisclosure, d as useMediaQuery, c as useTheme };
+export { _ as Button, o as ThemeContext, g as ThemeProvider, d as classNames, m as generateId, f as mergeRefs, h as resetGenerateId, c as useDisclosure, u as useMediaQuery, s as useTheme };
