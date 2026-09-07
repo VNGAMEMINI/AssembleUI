@@ -7,7 +7,7 @@ const packageRoot = path.resolve(import.meta.dirname, "./packages/react");
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: "jsdom",
+    environment: "happy-dom",
     globals: true,
     setupFiles: ["./tests/setup.ts"],
     include: ["tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
@@ -15,9 +15,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@assembleui/react": path.join(packageRoot, "index.ts"),
-      "@assembleui/react/styles": path.join(packageRoot, "index.scss"),
-      "@assembleui/react/": `${packageRoot}/`,
+      "@assemble-ui/react": path.join(packageRoot, "index.ts"),
+      "@assemble-ui/react/styles": path.join(packageRoot, "index.scss"),
+      "@assemble-ui/react/": `${packageRoot}/`,
       "@": packageRoot,
     },
   },

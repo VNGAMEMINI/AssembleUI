@@ -16,17 +16,17 @@
     },
     "./components": {
       "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.js"
+      "import": "./dist/index.js"
     },
     "./patterns": {
       "types": "./dist/patterns/index.d.ts",
-      "import": "./dist/patterns/index.js"
+      "import": "./dist/index.js"
     },
     "./templates": {
       "types": "./dist/templates/index.d.ts",
-      "import": "./dist/templates/index.js"
+      "import": "./dist/index.js"
     },
-    "./styles": "./dist/styles/index.css"
+    "./styles": "./dist/styles.css"
   },
   "scripts": {
     "build:styles": "sass index.scss dist/styles.css"

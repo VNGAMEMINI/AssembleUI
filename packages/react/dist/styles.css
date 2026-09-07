@@ -1,0 +1,377 @@
+/* packages/react/foundation/index.scss */
+/* packages/react/foundation/reset.scss */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* packages/react/foundation/normalize.scss */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  margin: 0;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  appearance: none;
+}
+
+img {
+  border-style: none;
+}
+
+a {
+  background-color: transparent;
+}
+
+/* packages/react/foundation/typography.scss */
+html {
+  font-family: var(--aui-font-family-base);
+}
+
+body {
+  line-height: var(--aui-line-height-normal);
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--aui-font-weight-semibold);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* packages/react/foundation/globals.scss */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+}
+
+:root {
+  --aui-spacing-0: 0;
+  --aui-spacing-1: 0.25rem;
+  --aui-spacing-2: 0.5rem;
+  --aui-spacing-3: 0.75rem;
+  --aui-spacing-4: 1rem;
+  --aui-spacing-5: 1.25rem;
+  --aui-spacing-6: 1.5rem;
+  --aui-spacing-8: 2rem;
+  --aui-spacing-10: 2.5rem;
+  --aui-spacing-12: 3rem;
+  --aui-spacing-16: 4rem;
+}
+
+:root {
+  --aui-radius-none: 0;
+  --aui-radius-sm: 0.25rem;
+  --aui-radius-md: 0.5rem;
+  --aui-radius-lg: 0.75rem;
+  --aui-radius-xl: 1rem;
+  --aui-radius-full: 9999px;
+}
+
+:root {
+  --aui-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --aui-font-size-xs: 0.75rem;
+  --aui-font-size-sm: 0.875rem;
+  --aui-font-size-md: 1rem;
+  --aui-font-size-lg: 1.125rem;
+  --aui-font-size-xl: 1.25rem;
+  --aui-font-size-2xl: 1.5rem;
+  --aui-font-weight-normal: 400;
+  --aui-font-weight-medium: 500;
+  --aui-font-weight-semibold: 600;
+  --aui-font-weight-bold: 700;
+  --aui-line-height-normal: 1.5;
+}
+
+:root {
+  --aui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --aui-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --aui-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --aui-motion-duration-fast: 100ms;
+  --aui-motion-duration-normal: 200ms;
+  --aui-motion-duration-slow: 300ms;
+  --aui-motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:root {
+  --aui-border-width-none: 0;
+  --aui-border-width-default: 1px;
+}
+
+:root {
+  --aui-color-primary: #2563eb;
+  --aui-color-primary-hover: #1d4ed8;
+  --aui-color-background: #ffffff;
+  --aui-color-surface: #f9fafb;
+  --aui-color-text: #111827;
+  --aui-color-text-muted: #4b5563;
+  --aui-color-border: #e5e7eb;
+  --aui-color-on-primary: #ffffff;
+  --aui-color-on-danger: #ffffff;
+  --aui-color-transparent: transparent;
+  --aui-color-success: #16a34a;
+  --aui-color-warning: #ca8a04;
+  --aui-color-danger: #dc2626;
+  --aui-color-info: #2563eb;
+}
+
+:root {
+  --aui-text-body-size: 1rem;
+  --aui-text-body-weight: 400;
+  --aui-text-heading-weight: 600;
+  --aui-text-caption-size: 0.875rem;
+}
+
+:root {
+  --aui-surface-page: var(--aui-color-background);
+  --aui-surface-default: var(--aui-color-surface);
+  --aui-surface-elevated: #ffffff;
+}
+
+:root {
+  --aui-state-disabled-opacity: 0.5;
+  --aui-state-focus-ring: var(--aui-color-primary);
+  --aui-state-hover-opacity: 0.9;
+}
+
+[data-aui-theme=light] {
+  --aui-color-primary: #2563eb;
+  --aui-color-primary-hover: #1d4ed8;
+  --aui-color-background: #ffffff;
+  --aui-color-surface: #f9fafb;
+  --aui-color-text: #111827;
+  --aui-color-text-muted: #6b7280;
+  --aui-color-border: #e5e7eb;
+  --aui-color-on-primary: #ffffff;
+  --aui-color-on-danger: #ffffff;
+  --aui-color-success: #16a34a;
+  --aui-color-warning: #ca8a04;
+  --aui-color-danger: #dc2626;
+  --aui-color-info: #2563eb;
+  --aui-surface-elevated: #f3f4f6;
+  --aui-surface-overlay: rgba(0, 0, 0, 0.5);
+}
+
+[data-aui-theme=dark] {
+  --aui-color-primary: #3b82f6;
+  --aui-color-primary-hover: #60a5fa;
+  --aui-color-background: #111827;
+  --aui-color-surface: #1f2937;
+  --aui-color-text: #f3f4f6;
+  --aui-color-text-muted: #9ca3af;
+  --aui-color-border: #374151;
+  --aui-color-on-primary: #111827;
+  --aui-color-on-danger: #ffffff;
+  --aui-color-success: #4ade80;
+  --aui-color-warning: #facc15;
+  --aui-color-danger: #f87171;
+  --aui-color-info: #60a5fa;
+  --aui-surface-elevated: #374151;
+  --aui-surface-overlay: rgba(0, 0, 0, 0.8);
+}
+
+/* Custom theme is an extension point for consumers. */
+[data-aui-theme=custom] {
+  /* Consumers may override --aui-* variables here. */
+}
+
+/* Spacing utility classes for quick spacing */
+.aui-p-1 {
+  padding: var(--aui-spacing-1);
+}
+
+.aui-p-2 {
+  padding: var(--aui-spacing-2);
+}
+
+.aui-p-3 {
+  padding: var(--aui-spacing-3);
+}
+
+.aui-p-4 {
+  padding: var(--aui-spacing-4);
+}
+
+.aui-m-1 {
+  margin: var(--aui-spacing-1);
+}
+
+.aui-m-2 {
+  margin: var(--aui-spacing-2);
+}
+
+.aui-m-3 {
+  margin: var(--aui-spacing-3);
+}
+
+.aui-m-4 {
+  margin: var(--aui-spacing-4);
+}
+
+/* Visibility utilities */
+.aui-visible {
+  visibility: visible;
+}
+
+.aui-invisible {
+  visibility: hidden;
+}
+
+.aui-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.aui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aui-spacing-2);
+  min-width: max-content;
+  border: 1px solid transparent;
+  border-radius: var(--aui-radius-md);
+  font-family: var(--aui-font-family-base);
+  font-weight: var(--aui-font-weight-medium);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity var(--aui-motion-duration-normal) var(--aui-motion-ease-standard);
+}
+.aui-button:hover {
+  opacity: var(--aui-state-hover-opacity);
+}
+.aui-button:focus-visible {
+  outline: 2px solid var(--aui-state-focus-ring);
+  outline-offset: 2px;
+}
+.aui-button:disabled {
+  opacity: var(--aui-state-disabled-opacity);
+  cursor: not-allowed;
+}
+.aui-button--sm {
+  min-height: 2rem;
+  padding: 0 var(--aui-spacing-3);
+  font-size: var(--aui-font-size-sm);
+}
+.aui-button--md {
+  min-height: 2.5rem;
+  padding: 0 var(--aui-spacing-4);
+  font-size: var(--aui-font-size-md);
+}
+.aui-button--lg {
+  min-height: 3rem;
+  padding: 0 var(--aui-spacing-5);
+  font-size: var(--aui-font-size-lg);
+}
+.aui-button--primary {
+  background: var(--aui-color-primary);
+  color: var(--aui-color-on-primary);
+}
+.aui-button--secondary {
+  background: var(--aui-color-surface);
+  border-color: var(--aui-color-border);
+  color: var(--aui-color-text);
+}
+.aui-button--outline {
+  background: transparent;
+  border-color: var(--aui-color-primary);
+  color: var(--aui-color-primary);
+}
+.aui-button--ghost {
+  background: transparent;
+  color: var(--aui-color-primary);
+}
+.aui-button--danger {
+  background: var(--aui-color-danger);
+  color: var(--aui-color-on-danger);
+}
+.aui-button--loading {
+  cursor: wait;
+}
+
+/*# sourceMappingURL=styles.css.map */
