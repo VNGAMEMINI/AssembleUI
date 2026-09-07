@@ -1,27 +1,61 @@
-import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from "react";
-import { classNames } from "../../../core/utils";
+import {
+  forwardRef,
+  type InputHTMLAttributes,
+  type ReactNode,
+} from "react";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+import {
+  classNames,
+  generateId,
+} from "../../../core/utils";
+
+export interface InputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   label?: ReactNode;
   description?: ReactNode;
   error?: ReactNode;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, description, error, id, className, disabled, required, ...props }, ref) => {
-    const generatedId = useId();
-    const inputId = id ?? `aui-input-${generatedId.replace(/:/g, "")}`;
-    const descriptionId = description ? `${inputId}-description` : undefined;
-    const errorId = error ? `${inputId}-error` : undefined;
-    const describedBy = [descriptionId, errorId].filter(Boolean).join(" ") || undefined;
+  (
+    {
+      label,
+      description,
+      error,
+      id,
+      className,
+      disabled,
+      required,
+      ...props
+    },
+    ref,
+  ) => {
+    const inputId = id ?? generateId("aui-input");
+    const descriptionId = description
+      ? `${inputId}-description`
+      : undefined;
+    const errorId = error
+      ? `${inputId}-error`
+      : undefined;
+
+    const describedBy =
+      [descriptionId, errorId]
+        .filter(Boolean)
+        .join(" ") || undefined;
+
     const invalid = Boolean(error);
 
     return (
       <div className="aui-input-field">
         {label != null && (
-          <label className="aui-input-field__label" htmlFor={inputId}>
+          <label
+            className="aui-input-field__label"
+            htmlFor={inputId}
+          >
             {label}
-            {required && <span aria-hidden="true"> *</span>}
+            {required && (
+              <span aria-hidden="true"> *</span>
+            )}
           </label>
         )}
 
@@ -29,7 +63,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
           ref={ref}
           id={inputId}
-          className={classNames("aui-input", invalid && "aui-input--invalid", className)}
+          className={classNames(
+            "aui-input",
+            invalid && "aui-input--invalid",
+            className,
+          )}
           disabled={disabled}
           required={required}
           aria-invalid={invalid || undefined}
@@ -37,13 +75,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         />
 
         {description != null && !error && (
-          <div className="aui-input-field__description" id={descriptionId}>
+          <div
+            className="aui-input-field__description"
+            id={descriptionId}
+          >
             {description}
           </div>
         )}
 
         {error != null && (
-          <div className="aui-input-field__error" id={errorId} role="alert">
+          <div
+            className="aui-input-field__error"
+            id={errorId}
+            role="alert"
+          >
             {error}
           </div>
         )}

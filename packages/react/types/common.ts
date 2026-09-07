@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 export interface AUIBaseProps {
   id?: string;
   className?: string;
 }
 
-export type AUIChildren = React.ReactNode;
+export type AUIChildren = ReactNode;

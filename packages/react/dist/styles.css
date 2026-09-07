@@ -341,4 +341,49 @@ select {
   padding-inline: 1.25rem;
 }
 
+.aui-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-spacing-2);
+  width: 100%;
+}
+.aui-input-field__label {
+  color: var(--aui-color-text);
+  font-size: var(--aui-font-size-sm);
+  font-weight: var(--aui-font-weight-medium);
+}
+.aui-input-field__description, .aui-input-field__error {
+  font-size: var(--aui-font-size-sm);
+}
+.aui-input-field__description {
+  color: var(--aui-color-text-muted);
+}
+.aui-input-field__error {
+  color: var(--aui-color-danger);
+}
+
+.aui-input {
+  width: 100%;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+  padding: 0 var(--aui-spacing-3);
+  border: 1px solid var(--aui-color-border);
+  border-radius: var(--aui-radius-md);
+  background: var(--aui-color-background);
+  color: var(--aui-color-text);
+  font: inherit;
+  outline: none;
+}
+.aui-input:focus-visible {
+  outline: 2px solid var(--aui-state-focus-ring);
+  outline-offset: 2px;
+}
+.aui-input:disabled {
+  opacity: var(--aui-state-disabled-opacity);
+  cursor: not-allowed;
+}
+.aui-input--invalid {
+  border-color: var(--aui-color-danger);
+}
+
 /*# sourceMappingURL=styles.css.map */
