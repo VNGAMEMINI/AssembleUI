@@ -6,9 +6,13 @@ export default defineConfig({
 
   build: {
     lib: {
-      entry: "packages/react/index.ts",
+      entry: {
+        index: "packages/react/index.ts",
+        "components/index": "packages/react/components/index.ts",
+        "patterns/index": "packages/react/patterns/index.ts",
+        "templates/index": "packages/react/templates/index.ts",
+      },
       formats: ["es"],
-      fileName: "index",
     },
 
     outDir: "packages/react/dist",
@@ -21,6 +25,10 @@ export default defineConfig({
         "react/jsx-runtime",
         "react/jsx-dev-runtime",
       ],
+
+      output: {
+        entryFileNames: "[name].js",
+      },
     },
   },
 });

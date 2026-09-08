@@ -16,15 +16,15 @@
     },
     "./components": {
       "types": "./dist/components/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/components/index.js"
     },
     "./patterns": {
       "types": "./dist/patterns/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/patterns/index.js"
     },
     "./templates": {
       "types": "./dist/templates/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/templates/index.js"
     },
     "./styles": "./dist/styles.css"
   },

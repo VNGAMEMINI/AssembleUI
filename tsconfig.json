@@ -13,7 +13,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@assemble-ui/react": [
+        "./packages/react/index.ts"
+      ],
+      "@assemble-ui/react/components": [
+        "./packages/react/components/index.ts"
+      ],
+      "@assemble-ui/react/patterns": [
+        "./packages/react/patterns/index.ts"
+      ],
+      "@assemble-ui/react/templates": [
+        "./packages/react/templates/index.ts"
+      ],
+      "@assemble-ui/react/*": [
+        "./packages/react/*"
+      ]
+    }
   },
   "include": ["packages", "demo", "playground", "tests"]
 }
