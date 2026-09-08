@@ -1,4 +1,4 @@
-import type { AUIRegistryEntry } from "./types";
+import type { AUIComponentCategory, AUIRegistryEntry } from "./types";
 
 export const componentRegistry = [
   {
@@ -13,4 +13,7 @@ export const componentRegistry = [
     category: "forms",
     status: "stable",
   },
-] as const satisfies readonly AUIRegistryEntry<"component">[];
+] as const satisfies readonly AUIRegistryEntry<
+  "component",
+  AUIComponentCategory
+>[];
