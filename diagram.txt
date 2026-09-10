@@ -24,16 +24,11 @@ packages/react/
 │   └── index.ts
 │
 ├── patterns/
-│   ├── data/
-│   ├── feedback/
-│   ├── forms/
-│   ├── navigation/
+│   ├── ...
 │   └── index.ts
 │
 ├── templates/
-│   ├── application/
-│   ├── authentication/
-│   ├── content/
+│   ├── ...
 │   └── index.ts
 │
 ├── registry/
