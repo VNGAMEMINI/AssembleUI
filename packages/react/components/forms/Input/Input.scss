@@ -28,13 +28,18 @@
 
 .aui-input {
   width: 100%;
-  min-height: 2.5rem;
+  min-height: var(--aui-spacing-10);
   box-sizing: border-box;
   padding: 0 var(--aui-spacing-3);
-  border: 1px solid var(--aui-color-border);
+
+  border: var(--aui-border-width-default) solid
+    var(--aui-color-border);
+
   border-radius: var(--aui-radius-md);
+
   background: var(--aui-color-background);
   color: var(--aui-color-text);
+
   font: inherit;
   outline: none;
 

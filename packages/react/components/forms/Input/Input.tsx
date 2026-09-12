@@ -1,20 +1,10 @@
-import {
-  forwardRef,
-  type InputHTMLAttributes,
-  type ReactNode,
-} from "react";
+import { forwardRef } from "react";
+import type { InputProps } from "./Input.types";
 
 import {
   classNames,
   generateId,
 } from "../../../core/utils";
-
-export interface InputProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-  label?: ReactNode;
-  description?: ReactNode;
-  error?: ReactNode;
-}
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -31,15 +21,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     const inputId = id ?? generateId("aui-input");
+
     const descriptionId = description
       ? `${inputId}-description`
       : undefined;
+
     const errorId = error
       ? `${inputId}-error`
       : undefined;
 
     const describedBy =
-      [descriptionId, errorId]
+      [
+        description && !error ? descriptionId : undefined,
+        errorId,
+      ]
         .filter(Boolean)
         .join(" ") || undefined;
 
