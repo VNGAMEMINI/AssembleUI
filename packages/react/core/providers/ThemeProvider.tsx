@@ -1,4 +1,5 @@
 import { useState, type PropsWithChildren } from "react";
+
 import { ThemeContext } from "../contexts";
 import type { Theme } from "../contexts";
 
@@ -14,7 +15,7 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div data-aui-theme={theme}>{children}</div>
+      {children}
     </ThemeContext.Provider>
   );
 }
