@@ -1,26 +1,37 @@
 import { describe, expect, it } from "vitest";
 
-import { Button, Input } from "@assemble-ui/react";
-
 import {
-  Button as LayerButton,
-  Input as LayerInput,
-} from "@assemble-ui/react/components";
+  registryComponentNames,
+  rootComponentNames,
+  getRootComponent,
+  getLayerComponent,
+} from "../contracts/component-contract";
 
 describe("Components Layer API", () => {
-  it("exports Button", () => {
-    expect(LayerButton).toBeDefined();
+  it("exports every registered component", () => {
+    for (const name of registryComponentNames) {
+      expect(
+        getLayerComponent(name),
+        `${name} is missing from components API`,
+      ).toBeDefined();
+    }
   });
 
-  it("exports Input", () => {
-    expect(LayerInput).toBeDefined();
+  it("exports the complete current component API", () => {
+    for (const name of rootComponentNames) {
+      expect(
+        getLayerComponent(name),
+        `${name} is missing from components API`,
+      ).toBeDefined();
+    }
   });
 
-  it("uses the same Button implementation as the root API", () => {
-    expect(LayerButton).toBe(Button);
-  });
-
-  it("uses the same Input implementation as the root API", () => {
-    expect(LayerInput).toBe(Input);
+  it("uses the same implementation as the root API", () => {
+    for (const name of rootComponentNames) {
+      expect(
+        getLayerComponent(name),
+        `${name} has different root/layer implementations`,
+      ).toBe(getRootComponent(name));
+    }
   });
 });
