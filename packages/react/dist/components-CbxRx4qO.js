@@ -243,4 +243,57 @@ var f = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 });
 f.displayName = "Textarea";
 //#endregion
-export { c as a, o as c, l as i, r as l, d as n, s as o, u as r, a as s, f as t };
+//#region packages/react/components/forms/Switch/Switch.tsx
+var p = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, "aria-describedby": d, "aria-invalid": f, ...p }, m) => {
+	let h = s ?? a("aui-switch"), g = i ? `${h}-description` : void 0, _ = o ? `${h}-error` : void 0, v = [d, [i && !o ? g : void 0, _].filter(Boolean).join(" ")].filter(Boolean).join(" ") || void 0, y = !!o, b = o != null || f;
+	return /* @__PURE__ */ n("div", {
+		className: "aui-switch-field",
+		children: [
+			/* @__PURE__ */ n("label", {
+				className: "aui-switch-field__label",
+				htmlFor: h,
+				children: [/* @__PURE__ */ t("input", {
+					...p,
+					ref: m,
+					id: h,
+					type: "checkbox",
+					role: "switch",
+					className: r("aui-switch", y && "aui-switch--invalid", c),
+					disabled: l,
+					required: u,
+					"aria-invalid": b,
+					"aria-describedby": v
+				}), e != null && /* @__PURE__ */ n("span", {
+					className: "aui-switch-field__text",
+					children: [e, u && /* @__PURE__ */ t("span", {
+						"aria-hidden": "true",
+						children: " *"
+					})]
+				})]
+			}),
+			i != null && !o && /* @__PURE__ */ t("div", {
+				className: "aui-switch-field__description",
+				id: g,
+				children: i
+			}),
+			o != null && /* @__PURE__ */ t("div", {
+				className: "aui-switch-field__error",
+				id: _,
+				role: "alert",
+				children: o
+			})
+		]
+	});
+});
+p.displayName = "Switch";
+//#endregion
+//#region packages/react/components/data/Badge/Badge.tsx
+var m = e(({ children: e, variant: n = "neutral", size: i = "md", className: a, ...o }, s) => /* @__PURE__ */ t("span", {
+	...o,
+	ref: s,
+	className: r("aui-badge", `aui-badge--${n}`, `aui-badge--${i}`, a),
+	children: e
+}));
+m.displayName = "Badge";
+//#endregion
+export { u as a, s as c, r as d, d as i, a as l, p as n, l as o, f as r, c as s, m as t, o as u };

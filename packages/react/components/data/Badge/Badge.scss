@@ -1,0 +1,53 @@
+.aui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: var(--aui-radius-full);
+  font-weight: var(--aui-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+
+  &--sm {
+    min-height: 1.25rem;
+    padding-inline: var(--aui-space-2);
+    font-size: var(--aui-font-size-xs);
+  }
+
+  &--md {
+    min-height: 1.5rem;
+    padding-inline: var(--aui-space-3);
+    font-size: var(--aui-font-size-sm);
+  }
+
+  &--lg {
+    min-height: 1.75rem;
+    padding-inline: var(--aui-space-4);
+    font-size: var(--aui-font-size-md);
+  }
+
+  &--neutral {
+    color: var(--aui-color-text);
+    background: var(--aui-color-surface-muted);
+  }
+
+  &--success {
+    color: var(--aui-color-success-text);
+    background: var(--aui-color-success-subtle);
+  }
+
+  &--warning {
+    color: var(--aui-color-warning-text);
+    background: var(--aui-color-warning-subtle);
+  }
+
+  &--danger {
+    color: var(--aui-color-danger-text);
+    background: var(--aui-color-danger-subtle);
+  }
+
+  &--info {
+    color: var(--aui-color-info-text);
+    background: var(--aui-color-info-subtle);
+  }
+}

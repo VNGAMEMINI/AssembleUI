@@ -1,36 +1,36 @@
-import { a as e, c as t, i as n, l as r, n as i, o as a, r as o, s, t as c } from "./components-ChKmYQGe.js";
+import { a as e, c as t, d as n, i as r, l as i, n as a, o, r as s, s as c, t as l, u } from "./components-CbxRx4qO.js";
 import "./patterns/index.js";
 import "./templates/index.js";
-import { createContext as l, useCallback as u, useContext as d, useEffect as f, useState as p } from "react";
-import { jsx as m } from "react/jsx-runtime";
+import { createContext as d, useCallback as f, useContext as p, useEffect as m, useState as h } from "react";
+import { jsx as g } from "react/jsx-runtime";
 //#region packages/react/core/contexts/ThemeContext.tsx
-var h = l(void 0);
+var _ = d(void 0);
 //#endregion
 //#region packages/react/core/hooks/useTheme/useTheme.ts
-function g() {
-	let e = d(h);
+function v() {
+	let e = p(_);
 	if (e === void 0) throw Error("useTheme must be used within a ThemeProvider");
 	return e;
 }
 //#endregion
 //#region packages/react/core/hooks/useDisclosure/useDisclosure.ts
-function _({ defaultIsOpen: e = !1 } = {}) {
-	let [t, n] = p(e);
+function y({ defaultIsOpen: e = !1 } = {}) {
+	let [t, n] = h(e);
 	return {
 		isOpen: t,
-		onOpen: u(() => n(!0), []),
-		onClose: u(() => n(!1), []),
-		onToggle: u(() => n((e) => !e), [])
+		onOpen: f(() => n(!0), []),
+		onClose: f(() => n(!1), []),
+		onToggle: f(() => n((e) => !e), [])
 	};
 }
 //#endregion
 //#region packages/react/core/hooks/useMediaQuery/useMediaQuery.ts
-function v(e) {
+function b(e) {
 	return typeof window > "u" || typeof window.matchMedia != "function" ? !1 : window.matchMedia(e).matches;
 }
-function y(e) {
-	let [t, n] = p(() => v(e));
-	return f(() => {
+function x(e) {
+	let [t, n] = h(() => b(e));
+	return m(() => {
 		if (typeof window.matchMedia != "function") return;
 		let t = window.matchMedia(e), r = (e) => n(e.matches);
 		return n(t.matches), t.addEventListener("change", r), () => t.removeEventListener("change", r);
@@ -38,7 +38,7 @@ function y(e) {
 }
 //#endregion
 //#region packages/react/core/utils/mergeRefs/mergeRefs.ts
-function b(...e) {
+function S(...e) {
 	return (t) => {
 		e.forEach((e) => {
 			if (typeof e == "function") {
@@ -51,18 +51,18 @@ function b(...e) {
 }
 //#endregion
 //#region packages/react/core/providers/ThemeProvider.tsx
-function x({ children: e, defaultTheme: t = "light" }) {
-	let [n, r] = p(t);
-	return /* @__PURE__ */ m(h.Provider, {
+function C({ children: e, defaultTheme: t = "light" }) {
+	let [n, r] = h(t);
+	return /* @__PURE__ */ g(_.Provider, {
 		value: {
 			theme: n,
 			setTheme: r
 		},
-		children: /* @__PURE__ */ m("div", {
+		children: /* @__PURE__ */ g("div", {
 			"data-aui-theme": n,
 			children: e
 		})
 	});
 }
 //#endregion
-export { a as Button, n as Checkbox, e as Input, o as Radio, i as Select, c as Textarea, h as ThemeContext, x as ThemeProvider, r as classNames, s as generateId, b as mergeRefs, t as resetGenerateId, _ as useDisclosure, y as useMediaQuery, g as useTheme };
+export { l as Badge, t as Button, o as Checkbox, c as Input, e as Radio, r as Select, a as Switch, s as Textarea, _ as ThemeContext, C as ThemeProvider, n as classNames, i as generateId, S as mergeRefs, u as resetGenerateId, y as useDisclosure, x as useMediaQuery, v as useTheme };
