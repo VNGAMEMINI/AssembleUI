@@ -203,6 +203,38 @@ describe("Checkbox", () => {
     );
   });
 
+  it("preserves external aria-describedby", () => {
+    render(
+      <Checkbox aria-describedby="external-help" />,
+    );
+
+    const checkbox = screen.getByRole("checkbox");
+
+    expect(checkbox).toHaveAttribute(
+      "aria-describedby",
+      "external-help",
+    );
+  });
+
+  it("merges external aria-describedby with generated description", () => {
+    render(
+      <Checkbox
+        aria-describedby="external-help"
+        description="Additional information"
+      />,
+    );
+
+    const checkbox = screen.getByRole("checkbox");
+    const description = screen.getByText(
+      "Additional information",
+    );
+
+    expect(checkbox).toHaveAttribute(
+      "aria-describedby",
+      `external-help ${description.id}`,
+    );
+  });
+
   it("forwards ref to the native checkbox", () => {
     const ref = createRef<HTMLInputElement>();
 

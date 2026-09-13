@@ -239,6 +239,42 @@ describe("Select", () => {
     );
   });
 
+  it("preserves external aria-describedby", () => {
+    render(
+      <Select aria-describedby="external-help">
+        <option>Vietnam</option>
+      </Select>,
+    );
+
+    const select = screen.getByRole("combobox");
+
+    expect(select).toHaveAttribute(
+      "aria-describedby",
+      "external-help",
+    );
+  });
+
+  it("merges external aria-describedby with generated description", () => {
+    render(
+      <Select
+        aria-describedby="external-help"
+        description="Additional information"
+      >
+        <option>Vietnam</option>
+      </Select>,
+    );
+
+    const select = screen.getByRole("combobox");
+    const description = screen.getByText(
+      "Additional information",
+    );
+
+    expect(select).toHaveAttribute(
+      "aria-describedby",
+      `external-help ${description.id}`,
+    );
+  });
+
   it("forwards ref to the native select", () => {
     const ref =
       createRef<HTMLSelectElement>();

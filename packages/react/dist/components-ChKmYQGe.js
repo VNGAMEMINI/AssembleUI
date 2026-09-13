@@ -38,37 +38,37 @@ function s({ variant: e = "primary", size: n = "medium", className: r, children:
 }
 //#endregion
 //#region packages/react/components/forms/Input/Input.tsx
-var c = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, ...d }, f) => {
-	let p = s ?? a("aui-input"), m = i ? `${p}-description` : void 0, h = o ? `${p}-error` : void 0, g = [i && !o ? m : void 0, h].filter(Boolean).join(" ") || void 0, _ = !!o;
+var c = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, "aria-describedby": d, "aria-invalid": f, ...p }, m) => {
+	let h = s ?? a("aui-input"), g = i ? `${h}-description` : void 0, _ = o ? `${h}-error` : void 0, v = [d, [i && !o ? g : void 0, _].filter(Boolean).join(" ")].filter(Boolean).join(" ") || void 0, y = !!o, b = o != null || f;
 	return /* @__PURE__ */ n("div", {
 		className: "aui-input-field",
 		children: [
 			e != null && /* @__PURE__ */ n("label", {
 				className: "aui-input-field__label",
-				htmlFor: p,
+				htmlFor: h,
 				children: [e, u && /* @__PURE__ */ t("span", {
 					"aria-hidden": "true",
 					children: " *"
 				})]
 			}),
 			/* @__PURE__ */ t("input", {
-				...d,
-				ref: f,
-				id: p,
-				className: r("aui-input", _ && "aui-input--invalid", c),
+				...p,
+				ref: m,
+				id: h,
+				className: r("aui-input", y && "aui-input--invalid", c),
 				disabled: l,
 				required: u,
-				"aria-invalid": _ || void 0,
-				"aria-describedby": g
+				"aria-invalid": b,
+				"aria-describedby": v
 			}),
 			i != null && !o && /* @__PURE__ */ t("div", {
 				className: "aui-input-field__description",
-				id: m,
+				id: g,
 				children: i
 			}),
 			o != null && /* @__PURE__ */ t("div", {
 				className: "aui-input-field__error",
-				id: h,
+				id: _,
 				role: "alert",
 				children: o
 			})
@@ -78,26 +78,26 @@ var c = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 c.displayName = "Input";
 //#endregion
 //#region packages/react/components/forms/Checkbox/Checkbox.tsx
-var l = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, ...d }, f) => {
-	let p = s ?? a("aui-checkbox"), m = i ? `${p}-description` : void 0, h = o ? `${p}-error` : void 0, g = [i && !o ? m : void 0, h].filter(Boolean).join(" ") || void 0, _ = !!o;
+var l = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, "aria-describedby": d, "aria-invalid": f, ...p }, m) => {
+	let h = s ?? a("aui-checkbox"), g = i ? `${h}-description` : void 0, _ = o ? `${h}-error` : void 0, v = [d, [i && !o ? g : void 0, _].filter(Boolean).join(" ")].filter(Boolean).join(" ") || void 0, y = !!o, b = o != null || f;
 	return /* @__PURE__ */ n("div", {
 		className: "aui-checkbox-field",
 		children: [
 			/* @__PURE__ */ n("div", {
 				className: "aui-checkbox-field__control",
 				children: [/* @__PURE__ */ t("input", {
-					...d,
-					ref: f,
-					id: p,
+					...p,
+					ref: m,
+					id: h,
 					type: "checkbox",
-					className: r("aui-checkbox", _ && "aui-checkbox--invalid", c),
+					className: r("aui-checkbox", y && "aui-checkbox--invalid", c),
 					disabled: l,
 					required: u,
-					"aria-invalid": _ || void 0,
-					"aria-describedby": g
+					"aria-invalid": b,
+					"aria-describedby": v
 				}), e != null && /* @__PURE__ */ n("label", {
 					className: "aui-checkbox-field__label",
-					htmlFor: p,
+					htmlFor: h,
 					children: [e, u && /* @__PURE__ */ t("span", {
 						"aria-hidden": "true",
 						children: " *"
@@ -106,12 +106,12 @@ var l = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 			}),
 			i != null && !o && /* @__PURE__ */ t("div", {
 				className: "aui-checkbox-field__description",
-				id: m,
+				id: g,
 				children: i
 			}),
 			o != null && /* @__PURE__ */ t("div", {
 				className: "aui-checkbox-field__error",
-				id: h,
+				id: _,
 				role: "alert",
 				children: o
 			})
@@ -121,26 +121,26 @@ var l = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 l.displayName = "Checkbox";
 //#endregion
 //#region packages/react/components/forms/Radio/Radio.tsx
-var u = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, ...d }, f) => {
-	let p = s ?? a("aui-radio"), m = i ? `${p}-description` : void 0, h = o ? `${p}-error` : void 0, g = [i && !o ? m : void 0, h].filter(Boolean).join(" ") || void 0, _ = !!o;
+var u = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, "aria-describedby": d, "aria-invalid": f, ...p }, m) => {
+	let h = s ?? a("aui-radio"), g = i ? `${h}-description` : void 0, _ = o ? `${h}-error` : void 0, v = [d, [i && !o ? g : void 0, _].filter(Boolean).join(" ")].filter(Boolean).join(" ") || void 0, y = !!o, b = o != null || f;
 	return /* @__PURE__ */ n("div", {
 		className: "aui-radio-field",
 		children: [
 			/* @__PURE__ */ n("div", {
 				className: "aui-radio-field__control",
 				children: [/* @__PURE__ */ t("input", {
-					...d,
-					ref: f,
-					id: p,
+					...p,
+					ref: m,
+					id: h,
 					type: "radio",
-					className: r("aui-radio", _ && "aui-radio--invalid", c),
+					className: r("aui-radio", y && "aui-radio--invalid", c),
 					disabled: l,
 					required: u,
-					"aria-invalid": _ || void 0,
-					"aria-describedby": g
+					"aria-invalid": b,
+					"aria-describedby": v
 				}), e != null && /* @__PURE__ */ n("label", {
 					className: "aui-radio-field__label",
-					htmlFor: p,
+					htmlFor: h,
 					children: [e, u && /* @__PURE__ */ t("span", {
 						"aria-hidden": "true",
 						children: " *"
@@ -149,12 +149,12 @@ var u = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 			}),
 			i != null && !o && /* @__PURE__ */ t("div", {
 				className: "aui-radio-field__description",
-				id: m,
+				id: g,
 				children: i
 			}),
 			o != null && /* @__PURE__ */ t("div", {
 				className: "aui-radio-field__error",
-				id: h,
+				id: _,
 				role: "alert",
 				children: o
 			})
@@ -164,37 +164,37 @@ var u = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 u.displayName = "Radio";
 //#endregion
 //#region packages/react/components/forms/Select/Select.tsx
-var d = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, ...d }, f) => {
-	let p = s ?? a("aui-select"), m = i ? `${p}-description` : void 0, h = o ? `${p}-error` : void 0, g = [i && !o ? m : void 0, h].filter(Boolean).join(" ") || void 0, _ = !!o;
+var d = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, "aria-describedby": d, "aria-invalid": f, ...p }, m) => {
+	let h = s ?? a("aui-select"), g = i ? `${h}-description` : void 0, _ = o ? `${h}-error` : void 0, v = [d, [i && !o ? g : void 0, _].filter(Boolean).join(" ")].filter(Boolean).join(" ") || void 0, y = !!o, b = o != null || f;
 	return /* @__PURE__ */ n("div", {
 		className: "aui-select-field",
 		children: [
 			e != null && /* @__PURE__ */ n("label", {
 				className: "aui-select-field__label",
-				htmlFor: p,
+				htmlFor: h,
 				children: [e, u && /* @__PURE__ */ t("span", {
 					"aria-hidden": "true",
 					children: " *"
 				})]
 			}),
 			/* @__PURE__ */ t("select", {
-				...d,
-				ref: f,
-				id: p,
-				className: r("aui-select", _ && "aui-select--invalid", c),
+				...p,
+				ref: m,
+				id: h,
+				className: r("aui-select", y && "aui-select--invalid", c),
 				disabled: l,
 				required: u,
-				"aria-invalid": _ || void 0,
-				"aria-describedby": g
+				"aria-invalid": b,
+				"aria-describedby": v
 			}),
 			i != null && !o && /* @__PURE__ */ t("div", {
 				className: "aui-select-field__description",
-				id: m,
+				id: g,
 				children: i
 			}),
 			o != null && /* @__PURE__ */ t("div", {
 				className: "aui-select-field__error",
-				id: h,
+				id: _,
 				role: "alert",
 				children: o
 			})
@@ -204,37 +204,37 @@ var d = e(({ label: e, description: i, error: o, id: s, className: c, disabled: 
 d.displayName = "Select";
 //#endregion
 //#region packages/react/components/forms/Textarea/Textarea.tsx
-var f = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, ...d }, f) => {
-	let p = s ?? a("aui-textarea"), m = i ? `${p}-description` : void 0, h = o ? `${p}-error` : void 0, g = [i && !o ? m : void 0, h].filter(Boolean).join(" ") || void 0, _ = !!o;
+var f = e(({ label: e, description: i, error: o, id: s, className: c, disabled: l, required: u, "aria-describedby": d, "aria-invalid": f, ...p }, m) => {
+	let h = s ?? a("aui-textarea"), g = i ? `${h}-description` : void 0, _ = o ? `${h}-error` : void 0, v = [d, [i && !o ? g : void 0, _].filter(Boolean).join(" ")].filter(Boolean).join(" ") || void 0, y = !!o, b = o != null || f;
 	return /* @__PURE__ */ n("div", {
 		className: "aui-textarea-field",
 		children: [
 			e != null && /* @__PURE__ */ n("label", {
 				className: "aui-textarea-field__label",
-				htmlFor: p,
+				htmlFor: h,
 				children: [e, u && /* @__PURE__ */ t("span", {
 					"aria-hidden": "true",
 					children: " *"
 				})]
 			}),
 			/* @__PURE__ */ t("textarea", {
-				...d,
-				ref: f,
-				id: p,
-				className: r("aui-textarea", _ && "aui-textarea--invalid", c),
+				...p,
+				ref: m,
+				id: h,
+				className: r("aui-textarea", y && "aui-textarea--invalid", c),
 				disabled: l,
 				required: u,
-				"aria-invalid": _ || void 0,
-				"aria-describedby": g
+				"aria-invalid": b,
+				"aria-describedby": v
 			}),
 			i != null && !o && /* @__PURE__ */ t("div", {
 				className: "aui-textarea-field__description",
-				id: m,
+				id: g,
 				children: i
 			}),
 			o != null && /* @__PURE__ */ t("div", {
 				className: "aui-textarea-field__error",
-				id: h,
+				id: _,
 				role: "alert",
 				children: o
 			})

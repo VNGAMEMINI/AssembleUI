@@ -29,36 +29,20 @@ describe("Input", () => {
   it("preserves a provided id", () => {
     render(<Input id="username" label="Username" />);
 
-    expect(screen.getByLabelText("Username")).toHaveAttribute(
-      "id",
-      "username",
-    );
+    expect(screen.getByLabelText("Username")).toHaveAttribute("id", "username");
   });
 
   it("connects description through aria-describedby", () => {
-    render(
-      <Input
-        label="Username"
-        description="Enter your username"
-      />,
-    );
+    render(<Input label="Username" description="Enter your username" />);
 
     const input = screen.getByLabelText("Username");
     const description = screen.getByText("Enter your username");
 
-    expect(input).toHaveAttribute(
-      "aria-describedby",
-      description.id,
-    );
+    expect(input).toHaveAttribute("aria-describedby", description.id);
   });
 
   it("marks the input invalid when error exists", () => {
-    render(
-      <Input
-        label="Username"
-        error="Username is required"
-      />,
-    );
+    render(<Input label="Username" error="Username is required" />);
 
     const input = screen.getByLabelText("Username");
 
@@ -67,20 +51,12 @@ describe("Input", () => {
   });
 
   it("connects error through aria-describedby", () => {
-    render(
-      <Input
-        label="Username"
-        error="Username is required"
-      />,
-    );
+    render(<Input label="Username" error="Username is required" />);
 
     const input = screen.getByLabelText("Username");
     const error = screen.getByRole("alert");
 
-    expect(input).toHaveAttribute(
-      "aria-describedby",
-      error.id,
-    );
+    expect(input).toHaveAttribute("aria-describedby", error.id);
   });
 
   it("uses error description when both description and error exist", () => {
@@ -95,14 +71,9 @@ describe("Input", () => {
     const input = screen.getByLabelText("Username");
     const error = screen.getByRole("alert");
 
-    expect(
-      screen.queryByText("Enter your username"),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText("Enter your username")).not.toBeInTheDocument();
 
-    expect(input).toHaveAttribute(
-      "aria-describedby",
-      error.id,
-    );
+    expect(input).toHaveAttribute("aria-describedby", error.id);
   });
 
   it("supports disabled", () => {
@@ -137,27 +108,13 @@ describe("Input", () => {
 
     expect(input).toHaveAttribute("type", "email");
     expect(input).toHaveAttribute("name", "email");
-    expect(input).toHaveAttribute(
-      "placeholder",
-      "Enter email",
-    );
-    expect(input).toHaveAttribute(
-      "autocomplete",
-      "email",
-    );
-    expect(input).toHaveAttribute(
-      "aria-label",
-      "Email address",
-    );
+    expect(input).toHaveAttribute("placeholder", "Enter email");
+    expect(input).toHaveAttribute("autocomplete", "email");
+    expect(input).toHaveAttribute("aria-label", "Email address");
   });
 
   it("preserves className", () => {
-    render(
-      <Input
-        label="Username"
-        className="custom-input"
-      />,
-    );
+    render(<Input label="Username" className="custom-input" />);
 
     expect(screen.getByLabelText("Username")).toHaveClass(
       "aui-input",
@@ -170,8 +127,29 @@ describe("Input", () => {
 
     render(<Input ref={ref} label="Username" />);
 
-    expect(ref.current).toBe(
-      screen.getByLabelText("Username"),
-    );
+    expect(ref.current).toBe(screen.getByLabelText("Username"));
   });
+});
+
+it("preserves external aria-describedby", () => {
+  render(<Input aria-describedby="external-help" />);
+
+  const input = screen.getByRole("textbox");
+
+  expect(input).toHaveAttribute("aria-describedby", "external-help");
+});
+
+it("merges external aria-describedby with generated description", () => {
+  render(
+    <Input aria-describedby="external-help" description="Your username" />,
+  );
+
+  const input = screen.getByRole("textbox");
+
+  const description = screen.getByText("Your username");
+
+  expect(input).toHaveAttribute(
+    "aria-describedby",
+    `external-help ${description.id}`,
+  );
 });

@@ -219,6 +219,38 @@ describe("Textarea", () => {
     );
   });
 
+  it("preserves external aria-describedby", () => {
+    render(
+      <Textarea aria-describedby="external-help" />,
+    );
+
+    const textarea = screen.getByRole("textbox");
+
+    expect(textarea).toHaveAttribute(
+      "aria-describedby",
+      "external-help",
+    );
+  });
+
+  it("merges external aria-describedby with generated description", () => {
+    render(
+      <Textarea
+        aria-describedby="external-help"
+        description="Additional information"
+      />,
+    );
+
+    const textarea = screen.getByRole("textbox");
+    const description = screen.getByText(
+      "Additional information",
+    );
+
+    expect(textarea).toHaveAttribute(
+      "aria-describedby",
+      `external-help ${description.id}`,
+    );
+  });
+
   it("forwards ref to the native textarea", () => {
     const ref =
       createRef<HTMLTextAreaElement>();

@@ -243,6 +243,38 @@ describe("Radio", () => {
     );
   });
 
+  it("preserves external aria-describedby", () => {
+    render(
+      <Radio aria-describedby="external-help" />,
+    );
+
+    const radio = screen.getByRole("radio");
+
+    expect(radio).toHaveAttribute(
+      "aria-describedby",
+      "external-help",
+    );
+  });
+
+  it("merges external aria-describedby with generated description", () => {
+    render(
+      <Radio
+        aria-describedby="external-help"
+        description="Additional information"
+      />,
+    );
+
+    const radio = screen.getByRole("radio");
+    const description = screen.getByText(
+      "Additional information",
+    );
+
+    expect(radio).toHaveAttribute(
+      "aria-describedby",
+      `external-help ${description.id}`,
+    );
+  });
+
   it("forwards ref to the native radio", () => {
     const ref = createRef<HTMLInputElement>();
 

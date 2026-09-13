@@ -19,6 +19,8 @@ const Checkbox = forwardRef<
       className,
       disabled,
       required,
+      "aria-describedby": externalDescribedBy,
+      "aria-invalid": externalInvalid,
       ...props
     },
     ref,
@@ -34,17 +36,26 @@ const Checkbox = forwardRef<
       ? `${checkboxId}-error`
       : undefined;
 
-    const describedBy =
-      [
-        description && !error
-          ? descriptionId
-          : undefined,
-        errorId,
-      ]
-        .filter(Boolean)
-        .join(" ") || undefined;
+    const generatedDescribedBy = [
+      description && !error ? descriptionId : undefined,
+      errorId,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    const describedBy = [
+      externalDescribedBy,
+      generatedDescribedBy,
+    ]
+      .filter(Boolean)
+      .join(" ") || undefined;
 
     const invalid = Boolean(error);
+
+    const ariaInvalid =
+      error != null
+        ? true
+        : externalInvalid;
 
     return (
       <div className="aui-checkbox-field">
@@ -61,7 +72,7 @@ const Checkbox = forwardRef<
             )}
             disabled={disabled}
             required={required}
-            aria-invalid={invalid || undefined}
+            aria-invalid={ariaInvalid}
             aria-describedby={describedBy}
           />
 
