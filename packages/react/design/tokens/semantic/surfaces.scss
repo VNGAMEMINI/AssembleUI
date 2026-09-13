@@ -2,8 +2,7 @@
 
 :root {
   --aui-surface-page: var(--aui-color-background);
-
   --aui-surface-default: var(--aui-color-surface);
-
   --aui-surface-elevated: #{$white};
+  --aui-surface-overlay: rgba(0, 0, 0, 0.5);
 }
