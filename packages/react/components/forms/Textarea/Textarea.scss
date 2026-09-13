@@ -1,0 +1,60 @@
+@use "../../../styles/mixins/focus" as focus;
+
+.aui-textarea-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-spacing-2);
+
+  &__label {
+    color: var(--aui-color-text);
+    font-size: var(--aui-font-size-sm);
+    font-weight: var(--aui-font-weight-medium);
+  }
+
+  &__description,
+  &__error {
+    font-size: var(--aui-font-size-sm);
+  }
+
+  &__description {
+    color: var(--aui-color-text-muted);
+  }
+
+  &__error {
+    color: var(--aui-color-danger);
+  }
+}
+
+.aui-textarea {
+  width: 100%;
+  min-height: calc(
+    var(--aui-spacing-10) * 3
+  );
+
+  padding: var(--aui-spacing-3);
+
+  border: var(--aui-border-width-default) solid
+    var(--aui-color-border);
+  border-radius: var(--aui-radius-md);
+
+  background: var(--aui-color-background);
+  color: var(--aui-color-text);
+
+  font-family: var(--aui-font-family-base);
+  font-size: var(--aui-font-size-md);
+  line-height: var(--aui-line-height-normal);
+
+  resize: vertical;
+
+  @include focus.focus-ring;
+
+  &:disabled {
+    opacity: var(--aui-state-disabled-opacity);
+    cursor: not-allowed;
+    resize: none;
+  }
+
+  &--invalid {
+    border-color: var(--aui-color-danger);
+  }
+}

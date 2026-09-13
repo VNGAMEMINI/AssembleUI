@@ -1,12 +1,13 @@
 import { forwardRef } from "react";
-import type { InputProps } from "./Input.types";
+
+import type { SelectProps } from "./Select.types";
 
 import {
   classNames,
   generateId,
 } from "../../../core/utils";
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       label,
@@ -20,19 +21,21 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? generateId("aui-input");
+    const selectId = id ?? generateId("aui-select");
 
     const descriptionId = description
-      ? `${inputId}-description`
+      ? `${selectId}-description`
       : undefined;
 
     const errorId = error
-      ? `${inputId}-error`
+      ? `${selectId}-error`
       : undefined;
 
     const describedBy =
       [
-        description && !error ? descriptionId : undefined,
+        description && !error
+          ? descriptionId
+          : undefined,
         errorId,
       ]
         .filter(Boolean)
@@ -40,17 +43,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const invalid = Boolean(error);
 
-    const ariaInvalid =
-      error != null
-        ? true
-        : props["aria-invalid"];
-
     return (
-      <div className="aui-input-field">
+      <div className="aui-select-field">
         {label != null && (
           <label
-            className="aui-input-field__label"
-            htmlFor={inputId}
+            className="aui-select-field__label"
+            htmlFor={selectId}
           >
             {label}
             {required && (
@@ -59,24 +57,24 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
 
-        <input
+        <select
           {...props}
           ref={ref}
-          id={inputId}
+          id={selectId}
           className={classNames(
-            "aui-input",
-            invalid && "aui-input--invalid",
+            "aui-select",
+            invalid && "aui-select--invalid",
             className,
           )}
           disabled={disabled}
           required={required}
-          aria-invalid={ariaInvalid}
+          aria-invalid={invalid || undefined}
           aria-describedby={describedBy}
         />
 
         {description != null && !error && (
           <div
-            className="aui-input-field__description"
+            className="aui-select-field__description"
             id={descriptionId}
           >
             {description}
@@ -85,7 +83,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
         {error != null && (
           <div
-            className="aui-input-field__error"
+            className="aui-select-field__error"
             id={errorId}
             role="alert"
           >
@@ -97,6 +95,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-Input.displayName = "Input";
+Select.displayName = "Select";
 
-export { Input };
+export { Select };

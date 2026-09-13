@@ -1,0 +1,63 @@
+@use "../../../styles/mixins/focus" as focus;
+
+.aui-checkbox-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-spacing-2);
+
+  &__control {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--aui-spacing-2);
+  }
+
+  &__label {
+    color: var(--aui-color-text);
+    font-size: var(--aui-font-size-sm);
+    font-weight: var(--aui-font-weight-medium);
+    cursor: pointer;
+  }
+
+  &__description,
+  &__error {
+    margin-inline-start: calc(
+      var(--aui-spacing-4) + var(--aui-spacing-2)
+    );
+
+    font-size: var(--aui-font-size-sm);
+  }
+
+  &__description {
+    color: var(--aui-color-text-muted);
+  }
+
+  &__error {
+    color: var(--aui-color-danger);
+  }
+}
+
+.aui-checkbox {
+  width: var(--aui-spacing-4);
+  height: var(--aui-spacing-4);
+  margin: 0;
+
+  accent-color: var(--aui-color-primary);
+
+  cursor: pointer;
+
+  @include focus.focus-ring;
+
+  &:disabled {
+    opacity: var(--aui-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &--invalid {
+    outline-color: var(--aui-color-danger);
+  }
+
+  &:disabled + .aui-checkbox-field__label {
+    opacity: var(--aui-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+}
