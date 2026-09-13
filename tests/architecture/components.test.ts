@@ -84,23 +84,43 @@ function getSourceFiles(directory: string): string[] {
   return files;
 }
 
-function getComponentSource(): string {
-  return getSourceFiles(componentsRoot)
-    .map((file) => readFileSync(file, "utf8"))
-    .join("\n");
+function getComponentSourceFiles(): string[] {
+  return getSourceFiles(componentsRoot);
+}
+
+function getRelativeFile(file: string): string {
+  return path.relative(
+    componentsRoot,
+    file,
+  );
+}
+
+function assertNoImport(
+  source: string,
+  pattern: RegExp,
+  file: string,
+  dependency: string,
+): void {
+  expect(
+    source,
+    `${getRelativeFile(file)} must not import ${dependency}`,
+  ).not.toMatch(pattern);
 }
 
 describe("Components Architecture", () => {
   const componentDirectories =
     getComponentDirectories(componentsRoot);
 
-  const source = getComponentSource();
+  const sourceFiles =
+    getComponentSourceFiles();
 
   it("has at least one component", () => {
     expect(componentDirectories.length).toBeGreaterThan(0);
   });
 
   it("uses the required component contract", () => {
+    expect(REQUIRED_COMPONENT_FILES).toHaveLength(5);
+
     for (const directory of componentDirectories) {
       const entries = readdirSync(directory);
 
@@ -143,32 +163,67 @@ describe("Components Architecture", () => {
   });
 
   it("does not depend on patterns", () => {
-    expect(source).not.toMatch(
-      /from\s+["'][^"']*patterns/,
-    );
+    for (const file of sourceFiles) {
+      const source = readFileSync(file, "utf8");
+
+      assertNoImport(
+        source,
+        /from\s+["'][^"']*patterns/,
+        file,
+        "patterns",
+      );
+    }
   });
 
   it("does not depend on templates", () => {
-    expect(source).not.toMatch(
-      /from\s+["'][^"']*templates/,
-    );
+    for (const file of sourceFiles) {
+      const source = readFileSync(file, "utf8");
+
+      assertNoImport(
+        source,
+        /from\s+["'][^"']*templates/,
+        file,
+        "templates",
+      );
+    }
   });
 
   it("does not depend on registry", () => {
-    expect(source).not.toMatch(
-      /from\s+["'][^"']*registry/,
-    );
+    for (const file of sourceFiles) {
+      const source = readFileSync(file, "utf8");
+
+      assertNoImport(
+        source,
+        /from\s+["'][^"']*registry/,
+        file,
+        "registry",
+      );
+    }
   });
 
   it("does not import Sass files directly", () => {
-    expect(source).not.toMatch(
-      /import\s+.*["'][^"']*\.(scss|sass)["']/,
-    );
+    for (const file of sourceFiles) {
+      const source = readFileSync(file, "utf8");
+
+      expect(
+        source,
+        `${getRelativeFile(file)} must not import Sass files directly`,
+      ).not.toMatch(
+        /import\s+.*["'][^"']*\.(scss|sass)["']/,
+      );
+    }
   });
 
   it("does not depend on its own components barrel", () => {
-    expect(source).not.toMatch(
-      /from\s+["'][^"']*components/,
-    );
+    for (const file of sourceFiles) {
+      const source = readFileSync(file, "utf8");
+
+      assertNoImport(
+        source,
+        /from\s+["'][^"']*components/,
+        file,
+        "the components barrel",
+      );
+    }
   });
 });

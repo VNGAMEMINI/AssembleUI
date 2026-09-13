@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-import type { AUIComponentProps } from "../../../types";
 
 export type ButtonVariant =
   | "primary"
@@ -14,8 +13,7 @@ export type ButtonSize =
   | "large";
 
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className">,
-    AUIComponentProps {
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   children?: ReactNode;

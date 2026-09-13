@@ -1,7 +1,4 @@
-import {
-  forwardRef,
-  type KeyboardEvent,
-} from "react";
+import { forwardRef } from "react";
 
 import type { ChipProps } from "./Chip.types";
 
@@ -14,21 +11,13 @@ const Chip = forwardRef<HTMLSpanElement, ChipProps>(
       variant = "neutral",
       size = "md",
       removable = false,
+      removeLabel = "Remove",
       onRemove,
       className,
       ...props
     },
     ref,
   ) => {
-    const handleRemoveKeyDown = (
-      event: KeyboardEvent<HTMLButtonElement>,
-    ) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        onRemove?.();
-      }
-    };
-
     return (
       <span
         {...props}
@@ -48,9 +37,8 @@ const Chip = forwardRef<HTMLSpanElement, ChipProps>(
           <button
             type="button"
             className="aui-chip__remove"
-            aria-label="Remove"
+            aria-label={removeLabel}
             onClick={onRemove}
-            onKeyDown={handleRemoveKeyDown}
           >
             <span aria-hidden="true">×</span>
           </button>

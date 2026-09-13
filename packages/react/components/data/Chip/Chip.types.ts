@@ -18,5 +18,6 @@ export interface ChipProps
   variant?: ChipVariant;
   size?: ChipSize;
   removable?: boolean;
+  removeLabel?: string;
   onRemove?: () => void;
 }

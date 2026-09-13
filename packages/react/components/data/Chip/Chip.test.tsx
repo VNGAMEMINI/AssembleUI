@@ -98,6 +98,21 @@ describe("Chip", () => {
     ).toBeInTheDocument();
   });
 
+  it("supports a custom remove label", () => {
+    render(
+      <Chip
+        removable
+        removeLabel="Remove React"
+      >
+        React
+      </Chip>,
+    );
+
+    expect(
+      screen.getByRole("button", { name: "Remove React" }),
+    ).toBeInTheDocument();
+  });
+
   it("calls onRemove when remove button is clicked", () => {
     const onRemove = vi.fn();
 
@@ -112,46 +127,6 @@ describe("Chip", () => {
 
     fireEvent.click(
       screen.getByRole("button", { name: "Remove" }),
-    );
-
-    expect(onRemove).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls onRemove with Enter", () => {
-    const onRemove = vi.fn();
-
-    render(
-      <Chip
-        removable
-        onRemove={onRemove}
-      >
-        React
-      </Chip>,
-    );
-
-    fireEvent.keyDown(
-      screen.getByRole("button", { name: "Remove" }),
-      { key: "Enter" },
-    );
-
-    expect(onRemove).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls onRemove with Space", () => {
-    const onRemove = vi.fn();
-
-    render(
-      <Chip
-        removable
-        onRemove={onRemove}
-      >
-        React
-      </Chip>,
-    );
-
-    fireEvent.keyDown(
-      screen.getByRole("button", { name: "Remove" }),
-      { key: " " },
     );
 
     expect(onRemove).toHaveBeenCalledTimes(1);

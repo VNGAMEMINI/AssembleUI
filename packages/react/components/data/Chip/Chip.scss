@@ -1,3 +1,5 @@
+@use "../../../styles/mixins/interactive";
+
 .aui-chip {
   display: inline-flex;
   align-items: center;
@@ -78,10 +80,8 @@
     font: inherit;
     line-height: 1;
     cursor: pointer;
-  }
 
-  &__remove:hover {
-    background: rgb(0 0 0 / 0.08);
+    @include interactive.interactive;
   }
 
   &__remove:focus-visible {

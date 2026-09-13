@@ -3,14 +3,8 @@ import type {
   TextareaHTMLAttributes,
 } from "react";
 
-import type { AUIComponentProps } from "../../../types";
-
 export interface TextareaProps
-  extends Omit<
-    TextareaHTMLAttributes<HTMLTextAreaElement>,
-    "className"
-  >,
-    AUIComponentProps {
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: ReactNode;
   description?: ReactNode;
   error?: ReactNode;
