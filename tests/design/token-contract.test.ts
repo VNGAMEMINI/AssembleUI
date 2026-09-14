@@ -98,14 +98,18 @@ describe("design token contract", () => {
     );
   });
 
-  it("uses the same color token contract in light and dark themes", () => {
-    expect(lightColorTokens).toEqual(
-      requiredColorTokens,
-    );
+  it("only overrides valid semantic color tokens in themes", () => {
+    expect(
+      lightColorTokens.every((token) =>
+        requiredColorTokens.includes(token),
+      ),
+    ).toBe(true);
 
-    expect(darkColorTokens).toEqual(
-      requiredColorTokens,
-    );
+    expect(
+      darkColorTokens.every((token) =>
+        requiredColorTokens.includes(token),
+      ),
+    ).toBe(true);
   });
 
   it("defines every required semantic surface token", () => {

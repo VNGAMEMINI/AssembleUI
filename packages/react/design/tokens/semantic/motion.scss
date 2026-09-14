@@ -1,0 +1,8 @@
+@use "../primitives/motion" as motion;
+
+:root {
+  --aui-motion-duration-fast: #{motion.$duration-fast};
+  --aui-motion-duration-normal: #{motion.$duration-normal};
+  --aui-motion-duration-slow: #{motion.$duration-slow};
+  --aui-motion-ease-standard: #{motion.$ease-standard};
+}

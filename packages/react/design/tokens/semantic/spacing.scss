@@ -1,0 +1,15 @@
+@use "../primitives/spacing" as spacing;
+
+:root {
+  --aui-spacing-0: #{spacing.$spacing-0};
+  --aui-spacing-1: #{spacing.$spacing-1};
+  --aui-spacing-2: #{spacing.$spacing-2};
+  --aui-spacing-3: #{spacing.$spacing-3};
+  --aui-spacing-4: #{spacing.$spacing-4};
+  --aui-spacing-5: #{spacing.$spacing-5};
+  --aui-spacing-6: #{spacing.$spacing-6};
+  --aui-spacing-8: #{spacing.$spacing-8};
+  --aui-spacing-10: #{spacing.$spacing-10};
+  --aui-spacing-12: #{spacing.$spacing-12};
+  --aui-spacing-16: #{spacing.$spacing-16};
+}

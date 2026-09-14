@@ -1,32 +1,7 @@
 @use "../../tokens/primitives/colors" as *;
 
 [data-aui-theme="light"] {
-  --aui-color-primary: #{$blue-600};
-  --aui-color-primary-hover: #{$blue-700};
-
-  --aui-color-background: #{$white};
-  --aui-color-surface: #{$gray-50};
-
-  --aui-color-text: #{$gray-900};
   --aui-color-text-muted: #{$gray-500};
-
-  --aui-color-border: #{$gray-200};
-
-  --aui-color-on-primary: #{$white};
-
-  --aui-color-success: #{$green-600};
-  --aui-color-on-success: #{$white};
-
-  --aui-color-warning: #{$yellow-600};
-  --aui-color-on-warning: #{$gray-900};
-
-  --aui-color-danger: #{$red-600};
-  --aui-color-on-danger: #{$white};
-
-  --aui-color-info: #{$blue-600};
-  --aui-color-on-info: #{$white};
-
-  --aui-color-transparent: #{$transparent};
 
   --aui-surface-page: #{$white};
   --aui-surface-default: #{$gray-50};

@@ -1,11 +1,24 @@
-@use "../primitives/typography.scss" as *;
+@use "../primitives/typography" as typography;
 
 :root {
-  --aui-text-body-size: #{$font-size-md};
+  --aui-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --aui-text-body-weight: #{$font-weight-normal};
+  --aui-font-size-xs: #{typography.$font-size-xs};
+  --aui-font-size-sm: #{typography.$font-size-sm};
+  --aui-font-size-md: #{typography.$font-size-md};
+  --aui-font-size-lg: #{typography.$font-size-lg};
+  --aui-font-size-xl: #{typography.$font-size-xl};
+  --aui-font-size-2xl: #{typography.$font-size-2xl};
 
-  --aui-text-heading-weight: #{$font-weight-semibold};
+  --aui-font-weight-normal: #{typography.$font-weight-normal};
+  --aui-font-weight-medium: #{typography.$font-weight-medium};
+  --aui-font-weight-semibold: #{typography.$font-weight-semibold};
+  --aui-font-weight-bold: #{typography.$font-weight-bold};
 
-  --aui-text-caption-size: #{$font-size-sm};
+  --aui-line-height-normal: 1.5;
+
+  --aui-text-body-size: var(--aui-font-size-md);
+  --aui-text-body-weight: var(--aui-font-weight-normal);
+  --aui-text-heading-weight: var(--aui-font-weight-semibold);
+  --aui-text-caption-size: var(--aui-font-size-sm);
 }

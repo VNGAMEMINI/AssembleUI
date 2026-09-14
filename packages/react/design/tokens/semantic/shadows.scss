@@ -1,0 +1,7 @@
+@use "../primitives/shadows" as shadows;
+
+:root {
+  --aui-shadow-sm: #{shadows.$shadow-sm};
+  --aui-shadow-md: #{shadows.$shadow-md};
+  --aui-shadow-lg: #{shadows.$shadow-lg};
+}

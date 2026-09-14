@@ -1,0 +1,10 @@
+@use "../primitives/radius" as radius;
+
+:root {
+  --aui-radius-none: #{radius.$radius-none};
+  --aui-radius-sm: #{radius.$radius-sm};
+  --aui-radius-md: #{radius.$radius-md};
+  --aui-radius-lg: #{radius.$radius-lg};
+  --aui-radius-xl: #{radius.$radius-xl};
+  --aui-radius-full: #{radius.$radius-full};
+}

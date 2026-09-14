@@ -1,0 +1,6 @@
+@use "../primitives/border" as border;
+
+:root {
+  --aui-border-width-none: #{border.$border-width-none};
+  --aui-border-width-default: #{border.$border-width-default};
+}
