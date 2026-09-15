@@ -120,4 +120,22 @@ describe("Button", () => {
 
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it("forwards ref to the native button", () => {
+    let ref: HTMLButtonElement | null = null;
+
+    render(
+      <Button
+        ref={(element) => {
+          ref = element;
+        }}
+      >
+        Save
+      </Button>,
+    );
+
+    expect(ref).toBe(
+      screen.getByRole("button", { name: "Save" }),
+    );
+  });
 });

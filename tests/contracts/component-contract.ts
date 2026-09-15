@@ -3,15 +3,16 @@ import * as Components from "@assemble-ui/react/components";
 
 import { componentRegistry } from "../../packages/react/registry";
 
-export const registryComponentNames = componentRegistry.map(
-  ({ name }) => name,
-);
+export const registryComponentNames = componentRegistry.map(({ name }) => name);
 
 export const rootComponentNames = [
   "Avatar",
   "Badge",
   "Button",
   "Checkbox",
+  "Chip",
+  "Chip",
+  "Chip",
   "Input",
   "Radio",
   "Select",
