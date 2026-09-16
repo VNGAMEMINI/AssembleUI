@@ -26,8 +26,8 @@ describe("package exports", () => {
     expect(Components.Switch).toBeDefined();
   });
 
-  it("keeps patterns entry independent", () => {
-    expect(Object.keys(Patterns)).toEqual([]);
+  it("exports patterns from the patterns entry", () => {
+    expect(Patterns.FormField).toBeDefined();
   });
 
   it("keeps templates entry independent", () => {
