@@ -2,5 +2,7 @@
 
 :root {
   --aui-border-width-none: #{border.$border-width-none};
+  --aui-border-width-thin: #{border.$border-width-thin};
   --aui-border-width-default: #{border.$border-width-default};
+  --aui-border-width-medium: #{border.$border-width-medium};
 }

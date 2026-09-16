@@ -3,7 +3,7 @@
 .aui-textarea-field {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-spacing-2);
+  gap: var(--aui-space-2);
 
   &__label {
     color: var(--aui-color-text);
@@ -28,10 +28,10 @@
 .aui-textarea {
   width: 100%;
   min-height: calc(
-    var(--aui-spacing-10) * 3
+    var(--aui-space-10) * 3
   );
 
-  padding: var(--aui-spacing-3);
+  padding: var(--aui-space-3);
 
   border: var(--aui-border-width-default) solid
     var(--aui-color-border);

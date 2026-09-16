@@ -4,10 +4,7 @@ import path from "node:path";
 
 const root = process.cwd();
 
-const semanticRoot = path.join(
-  root,
-  "packages/react/design/tokens/semantic",
-);
+const semanticRoot = path.join(root, "packages/react/design/tokens/semantic");
 
 const consumerRoots = [
   path.join(root, "packages/react/components"),
@@ -31,15 +28,18 @@ function getScssFiles(directory: string): string[] {
   });
 }
 
+function readFiles(files: string[]): string {
+  return files.map((file) => fs.readFileSync(file, "utf8")).join("\n");
+}
+
 function getDefinedSemanticTokens(): Set<string> {
+  const semanticFiles = getScssFiles(semanticRoot);
+  const source = readFiles(semanticFiles);
+
   const tokens = new Set<string>();
 
-  for (const file of getScssFiles(semanticRoot)) {
-    const source = fs.readFileSync(file, "utf8");
-
-    for (const match of source.matchAll(/--aui-[a-zA-Z0-9_-]+\s*:/g)) {
-      tokens.add(match[0].replace(/\s*:\s*$/, ""));
-    }
+  for (const match of source.matchAll(/--aui-[a-zA-Z0-9_-]+\s*(?::|=)/g)) {
+    tokens.add(match[0].replace(/\s*(?::|=)\s*$/, ""));
   }
 
   return tokens;
@@ -52,9 +52,7 @@ function getUsedTokens(): Map<string, string[]> {
     for (const file of getScssFiles(rootDirectory)) {
       const source = fs.readFileSync(file, "utf8");
 
-      for (const match of source.matchAll(
-        /var\(\s*(--aui-[a-zA-Z0-9_-]+)/g,
-      )) {
+      for (const match of source.matchAll(/var\(\s*(--aui-[a-zA-Z0-9_-]+)/g)) {
         const token = match[1];
         const files = usage.get(token) ?? [];
 
@@ -79,9 +77,7 @@ describe("Sass token architecture", () => {
       .filter(([token]) => !defined.has(token))
       .map(([token, files]) => ({
         token,
-        files: files.map((file) =>
-          path.relative(root, file),
-        ),
+        files: files.map((file) => path.relative(root, file)),
       }));
 
     expect(unknown).toEqual([]);

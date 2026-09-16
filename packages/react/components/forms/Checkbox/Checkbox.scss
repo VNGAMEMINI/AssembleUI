@@ -3,12 +3,12 @@
 .aui-checkbox-field {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-spacing-2);
+  gap: var(--aui-space-2);
 
   &__control {
     display: inline-flex;
     align-items: center;
-    gap: var(--aui-spacing-2);
+    gap: var(--aui-space-2);
   }
 
   &__label {
@@ -21,7 +21,7 @@
   &__description,
   &__error {
     margin-inline-start: calc(
-      var(--aui-spacing-4) + var(--aui-spacing-2)
+      var(--aui-space-4) + var(--aui-space-2)
     );
 
     font-size: var(--aui-font-size-sm);
@@ -37,8 +37,8 @@
 }
 
 .aui-checkbox {
-  width: var(--aui-spacing-4);
-  height: var(--aui-spacing-4);
+  width: var(--aui-space-4);
+  height: var(--aui-space-4);
   margin: 0;
 
   accent-color: var(--aui-color-primary);

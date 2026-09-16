@@ -11,19 +11,19 @@
 
   &--sm {
     min-height: 1.25rem;
-    padding-inline: var(--aui-spacing-2);
+    padding-inline: var(--aui-space-2);
     font-size: var(--aui-font-size-xs);
   }
 
   &--md {
     min-height: 1.5rem;
-    padding-inline: var(--aui-spacing-3);
+    padding-inline: var(--aui-space-3);
     font-size: var(--aui-font-size-sm);
   }
 
   &--lg {
     min-height: 1.75rem;
-    padding-inline: var(--aui-spacing-4);
+    padding-inline: var(--aui-space-4);
     font-size: var(--aui-font-size-md);
   }
 

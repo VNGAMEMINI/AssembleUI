@@ -39,6 +39,8 @@ const requiredColorTokens = [
   "--aui-color-primary-hover",
   "--aui-color-background",
   "--aui-color-surface",
+  "--aui-color-surface-muted",
+  "--aui-color-surface-raised",
   "--aui-color-text",
   "--aui-color-text-muted",
   "--aui-color-border",

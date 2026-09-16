@@ -9,13 +9,15 @@
   --aui-font-size-lg: #{typography.$font-size-lg};
   --aui-font-size-xl: #{typography.$font-size-xl};
   --aui-font-size-2xl: #{typography.$font-size-2xl};
+  --aui-font-size-3xl: #{typography.$font-size-3xl};
 
   --aui-font-weight-normal: #{typography.$font-weight-normal};
   --aui-font-weight-medium: #{typography.$font-weight-medium};
   --aui-font-weight-semibold: #{typography.$font-weight-semibold};
   --aui-font-weight-bold: #{typography.$font-weight-bold};
 
-  --aui-line-height-normal: 1.5;
+  --aui-line-height-tight: #{typography.$line-height-tight};
+  --aui-line-height-normal: #{typography.$line-height-normal};
 
   --aui-text-body-size: var(--aui-font-size-md);
   --aui-text-body-weight: var(--aui-font-weight-normal);
