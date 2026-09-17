@@ -87,8 +87,21 @@ describe("Registry", () => {
     }
   });
 
-  it("does not contain patterns before they exist", () => {
-    expect(patternRegistry).toHaveLength(0);
+  it("contains all current patterns", () => {
+    expect(patternRegistry).toEqual([
+      {
+        name: "FormField",
+        layer: "pattern",
+        category: "forms",
+        status: "stable",
+      },
+      {
+        name: "UserCard",
+        layer: "pattern",
+        category: "data",
+        status: "stable",
+      },
+    ]);
   });
 
   it("does not contain templates before they exist", () => {
@@ -120,9 +133,7 @@ describe("Registry", () => {
   });
 
   it("contains every current public component", () => {
-    const registryNames = new Set(
-      componentRegistry.map((entry) => entry.name),
-    );
+    const registryNames = new Set(componentRegistry.map((entry) => entry.name));
 
     for (const name of rootComponentNames) {
       expect(
@@ -134,11 +145,9 @@ describe("Registry", () => {
 
   it("maps Registry components to the same root and layer implementation", () => {
     for (const entry of componentRegistry) {
-      const rootComponent =
-        Root[entry.name as keyof typeof Root];
+      const rootComponent = Root[entry.name as keyof typeof Root];
 
-      const layerComponent =
-        Components[entry.name as keyof typeof Components];
+      const layerComponent = Components[entry.name as keyof typeof Components];
 
       expect(
         layerComponent,
