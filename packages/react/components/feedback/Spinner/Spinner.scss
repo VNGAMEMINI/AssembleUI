@@ -1,0 +1,35 @@
+.aui-spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  border: 2px solid var(--aui-color-border);
+  border-top-color: var(--aui-color-primary);
+  border-radius: 50%;
+  animation: aui-spinner-rotate 0.75s linear infinite;
+}
+
+.aui-spinner--sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.aui-spinner--md {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.aui-spinner--lg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@keyframes aui-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-spinner {
+    animation-duration: 1.5s;
+  }
+}
