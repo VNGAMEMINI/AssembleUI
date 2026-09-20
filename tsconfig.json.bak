@@ -31,6 +31,9 @@
       "@assemble-ui/react/templates": [
         "./packages/react/templates/index.ts"
       ],
+      "@assemble-ui/react/*": [
+        "./packages/react/*"
+      ]
     },
     "types": [
       "vitest/globals"

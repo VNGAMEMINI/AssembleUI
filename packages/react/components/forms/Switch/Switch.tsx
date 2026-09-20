@@ -8,7 +8,7 @@ import type {
 
 import {
   classNames,
-  generateId,
+  createAccessibilityMetadata,
 } from "../../../core/utils";
 
 const Switch = forwardRef<
@@ -30,39 +30,22 @@ const Switch = forwardRef<
     },
     ref,
   ) => {
-    const switchId =
-      id ?? generateId("aui-switch");
-
-    const descriptionId = description
-      ? `${switchId}-description`
-      : undefined;
-
-    const errorId = error
-      ? `${switchId}-error`
-      : undefined;
-
-    const generatedDescribedBy = [
-      description && !error
-        ? descriptionId
-        : undefined,
+    const {
+      id: switchId,
+      descriptionId,
       errorId,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    const describedBy = [
+      describedBy,
+      ariaInvalid,
+    } = createAccessibilityMetadata({
+      id,
+      idPrefix: "aui-switch",
+      description,
+      error,
       externalDescribedBy,
-      generatedDescribedBy,
-    ]
-      .filter(Boolean)
-      .join(" ") || undefined;
+      externalInvalid,
+    });
 
-    const invalid = Boolean(error);
-
-    const ariaInvalid =
-      error != null
-        ? true
-        : externalInvalid;
+    const invalid = error != null;
 
     return (
       <div className="aui-switch-field">
@@ -97,7 +80,7 @@ const Switch = forwardRef<
           )}
         </label>
 
-        {description != null && !error && (
+        {description != null && error == null && (
           <div
             className="aui-switch-field__description"
             id={descriptionId}

@@ -1,38 +1,66 @@
+@use "../../../styles/mixins/focus" as focus;
+
 .aui-switch-field {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
-}
+  gap: var(--aui-space-2);
 
-.aui-switch-field__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--aui-space-2);
+    cursor: pointer;
+  }
+
+  &__text {
+    display: inline-flex;
+    align-items: center;
+
+    color: var(--aui-color-text);
+    font-size: var(--aui-font-size-sm);
+    font-weight: var(--aui-font-weight-medium);
+  }
+
+  &__description,
+  &__error {
+    margin-inline-start: calc(
+      var(--aui-space-4) + var(--aui-space-2)
+    );
+
+    font-size: var(--aui-font-size-sm);
+  }
+
+  &__description {
+    color: var(--aui-color-text-muted);
+  }
+
+  &__error {
+    color: var(--aui-color-danger);
+  }
 }
 
 .aui-switch {
+  width: var(--aui-space-4);
+  height: var(--aui-space-4);
   margin: 0;
-}
 
-.aui-switch-field__text {
-  display: inline-flex;
-  align-items: center;
-}
+  accent-color: var(--aui-color-primary);
 
-.aui-switch-field__description {
-  margin-left: 1.75rem;
-}
+  cursor: pointer;
 
-.aui-switch-field__error {
-  margin-left: 1.75rem;
-}
+  @include focus.focus-ring;
 
-.aui-switch:disabled,
-.aui-switch:disabled + .aui-switch-field__text {
-  cursor: not-allowed;
-}
+  &:disabled {
+    opacity: var(--aui-state-disabled-opacity);
+    cursor: not-allowed;
+  }
 
-.aui-switch--invalid {
-  outline: 2px solid currentColor;
+  &:disabled + .aui-switch-field__text {
+    opacity: var(--aui-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &--invalid {
+    outline-color: var(--aui-color-danger);
+  }
 }

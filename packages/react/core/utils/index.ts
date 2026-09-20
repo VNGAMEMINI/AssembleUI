@@ -1,5 +1,16 @@
 export { classNames } from "./classNames/classNames";
 export type { ClassValue } from "./classNames/classNames";
+
 export { mergeRefs } from "./mergeRefs/mergeRefs";
 export type { Ref } from "./mergeRefs/mergeRefs";
+
 export { generateId, resetGenerateId } from "./generateId/generateId";
+
+export {
+  createAccessibilityMetadata,
+} from "./accessibility";
+
+export type {
+  AccessibilityOptions,
+  AccessibilityResult,
+} from "./accessibility";
