@@ -1,0 +1,45 @@
+.aui-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.aui-image--fit-contain {
+  object-fit: contain;
+}
+
+.aui-image--fit-cover {
+  object-fit: cover;
+}
+
+.aui-image--fit-fill {
+  object-fit: fill;
+}
+
+.aui-image--fit-none {
+  object-fit: none;
+}
+
+.aui-image--fit-scale-down {
+  object-fit: scale-down;
+}
+
+.aui-image--radius-none {
+  border-radius: 0;
+}
+
+.aui-image--radius-sm {
+  border-radius: 0.25rem;
+}
+
+.aui-image--radius-md {
+  border-radius: 0.5rem;
+}
+
+.aui-image--radius-lg {
+  border-radius: 0.75rem;
+}
+
+.aui-image--radius-full {
+  border-radius: 9999px;
+}

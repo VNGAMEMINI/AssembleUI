@@ -32,10 +32,10 @@ describe("Status", () => {
       "aui-status--warning",
     );
 
-    rerender(<Status variant="error">Failed</Status>);
+    rerender(<Status variant="danger">Failed</Status>);
 
     expect(screen.getByText("Failed").parentElement).toHaveClass(
-      "aui-status--error",
+      "aui-status--danger",
     );
 
     rerender(<Status variant="info">Processing</Status>);

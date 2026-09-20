@@ -6,7 +6,7 @@ export type ProgressVariant =
   | "primary"
   | "success"
   | "warning"
-  | "error";
+  | "danger";
 
 export interface ProgressProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {

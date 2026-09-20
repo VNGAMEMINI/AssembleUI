@@ -17,7 +17,7 @@ describe("Alert", () => {
   it("renders all supported variants", () => {
     const { rerender } = render(<Alert>Message</Alert>);
 
-    for (const variant of ["info", "success", "warning", "error"] as const) {
+    for (const variant of ["info", "success", "warning", "danger"] as const) {
       rerender(<Alert variant={variant}>Message</Alert>);
 
       expect(screen.getByRole("alert")).toHaveClass(

@@ -4,7 +4,7 @@ export type StatusVariant =
   | "default"
   | "success"
   | "warning"
-  | "error"
+  | "danger"
   | "info";
 
 export interface StatusProps extends HTMLAttributes<HTMLSpanElement> {

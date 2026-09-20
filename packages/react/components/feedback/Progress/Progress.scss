@@ -36,8 +36,8 @@
   background: var(--aui-color-warning);
 }
 
-.aui-progress--error .aui-progress__bar {
-  background: var(--aui-color-error);
+.aui-progress--danger .aui-progress__bar {
+  background: var(--aui-color-danger);
 }
 
 @media (prefers-reduced-motion: reduce) {

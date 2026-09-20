@@ -28,8 +28,8 @@
   background: var(--aui-color-warning);
 }
 
-.aui-status--error .aui-status__indicator {
-  background: var(--aui-color-error);
+.aui-status--danger .aui-status__indicator {
+  background: var(--aui-color-danger);
 }
 
 .aui-status--info .aui-status__indicator {
