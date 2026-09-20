@@ -1,0 +1,36 @@
+.aui-breadcrumb {
+  font-family: var(--aui-font-family-base);
+  font-size: var(--aui-text-body-size);
+}
+
+.aui-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aui-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.aui-breadcrumb__link {
+  color: var(--aui-color-primary);
+  text-decoration: none;
+}
+
+.aui-breadcrumb__link:hover {
+  text-decoration: underline;
+}
+
+.aui-breadcrumb__label {
+  color: var(--aui-color-text);
+}
+
+.aui-breadcrumb__separator {
+  margin: 0 0.5rem;
+  color: var(--aui-color-text-muted);
+}
