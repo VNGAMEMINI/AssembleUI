@@ -1,0 +1,28 @@
+.aui-link {
+  color: var(--aui-color-primary);
+  font-family: var(--aui-font-family-base);
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+.aui-link--underline-always {
+  text-decoration: underline;
+}
+
+.aui-link--underline-hover {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.aui-link--underline-none {
+  text-decoration: none;
+}
+
+.aui-link--external {
+  display: inline-flex;
+  align-items: baseline;
+}
