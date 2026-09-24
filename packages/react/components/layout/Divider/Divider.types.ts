@@ -1,7 +1,10 @@
 import type { HTMLAttributes } from "react";
 
-export type DividerOrientation = "horizontal" | "vertical";
+export type DividerOrientation =
+  | "horizontal"
+  | "vertical";
 
-export interface DividerProps extends HTMLAttributes<HTMLHRElement> {
+export interface DividerProps
+  extends HTMLAttributes<HTMLElement> {
   orientation?: DividerOrientation;
 }

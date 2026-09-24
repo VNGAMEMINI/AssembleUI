@@ -1,14 +1,33 @@
-import { forwardRef } from "react";
+import {
+  forwardRef,
+  type Ref,
+  type RefCallback,
+} from "react";
 import { classNames } from "../../../core/utils";
 import type { DividerProps } from "./Divider.types";
+
+function setRef<T>(ref: Ref<T>, value: T | null): void {
+  if (typeof ref === "function") {
+    ref(value);
+    return;
+  }
+
+  if (ref) {
+    ref.current = value;
+  }
+}
 
 export const Divider = forwardRef<HTMLElement, DividerProps>(
   ({ orientation = "horizontal", className, ...props }, ref) => {
     if (orientation === "vertical") {
+      const verticalRef: RefCallback<HTMLDivElement> = (element) => {
+        setRef(ref, element);
+      };
+
       return (
         <div
           {...props}
-          ref={ref as React.Ref<HTMLDivElement>}
+          ref={verticalRef}
           role="separator"
           aria-orientation="vertical"
           className={classNames(
@@ -20,10 +39,14 @@ export const Divider = forwardRef<HTMLElement, DividerProps>(
       );
     }
 
+    const horizontalRef: RefCallback<HTMLHRElement> = (element) => {
+      setRef(ref, element);
+    };
+
     return (
       <hr
         {...props}
-        ref={ref as React.Ref<HTMLHRElement>}
+        ref={horizontalRef}
         className={classNames(
           "aui-divider",
           "aui-divider--horizontal",
