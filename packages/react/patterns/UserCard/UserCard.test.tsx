@@ -85,6 +85,21 @@ describe("UserCard", () => {
     expect(onAction).toHaveBeenCalledTimes(1);
   });
 
+  it("does not render action without onAction", () => {
+    render(
+      <UserCard
+        name="Jane Doe"
+        actionLabel="View profile"
+      />,
+    );
+
+    expect(
+      screen.queryByRole("button", {
+        name: "View profile",
+      }),
+    ).not.toBeInTheDocument();
+  });
+
   it("renders without optional content", () => {
     render(
       <UserCard name="Jane Doe" />,
@@ -117,7 +132,7 @@ describe("UserCard", () => {
     );
   });
 
-  it("forwards div attributes", () => {
+  it("forwards article attributes", () => {
     render(
       <UserCard
         name="Jane Doe"
@@ -143,5 +158,7 @@ describe("UserCard", () => {
     expect(ref.current).toBeInstanceOf(
       HTMLElement,
     );
+
+    expect(ref.current?.tagName).toBe("ARTICLE");
   });
 });

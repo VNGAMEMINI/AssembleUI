@@ -40,7 +40,7 @@ const UserCard = forwardRef<HTMLElement, UserCardProps>(
           </div>
         )}
 
-        {actionLabel != null && (
+        {actionLabel != null && onAction != null && (
           <Button type="button" size="small" onClick={onAction}>
             {actionLabel}
           </Button>

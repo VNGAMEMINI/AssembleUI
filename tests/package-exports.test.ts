@@ -27,7 +27,7 @@ describe("package exports", () => {
   });
 
   it("exports patterns from the patterns entry", () => {
-    expect(Patterns.FormField).toBeDefined();
+    expect(Patterns.UserCard).toBeDefined();
   });
 
   it("keeps templates entry independent", () => {
