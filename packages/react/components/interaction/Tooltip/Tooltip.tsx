@@ -84,3 +84,5 @@ export function Tooltip({
     </span>
   );
 }
+
+Tooltip.displayName = "Tooltip";
