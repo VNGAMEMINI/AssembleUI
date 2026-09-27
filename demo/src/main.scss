@@ -1,0 +1,15 @@
+.demo {
+  display: grid;
+  gap: var(--aui-space-8);
+
+  padding-block: var(--aui-space-8);
+}
+
+.demo__section {
+  display: grid;
+  gap: var(--aui-space-4);
+}
+
+.demo__section h2 {
+  margin: 0;
+}

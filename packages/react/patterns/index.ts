@@ -5,3 +5,4 @@
  */
 
 export * from "./UserCard";
+export * from "./ActionMenu";

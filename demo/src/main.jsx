@@ -1,23 +1,13 @@
-import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 
-import { Checkbox } from "@assemble-ui/react/components";
-
 import "@assemble-ui/react/styles";
-import "../styles/main.scss";
 
-function App() {
-  const [action, setAction] = useState("Chưa thực hiện");
+import "./styles/index.scss";
 
-  return (
-    <main>
+import { App } from "./app/App";
 
-    </main>
-  );
-}
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+createRoot(
+  document.getElementById("root"),
+).render(
+  <App />,
 );
