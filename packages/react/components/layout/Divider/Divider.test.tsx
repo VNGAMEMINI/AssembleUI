@@ -1,3 +1,4 @@
+import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Divider } from "./Divider";
@@ -9,19 +10,11 @@ describe("Divider", () => {
     const divider = screen.getByTestId("divider");
 
     expect(divider.tagName).toBe("HR");
-    expect(divider).toHaveClass(
-      "aui-divider",
-      "aui-divider--horizontal",
-    );
+    expect(divider).toHaveClass("aui-divider", "aui-divider--horizontal");
   });
 
   it("renders a vertical separator", () => {
-    render(
-      <Divider
-        orientation="vertical"
-        data-testid="divider"
-      />,
-    );
+    render(<Divider orientation="vertical" data-testid="divider" />);
 
     const divider = screen.getByTestId("divider");
 
@@ -30,13 +23,17 @@ describe("Divider", () => {
     expect(divider).toHaveAttribute("aria-orientation", "vertical");
   });
 
-  it("forwards native attributes", () => {
-    render(
-      <Divider
-        id="section-divider"
-        data-testid="divider"
-      />,
+  it("applies the vertical class", () => {
+    render(<Divider orientation="vertical" data-testid="divider" />);
+
+    expect(screen.getByTestId("divider")).toHaveClass(
+      "aui-divider",
+      "aui-divider--vertical",
     );
+  });
+
+  it("forwards native attributes", () => {
+    render(<Divider id="section-divider" data-testid="divider" />);
 
     expect(screen.getByTestId("divider")).toHaveAttribute(
       "id",
@@ -45,12 +42,7 @@ describe("Divider", () => {
   });
 
   it("merges custom class names", () => {
-    render(
-      <Divider
-        className="custom-divider"
-        data-testid="divider"
-      />,
-    );
+    render(<Divider className="custom-divider" data-testid="divider" />);
 
     expect(screen.getByTestId("divider")).toHaveClass(
       "aui-divider",
@@ -85,5 +77,17 @@ describe("Divider", () => {
     );
 
     expect(element).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it("forwards object refs", () => {
+    const horizontalRef = createRef<HTMLElement>();
+    const verticalRef = createRef<HTMLElement>();
+
+    render(<Divider ref={horizontalRef} />);
+
+    render(<Divider orientation="vertical" ref={verticalRef} />);
+
+    expect(horizontalRef.current).toBeInstanceOf(HTMLHRElement);
+    expect(verticalRef.current).toBeInstanceOf(HTMLDivElement);
   });
 });

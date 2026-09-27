@@ -20,9 +20,9 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
     },
     ref,
   ) => {
-    const [imageError, setImageError] = useState(false);
+    const [failedSrc, setFailedSrc] = useState<string | null>(null);
 
-    const showImage = Boolean(src) && !imageError;
+    const showImage = Boolean(src) && src !== failedSrc;
 
     return (
       <span
@@ -40,7 +40,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
             className="aui-avatar__image"
             src={src}
             alt={alt}
-            onError={() => setImageError(true)}
+            onError={() => setFailedSrc(src ?? null)}
           />
         ) : (
           <span

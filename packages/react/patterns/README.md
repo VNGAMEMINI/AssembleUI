@@ -1,9 +1,17 @@
 # Patterns
 
-Patterns compose existing Components into reusable UI sections.
+Patterns compose existing AssembleUI Components into reusable UI sections.
+
+## Composition Model
 
 ```text
-Pattern → Component
+Foundation
+Design
+Core
+   ↓
+Components
+   ↓
+Patterns
+   ↓
+Templates
 ```
-
-A Pattern must not depend on another Pattern or Template. This keeps composition predictable and prevents dependency graphs from becoming tangled.

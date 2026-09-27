@@ -9,7 +9,7 @@ export type ProgressVariant =
   | "danger";
 
 export interface ProgressProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  extends Omit<HTMLAttributes<HTMLDivElement>, "children" | "role"> {
   value?: number;
   max?: number;
   size?: ProgressSize;

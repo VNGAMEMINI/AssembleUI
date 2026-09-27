@@ -162,6 +162,43 @@ describe("Tooltip", () => {
     );
   });
 
+  it("preserves existing aria-describedby", () => {
+    render(
+      <Tooltip content="Help">
+        <button aria-describedby="existing-description">
+          Trigger
+        </button>
+      </Tooltip>,
+    );
+
+    const trigger = screen.getByRole("button");
+
+    expect(trigger).toHaveAttribute(
+      "aria-describedby",
+      "existing-description",
+    );
+
+    fireEvent.mouseEnter(trigger);
+
+    const describedBy =
+      trigger.getAttribute("aria-describedby");
+
+    expect(describedBy).toContain("existing-description");
+
+    const tooltip = screen.getByRole("tooltip");
+
+    expect(describedBy).toContain(
+      tooltip.getAttribute("id") ?? "",
+    );
+
+    fireEvent.mouseLeave(trigger);
+
+    expect(trigger).toHaveAttribute(
+      "aria-describedby",
+      "existing-description",
+    );
+  });
+
   it("preserves existing trigger handlers", () => {
     const onMouseEnter = vi.fn();
     const onMouseLeave = vi.fn();

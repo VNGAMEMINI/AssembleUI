@@ -37,17 +37,24 @@ describe("Text", () => {
     expect(screen.getByTestId("text")).toHaveAttribute("id", "description");
   });
 
-  it("merges custom class names", () => {
-    render(
-      <Text className="custom-text">
-        Content
-      </Text>,
-    );
+  it("supports all declared semantic elements", () => {
+    const { rerender } = render(<Text as="div">Content</Text>);
 
-    expect(screen.getByText("Content")).toHaveClass(
-      "aui-text",
-      "custom-text",
-    );
+    expect(screen.getByText("Content").tagName).toBe("DIV");
+
+    rerender(<Text as="span">Content</Text>);
+
+    expect(screen.getByText("Content").tagName).toBe("SPAN");
+
+    rerender(<Text as="p">Content</Text>);
+
+    expect(screen.getByText("Content").tagName).toBe("P");
+  });
+
+  it("merges custom class names", () => {
+    render(<Text className="custom-text">Content</Text>);
+
+    expect(screen.getByText("Content")).toHaveClass("aui-text", "custom-text");
   });
 
   it("forwards refs", () => {

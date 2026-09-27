@@ -3,11 +3,21 @@ import { classNames } from "../../../core/utils";
 import type { BreadcrumbProps } from "./Breadcrumb.types";
 
 export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
-  ({ items, separator = "/", className }, ref) => {
+  (
+    {
+      items,
+      separator = "/",
+      className,
+      "aria-label": ariaLabel = "Breadcrumb",
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <nav
+        {...props}
         ref={ref}
-        aria-label="Breadcrumb"
+        aria-label={ariaLabel}
         className={classNames("aui-breadcrumb", className)}
       >
         <ol className="aui-breadcrumb__list">
@@ -15,10 +25,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
             const isCurrent = item.current || index === items.length - 1;
 
             return (
-              <li
-                key={index}
-                className="aui-breadcrumb__item"
-              >
+              <li key={index} className="aui-breadcrumb__item">
                 {isCurrent || !item.href ? (
                   <span
                     aria-current={isCurrent ? "page" : undefined}
@@ -27,10 +34,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
                     {item.label}
                   </span>
                 ) : (
-                  <a
-                    href={item.href}
-                    className="aui-breadcrumb__link"
-                  >
+                  <a href={item.href} className="aui-breadcrumb__link">
                     {item.label}
                   </a>
                 )}

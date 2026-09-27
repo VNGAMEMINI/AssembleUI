@@ -58,10 +58,17 @@ export function Tooltip({
     onClose();
   };
 
+  const existingDescribedBy =
+    children.props["aria-describedby"];
+
+  const describedBy = isOpen
+    ? [existingDescribedBy, tooltipId]
+        .filter(Boolean)
+        .join(" ")
+    : existingDescribedBy;
+
   const trigger = cloneElement(children, {
-    "aria-describedby": isOpen
-      ? tooltipId
-      : undefined,
+    "aria-describedby": describedBy || undefined,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
     onFocus: handleFocus,

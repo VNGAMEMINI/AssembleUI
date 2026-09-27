@@ -10,7 +10,6 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       size = "md",
       variant = "primary",
       className,
-      role = "progressbar",
       ...props
     },
     ref,
@@ -23,7 +22,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       <div
         {...props}
         ref={ref}
-        role={role}
+        role="progressbar"
         aria-valuemin={0}
         aria-valuemax={safeMax}
         aria-valuenow={safeValue}

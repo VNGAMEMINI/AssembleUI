@@ -4,11 +4,7 @@ import { Link } from "./Link";
 
 describe("Link", () => {
   it("renders an anchor with href", () => {
-    render(
-      <Link href="/about">
-        About
-      </Link>,
-    );
+    render(<Link href="/about">About</Link>);
 
     expect(screen.getByRole("link", { name: "About" })).toHaveAttribute(
       "href",
@@ -32,9 +28,7 @@ describe("Link", () => {
       </Link>,
     );
 
-    expect(screen.getByRole("link")).toHaveClass(
-      "aui-link--underline-always",
-    );
+    expect(screen.getByRole("link")).toHaveClass("aui-link--underline-always");
   });
 
   it("opens external links in a new tab", () => {
@@ -52,12 +46,7 @@ describe("Link", () => {
 
   it("preserves explicit target and rel", () => {
     render(
-      <Link
-        href="https://example.com"
-        external
-        target="_self"
-        rel="custom-rel"
-      >
+      <Link href="https://example.com" external target="_self" rel="custom-rel">
         External
       </Link>,
     );
@@ -93,5 +82,18 @@ describe("Link", () => {
     );
 
     expect(element).toBeInstanceOf(HTMLAnchorElement);
+  });
+
+  it("adds secure rel for external links when target is explicit", () => {
+    render(
+      <Link href="https://example.com" external target="_blank">
+        External
+      </Link>,
+    );
+
+    const link = screen.getByRole("link");
+
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
 });

@@ -73,4 +73,13 @@ describe("Progress", () => {
 
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
+
+  it("uses the progressbar role", () => {
+    render(<Progress />);
+
+    expect(screen.getByRole("progressbar")).toHaveAttribute(
+      "role",
+      "progressbar",
+    );
+  });
 });

@@ -6,6 +6,5 @@ export interface UserCardProps extends HTMLAttributes<HTMLElement> {
   avatarSrc?: string;
   avatarAlt?: string;
   badge?: ReactNode;
-  actionLabel?: string;
-  onAction?: () => void;
+  action?: ReactNode;
 }

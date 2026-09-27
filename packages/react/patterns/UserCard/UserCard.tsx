@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { Avatar } from "../../components/data/Avatar";
 import { Badge } from "../../components/data/Badge";
-import { Button } from "../../components/forms/Button";
 import type { UserCardProps } from "./UserCard.types";
 import { classNames } from "../../core/utils";
 
@@ -13,8 +12,7 @@ const UserCard = forwardRef<HTMLElement, UserCardProps>(
       avatarSrc,
       avatarAlt,
       badge,
-      actionLabel,
-      onAction,
+      action,
       className,
       ...props
     },
@@ -40,10 +38,10 @@ const UserCard = forwardRef<HTMLElement, UserCardProps>(
           </div>
         )}
 
-        {actionLabel != null && onAction != null && (
-          <Button type="button" size="small" onClick={onAction}>
-            {actionLabel}
-          </Button>
+        {action != null && (
+          <div className="aui-user-card__action">
+            {action}
+          </div>
         )}
       </div>
     </article>

@@ -121,4 +121,33 @@ describe("Avatar", () => {
 
     expect(fallback).not.toHaveAttribute("aria-hidden");
   });
+
+  it("retries when src changes after an image error", () => {
+    const { rerender } = render(
+      <Avatar src="/avatar-a.png" alt="User avatar">
+        AB
+      </Avatar>,
+    );
+
+    const firstImage = screen.getByRole("img", {
+      name: "User avatar",
+    });
+
+    fireEvent.error(firstImage);
+
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    expect(screen.getByText("AB")).toBeInTheDocument();
+
+    rerender(
+      <Avatar src="/avatar-b.png" alt="User avatar">
+        AB
+      </Avatar>,
+    );
+
+    const secondImage = screen.getByRole("img", {
+      name: "User avatar",
+    });
+
+    expect(secondImage).toHaveAttribute("src", "/avatar-b.png");
+  });
 });

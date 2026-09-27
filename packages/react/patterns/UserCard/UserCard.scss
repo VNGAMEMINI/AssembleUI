@@ -31,4 +31,9 @@
     color: var(--aui-color-text-muted);
     font-size: var(--aui-font-size-sm);
   }
+
+  &__action {
+    display: flex;
+    align-items: center;
+  }
 }

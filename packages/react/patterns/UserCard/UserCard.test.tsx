@@ -1,16 +1,8 @@
-import {
-  createRef,
-} from "react";
+import { createRef } from "react";
+
+import { describe, expect, it } from "vitest";
 
 import {
-  describe,
-  expect,
-  it,
-  vi,
-} from "vitest";
-
-import {
-  fireEvent,
   render,
   screen,
 } from "@testing-library/react";
@@ -65,39 +57,23 @@ describe("UserCard", () => {
     ).toBeInTheDocument();
   });
 
-  it("composes Button", () => {
-    const onAction = vi.fn();
-
+  it("renders a custom action", () => {
     render(
       <UserCard
         name="Jane Doe"
-        actionLabel="View profile"
-        onAction={onAction}
-      />,
-    );
-
-    fireEvent.click(
-      screen.getByRole("button", {
-        name: "View profile",
-      }),
-    );
-
-    expect(onAction).toHaveBeenCalledTimes(1);
-  });
-
-  it("does not render action without onAction", () => {
-    render(
-      <UserCard
-        name="Jane Doe"
-        actionLabel="View profile"
+        action={
+          <button type="button">
+            View profile
+          </button>
+        }
       />,
     );
 
     expect(
-      screen.queryByRole("button", {
+      screen.getByRole("button", {
         name: "View profile",
       }),
-    ).not.toBeInTheDocument();
+    ).toBeInTheDocument();
   });
 
   it("renders without optional content", () => {
