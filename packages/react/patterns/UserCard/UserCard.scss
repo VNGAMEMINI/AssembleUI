@@ -4,6 +4,13 @@
   gap: var(--aui-space-4);
 
   min-width: 0;
+  padding: var(--aui-space-4);
+
+  color: var(--aui-color-text);
+  background: var(--aui-surface-elevated);
+  border: var(--aui-border-width-thin) solid var(--aui-color-border);
+  border-radius: var(--aui-radius-lg);
+  box-shadow: var(--aui-shadow-sm);
 
   &__content {
     display: grid;
@@ -35,5 +42,6 @@
   &__action {
     display: flex;
     align-items: center;
+    gap: var(--aui-space-2);
   }
 }

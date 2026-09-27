@@ -1,4 +1,3 @@
-@use "../themes";
 @use "./layout";
 
 :root {
@@ -22,18 +21,24 @@ body,
   margin: 0;
 }
 
+html,
 body {
-  min-width: 320px;
-
-  color: var(--demo-text);
-  background: var(--demo-background);
+  background: var(--aui-surface-page);
+  color: var(--aui-color-text);
 
   transition:
     background-color 160ms ease,
     color 160ms ease;
 }
 
+body {
+  min-width: 320px;
+}
+
 button,
-a {
+a,
+input,
+textarea,
+select {
   font: inherit;
 }
