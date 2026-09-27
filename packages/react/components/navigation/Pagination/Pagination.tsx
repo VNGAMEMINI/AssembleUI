@@ -54,6 +54,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       onPageChange,
       siblingCount = 1,
       className,
+      "aria-label": ariaLabel = "Pagination",
       ...props
     },
     ref,
@@ -84,7 +85,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       <nav
         {...props}
         ref={ref}
-        aria-label="Pagination"
+        aria-label={ariaLabel}
         className={classNames("aui-pagination", className)}
       >
         <button

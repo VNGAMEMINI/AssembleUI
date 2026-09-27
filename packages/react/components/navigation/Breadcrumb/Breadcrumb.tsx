@@ -13,6 +13,10 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
     },
     ref,
   ) => {
+    const hasExplicitCurrent = items.some(
+      (item) => item.current === true,
+    );
+
     return (
       <nav
         {...props}
@@ -22,7 +26,9 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
       >
         <ol className="aui-breadcrumb__list">
           {items.map((item, index) => {
-            const isCurrent = item.current || index === items.length - 1;
+            const isCurrent = hasExplicitCurrent
+              ? item.current === true
+              : index === items.length - 1;
 
             return (
               <li key={index} className="aui-breadcrumb__item">
@@ -34,7 +40,10 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
                     {item.label}
                   </span>
                 ) : (
-                  <a href={item.href} className="aui-breadcrumb__link">
+                  <a
+                    href={item.href}
+                    className="aui-breadcrumb__link"
+                  >
                     {item.label}
                   </a>
                 )}

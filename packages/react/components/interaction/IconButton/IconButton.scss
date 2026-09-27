@@ -27,17 +27,44 @@
   }
 }
 
+.aui-icon-button__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  vertical-align: middle;
+
+  > svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+}
+
 .aui-icon-button--sm {
   width: 2rem;
   height: 2rem;
+
+  .aui-icon-button__icon {
+    font-size: 0.875rem;
+  }
 }
 
 .aui-icon-button--md {
   width: 2.5rem;
   height: 2.5rem;
+
+  .aui-icon-button__icon {
+    font-size: 1rem;
+  }
 }
 
 .aui-icon-button--lg {
   width: 3rem;
   height: 3rem;
+
+  .aui-icon-button__icon {
+    font-size: 1.25rem;
+  }
 }

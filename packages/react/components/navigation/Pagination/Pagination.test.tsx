@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import { Pagination } from "./Pagination";
 
 describe("Pagination", () => {
@@ -13,11 +14,32 @@ describe("Pagination", () => {
     );
 
     expect(
-      screen.getByRole("navigation", { name: "Pagination" }),
+      screen.getByRole("navigation", {
+        name: "Pagination",
+      }),
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: "Page 1" }),
+      screen.getByRole("button", {
+        name: "Page 1",
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it("supports a custom aria-label", () => {
+    render(
+      <Pagination
+        page={1}
+        totalPages={5}
+        onPageChange={() => {}}
+        aria-label="Search result pages"
+      />,
+    );
+
+    expect(
+      screen.getByRole("navigation", {
+        name: "Search result pages",
+      }),
     ).toBeInTheDocument();
   });
 
@@ -31,7 +53,9 @@ describe("Pagination", () => {
     );
 
     expect(
-      screen.getByRole("button", { name: "Page 3" }),
+      screen.getByRole("button", {
+        name: "Page 3",
+      }),
     ).toHaveAttribute("aria-current", "page");
   });
 
@@ -45,7 +69,9 @@ describe("Pagination", () => {
     );
 
     expect(
-      screen.getByRole("button", { name: "Previous page" }),
+      screen.getByRole("button", {
+        name: "Previous page",
+      }),
     ).toBeDisabled();
   });
 
@@ -59,7 +85,9 @@ describe("Pagination", () => {
     );
 
     expect(
-      screen.getByRole("button", { name: "Next page" }),
+      screen.getByRole("button", {
+        name: "Next page",
+      }),
     ).toBeDisabled();
   });
 
@@ -76,7 +104,9 @@ describe("Pagination", () => {
     );
 
     await user.click(
-      screen.getByRole("button", { name: "Page 3" }),
+      screen.getByRole("button", {
+        name: "Page 3",
+      }),
     );
 
     expect(onPageChange).toHaveBeenCalledWith(3);
@@ -95,13 +125,17 @@ describe("Pagination", () => {
     );
 
     await user.click(
-      screen.getByRole("button", { name: "Previous page" }),
+      screen.getByRole("button", {
+        name: "Previous page",
+      }),
     );
 
     expect(onPageChange).toHaveBeenCalledWith(2);
 
     await user.click(
-      screen.getByRole("button", { name: "Next page" }),
+      screen.getByRole("button", {
+        name: "Next page",
+      }),
     );
 
     expect(onPageChange).toHaveBeenCalledWith(4);
@@ -129,7 +163,9 @@ describe("Pagination", () => {
     );
 
     expect(
-      screen.getByRole("button", { name: "Page 5" }),
+      screen.getByRole("button", {
+        name: "Page 5",
+      }),
     ).toHaveAttribute("aria-current", "page");
   });
 
@@ -143,9 +179,7 @@ describe("Pagination", () => {
       />,
     );
 
-    expect(
-      screen.getByRole("navigation"),
-    ).toHaveClass(
+    expect(screen.getByRole("navigation")).toHaveClass(
       "aui-pagination",
       "custom-pagination",
     );

@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { classNames } from "../../../core/utils";
-import { Icon } from "../Icon";
 import type { IconButtonProps } from "./IconButton.types";
 
 export const IconButton = forwardRef<
@@ -30,9 +29,9 @@ export const IconButton = forwardRef<
           className,
         )}
       >
-        <Icon size={size === "sm" ? "sm" : size === "lg" ? "lg" : "md"}>
+        <span className="aui-icon-button__icon" aria-hidden="true">
           {icon}
-        </Icon>
+        </span>
       </button>
     );
   },
