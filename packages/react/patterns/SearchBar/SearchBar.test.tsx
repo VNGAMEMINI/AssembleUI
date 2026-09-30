@@ -1,4 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { createRef } from "react";
+
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { SearchBar } from "./SearchBar";
@@ -7,9 +9,7 @@ describe("SearchBar", () => {
   it("renders a search form", () => {
     render(<SearchBar />);
 
-    expect(
-      screen.getByRole("search"),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("search")).toBeInTheDocument();
   });
 
   it("renders a search input", () => {
@@ -40,24 +40,37 @@ describe("SearchBar", () => {
     ).toHaveAttribute("type", "submit");
   });
 
-  it("forwards form props", () => {
+  it("submits through the form", () => {
     const handleSubmit = vi.fn((event) => {
       event.preventDefault();
     });
 
     render(
       <SearchBar
-        aria-label="Site search"
         onSubmit={handleSubmit}
+        inputProps={{
+          name: "query",
+          defaultValue: "assemble",
+        }}
       />,
     );
 
-    const form = screen.getByRole("search");
+    fireEvent.submit(screen.getByRole("search"));
 
-    expect(form).toHaveAttribute(
-      "aria-label",
-      "Site search",
+    expect(handleSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it("forwards form props", () => {
+    render(
+      <SearchBar
+        aria-label="Site search"
+        data-testid="search-form"
+      />,
     );
+
+    const form = screen.getByTestId("search-form");
+
+    expect(form).toHaveAttribute("aria-label", "Site search");
   });
 
   it("forwards input props", () => {
@@ -75,6 +88,25 @@ describe("SearchBar", () => {
 
     expect(input).toHaveAttribute("name", "query");
     expect(input).toBeRequired();
+  });
+
+  it("forwards input accessibility props", () => {
+    render(
+      <SearchBar
+        inputProps={{
+          label: "Search users",
+          description: "Enter a name",
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByLabelText("Search users"),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Enter a name"),
+    ).toBeInTheDocument();
   });
 
   it("forwards button props", () => {
@@ -122,5 +154,17 @@ describe("SearchBar", () => {
       "aui-search-bar__button",
       "custom-button",
     );
+  });
+
+  it("forwards ref", () => {
+    const ref = createRef<HTMLFormElement>();
+
+    render(
+      <SearchBar
+        ref={ref}
+      />,
+    );
+
+    expect(ref.current).toBeInstanceOf(HTMLFormElement);
   });
 });

@@ -5,6 +5,7 @@ import type {
 } from "react";
 
 export interface ActionMenuLinkItem {
+  id: string;
   type: "link";
   label: ReactNode;
   href: string;
@@ -16,6 +17,7 @@ export interface ActionMenuActionItem
     ButtonHTMLAttributes<HTMLButtonElement>,
     "children" | "type"
   > {
+  id: string;
   type: "action";
   label: ReactNode;
 }

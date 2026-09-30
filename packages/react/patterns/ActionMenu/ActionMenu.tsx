@@ -30,12 +30,12 @@ export const ActionMenu = forwardRef<
       )}
     >
       <ul className="aui-action-menu__list">
-        {items.map((item, index) => {
+        {items.map((item) => {
           if (item.type === "link") {
             return (
               <li
                 className="aui-action-menu__item"
-                key={index}
+                key={item.id}
               >
                 <Link
                   href={item.href}
@@ -48,6 +48,7 @@ export const ActionMenu = forwardRef<
           }
 
           const {
+            id,
             label,
             type: _type,
             ...buttonProps
@@ -56,7 +57,7 @@ export const ActionMenu = forwardRef<
           return (
             <li
               className="aui-action-menu__item"
-              key={index}
+              key={id}
             >
               <Button
                 type="button"

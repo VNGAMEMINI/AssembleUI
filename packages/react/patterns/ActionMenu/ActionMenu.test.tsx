@@ -1,12 +1,7 @@
 import { createRef } from "react";
 
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-
-import {
-  fireEvent,
-  render,
-  screen,
-} from "@testing-library/react";
 
 import { ActionMenu } from "./ActionMenu";
 
@@ -16,11 +11,13 @@ describe("ActionMenu", () => {
       <ActionMenu
         items={[
           {
+            id: "home",
             type: "link",
             label: "Home",
             href: "/",
           },
           {
+            id: "products",
             type: "link",
             label: "Products",
             href: "/products",
@@ -47,6 +44,7 @@ describe("ActionMenu", () => {
       <ActionMenu
         items={[
           {
+            id: "save",
             type: "action",
             label: "Save",
           },
@@ -68,6 +66,7 @@ describe("ActionMenu", () => {
       <ActionMenu
         items={[
           {
+            id: "save",
             type: "action",
             label: "Save",
             onClick,
@@ -90,6 +89,7 @@ describe("ActionMenu", () => {
       <ActionMenu
         items={[
           {
+            id: "github",
             type: "link",
             label: "GitHub",
             href: "https://github.com",
@@ -115,6 +115,7 @@ describe("ActionMenu", () => {
         className="custom-menu"
         items={[
           {
+            id: "home",
             type: "link",
             label: "Home",
             href: "/",
@@ -177,5 +178,37 @@ describe("ActionMenu", () => {
         ".aui-action-menu__item",
       ),
     ).toHaveLength(0);
+  });
+
+  it("uses stable identities for multiple items", () => {
+    render(
+      <ActionMenu
+        items={[
+          {
+            id: "home",
+            type: "link",
+            label: "Home",
+            href: "/",
+          },
+          {
+            id: "save",
+            type: "action",
+            label: "Save",
+          },
+        ]}
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", {
+        name: "Home",
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("button", {
+        name: "Save",
+      }),
+    ).toBeInTheDocument();
   });
 });
