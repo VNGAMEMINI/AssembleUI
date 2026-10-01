@@ -1,0 +1,46 @@
+.aui-profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--aui-space-4);
+
+  min-width: 0;
+}
+
+.aui-profile-header__avatar {
+  flex-shrink: 0;
+}
+
+.aui-profile-header__content {
+  display: grid;
+  flex: 1;
+  gap: var(--aui-space-2);
+  min-width: 0;
+}
+
+.aui-profile-header__identity {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aui-space-2);
+  min-width: 0;
+}
+
+.aui-profile-header__name {
+  margin: 0;
+}
+
+.aui-profile-header__badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+.aui-profile-header__description {
+  color: var(--aui-color-text-muted);
+}
+
+.aui-profile-header__action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--aui-space-2);
+}

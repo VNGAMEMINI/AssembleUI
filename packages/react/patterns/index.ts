@@ -7,3 +7,5 @@
 export * from "./UserCard";
 export * from "./ActionMenu";
 export * from "./SearchBar";
+export * from "./ProfileHeader";
+export * from "./EmptyState";
