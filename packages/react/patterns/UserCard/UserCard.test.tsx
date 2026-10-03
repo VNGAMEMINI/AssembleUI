@@ -44,6 +44,29 @@ describe("UserCard", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders initials when avatar source is not provided", () => {
+    render(
+      <UserCard name="Jane Doe" />,
+    );
+
+    expect(
+      screen.getByText("JD"),
+    ).toBeInTheDocument();
+  });
+
+  it("renders a custom avatar fallback", () => {
+    render(
+      <UserCard
+        name="Jane Doe"
+        avatarFallback="J"
+      />,
+    );
+
+    expect(
+      screen.getByText("J"),
+    ).toBeInTheDocument();
+  });
+
   it("composes Badge", () => {
     render(
       <UserCard

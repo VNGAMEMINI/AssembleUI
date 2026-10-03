@@ -8,6 +8,8 @@ import {
   Text,
 } from "../../components";
 
+import { classNames } from "../../core/utils";
+
 import type { EmptyStateProps } from "./EmptyState.types";
 
 export const EmptyState = forwardRef<
@@ -24,27 +26,23 @@ export const EmptyState = forwardRef<
   },
   ref,
 ): ReactElement {
-  const classes = [
-    "aui-empty-state",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
     <section
       ref={ref}
-      className={classes}
+      className={classNames(
+        "aui-empty-state",
+        className,
+      )}
       {...props}
     >
-      {icon ? (
+      {icon != null && (
         <div
           className="aui-empty-state__icon"
           aria-hidden="true"
         >
           {icon}
         </div>
-      ) : null}
+      )}
 
       <div className="aui-empty-state__content">
         <Heading
@@ -54,18 +52,18 @@ export const EmptyState = forwardRef<
           {heading}
         </Heading>
 
-        {description ? (
+        {description != null && (
           <Text className="aui-empty-state__description">
             {description}
           </Text>
-        ) : null}
+        )}
       </div>
 
-      {action ? (
+      {action != null && (
         <div className="aui-empty-state__action">
           {action}
         </div>
-      ) : null}
+      )}
     </section>
   );
 });

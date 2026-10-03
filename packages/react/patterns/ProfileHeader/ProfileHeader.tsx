@@ -1,51 +1,61 @@
 import {
   forwardRef,
-  type ReactElement,
 } from "react";
 
 import {
   Avatar,
-  Badge,
   Heading,
   Text,
 } from "../../components";
 
+import { classNames } from "../../core/utils";
+
 import type { ProfileHeaderProps } from "./ProfileHeader.types";
 
-export const ProfileHeader = forwardRef<
+function getInitials(name: string): string {
+  return name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
+const ProfileHeader = forwardRef<
   HTMLElement,
   ProfileHeaderProps
->(function ProfileHeader(
-  {
-    name,
-    description,
-    avatarSrc,
-    avatarAlt,
-    badge,
-    action,
-    className,
-    ...props
-  },
-  ref,
-): ReactElement {
-  const classes = [
-    "aui-profile-header",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  return (
+>(
+  (
+    {
+      name,
+      description,
+      avatarSrc,
+      avatarAlt,
+      avatarFallback,
+      badge,
+      action,
+      className,
+      ...props
+    },
+    ref,
+  ) => (
     <section
       ref={ref}
-      className={classes}
+      className={classNames(
+        "aui-profile-header",
+        className,
+      )}
       {...props}
     >
       <div className="aui-profile-header__avatar">
         <Avatar
           src={avatarSrc}
           alt={avatarAlt ?? name}
-        />
+          size="lg"
+        >
+          {avatarFallback ?? getInitials(name)}
+        </Avatar>
       </div>
 
       <div className="aui-profile-header__content">
@@ -57,25 +67,29 @@ export const ProfileHeader = forwardRef<
             {name}
           </Heading>
 
-          {badge ? (
+          {badge != null && (
             <div className="aui-profile-header__badge">
               {badge}
             </div>
-          ) : null}
+          )}
         </div>
 
-        {description ? (
+        {description != null && (
           <Text className="aui-profile-header__description">
             {description}
           </Text>
-        ) : null}
+        )}
 
-        {action ? (
+        {action != null && (
           <div className="aui-profile-header__action">
             {action}
           </div>
-        ) : null}
+        )}
       </div>
     </section>
-  );
-});
+  ),
+);
+
+ProfileHeader.displayName = "ProfileHeader";
+
+export { ProfileHeader };

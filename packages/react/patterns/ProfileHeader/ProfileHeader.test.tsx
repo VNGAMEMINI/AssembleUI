@@ -45,6 +45,29 @@ describe("ProfileHeader", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders initials when avatar source is not provided", () => {
+    render(
+      <ProfileHeader name="Nguyen Van A" />,
+    );
+
+    expect(
+      screen.getByText("NV"),
+    ).toBeInTheDocument();
+  });
+
+  it("renders a custom avatar fallback", () => {
+    render(
+      <ProfileHeader
+        name="Nguyen Van A"
+        avatarFallback="A"
+      />,
+    );
+
+    expect(
+      screen.getByText("A"),
+    ).toBeInTheDocument();
+  });
+
   it("uses the profile name as the default avatar alt", () => {
     render(
       <ProfileHeader

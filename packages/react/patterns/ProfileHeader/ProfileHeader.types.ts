@@ -6,6 +6,7 @@ export interface ProfileHeaderProps
   description?: ReactNode;
   avatarSrc?: string;
   avatarAlt?: string;
+  avatarFallback?: ReactNode;
   badge?: ReactNode;
   action?: ReactNode;
 }

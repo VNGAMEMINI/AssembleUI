@@ -57,6 +57,22 @@ describe("EmptyState", () => {
     ).toBeInTheDocument();
   });
 
+  it("hides the decorative icon from assistive technology", () => {
+    render(
+      <EmptyState
+        heading="No results"
+        icon={<span data-testid="empty-icon">Icon</span>}
+      />,
+    );
+
+    expect(
+      screen.getByTestId("empty-icon").parentElement,
+    ).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
+  });
+
   it("renders a custom action", () => {
     render(
       <EmptyState
