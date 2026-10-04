@@ -14,3 +14,4 @@ export type {
   AccessibilityOptions,
   AccessibilityResult,
 } from "./accessibility";
+export * from "./positioning";
