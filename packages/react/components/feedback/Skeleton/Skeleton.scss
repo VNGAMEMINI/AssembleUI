@@ -8,19 +8,19 @@
 .aui-skeleton--text {
   width: 100%;
   height: 1em;
-  border-radius: 0.25rem;
+  border-radius: var(--aui-radius-sm);
 }
 
 .aui-skeleton--circular {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 50%;
+  border-radius: var(--aui-radius-full);
 }
 
 .aui-skeleton--rectangular {
   width: 100%;
-  min-height: 4rem;
-  border-radius: 0.375rem;
+  min-height: var(--aui-space-16);
+  border-radius: var(--aui-radius-sm);
 }
 
 @keyframes aui-skeleton-pulse {

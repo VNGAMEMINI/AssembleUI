@@ -254,6 +254,24 @@ describe("Select", () => {
     );
   });
 
+  it("preserves external aria-invalid when there is no error", () => {
+    render(
+      <Select
+        aria-invalid="true"
+        label="Country"
+      >
+        <option>Vietnam</option>
+      </Select>,
+    );
+
+    const select = screen.getByLabelText("Country");
+
+    expect(select).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+  });
+
   it("merges external aria-describedby with generated description", () => {
     render(
       <Select

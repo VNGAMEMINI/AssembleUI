@@ -10,6 +10,10 @@
     align-items: center;
     gap: var(--aui-space-2);
     cursor: pointer;
+
+    &--disabled {
+      cursor: not-allowed;
+    }
   }
 
   &__text {
@@ -55,9 +59,10 @@
     cursor: not-allowed;
   }
 
-  &:disabled + .aui-switch-field__text {
-    opacity: var(--aui-state-disabled-opacity);
-    cursor: not-allowed;
+  &:disabled {
+    & + .aui-switch-field__text {
+      opacity: var(--aui-state-disabled-opacity);
+    }
   }
 
   &--invalid {

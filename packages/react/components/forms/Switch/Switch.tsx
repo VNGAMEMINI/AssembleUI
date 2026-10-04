@@ -50,7 +50,10 @@ const Switch = forwardRef<
     return (
       <div className="aui-switch-field">
         <label
-          className="aui-switch-field__label"
+          className={classNames(
+            "aui-switch-field__label",
+            disabled && "aui-switch-field__label--disabled",
+          )}
           htmlFor={switchId}
         >
           <input

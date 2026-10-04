@@ -275,6 +275,22 @@ describe("Radio", () => {
     );
   });
 
+  it("preserves external aria-invalid when no error exists", () => {
+    render(
+      <Radio
+        aria-invalid="true"
+        label="Option A"
+      />,
+    );
+
+    expect(
+      screen.getByLabelText("Option A"),
+    ).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+  });
+
   it("forwards ref to the native radio", () => {
     const ref = createRef<HTMLInputElement>();
 

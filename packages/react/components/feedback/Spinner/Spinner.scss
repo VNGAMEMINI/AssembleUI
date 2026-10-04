@@ -1,25 +1,25 @@
 .aui-spinner {
   display: inline-block;
   flex-shrink: 0;
-  border: 2px solid var(--aui-color-border);
+  border: var(--aui-border-width-medium) solid var(--aui-color-border);
   border-top-color: var(--aui-color-primary);
   border-radius: 50%;
   animation: aui-spinner-rotate 0.75s linear infinite;
 }
 
 .aui-spinner--sm {
-  width: 1rem;
-  height: 1rem;
+  width: var(--aui-space-4);
+  height: var(--aui-space-4);
 }
 
 .aui-spinner--md {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--aui-space-6);
+  height: var(--aui-space-6);
 }
 
 .aui-spinner--lg {
-  width: 2rem;
-  height: 2rem;
+  width: var(--aui-space-8);
+  height: var(--aui-space-8);
 }
 
 @keyframes aui-spinner-rotate {
@@ -30,6 +30,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .aui-spinner {
-    animation-duration: 1.5s;
+    animation: none;
   }
 }

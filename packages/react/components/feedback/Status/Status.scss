@@ -9,8 +9,8 @@
 }
 
 .aui-status__indicator {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: var(--aui-space-2);
+  height: var(--aui-space-2);
   flex: 0 0 auto;
   border-radius: 50%;
   background: var(--aui-color-text-muted);
