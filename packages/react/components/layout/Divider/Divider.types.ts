@@ -5,6 +5,9 @@ export type DividerOrientation =
   | "vertical";
 
 export interface DividerProps
-  extends HTMLAttributes<HTMLElement> {
+  extends Omit<
+    HTMLAttributes<HTMLElement>,
+    "children"
+  > {
   orientation?: DividerOrientation;
 }

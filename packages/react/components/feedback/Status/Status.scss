@@ -1,7 +1,7 @@
 .aui-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: var(--aui-space-2);
   font-family: var(--aui-font-family-base);
   font-size: var(--aui-text-body-size);
   font-weight: var(--aui-text-body-weight);
@@ -12,14 +12,9 @@
   width: var(--aui-space-2);
   height: var(--aui-space-2);
   flex: 0 0 auto;
-  border-radius: 50%;
+  border-radius: var(--aui-radius-full);
   background: var(--aui-color-text-muted);
 }
-
-.aui-status--default .aui-status__indicator {
-  background: var(--aui-color-text-muted);
-}
-
 .aui-status--success .aui-status__indicator {
   background: var(--aui-color-success);
 }

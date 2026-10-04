@@ -226,4 +226,59 @@ describe("Image", () => {
     expect(container.querySelector("img"))
       .toHaveAttribute("alt", "");
   });
+
+  it("forwards aria and data attributes", () => {
+    const { container } = render(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        aria-label="Example image"
+        data-testid="example-image"
+      />,
+    );
+
+    const image = container.querySelector("img");
+
+    expect(image).toHaveAttribute("aria-label", "Example image");
+    expect(image).toHaveAttribute("data-testid", "example-image");
+  });
+
+  it("forwards style and id", () => {
+    const { container } = render(
+      <Image
+        id="example-image"
+        src="/images/example.jpg"
+        alt="Example"
+        style={{ aspectRatio: "4 / 3" }}
+      />,
+    );
+
+    const image = container.querySelector("img");
+
+    expect(image).toHaveAttribute("id", "example-image");
+    expect(image).toHaveStyle({ aspectRatio: "4 / 3" });
+  });
+
+  it("forwards image event handlers", () => {
+    const onLoad = vi.fn();
+    const onError = vi.fn();
+
+    const { container } = render(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        onLoad={onLoad}
+        onError={onError}
+      />,
+    );
+
+    const image = container.querySelector("img");
+
+    image?.dispatchEvent(new Event("load"));
+    image?.dispatchEvent(new Event("error"));
+
+    expect(onLoad).toHaveBeenCalledTimes(1);
+    expect(onError).toHaveBeenCalledTimes(1);
+  });
+
 });

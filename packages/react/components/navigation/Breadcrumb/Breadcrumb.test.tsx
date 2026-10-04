@@ -4,9 +4,9 @@ import { Breadcrumb } from "./Breadcrumb";
 
 describe("Breadcrumb", () => {
   const items = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: "Current" },
+    { id: "home", label: "Home", href: "/" },
+    { id: "products", label: "Products", href: "/products" },
+    { id: "current", label: "Current" },
   ];
 
   it("renders all items", () => {
@@ -56,13 +56,13 @@ describe("Breadcrumb", () => {
     render(
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
-          {
+          { id: "home", label: "Home", href: "/" },
+          { id: "products", 
             label: "Products",
             href: "/products",
             current: true,
           },
-          { label: "Details", href: "/details" },
+          { id: "details", label: "Details", href: "/details" },
         ]}
       />,
     );
@@ -77,13 +77,13 @@ describe("Breadcrumb", () => {
     render(
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
-          {
+          { id: "home", label: "Home", href: "/" },
+          { id: "products", 
             label: "Products",
             href: "/products",
             current: true,
           },
-          { label: "Details", href: "/details" },
+          { id: "details", label: "Details", href: "/details" },
         ]}
       />,
     );
@@ -96,6 +96,30 @@ describe("Breadcrumb", () => {
     expect(screen.getByText("Details")).not.toHaveAttribute(
       "aria-current",
     );
+  });
+
+  it("renders the explicit current item as a label even when it has an href", () => {
+    render(
+      <Breadcrumb
+        items={[
+          { id: "home", label: "Home", href: "/" },
+          {
+            id: "products",
+            label: "Products",
+            href: "/products",
+            current: true,
+          },
+        ]}
+      />,
+    );
+
+    const current = screen.getByText("Products");
+
+    expect(current.tagName).toBe("SPAN");
+    expect(current).toHaveAttribute("aria-current", "page");
+    expect(
+      screen.queryByRole("link", { name: "Products" }),
+    ).not.toBeInTheDocument();
   });
 
   it("supports className", () => {
@@ -116,8 +140,8 @@ describe("Breadcrumb", () => {
     render(
       <Breadcrumb
         items={[
-          { label: <strong>Home</strong> },
-          { label: "Current" },
+          { id: "home", label: <strong>Home</strong> },
+          { id: "current", label: "Current" },
         ]}
       />,
     );

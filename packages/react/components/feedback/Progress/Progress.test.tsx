@@ -144,4 +144,43 @@ describe("Progress", () => {
       "progressbar",
     );
   });
+
+  it("handles non-finite values safely", () => {
+    const { rerender } = render(<Progress value={NaN} />);
+
+    let progress = screen.getByRole("progressbar");
+
+    expect(progress).toHaveAttribute("aria-valuenow", "0");
+    expect(progress.firstElementChild).toHaveStyle({ width: "0%" });
+
+    rerender(<Progress value={Infinity} />);
+
+    progress = screen.getByRole("progressbar");
+
+    expect(progress).toHaveAttribute("aria-valuenow", "0");
+    expect(progress.firstElementChild).toHaveStyle({ width: "0%" });
+  });
+
+  it("handles non-finite max safely", () => {
+    const { rerender } = render(
+      <Progress value={40} max={Infinity} />,
+    );
+
+    let progress = screen.getByRole("progressbar");
+
+    expect(progress).toHaveAttribute("aria-valuemax", "100");
+    expect(progress).toHaveAttribute("aria-valuenow", "40");
+    expect(progress.firstElementChild).toHaveStyle({ width: "40%" });
+
+    rerender(
+      <Progress value={40} max={NaN} />,
+    );
+
+    progress = screen.getByRole("progressbar");
+
+    expect(progress).toHaveAttribute("aria-valuemax", "100");
+    expect(progress).toHaveAttribute("aria-valuenow", "40");
+    expect(progress.firstElementChild).toHaveStyle({ width: "40%" });
+  });
+
 });

@@ -15,6 +15,46 @@ describe("Text", () => {
     expect(screen.getByText("Inline text").tagName).toBe("SPAN");
   });
 
+  it("uses the default size and tone", () => {
+    render(<Text>Default text</Text>);
+
+    expect(screen.getByText("Default text")).toHaveClass(
+      "aui-text",
+      "aui-text--md",
+      "aui-text--default",
+    );
+  });
+
+  it("supports every declared visual size", () => {
+    for (const size of ["xs", "sm", "md", "lg"] as const) {
+      const { unmount } = render(
+        <Text size={size}>{size}</Text>,
+      );
+
+      expect(screen.getByText(size)).toHaveClass(
+        "aui-text",
+        `aui-text--${size}`,
+      );
+
+      unmount();
+    }
+  });
+
+  it("supports every declared tone", () => {
+    for (const tone of ["default", "muted"] as const) {
+      const { unmount } = render(
+        <Text tone={tone}>{tone}</Text>,
+      );
+
+      expect(screen.getByText(tone)).toHaveClass(
+        "aui-text",
+        `aui-text--${tone}`,
+      );
+
+      unmount();
+    }
+  });
+
   it("supports visual sizes", () => {
     render(<Text size="lg">Large text</Text>);
 

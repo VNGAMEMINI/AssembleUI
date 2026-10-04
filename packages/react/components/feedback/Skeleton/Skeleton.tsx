@@ -10,7 +10,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       height,
       className,
       style,
-      "aria-label": ariaLabel = "Loading",
+      "aria-hidden": ariaHidden = true,
       ...props
     },
     ref,
@@ -19,7 +19,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       <div
         {...props}
         ref={ref}
-        aria-label={ariaLabel}
+        aria-hidden={ariaHidden}
         className={classNames(
           "aui-skeleton",
           `aui-skeleton--${variant}`,

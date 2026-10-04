@@ -8,40 +8,40 @@
   z-index: 1000;
 
   max-width: 20rem;
-  padding: 0.375rem 0.625rem;
+  padding: var(--aui-space-1) var(--aui-space-2);
 
-  border-radius: 0.25rem;
+  border-radius: var(--aui-radius-sm);
 
   background: var(--aui-color-text);
   color: var(--aui-color-background);
 
-  font-size: 0.875rem;
-  line-height: 1.25;
+  font-size: var(--aui-font-size-sm);
+  line-height: var(--aui-line-height-tight);
 
   white-space: normal;
   pointer-events: none;
 }
 
 .aui-tooltip__content--top {
-  bottom: calc(100% + 0.5rem);
+  bottom: calc(100% + var(--aui-space-2));
   left: 50%;
   transform: translateX(-50%);
 }
 
 .aui-tooltip__content--right {
   top: 50%;
-  left: calc(100% + 0.5rem);
+  left: calc(100% + var(--aui-space-2));
   transform: translateY(-50%);
 }
 
 .aui-tooltip__content--bottom {
-  top: calc(100% + 0.5rem);
+  top: calc(100% + var(--aui-space-2));
   left: 50%;
   transform: translateX(-50%);
 }
 
 .aui-tooltip__content--left {
   top: 50%;
-  right: calc(100% + 0.5rem);
+  right: calc(100% + var(--aui-space-2));
   transform: translateY(-50%);
 }

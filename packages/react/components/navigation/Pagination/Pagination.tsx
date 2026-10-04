@@ -59,16 +59,30 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     },
     ref,
   ) => {
-    const safeTotalPages = Math.max(1, totalPages);
+    const safeTotalPages =
+      Number.isFinite(totalPages) && totalPages > 0
+        ? Math.floor(totalPages)
+        : 1;
+
+    const safePageValue =
+      Number.isFinite(page) && page > 0
+        ? Math.floor(page)
+        : 1;
+
     const safePage = Math.min(
-      Math.max(1, page),
+      Math.max(1, safePageValue),
       safeTotalPages,
     );
+
+    const safeSiblingCount =
+      Number.isFinite(siblingCount) && siblingCount > 0
+        ? Math.floor(siblingCount)
+        : 0;
 
     const pages = getPages(
       safePage,
       safeTotalPages,
-      siblingCount,
+      safeSiblingCount,
     );
 
     const changePage = (nextPage: number) => {

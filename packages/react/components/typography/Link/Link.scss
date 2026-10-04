@@ -1,9 +1,13 @@
+@use "../../../styles/mixins/focus" as focus;
+
 .aui-link {
   color: var(--aui-color-primary);
   font-family: var(--aui-font-family-base);
   text-decoration-color: currentColor;
   text-underline-offset: 0.15em;
   cursor: pointer;
+
+  @include focus.focus-ring;
 }
 
 .aui-link--underline-always {

@@ -67,6 +67,20 @@ describe("IconButton", () => {
     ).toBeInTheDocument();
   });
 
+  it("hides the icon from assistive technology", () => {
+    render(
+      <IconButton
+        label="Settings"
+        icon={<TestIcon />}
+      />,
+    );
+
+    expect(screen.getByTestId("test-icon")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
+  });
+
   it("uses button type by default", () => {
     render(
       <IconButton
@@ -108,6 +122,25 @@ describe("IconButton", () => {
     ).toBeDisabled();
   });
 
+  it("does not fire click events when disabled", () => {
+    const onClick = vi.fn();
+
+    render(
+      <IconButton
+        label="Settings"
+        icon={<TestIcon />}
+        disabled
+        onClick={onClick}
+      />,
+    );
+
+    screen.getByRole("button", {
+      name: "Settings",
+    }).click();
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
   it("forwards native button attributes", () => {
     render(
       <IconButton
@@ -120,6 +153,28 @@ describe("IconButton", () => {
     expect(
       screen.getByTestId("icon-button"),
     ).toBeInTheDocument();
+  });
+
+  it("uses label as the canonical accessible name", () => {
+    render(
+      <IconButton
+        label="Settings"
+        icon={<TestIcon />}
+        aria-label="Different label"
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Settings",
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.queryByRole("button", {
+        name: "Different label",
+      }),
+    ).not.toBeInTheDocument();
   });
 
   it("supports className", () => {

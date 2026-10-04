@@ -169,6 +169,117 @@ describe("Pagination", () => {
     ).toHaveAttribute("aria-current", "page");
   });
 
+  it("normalizes non-positive total pages", () => {
+    render(
+      <Pagination
+        page={1}
+        totalPages={0}
+        onPageChange={() => {}}
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Page 1",
+      }),
+    ).toHaveAttribute("aria-current", "page");
+
+    expect(
+      screen.getByRole("button", {
+        name: "Previous page",
+      }),
+    ).toBeDisabled();
+
+    expect(
+      screen.getByRole("button", {
+        name: "Next page",
+      }),
+    ).toBeDisabled();
+  });
+
+  it("normalizes a negative sibling count", () => {
+    render(
+      <Pagination
+        page={5}
+        totalPages={10}
+        siblingCount={-3}
+        onPageChange={() => {}}
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Page 1",
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("button", {
+        name: "Page 10",
+      }),
+    ).toBeInTheDocument();
+
+    expect(screen.getAllByText("…")).toHaveLength(2);
+  });
+
+  it("normalizes non-finite pagination values", () => {
+    render(
+      <Pagination
+        page={Number.NaN}
+        totalPages={Number.POSITIVE_INFINITY}
+        siblingCount={Number.POSITIVE_INFINITY}
+        onPageChange={() => {}}
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Page 1",
+      }),
+    ).toHaveAttribute("aria-current", "page");
+
+    expect(
+      screen.getByRole("button", {
+        name: "Previous page",
+      }),
+    ).toBeDisabled();
+
+    expect(
+      screen.getByRole("button", {
+        name: "Next page",
+      }),
+    ).toBeDisabled();
+  });
+
+  it("normalizes fractional pagination values", () => {
+    render(
+      <Pagination
+        page={3.8}
+        totalPages={5.9}
+        siblingCount={1.9}
+        onPageChange={() => {}}
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "Page 3",
+      }),
+    ).toHaveAttribute("aria-current", "page");
+
+    expect(
+      screen.getByRole("button", {
+        name: "Page 5",
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.queryByRole("button", {
+        name: "Page 5.9",
+      }),
+    ).not.toBeInTheDocument();
+  });
+
   it("supports className", () => {
     render(
       <Pagination

@@ -1,3 +1,5 @@
+@use "../../../styles/mixins/focus" as focus;
+
 .aui-icon-button {
   display: inline-flex;
   align-items: center;
@@ -16,14 +18,11 @@
 
   cursor: pointer;
 
+  @include focus.focus-ring;
+
   &:disabled {
     cursor: not-allowed;
     opacity: var(--aui-state-disabled-opacity);
-  }
-
-  &:focus-visible {
-    outline: var(--aui-border-width-medium) solid var(--aui-state-focus-ring);
-    outline-offset: var(--aui-space-1);
   }
 }
 
@@ -43,28 +42,28 @@
 }
 
 .aui-icon-button--sm {
-  width: 2rem;
-  height: 2rem;
+  width: var(--aui-space-8);
+  height: var(--aui-space-8);
 
   .aui-icon-button__icon {
-    font-size: 0.875rem;
+    font-size: var(--aui-font-size-sm);
   }
 }
 
 .aui-icon-button--md {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--aui-space-10);
+  height: var(--aui-space-10);
 
   .aui-icon-button__icon {
-    font-size: 1rem;
+    font-size: var(--aui-font-size-md);
   }
 }
 
 .aui-icon-button--lg {
-  width: 3rem;
-  height: 3rem;
+  width: var(--aui-space-12);
+  height: var(--aui-space-12);
 
   .aui-icon-button__icon {
-    font-size: 1.25rem;
+    font-size: var(--aui-font-size-lg);
   }
 }

@@ -1,11 +1,13 @@
 import {
   cloneElement,
   useId,
+  useState,
 } from "react";
 import type {
   FocusEvent,
   MouseEvent,
 } from "react";
+
 import { useDisclosure } from "../../../core/hooks";
 import type { TooltipProps } from "./Tooltip.types";
 
@@ -19,6 +21,9 @@ export function Tooltip({
 }: TooltipProps) {
   const generatedId = useId();
   const tooltipId = `aui-tooltip-${generatedId.replace(/:/g, "")}`;
+
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const {
     isOpen,
@@ -34,6 +39,7 @@ export function Tooltip({
     event: MouseEvent<HTMLElement>,
   ) => {
     children.props.onMouseEnter?.(event);
+    setIsHovered(true);
     onOpen();
   };
 
@@ -41,13 +47,18 @@ export function Tooltip({
     event: MouseEvent<HTMLElement>,
   ) => {
     children.props.onMouseLeave?.(event);
-    onClose();
+    setIsHovered(false);
+
+    if (!isFocused) {
+      onClose();
+    }
   };
 
   const handleFocus = (
     event: FocusEvent<HTMLElement>,
   ) => {
     children.props.onFocus?.(event);
+    setIsFocused(true);
     onOpen();
   };
 
@@ -55,7 +66,11 @@ export function Tooltip({
     event: FocusEvent<HTMLElement>,
   ) => {
     children.props.onBlur?.(event);
-    onClose();
+    setIsFocused(false);
+
+    if (!isHovered) {
+      onClose();
+    }
   };
 
   const existingDescribedBy =

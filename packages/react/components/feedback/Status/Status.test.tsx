@@ -1,3 +1,4 @@
+import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Status } from "./Status";
 
@@ -84,4 +85,45 @@ describe("Status", () => {
       "true",
     );
   });
+
+  it("forwards id and style", () => {
+    render(
+      <Status
+        id="current-status"
+        style={{ opacity: 0.5 }}
+      >
+        Active
+      </Status>,
+    );
+
+    const status = screen.getByText("Active").parentElement;
+
+    expect(status).toHaveAttribute("id", "current-status");
+    expect(status).toHaveStyle({ opacity: "0.5" });
+  });
+
+  it("forwards event handlers", () => {
+    const onClick = vi.fn();
+
+    render(
+      <Status onClick={onClick}>
+        Active
+      </Status>,
+    );
+
+    screen.getByText("Active").parentElement?.click();
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders a custom ReactNode", () => {
+    render(
+      <Status>
+        <strong>Active</strong>
+      </Status>,
+    );
+
+    expect(screen.getByText("Active").tagName).toBe("STRONG");
+  });
+
 });

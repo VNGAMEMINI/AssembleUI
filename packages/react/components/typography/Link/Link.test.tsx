@@ -21,14 +21,30 @@ describe("Link", () => {
     );
   });
 
-  it("supports underline variants", () => {
-    render(
+  it("supports every underline variant", () => {
+    const { rerender } = render(
       <Link href="/about" underline="always">
         About
       </Link>,
     );
 
     expect(screen.getByRole("link")).toHaveClass("aui-link--underline-always");
+
+    rerender(
+      <Link href="/about" underline="hover">
+        About
+      </Link>,
+    );
+
+    expect(screen.getByRole("link")).toHaveClass("aui-link--underline-hover");
+
+    rerender(
+      <Link href="/about" underline="none">
+        About
+      </Link>,
+    );
+
+    expect(screen.getByRole("link")).toHaveClass("aui-link--underline-none");
   });
 
   it("opens external links in a new tab", () => {
@@ -42,9 +58,10 @@ describe("Link", () => {
 
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(link).toHaveClass("aui-link--external");
   });
 
-  it("preserves explicit target and rel", () => {
+  it("preserves explicit target and rel for external links", () => {
     render(
       <Link href="https://example.com" external target="_self" rel="custom-rel">
         External
@@ -55,16 +72,53 @@ describe("Link", () => {
 
     expect(link).toHaveAttribute("target", "_self");
     expect(link).toHaveAttribute("rel", "custom-rel");
+    expect(link).toHaveClass("aui-link--external");
   });
 
-  it("forwards native anchor attributes", () => {
+  it("preserves target and rel when the link is not external", () => {
     render(
-      <Link href="/about" id="about-link" data-testid="link">
+      <Link href="/about" target="_blank" rel="custom-rel">
         About
       </Link>,
     );
 
-    expect(screen.getByTestId("link")).toHaveAttribute("id", "about-link");
+    const link = screen.getByRole("link");
+
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "custom-rel");
+    expect(link).not.toHaveClass("aui-link--external");
+  });
+
+  it("forwards native anchor attributes", () => {
+    render(
+      <Link
+        href="/about"
+        id="about-link"
+        aria-label="About page"
+        data-testid="link"
+      >
+        About
+      </Link>,
+    );
+
+    const link = screen.getByTestId("link");
+
+    expect(link).toHaveAttribute("id", "about-link");
+    expect(link).toHaveAttribute("aria-label", "About page");
+  });
+
+  it("merges custom class names", () => {
+    render(
+      <Link href="/about" className="custom-link">
+        About
+      </Link>,
+    );
+
+    expect(screen.getByRole("link")).toHaveClass(
+      "aui-link",
+      "aui-link--underline-hover",
+      "custom-link",
+    );
   });
 
   it("forwards refs", () => {
@@ -84,7 +138,7 @@ describe("Link", () => {
     expect(element).toBeInstanceOf(HTMLAnchorElement);
   });
 
-  it("adds secure rel for external links when target is explicit", () => {
+  it("adds secure rel for an external link with an explicit blank target", () => {
     render(
       <Link href="https://example.com" external target="_blank">
         External

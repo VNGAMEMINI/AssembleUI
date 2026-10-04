@@ -1,6 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
 export interface BreadcrumbItem {
+  id: string;
   label: ReactNode;
   href?: string;
   current?: boolean;

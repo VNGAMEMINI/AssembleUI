@@ -68,6 +68,47 @@ describe("Icon", () => {
       .toBeInTheDocument();
   });
 
+  it("supports an explicit aria-hidden value", () => {
+    render(
+      <Icon
+        label="Settings"
+        aria-hidden={false}
+      >
+        <TestIcon />
+      </Icon>,
+    );
+
+    const icon = screen.getByRole("img", {
+      name: "Settings",
+    });
+
+    expect(icon).toHaveAttribute("aria-hidden", "false");
+  });
+
+  it("supports a custom role when provided", () => {
+    render(
+      <Icon
+        label="Settings"
+        role="presentation"
+      >
+        <TestIcon />
+      </Icon>,
+    );
+
+    expect(
+      screen.queryByRole("img", {
+        name: "Settings",
+      }),
+    ).not.toBeInTheDocument();
+
+    expect(
+      screen.getByText((_, element) =>
+        element?.tagName === "SPAN" &&
+        element?.getAttribute("role") === "presentation",
+      ),
+    ).toHaveAttribute("role", "presentation");
+  });
+
   it("supports className", () => {
     const { container } = render(
       <Icon className="custom-icon">

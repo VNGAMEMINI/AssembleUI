@@ -14,21 +14,21 @@
 }
 
 .aui-icon--xs {
-  font-size: 0.75rem;
+  font-size: var(--aui-font-size-xs);
 }
 
 .aui-icon--sm {
-  font-size: 0.875rem;
+  font-size: var(--aui-font-size-sm);
 }
 
 .aui-icon--md {
-  font-size: 1rem;
+  font-size: var(--aui-font-size-md);
 }
 
 .aui-icon--lg {
-  font-size: 1.25rem;
+  font-size: var(--aui-font-size-lg);
 }
 
 .aui-icon--xl {
-  font-size: 1.5rem;
+  font-size: var(--aui-font-size-xl);
 }

@@ -43,6 +43,14 @@ describe("Button", () => {
     );
   });
 
+  it("uses button type by default", () => {
+    render(<Button>Save</Button>);
+
+    expect(
+      screen.getByRole("button", { name: "Save" }),
+    ).toHaveAttribute("type", "button");
+  });
+
   it("supports disabled state", () => {
     render(<Button disabled>Save</Button>);
 

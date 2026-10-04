@@ -19,6 +19,37 @@ describe("Heading", () => {
     );
   });
 
+  it("renders every supported semantic heading level", () => {
+    for (const level of [1, 2, 3, 4, 5, 6] as const) {
+      const { unmount } = render(
+        <Heading level={level}>Title</Heading>,
+      );
+
+      expect(
+        screen.getByRole("heading", { level }),
+      ).toHaveTextContent("Title");
+
+      unmount();
+    }
+  });
+
+  it("does not add a visual size class when size is omitted", () => {
+    render(<Heading level={3}>Title</Heading>);
+
+    expect(screen.getByRole("heading", { level: 3 })).toHaveClass(
+      "aui-heading",
+      "aui-heading--level-3",
+    );
+
+    expect(screen.getByRole("heading", { level: 3 })).not.toHaveClass(
+      "aui-heading--xs",
+      "aui-heading--sm",
+      "aui-heading--md",
+      "aui-heading--lg",
+      "aui-heading--xl",
+    );
+  });
+
   it("supports visual size independently from semantic level", () => {
     render(
       <Heading level={2} size="xl">

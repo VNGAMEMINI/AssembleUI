@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import type { ElementType } from "react";
 import { classNames } from "../../../core/utils";
 import type { TextProps } from "./Text.types";
 
@@ -21,12 +20,23 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     },
     ref,
   ) => {
-    const Tag = elementMap[as] as ElementType;
+    const Tag = elementMap[as];
+
+    const setRef = (node: HTMLElement | null) => {
+      if (typeof ref === "function") {
+        ref(node);
+        return;
+      }
+
+      if (ref) {
+        ref.current = node;
+      }
+    };
 
     return (
       <Tag
         {...props}
-        ref={ref}
+        ref={setRef}
         className={classNames(
           "aui-text",
           `aui-text--${size}`,

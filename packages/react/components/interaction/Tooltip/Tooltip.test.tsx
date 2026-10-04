@@ -31,6 +31,22 @@ describe("Tooltip", () => {
     expect(screen.getByRole("tooltip")).toHaveTextContent("Help");
   });
 
+  it("stays open while focused after mouse leave", () => {
+    render(
+      <Tooltip content="Help">
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const trigger = screen.getByRole("button");
+
+    fireEvent.focus(trigger);
+    fireEvent.mouseEnter(trigger);
+    fireEvent.mouseLeave(trigger);
+
+    expect(screen.getByRole("tooltip")).toBeInTheDocument();
+  });
+
   it("closes on mouse leave", () => {
     render(
       <Tooltip content="Help">
@@ -58,6 +74,22 @@ describe("Tooltip", () => {
     const trigger = screen.getByRole("button");
 
     fireEvent.focus(trigger);
+
+    expect(screen.getByRole("tooltip")).toBeInTheDocument();
+  });
+
+  it("stays open while hovered after blur", () => {
+    render(
+      <Tooltip content="Help">
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const trigger = screen.getByRole("button");
+
+    fireEvent.mouseEnter(trigger);
+    fireEvent.focus(trigger);
+    fireEvent.blur(trigger);
 
     expect(screen.getByRole("tooltip")).toBeInTheDocument();
   });
@@ -112,6 +144,27 @@ describe("Tooltip", () => {
     expect(tooltip).toHaveAttribute("id", describedBy);
   });
 
+  it("closes after both hover and focus end", () => {
+    render(
+      <Tooltip content="Help">
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const trigger = screen.getByRole("button");
+
+    fireEvent.mouseEnter(trigger);
+    fireEvent.focus(trigger);
+
+    fireEvent.mouseLeave(trigger);
+
+    expect(screen.getByRole("tooltip")).toBeInTheDocument();
+
+    fireEvent.blur(trigger);
+
+    expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+  });
+
   it("supports controlled open state", () => {
     render(
       <Tooltip
@@ -144,6 +197,19 @@ describe("Tooltip", () => {
     fireEvent.mouseLeave(screen.getByRole("button"));
 
     expect(onOpenChange).toHaveBeenCalledWith(false);
+  });
+
+  it("supports controlled closed state", () => {
+    render(
+      <Tooltip
+        content="Help"
+        open={false}
+      >
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
   });
 
   it("applies placement", () => {

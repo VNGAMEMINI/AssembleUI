@@ -13,7 +13,7 @@ describe("Skeleton", () => {
       "aui-skeleton",
       "aui-skeleton--text",
     );
-    expect(skeleton).toHaveAttribute("aria-label", "Loading");
+    expect(skeleton).toHaveAttribute("aria-hidden", "true");
   });
 
   it("supports all variants", () => {
@@ -74,18 +74,19 @@ describe("Skeleton", () => {
     });
   });
 
-  it("supports a custom aria-label", () => {
+  it("supports accessible loading text when explicitly enabled", () => {
     render(
       <Skeleton
         data-testid="skeleton"
+        aria-hidden={false}
         aria-label="Loading profile"
       />,
     );
 
-    expect(screen.getByTestId("skeleton")).toHaveAttribute(
-      "aria-label",
-      "Loading profile",
-    );
+    const skeleton = screen.getByTestId("skeleton");
+
+    expect(skeleton).toHaveAttribute("aria-hidden", "false");
+    expect(skeleton).toHaveAttribute("aria-label", "Loading profile");
   });
 
   it("forwards native HTML attributes", () => {

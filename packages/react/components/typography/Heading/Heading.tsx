@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import type { ElementType } from "react";
 import { classNames } from "../../../core/utils";
 import type { HeadingProps } from "./Heading.types";
 
@@ -14,7 +13,7 @@ const levelMap = {
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ level = 2, size, className, children, ...props }, ref) => {
-    const Tag = levelMap[level] as ElementType;
+    const Tag = levelMap[level];
 
     return (
       <Tag

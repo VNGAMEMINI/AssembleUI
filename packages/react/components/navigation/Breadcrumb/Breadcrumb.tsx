@@ -31,7 +31,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
               : index === items.length - 1;
 
             return (
-              <li key={index} className="aui-breadcrumb__item">
+              <li key={item.id} className="aui-breadcrumb__item">
                 {isCurrent || !item.href ? (
                   <span
                     aria-current={isCurrent ? "page" : undefined}

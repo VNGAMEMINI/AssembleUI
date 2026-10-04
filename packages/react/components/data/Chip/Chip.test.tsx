@@ -17,19 +17,45 @@ describe("Chip", () => {
     expect(screen.getByText("React")).toBeInTheDocument();
   });
 
-  it("uses the neutral variant by default", () => {
+  it("uses neutral and md by default", () => {
     render(<Chip>React</Chip>);
 
     expect(screen.getByText("React").parentElement).toHaveClass(
+      "aui-chip",
       "aui-chip--neutral",
+      "aui-chip--md",
     );
   });
 
-  it("supports variants", () => {
-    render(<Chip variant="success">Active</Chip>);
+  it("supports every declared variant", () => {
+    const { rerender } = render(<Chip variant="neutral">Neutral</Chip>);
 
-    expect(screen.getByText("Active").parentElement).toHaveClass(
+    expect(screen.getByText("Neutral").parentElement).toHaveClass(
+      "aui-chip--neutral",
+    );
+
+    rerender(<Chip variant="primary">Primary</Chip>);
+
+    expect(screen.getByText("Primary").parentElement).toHaveClass(
+      "aui-chip--primary",
+    );
+
+    rerender(<Chip variant="success">Success</Chip>);
+
+    expect(screen.getByText("Success").parentElement).toHaveClass(
       "aui-chip--success",
+    );
+
+    rerender(<Chip variant="warning">Warning</Chip>);
+
+    expect(screen.getByText("Warning").parentElement).toHaveClass(
+      "aui-chip--warning",
+    );
+
+    rerender(<Chip variant="danger">Danger</Chip>);
+
+    expect(screen.getByText("Danger").parentElement).toHaveClass(
+      "aui-chip--danger",
     );
   });
 

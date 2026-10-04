@@ -2,7 +2,11 @@
   display: block;
   flex-shrink: 0;
   background: var(--aui-color-surface-muted);
-  animation: aui-skeleton-pulse 1.5s ease-in-out infinite;
+  animation:
+    aui-skeleton-pulse
+    var(--aui-motion-duration-normal)
+    var(--aui-motion-ease-standard)
+    infinite;
 }
 
 .aui-skeleton--text {

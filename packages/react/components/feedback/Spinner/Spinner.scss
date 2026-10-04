@@ -3,8 +3,12 @@
   flex-shrink: 0;
   border: var(--aui-border-width-medium) solid var(--aui-color-border);
   border-top-color: var(--aui-color-primary);
-  border-radius: 50%;
-  animation: aui-spinner-rotate 0.75s linear infinite;
+  border-radius: var(--aui-radius-full);
+  animation:
+    aui-spinner-rotate
+    var(--aui-motion-duration-normal)
+    var(--aui-motion-ease-standard)
+    infinite;
 }
 
 .aui-spinner--sm {

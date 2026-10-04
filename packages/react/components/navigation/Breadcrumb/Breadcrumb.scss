@@ -1,3 +1,5 @@
+@use "../../../styles/mixins/focus";
+
 .aui-breadcrumb {
   font-family: var(--aui-font-family-base);
   font-size: var(--aui-text-body-size);
@@ -20,6 +22,8 @@
 .aui-breadcrumb__link {
   color: var(--aui-color-primary);
   text-decoration: none;
+
+  @include focus.focus-ring;
 }
 
 .aui-breadcrumb__link:hover {
@@ -31,6 +35,6 @@
 }
 
 .aui-breadcrumb__separator {
-  margin: 0 0.5rem;
+  margin-inline: var(--aui-space-2);
   color: var(--aui-color-text-muted);
 }
