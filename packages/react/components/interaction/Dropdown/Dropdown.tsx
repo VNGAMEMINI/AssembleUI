@@ -21,20 +21,26 @@ import type {
   ReactElement,
 } from "react";
 
-import type { PopoverProps } from "./Popover.types";
+import type {
+  DropdownItem,
+  DropdownProps,
+} from "./Dropdown.types";
 
-type PopoverTriggerElement = ReactElement<
+type DropdownTriggerElement = ReactElement<
   ComponentPropsWithoutRef<"button">
 >;
 
-const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+const Dropdown = forwardRef<
+  HTMLDivElement,
+  DropdownProps
+>(
   (
     {
+      trigger,
+      items,
       open,
       defaultOpen = false,
       onOpenChange,
-      trigger,
-      children,
       placement = "bottom",
       closeOnEscape = true,
       closeOnOutsideClick = true,
@@ -45,20 +51,24 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   ) => {
     const generatedId = useId();
 
-    const popoverId = `aui-popover-${generatedId.replace(
+    const dropdownId = `aui-dropdown-${generatedId.replace(
       /:/g,
       "",
     )}`;
 
     const triggerRef = useRef<HTMLElement | null>(null);
-    const popoverRef = useRef<HTMLDivElement | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
 
     const [position, setPosition] = useState({
       top: 0,
       left: 0,
     });
 
-    const { isOpen, onOpen, onClose } = useDisclosure({
+    const {
+      isOpen,
+      onOpen,
+      onClose,
+    } = useDisclosure({
       open,
       defaultIsOpen: defaultOpen,
       onOpenChange,
@@ -69,7 +79,9 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         return;
       }
 
-      const handleKeyDown = (event: KeyboardEvent) => {
+      const handleKeyDown = (
+        event: KeyboardEvent,
+      ) => {
         if (event.key === "Escape") {
           onClose();
         }
@@ -86,26 +98,38 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           handleKeyDown,
         );
       };
-    }, [isOpen, closeOnEscape, onClose]);
+    }, [
+      isOpen,
+      closeOnEscape,
+      onClose,
+    ]);
 
     useEffect(() => {
-      if (!isOpen || !closeOnOutsideClick) {
+      if (
+        !isOpen ||
+        !closeOnOutsideClick
+      ) {
         return;
       }
 
-      const handlePointerDown = (event: PointerEvent) => {
+      const handlePointerDown = (
+        event: PointerEvent,
+      ) => {
         const target = event.target;
 
         if (!(target instanceof Node)) {
           return;
         }
 
-        const triggerElement = triggerRef.current;
-        const popoverElement = popoverRef.current;
+        const triggerElement =
+          triggerRef.current;
+
+        const dropdownElement =
+          dropdownRef.current;
 
         if (
           triggerElement?.contains(target) ||
-          popoverElement?.contains(target)
+          dropdownElement?.contains(target)
         ) {
           return;
         }
@@ -136,26 +160,30 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       }
 
       const updatePosition = () => {
-        const triggerElement = triggerRef.current;
-        const popoverElement = popoverRef.current;
+        const triggerElement =
+          triggerRef.current;
+
+        const dropdownElement =
+          dropdownRef.current;
 
         if (
           !triggerElement ||
-          !popoverElement
+          !dropdownElement
         ) {
           return;
         }
 
-        const nextPosition = calculatePosition(
-          triggerElement.getBoundingClientRect(),
-          popoverElement.getBoundingClientRect(),
-          {
-            placement,
-            offset: {
-              y: 8,
+        const nextPosition =
+          calculatePosition(
+            triggerElement.getBoundingClientRect(),
+            dropdownElement.getBoundingClientRect(),
+            {
+              placement,
+              offset: {
+                y: 8,
+              },
             },
-          },
-        );
+          );
 
         setPosition(nextPosition);
       };
@@ -185,47 +213,66 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           true,
         );
       };
-    }, [isOpen, placement]);
+    }, [
+      isOpen,
+      placement,
+      items.length,
+    ]);
+
+    const handleItemSelect = (
+      item: DropdownItem,
+    ) => {
+      if (item.disabled) {
+        return;
+      }
+
+      item.onSelect?.();
+      onClose();
+    };
 
     if (!isValidElement(trigger)) {
       return null;
     }
 
     const typedTrigger =
-      trigger as PopoverTriggerElement;
+      trigger as DropdownTriggerElement;
 
-    const triggerElement = cloneElement(
-      typedTrigger,
-      {
-        "aria-expanded": isOpen,
-        "aria-haspopup": "dialog",
-        "aria-controls": isOpen
-          ? popoverId
-          : undefined,
-        onClick: (event) => {
-          triggerRef.current =
-            event.currentTarget;
+    const triggerElement =
+      cloneElement(
+        typedTrigger,
+        {
+          "aria-expanded": isOpen,
+          "aria-haspopup": "menu",
+          "aria-controls": isOpen
+            ? dropdownId
+            : undefined,
 
-          typedTrigger.props.onClick?.(event);
+          onClick: (event) => {
+            triggerRef.current =
+              event.currentTarget;
 
-          if (event.defaultPrevented) {
-            return;
-          }
+            typedTrigger.props.onClick?.(
+              event,
+            );
 
-          if (isOpen) {
-            onClose();
-          } else {
-            onOpen();
-          }
+            if (event.defaultPrevented) {
+              return;
+            }
+
+            if (isOpen) {
+              onClose();
+            } else {
+              onOpen();
+            }
+          },
         },
-      },
-    );
+      );
 
-    const popover = isOpen ? (
+    const dropdown = isOpen ? (
       <div
         {...props}
         ref={(node) => {
-          popoverRef.current = node;
+          dropdownRef.current = node;
 
           if (typeof ref === "function") {
             ref(node);
@@ -233,11 +280,11 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             ref.current = node;
           }
         }}
-        id={popoverId}
-        role="dialog"
+        id={dropdownId}
+        role="menu"
         data-placement={placement}
         className={classNames(
-          "aui-popover",
+          "aui-dropdown",
           className,
         )}
         style={{
@@ -245,7 +292,20 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           left: position.left,
         }}
       >
-        {children}
+        {items.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            role="menuitem"
+            disabled={item.disabled}
+            className="aui-dropdown__item"
+            onClick={() => {
+              handleItemSelect(item);
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
       </div>
     ) : null;
 
@@ -253,9 +313,9 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       <>
         {triggerElement}
 
-        {popover != null &&
+        {dropdown != null &&
           createPortal(
-            popover,
+            dropdown,
             document.body,
           )}
       </>
@@ -263,6 +323,6 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   },
 );
 
-Popover.displayName = "Popover";
+Dropdown.displayName = "Dropdown";
 
-export { Popover };
+export { Dropdown };
