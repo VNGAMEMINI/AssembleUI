@@ -38,7 +38,11 @@ describe("package exports", () => {
     expect(Patterns.UserCard).toBeDefined();
   });
 
-  it("keeps templates entry independent", () => {
-    expect(Object.keys(Templates)).toEqual([]);
+  it("exports current templates from root", () => {
+    expect(Root.ProfilePageTemplate).toBeDefined();
+  });
+
+  it("exports current templates from templates entry", () => {
+    expect(Templates.ProfilePageTemplate).toBeDefined();
   });
 });

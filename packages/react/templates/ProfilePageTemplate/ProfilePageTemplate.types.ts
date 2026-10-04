@@ -1,12 +1,53 @@
 import type {
   HTMLAttributes,
-  ReactNode,
 } from "react";
 
+export interface ProfilePageProfileData {
+  name: string;
+  description?: string;
+  avatarSrc?: string;
+  avatarAlt?: string;
+  avatarFallback?: string;
+  badge?: string;
+}
+
+export interface ProfilePageStatData {
+  id: string;
+  label: string;
+  value: string | number;
+}
+
+export interface ProfilePageItemData {
+  id: string;
+  label: string;
+  value: string;
+}
+
+export interface ProfilePageSectionData {
+  id: string;
+  title: string;
+  description?: string;
+  items?: ProfilePageItemData[];
+}
+
+export interface ProfilePageDetailData {
+  id: string;
+  label: string;
+  value: string;
+}
+
+export interface ProfilePageActionData {
+  id: string;
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
 export interface ProfilePageTemplateProps
-  extends Omit<HTMLAttributes<HTMLElement>, "content"> {
-  profile: ReactNode;
-  content: ReactNode;
-  sidebar?: ReactNode;
-  actions?: ReactNode;
+  extends HTMLAttributes<HTMLElement> {
+  profile: ProfilePageProfileData;
+  stats?: ProfilePageStatData[];
+  sections?: ProfilePageSectionData[];
+  details?: ProfilePageDetailData[];
+  actions?: ProfilePageActionData[];
 }
