@@ -11,12 +11,18 @@ export const ProfilePageTemplate = forwardRef<
   { data, className, ...props },
   ref,
 ): ReactElement {
-  const { profile, actions, stats, sections, details } = data;
+  const {
+    profile,
+    actions = [],
+    stats = [],
+    sections = [],
+    details = [],
+  } = data;
 
-  const hasStats = stats != null && stats.length > 0;
-  const hasSections = sections != null && sections.length > 0;
-  const hasDetails = details != null && details.length > 0;
-  const hasActions = actions != null && actions.length > 0;
+  const hasStats = stats.length > 0;
+  const hasSections = sections.length > 0;
+  const hasDetails = details.length > 0;
+  const hasActions = actions.length > 0;
 
   return (
     <main
@@ -25,7 +31,12 @@ export const ProfilePageTemplate = forwardRef<
       {...props}
     >
       <header className="aui-profile-page-template__hero">
-        <div className="aui-profile-page-template__hero-content">
+        <div className="aui-profile-page-template__hero-main">
+          <div className="aui-profile-page-template__hero-label">
+            <span className="aui-profile-page-template__hero-dot" />
+            Profile
+          </div>
+
           <ProfileHeader
             name={profile.name}
             description={profile.description}
@@ -61,7 +72,7 @@ export const ProfilePageTemplate = forwardRef<
           aria-label="Profile statistics"
         >
           {stats.map((stat) => (
-            <div
+            <article
               className="aui-profile-page-template__stat"
               key={stat.id}
             >
@@ -77,7 +88,7 @@ export const ProfilePageTemplate = forwardRef<
               <strong className="aui-profile-page-template__stat-value">
                 {stat.value}
               </strong>
-            </div>
+            </article>
           ))}
         </section>
       )}
@@ -92,15 +103,20 @@ export const ProfilePageTemplate = forwardRef<
                   key={section.id}
                 >
                   <div className="aui-profile-page-template__section-header">
-                    <Heading level={2}>
-                      {section.title}
-                    </Heading>
+                    <div>
+                      <Heading level={2}>
+                        {section.title}
+                      </Heading>
 
-                    {section.description != null && (
-                      <Text tone="muted">
-                        {section.description}
-                      </Text>
-                    )}
+                      {section.description != null && (
+                        <Text
+                          tone="muted"
+                          className="aui-profile-page-template__section-description"
+                        >
+                          {section.description}
+                        </Text>
+                      )}
+                    </div>
                   </div>
 
                   {section.items != null &&
@@ -125,8 +141,18 @@ export const ProfilePageTemplate = forwardRef<
           {hasDetails && (
             <aside className="aui-profile-page-template__aside">
               <section className="aui-profile-page-template__details">
-                <div className="aui-profile-page-template__section-header">
-                  <Heading level={2}>Details</Heading>
+                <div className="aui-profile-page-template__details-heading">
+                  <Text
+                    as="span"
+                    size="sm"
+                    tone="muted"
+                  >
+                    Profile
+                  </Text>
+
+                  <Heading level={2}>
+                    Details
+                  </Heading>
                 </div>
 
                 <dl className="aui-profile-page-template__detail-list">
