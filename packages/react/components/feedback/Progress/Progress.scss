@@ -2,26 +2,28 @@
   width: 100%;
   overflow: hidden;
   background: var(--aui-color-surface-muted);
-  border-radius: 999px;
+  border-radius: var(--aui-radius-full);
 }
 
 .aui-progress__bar {
   height: 100%;
   border-radius: inherit;
   background: var(--aui-color-primary);
-  transition: width 0.2s ease;
+  transition:
+    width var(--aui-motion-duration-normal)
+    var(--aui-motion-ease-standard);
 }
 
 .aui-progress--sm {
-  height: 0.25rem;
+  height: var(--aui-space-1);
 }
 
 .aui-progress--md {
-  height: 0.5rem;
+  height: var(--aui-space-2);
 }
 
 .aui-progress--lg {
-  height: 0.75rem;
+  height: var(--aui-space-3);
 }
 
 .aui-progress--primary .aui-progress__bar {

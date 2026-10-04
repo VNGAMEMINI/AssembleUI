@@ -1,18 +1,18 @@
 .aui-alert {
-  padding: 0.75rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.375rem;
+  padding: var(--aui-space-3) var(--aui-space-4);
+  border: var(--aui-border-width-thin) solid var(--aui-color-transparent);
+  border-radius: var(--aui-radius-sm);
   font-family: var(--aui-font-family-base);
   font-size: var(--aui-text-body-size);
   font-weight: var(--aui-text-body-weight);
 }
 
-.aui-alert__title {
+.aui-alert__heading {
   font-weight: var(--aui-font-weight-semibold);
 }
 
 .aui-alert__content {
-  margin-top: 0.25rem;
+  margin-top: var(--aui-space-1);
 }
 
 .aui-alert--info {

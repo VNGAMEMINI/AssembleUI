@@ -21,6 +21,30 @@ describe("Progress", () => {
     expect(progress).toHaveAttribute("aria-valuenow", "40");
   });
 
+  it("falls back to 100 when max is not positive", () => {
+    const { rerender } = render(<Progress value={50} max={0} />);
+
+    expect(screen.getByRole("progressbar")).toHaveAttribute(
+      "aria-valuemax",
+      "100",
+    );
+    expect(screen.getByRole("progressbar")).toHaveAttribute(
+      "aria-valuenow",
+      "50",
+    );
+
+    rerender(<Progress value={50} max={-10} />);
+
+    expect(screen.getByRole("progressbar")).toHaveAttribute(
+      "aria-valuemax",
+      "100",
+    );
+    expect(screen.getByRole("progressbar")).toHaveAttribute(
+      "aria-valuenow",
+      "50",
+    );
+  });
+
   it("clamps value below zero", () => {
     render(<Progress value={-20} />);
 
@@ -39,13 +63,51 @@ describe("Progress", () => {
     );
   });
 
-  it("applies size and variant classes", () => {
-    render(<Progress size="lg" variant="success" />);
+  it("supports all sizes", () => {
+    const { rerender } = render(<Progress size="sm" />);
 
     expect(screen.getByRole("progressbar")).toHaveClass(
-      "aui-progress",
+      "aui-progress--sm",
+    );
+
+    rerender(<Progress size="md" />);
+
+    expect(screen.getByRole("progressbar")).toHaveClass(
+      "aui-progress--md",
+    );
+
+    rerender(<Progress size="lg" />);
+
+    expect(screen.getByRole("progressbar")).toHaveClass(
       "aui-progress--lg",
+    );
+  });
+
+  it("supports all variants", () => {
+    const { rerender } = render(
+      <Progress variant="primary" />,
+    );
+
+    expect(screen.getByRole("progressbar")).toHaveClass(
+      "aui-progress--primary",
+    );
+
+    rerender(<Progress variant="success" />);
+
+    expect(screen.getByRole("progressbar")).toHaveClass(
       "aui-progress--success",
+    );
+
+    rerender(<Progress variant="warning" />);
+
+    expect(screen.getByRole("progressbar")).toHaveClass(
+      "aui-progress--warning",
+    );
+
+    rerender(<Progress variant="danger" />);
+
+    expect(screen.getByRole("progressbar")).toHaveClass(
+      "aui-progress--danger",
     );
   });
 

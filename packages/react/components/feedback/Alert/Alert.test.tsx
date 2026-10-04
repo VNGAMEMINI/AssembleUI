@@ -34,8 +34,12 @@ describe("Alert", () => {
       </Alert>,
     );
 
-    expect(screen.getByText("Success")).toBeInTheDocument();
-    expect(screen.getByText("Operation completed.")).toBeInTheDocument();
+    expect(screen.getByText("Success")).toHaveClass(
+      "aui-alert__heading",
+    );
+    expect(screen.getByText("Operation completed.")).toHaveClass(
+      "aui-alert__content",
+    );
   });
 
   it("supports heading as React content", () => {
