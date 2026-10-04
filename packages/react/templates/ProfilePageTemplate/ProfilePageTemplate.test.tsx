@@ -79,11 +79,19 @@ const actions = [
   },
 ];
 
+const data = {
+  profile,
+  stats,
+  sections,
+  details,
+  actions,
+};
+
 describe("ProfilePageTemplate", () => {
   it("renders profile data", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
+        data={{ profile }}
       />,
     );
 
@@ -105,8 +113,10 @@ describe("ProfilePageTemplate", () => {
   it("renders statistics from data", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
-        stats={stats}
+        data={{
+          profile,
+          stats,
+        }}
       />,
     );
 
@@ -130,8 +140,10 @@ describe("ProfilePageTemplate", () => {
   it("renders sections and section items from data", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
-        sections={sections}
+        data={{
+          profile,
+          sections,
+        }}
       />,
     );
 
@@ -167,14 +179,16 @@ describe("ProfilePageTemplate", () => {
   it("renders profile details from data", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
-        details={details}
+        data={{
+          profile,
+          details,
+        }}
       />,
     );
 
     expect(
       screen.getByRole("heading", {
-        name: "Profile details",
+        name: "Details",
       }),
     ).toBeInTheDocument();
 
@@ -198,8 +212,10 @@ describe("ProfilePageTemplate", () => {
   it("renders actions from data", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
-        actions={actions}
+        data={{
+          profile,
+          actions,
+        }}
       />,
     );
 
@@ -219,11 +235,7 @@ describe("ProfilePageTemplate", () => {
   it("renders all supported data regions together", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
-        stats={stats}
-        sections={sections}
-        details={details}
-        actions={actions}
+        data={data}
       />,
     );
 
@@ -245,7 +257,7 @@ describe("ProfilePageTemplate", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: "Profile details",
+        name: "Details",
       }),
     ).toBeInTheDocument();
 
@@ -259,7 +271,7 @@ describe("ProfilePageTemplate", () => {
   it("supports native main attributes", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
+        data={{ profile }}
         id="profile-page"
         aria-label="Profile page"
       />,
@@ -278,7 +290,7 @@ describe("ProfilePageTemplate", () => {
   it("supports className", () => {
     render(
       <ProfilePageTemplate
-        profile={profile}
+        data={{ profile }}
         className="custom-profile-page"
       />,
     );
@@ -301,7 +313,7 @@ describe("ProfilePageTemplate", () => {
     render(
       <ProfilePageTemplate
         ref={ref}
-        profile={profile}
+        data={{ profile }}
       />,
     );
 

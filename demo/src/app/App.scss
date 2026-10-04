@@ -473,12 +473,10 @@
 .demo-preview {
   overflow: hidden;
 
-  padding: var(--aui-space-5);
-
-  // background: var(--aui-surface-elevated);
-  // border-radius: var(--aui-radius-lg);
+  background: var(--aui-surface-elevated);
 
   border: var(--aui-border-width-thin) solid var(--aui-color-border);
+  border-radius: var(--aui-radius-lg);
 
   box-shadow: var(--aui-shadow-sm);
 }
@@ -513,9 +511,6 @@
 }
 
 .demo-preview__canvas {
-  display: grid;
-  place-items: center;
-
   min-height: 22rem;
 
   padding: var(--aui-space-10);

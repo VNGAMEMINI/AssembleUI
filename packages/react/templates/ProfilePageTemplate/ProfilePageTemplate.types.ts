@@ -1,6 +1,4 @@
-import type {
-  HTMLAttributes,
-} from "react";
+import type { HTMLAttributes } from "react";
 
 export interface ProfilePageProfileData {
   name: string;
@@ -43,11 +41,15 @@ export interface ProfilePageActionData {
   external?: boolean;
 }
 
-export interface ProfilePageTemplateProps
-  extends HTMLAttributes<HTMLElement> {
+export interface ProfilePageData {
   profile: ProfilePageProfileData;
+  actions?: ProfilePageActionData[];
   stats?: ProfilePageStatData[];
   sections?: ProfilePageSectionData[];
   details?: ProfilePageDetailData[];
-  actions?: ProfilePageActionData[];
+}
+
+export interface ProfilePageTemplateProps
+  extends HTMLAttributes<HTMLElement> {
+  data: ProfilePageData;
 }

@@ -1,138 +1,134 @@
-import {
-  ActionMenu,
-  Badge,
-  Button,
-  ProfileHeader,
-  ProfilePageTemplate,
-} from "@assemble-ui/react";
+import { ProfilePageTemplate } from "@assemble-ui/react";
 
 export function ProfilePageTemplateDemo() {
-  const actions = [
-    {
-      id: "edit",
-      type: "action",
-      label: "Edit profile",
-      onClick: () => {},
+  const data = {
+    profile: {
+      name: "Alex Morgan",
+      description:
+        "Frontend developer and UI designer building accessible and scalable interfaces.",
+      avatarFallback: "AM",
+      badge: "Pro",
     },
-    {
-      id: "settings",
-      type: "link",
-      label: "Settings",
-      href: "#settings",
-    },
-  ];
 
-  return (
-    <ProfilePageTemplate
-      profile={
-        <ProfileHeader
-          name="Alex Morgan"
-          description="Frontend developer and UI designer"
-          badge="Pro"
-          avatarFallback="AM"
-        />
-      }
-      actions={
-        <ActionMenu items={actions} />
-      }
-      content={
-        <div className="aui-demo-profile-page">
-          <section className="aui-demo-profile-page__section">
-            <div className="aui-demo-profile-page__section-header">
-              <div>
-                <h2>About</h2>
-                <p>
-                  Building accessible and scalable interfaces
-                  with React and modern web technologies.
-                </p>
-              </div>
+    actions: [
+      {
+        id: "edit",
+        label: "Edit profile",
+        href: "#edit",
+      },
+      {
+        id: "settings",
+        label: "Settings",
+        href: "#settings",
+      },
+    ],
 
-              <Badge variant="success">
-                Available
-              </Badge>
-            </div>
-          </section>
+    stats: [
+      {
+        id: "projects",
+        label: "Projects",
+        value: 24,
+      },
+      {
+        id: "followers",
+        label: "Followers",
+        value: 1280,
+      },
+      {
+        id: "experience",
+        label: "Experience",
+        value: "5 years",
+      },
+    ],
 
-          <section className="aui-demo-profile-page__section">
-            <h2>Activity</h2>
+    sections: [
+      {
+        id: "about",
+        title: "About",
+        description:
+          "Building accessible and scalable interfaces with React and modern web technologies.",
+        items: [
+          {
+            id: "role",
+            label: "Role",
+            value: "Frontend Developer",
+          },
+          {
+            id: "location",
+            label: "Location",
+            value: "Vietnam",
+          },
+          {
+            id: "availability",
+            label: "Availability",
+            value: "Available",
+          },
+        ],
+      },
+      {
+        id: "activity",
+        title: "Activity",
+        items: [
+          {
+            id: "profile-update",
+            label: "Updated profile",
+            value: "2 hours ago",
+          },
+          {
+            id: "new-project",
+            label: "Published a new project",
+            value: "Yesterday",
+          },
+          {
+            id: "community",
+            label: "Joined AssembleUI community",
+            value: "3 days ago",
+          },
+        ],
+      },
+      {
+        id: "projects",
+        title: "Projects",
+        description:
+          "Recent projects created by this profile.",
+        items: [
+          {
+            id: "assemble-ui",
+            label: "AssembleUI",
+            value: "React UI library",
+          },
+          {
+            id: "examination",
+            label: "Examination",
+            value: "Quiz data-processing library",
+          },
+        ],
+      },
+    ],
 
-            <div className="aui-demo-profile-page__activity">
-              <article>
-                <strong>Updated profile</strong>
-                <span>2 hours ago</span>
-              </article>
+    details: [
+      {
+        id: "location",
+        label: "Location",
+        value: "Vietnam",
+      },
+      {
+        id: "experience",
+        label: "Experience",
+        value: "5 years",
+      },
+      {
+        id: "projects",
+        label: "Projects",
+        value: "24",
+      },
+      {
+        id: "joined",
+        label: "Joined",
+        value: "2024",
+      },
+    ],
+  };
 
-              <article>
-                <strong>Published a new project</strong>
-                <span>Yesterday</span>
-              </article>
-
-              <article>
-                <strong>Joined AssembleUI community</strong>
-                <span>3 days ago</span>
-              </article>
-            </div>
-          </section>
-
-          <section className="aui-demo-profile-page__section">
-            <div className="aui-demo-profile-page__section-header">
-              <div>
-                <h2>Projects</h2>
-                <p>
-                  Recent projects created by this profile.
-                </p>
-              </div>
-
-              <Button>
-                View all
-              </Button>
-            </div>
-          </section>
-        </div>
-      }
-      sidebar={
-        <div className="aui-demo-profile-page__sidebar">
-          <section className="aui-demo-profile-page__section">
-            <h2>Profile details</h2>
-
-            <dl className="aui-demo-profile-page__details">
-              <div>
-                <dt>Location</dt>
-                <dd>Vietnam</dd>
-              </div>
-
-              <div>
-                <dt>Experience</dt>
-                <dd>5 years</dd>
-              </div>
-
-              <div>
-                <dt>Projects</dt>
-                <dd>24</dd>
-              </div>
-
-              <div>
-                <dt>Joined</dt>
-                <dd>2024</dd>
-              </div>
-            </dl>
-          </section>
-
-          <section className="aui-demo-profile-page__section">
-            <h2>Quick actions</h2>
-
-            <div className="aui-demo-profile-page__quick-actions">
-              <Button variant="secondary">
-                Message
-              </Button>
-
-              <Button variant="secondary">
-                Share profile
-              </Button>
-            </div>
-          </section>
-        </div>
-      }
-    />
-  );
+  return <ProfilePageTemplate data={data} />;
 }

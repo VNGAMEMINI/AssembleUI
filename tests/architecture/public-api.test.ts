@@ -25,7 +25,7 @@ describe("Architecture: public API", () => {
     expect(Patterns.UserCard).toBeDefined();
   });
 
-  it("does not expose a Template before one exists", () => {
-    expect(Object.keys(Templates)).toHaveLength(0);
+  it("exposes Templates from the templates entry point", () => {
+    expect(Templates.ProfilePageTemplate).toBeDefined();
   });
 });
