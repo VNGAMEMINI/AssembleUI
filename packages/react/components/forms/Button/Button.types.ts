@@ -10,9 +10,9 @@ export type ButtonVariant =
   | "ghost";
 
 export type ButtonSize =
-  | "small"
-  | "medium"
-  | "large";
+  | "sm"
+  | "md"
+  | "lg";
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {

@@ -114,7 +114,7 @@ describe("SearchBar", () => {
       <SearchBar
         buttonProps={{
           variant: "secondary",
-          size: "large",
+          size: "lg",
           disabled: true,
         }}
       />,

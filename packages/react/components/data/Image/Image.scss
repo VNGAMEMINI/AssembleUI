@@ -25,21 +25,21 @@
 }
 
 .aui-image--radius-none {
-  border-radius: 0;
+  border-radius: var(--aui-radius-none);
 }
 
 .aui-image--radius-sm {
-  border-radius: 0.25rem;
+  border-radius: var(--aui-radius-sm);
 }
 
 .aui-image--radius-md {
-  border-radius: 0.5rem;
+  border-radius: var(--aui-radius-md);
 }
 
 .aui-image--radius-lg {
-  border-radius: 0.75rem;
+  border-radius: var(--aui-radius-lg);
 }
 
 .aui-image--radius-full {
-  border-radius: 9999px;
+  border-radius: var(--aui-radius-full);
 }

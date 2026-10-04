@@ -32,8 +32,8 @@ describe("Image", () => {
     );
   });
 
-  it("supports custom fit", () => {
-    const { container } = render(
+  it("supports all fit values", () => {
+    const { container, rerender } = render(
       <Image
         src="/images/example.jpg"
         alt="Example"
@@ -43,6 +43,54 @@ describe("Image", () => {
 
     expect(container.firstChild).toHaveClass(
       "aui-image--fit-contain",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        fit="cover"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--fit-cover",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        fit="fill"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--fit-fill",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        fit="none"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--fit-none",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        fit="scale-down"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--fit-scale-down",
     );
   });
 
@@ -59,8 +107,44 @@ describe("Image", () => {
     );
   });
 
-  it("supports custom radius", () => {
-    const { container } = render(
+  it("supports all radius values", () => {
+    const { container, rerender } = render(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        radius="none"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--radius-none",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        radius="sm"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--radius-sm",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        radius="md"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--radius-md",
+    );
+
+    rerender(
       <Image
         src="/images/example.jpg"
         alt="Example"
@@ -70,6 +154,18 @@ describe("Image", () => {
 
     expect(container.firstChild).toHaveClass(
       "aui-image--radius-lg",
+    );
+
+    rerender(
+      <Image
+        src="/images/example.jpg"
+        alt="Example"
+        radius="full"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass(
+      "aui-image--radius-full",
     );
   });
 

@@ -33,8 +33,20 @@ describe("Chip", () => {
     );
   });
 
-  it("supports sizes", () => {
-    render(<Chip size="lg">Large</Chip>);
+  it("supports all sizes", () => {
+    const { rerender } = render(<Chip size="sm">Small</Chip>);
+
+    expect(screen.getByText("Small").parentElement).toHaveClass(
+      "aui-chip--sm",
+    );
+
+    rerender(<Chip size="md">Medium</Chip>);
+
+    expect(screen.getByText("Medium").parentElement).toHaveClass(
+      "aui-chip--md",
+    );
+
+    rerender(<Chip size="lg">Large</Chip>);
 
     expect(screen.getByText("Large").parentElement).toHaveClass(
       "aui-chip--lg",

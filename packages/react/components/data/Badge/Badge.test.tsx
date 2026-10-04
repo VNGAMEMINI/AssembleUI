@@ -25,10 +25,18 @@ describe("Badge", () => {
     expect(screen.getByText("Active")).toHaveClass("aui-badge--success");
   });
 
-  it("supports sizes", () => {
-    render(<Badge size="sm">Small</Badge>);
+  it("supports all sizes", () => {
+    const { rerender } = render(<Badge size="sm">Small</Badge>);
 
     expect(screen.getByText("Small")).toHaveClass("aui-badge--sm");
+
+    rerender(<Badge size="md">Medium</Badge>);
+
+    expect(screen.getByText("Medium")).toHaveClass("aui-badge--md");
+
+    rerender(<Badge size="lg">Large</Badge>);
+
+    expect(screen.getByText("Large")).toHaveClass("aui-badge--lg");
   });
 
   it("merges custom className", () => {

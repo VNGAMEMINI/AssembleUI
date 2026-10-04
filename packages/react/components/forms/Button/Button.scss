@@ -35,8 +35,8 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--aui-state-focus-ring);
-    outline-offset: 2px;
+    outline: var(--aui-border-width-medium) solid var(--aui-state-focus-ring);
+    outline-offset: var(--aui-space-1);
   }
 
   &:disabled {
@@ -45,18 +45,18 @@
   }
 }
 
-.aui-button--small {
+.aui-button--sm {
   min-height: var(--aui-space-8);
   padding-inline: var(--aui-space-3);
   font-size: var(--aui-font-size-sm);
 }
 
-.aui-button--medium {
+.aui-button--md {
   min-height: var(--aui-space-10);
   padding-inline: var(--aui-space-4);
 }
 
-.aui-button--large {
+.aui-button--lg {
   min-height: var(--aui-space-12);
   padding-inline: var(--aui-space-5);
   font-size: var(--aui-font-size-lg);
