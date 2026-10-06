@@ -7,3 +7,5 @@ export * from "./Popover";
 
 export * from "./Dropdown";
 export * from "./Menu";
+export * from "./Tabs";
+export * from "./Accordion";
