@@ -12,3 +12,4 @@ export * from "./EmptyState";
 export * from "./FilterBar";
 
 export * from "./PaginationBar";
+export * from "./DataToolbar";
