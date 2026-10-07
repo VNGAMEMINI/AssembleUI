@@ -8,3 +8,4 @@ export * from "./Switch";
 export * from "./Combobox";
 
 export * from "./DatePicker";
+export * from "./TimePicker";
