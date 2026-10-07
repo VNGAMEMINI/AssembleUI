@@ -9,3 +9,4 @@ export * from "./Dropdown";
 export * from "./Menu";
 export * from "./Tabs";
 export * from "./Accordion";
+export * from "./Stepper";
