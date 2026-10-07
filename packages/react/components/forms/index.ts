@@ -6,3 +6,5 @@ export * from "./Select";
 export * from "./Textarea";
 export * from "./Switch";
 export * from "./Combobox";
+
+export * from "./DatePicker";
