@@ -11,3 +11,4 @@ export * from "./DataGrid";
 export * from "./Tree";
 export * from "./DescriptionList";
 export * from "./Timeline";
+export * from "./Calendar";
