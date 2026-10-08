@@ -16,3 +16,4 @@ export * from "./DataToolbar";
 export * from "./ListHeader";
 export * from "./FormSection";
 export * from "./ContentHeader";
+export * from "./StatsOverview";
