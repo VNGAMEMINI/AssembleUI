@@ -25,3 +25,4 @@ export * from "./FileInput";
 export * from "./Autocomplete";
 
 export * from "./SearchInput";
+export * from "./Toggle";
