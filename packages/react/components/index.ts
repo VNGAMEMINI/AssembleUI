@@ -6,4 +6,3 @@ export * from "./feedback";
 export * from "./interaction";
 export * from "./navigation";
 
-export * from "./data";
