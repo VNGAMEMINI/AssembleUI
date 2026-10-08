@@ -5,3 +5,4 @@ export * from "./Image";
 export * from "./Table";
 export * from "./List";
 export * from "./Card";
+export * from "./Stat";

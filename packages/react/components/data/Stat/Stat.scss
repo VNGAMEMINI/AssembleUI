@@ -1,0 +1,44 @@
+.aui-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-space-1);
+
+  width: 100%;
+}
+
+.aui-stat__label {
+  color: var(--aui-color-text);
+
+  font-size: var(--aui-font-size-sm);
+}
+
+.aui-stat__value {
+  color: var(--aui-color-text);
+
+  font-size: var(--aui-font-size-md);
+  font-weight: var(--aui-font-weight-medium);
+}
+
+.aui-stat__description {
+  color: var(--aui-color-text);
+
+  font-size: var(--aui-font-size-xs);
+}
+
+.aui-stat--positive {
+  .aui-stat__value {
+    color: var(--aui-color-success);
+  }
+}
+
+.aui-stat--negative {
+  .aui-stat__value {
+    color: var(--aui-color-danger);
+  }
+}
+
+.aui-stat--neutral {
+  .aui-stat__value {
+    color: var(--aui-color-text);
+  }
+}
