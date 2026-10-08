@@ -13,3 +13,5 @@ export * from "./Label";
 export * from "./Field";
 
 export * from "./PasswordInput";
+
+export * from "./NumberInput";
