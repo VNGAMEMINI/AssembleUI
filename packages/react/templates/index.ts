@@ -5,3 +5,4 @@
  */
 
 export * from "./ProfilePageTemplate";
+export * from "./DashboardPageTemplate";
