@@ -1,0 +1,40 @@
+.aui-card {
+  width: 100%;
+
+  color: var(--aui-color-text);
+  background: var(--aui-color-surface);
+
+  border-radius: var(--aui-radius-md);
+}
+
+.aui-card--default {
+  border: var(--aui-border-width-thin) solid
+    transparent;
+}
+
+.aui-card--outlined {
+  border: var(--aui-border-width-thin) solid
+    var(--aui-color-border);
+}
+
+.aui-card--elevated {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 8%),
+    0 4px 12px rgb(0 0 0 / 6%);
+}
+
+.aui-card--padding-none {
+  padding: 0;
+}
+
+.aui-card--padding-sm {
+  padding: var(--aui-space-2);
+}
+
+.aui-card--padding-md {
+  padding: var(--aui-space-4);
+}
+
+.aui-card--padding-lg {
+  padding: var(--aui-space-6);
+}
