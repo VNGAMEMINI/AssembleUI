@@ -1,0 +1,49 @@
+.aui-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+
+  &__star {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--aui-color-border, #d1d5db);
+    cursor: pointer;
+    overflow: hidden;
+
+    &:focus-visible {
+      outline: 2px solid var(--aui-color-primary, #2563eb);
+      outline-offset: 2px;
+      border-radius: 0.25rem;
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  &__star-base,
+  &__star-fill {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  &__star-fill {
+    width: var(--aui-rating-fill);
+    overflow: hidden;
+    color: var(--aui-color-warning, #f59e0b);
+  }
+
+  &--readonly {
+    .aui-rating__star {
+      pointer-events: none;
+    }
+  }
+}

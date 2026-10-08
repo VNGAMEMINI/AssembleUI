@@ -12,3 +12,5 @@ export * from "./Tree";
 export * from "./DescriptionList";
 export * from "./Timeline";
 export * from "./Calendar";
+
+export * from "./Rating";
