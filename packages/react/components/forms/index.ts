@@ -21,3 +21,5 @@ export * from "./Slider";
 export * from "./Form";
 
 export * from "./FileInput";
+
+export * from "./Autocomplete";
