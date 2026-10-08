@@ -1,0 +1,47 @@
+.aui-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.aui-form-section__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.aui-form-section__heading {
+  min-width: 0;
+}
+
+.aui-form-section__title {
+  margin: 0;
+}
+
+.aui-form-section__description {
+  margin-top: 0.375rem;
+}
+
+.aui-form-section__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.aui-form-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .aui-form-section__header {
+    flex-direction: column;
+  }
+
+  .aui-form-section__actions {
+    width: 100%;
+  }
+}
