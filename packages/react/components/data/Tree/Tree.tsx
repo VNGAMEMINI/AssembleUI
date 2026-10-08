@@ -101,6 +101,7 @@ const TreeNodeItem = ({
             selected && "aui-tree__label--selected",
           )}
           disabled={node.disabled}
+          aria-selected={selected}
           onClick={handleSelect}
         >
           {node.label}
