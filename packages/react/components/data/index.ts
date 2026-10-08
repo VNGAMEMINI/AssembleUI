@@ -9,3 +9,4 @@ export * from "./Stat";
 
 export * from "./DataGrid";
 export * from "./Tree";
+export * from "./DescriptionList";
