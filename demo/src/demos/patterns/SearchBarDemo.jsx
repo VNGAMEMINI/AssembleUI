@@ -12,7 +12,6 @@ export function SearchBarDemo() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     setSubmittedQuery(query.trim());
   }
 
@@ -31,6 +30,12 @@ export function SearchBarDemo() {
         }}
         buttonLabel="Tìm"
       />
+
+      {submittedQuery ? (
+        <p>
+          Kết quả tìm kiếm: <strong>{submittedQuery}</strong>
+        </p>
+      ) : null}
     </div>
   );
 }
