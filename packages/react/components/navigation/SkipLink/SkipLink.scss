@@ -1,0 +1,19 @@
+.aui-skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--aui-color-primary, #2563eb);
+  color: var(--aui-color-on-primary, #ffffff);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 150ms ease;
+
+  &:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid
+      var(--aui-color-focus, #2563eb);
+    outline-offset: 2px;
+  }
+}
