@@ -23,3 +23,5 @@ export * from "./Form";
 export * from "./FileInput";
 
 export * from "./Autocomplete";
+
+export * from "./SearchInput";
