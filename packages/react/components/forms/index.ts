@@ -17,3 +17,5 @@ export * from "./PasswordInput";
 export * from "./NumberInput";
 
 export * from "./Slider";
+
+export * from "./Form";
