@@ -6,3 +6,5 @@ export * from "./Table";
 export * from "./List";
 export * from "./Card";
 export * from "./Stat";
+
+export * from "./DataGrid";
