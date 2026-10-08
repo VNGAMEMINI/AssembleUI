@@ -19,3 +19,5 @@ export * from "./NumberInput";
 export * from "./Slider";
 
 export * from "./Form";
+
+export * from "./FileInput";
