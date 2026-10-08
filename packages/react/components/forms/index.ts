@@ -15,3 +15,5 @@ export * from "./Field";
 export * from "./PasswordInput";
 
 export * from "./NumberInput";
+
+export * from "./Slider";
