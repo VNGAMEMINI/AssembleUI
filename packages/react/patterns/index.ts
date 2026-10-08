@@ -15,3 +15,4 @@ export * from "./PaginationBar";
 export * from "./DataToolbar";
 export * from "./ListHeader";
 export * from "./FormSection";
+export * from "./ContentHeader";
