@@ -9,3 +9,5 @@ export * from "./Combobox";
 
 export * from "./DatePicker";
 export * from "./TimePicker";
+export * from "./Label";
+export * from "./Field";
