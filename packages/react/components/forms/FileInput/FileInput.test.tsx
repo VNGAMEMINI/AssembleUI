@@ -45,17 +45,22 @@ describe("FileInput", () => {
       { type: "text/plain" },
     );
 
-    fireEvent.change(
-      screen.getByLabelText("Upload file"),
-      {
-        target: {
-          files: [file],
-        },
+    const input = screen.getByLabelText("Upload file");
+
+    const fileList = {
+      0: file,
+      length: 1,
+      item: (index: number) => (index === 0 ? file : null),
+    } as unknown as FileList;
+
+    fireEvent.change(input, {
+      target: {
+        files: fileList,
       },
-    );
+    });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[0][0]).toBeInstanceOf(FileList);
+    expect(onChange.mock.calls[0][0]).toBe(fileList);
     expect(onChange.mock.calls[0][0][0]).toBe(file);
   });
 
