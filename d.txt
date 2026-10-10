@@ -1,1 +1,7 @@
-
+(Components, Patterns)
+Autocomplete, Breadcrumb, Calendar, Callout, DataGrid, DescriptionList, DatePicker, Divider, Field, Form, Rating, SkipLink, Stat, Tooltip, ..còn khá nhiều
+(phải chỉnh sửa)
+- phải được chỉnh sữa
+- giao diện chưa được tốt
+- về cách sử dụng
+- tái sử dụng và tùy biến
