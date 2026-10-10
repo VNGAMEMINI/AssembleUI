@@ -39,8 +39,6 @@ export default defineConfig({
 
       "@assemble-ui/react": path.join(packageRoot, "index.ts"),
 
-      "@assemble-ui/react/": `${packageRoot}/`,
-
       "@": packageRoot,
     },
   },

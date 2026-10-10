@@ -1,0 +1,17 @@
+.aui-data-grid {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.aui-data-grid__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.aui-data-grid__head th {
+  text-align: left;
+}
+
+.aui-data-grid__empty {
+  text-align: center;
+}

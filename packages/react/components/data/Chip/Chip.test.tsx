@@ -17,24 +17,62 @@ describe("Chip", () => {
     expect(screen.getByText("React")).toBeInTheDocument();
   });
 
-  it("uses the neutral variant by default", () => {
+  it("uses neutral and md by default", () => {
     render(<Chip>React</Chip>);
 
     expect(screen.getByText("React").parentElement).toHaveClass(
+      "aui-chip",
+      "aui-chip--neutral",
+      "aui-chip--md",
+    );
+  });
+
+  it("supports every declared variant", () => {
+    const { rerender } = render(<Chip variant="neutral">Neutral</Chip>);
+
+    expect(screen.getByText("Neutral").parentElement).toHaveClass(
       "aui-chip--neutral",
     );
-  });
 
-  it("supports variants", () => {
-    render(<Chip variant="success">Active</Chip>);
+    rerender(<Chip variant="primary">Primary</Chip>);
 
-    expect(screen.getByText("Active").parentElement).toHaveClass(
+    expect(screen.getByText("Primary").parentElement).toHaveClass(
+      "aui-chip--primary",
+    );
+
+    rerender(<Chip variant="success">Success</Chip>);
+
+    expect(screen.getByText("Success").parentElement).toHaveClass(
       "aui-chip--success",
+    );
+
+    rerender(<Chip variant="warning">Warning</Chip>);
+
+    expect(screen.getByText("Warning").parentElement).toHaveClass(
+      "aui-chip--warning",
+    );
+
+    rerender(<Chip variant="danger">Danger</Chip>);
+
+    expect(screen.getByText("Danger").parentElement).toHaveClass(
+      "aui-chip--danger",
     );
   });
 
-  it("supports sizes", () => {
-    render(<Chip size="lg">Large</Chip>);
+  it("supports all sizes", () => {
+    const { rerender } = render(<Chip size="sm">Small</Chip>);
+
+    expect(screen.getByText("Small").parentElement).toHaveClass(
+      "aui-chip--sm",
+    );
+
+    rerender(<Chip size="md">Medium</Chip>);
+
+    expect(screen.getByText("Medium").parentElement).toHaveClass(
+      "aui-chip--md",
+    );
+
+    rerender(<Chip size="lg">Large</Chip>);
 
     expect(screen.getByText("Large").parentElement).toHaveClass(
       "aui-chip--lg",

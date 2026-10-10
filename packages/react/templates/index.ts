@@ -4,4 +4,5 @@
  * Public entry point for page-level templates.
  */
 
-export {};
+export * from "./ProfilePageTemplate";
+export * from "./DashboardPageTemplate";

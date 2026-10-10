@@ -3,7 +3,7 @@ import type { CheckboxProps } from "./Checkbox.types";
 
 import {
   classNames,
-  generateId,
+  createAccessibilityMetadata,
 } from "../../../core/utils";
 
 const Checkbox = forwardRef<
@@ -25,37 +25,22 @@ const Checkbox = forwardRef<
     },
     ref,
   ) => {
-    const checkboxId =
-      id ?? generateId("aui-checkbox");
-
-    const descriptionId = description
-      ? `${checkboxId}-description`
-      : undefined;
-
-    const errorId = error
-      ? `${checkboxId}-error`
-      : undefined;
-
-    const generatedDescribedBy = [
-      description && !error ? descriptionId : undefined,
+    const {
+      id: checkboxId,
+      descriptionId,
       errorId,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    const describedBy = [
+      describedBy,
+      ariaInvalid,
+    } = createAccessibilityMetadata({
+      id,
+      idPrefix: "aui-checkbox",
+      description,
+      error,
       externalDescribedBy,
-      generatedDescribedBy,
-    ]
-      .filter(Boolean)
-      .join(" ") || undefined;
+      externalInvalid,
+    });
 
-    const invalid = Boolean(error);
-
-    const ariaInvalid =
-      error != null
-        ? true
-        : externalInvalid;
+    const invalid = error != null;
 
     return (
       <div className="aui-checkbox-field">
@@ -89,7 +74,7 @@ const Checkbox = forwardRef<
           )}
         </div>
 
-        {description != null && !error && (
+        {description != null && error == null && (
           <div
             className="aui-checkbox-field__description"
             id={descriptionId}

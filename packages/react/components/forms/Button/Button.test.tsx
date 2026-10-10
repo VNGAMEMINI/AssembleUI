@@ -22,13 +22,13 @@ describe("Button", () => {
     expect(button).toHaveClass(
       "aui-button",
       "aui-button--primary",
-      "aui-button--medium",
+      "aui-button--md",
     );
   });
 
   it("supports variant and size", () => {
     render(
-      <Button variant="danger" size="large">
+      <Button variant="danger" size="lg">
         Delete
       </Button>,
     );
@@ -39,8 +39,16 @@ describe("Button", () => {
 
     expect(button).toHaveClass(
       "aui-button--danger",
-      "aui-button--large",
+      "aui-button--lg",
     );
+  });
+
+  it("uses button type by default", () => {
+    render(<Button>Save</Button>);
+
+    expect(
+      screen.getByRole("button", { name: "Save" }),
+    ).toHaveAttribute("type", "button");
   });
 
   it("supports disabled state", () => {

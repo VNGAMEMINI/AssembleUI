@@ -1,0 +1,36 @@
+.aui-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-space-2);
+  width: 100%;
+}
+
+.aui-field__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aui-space-1);
+  color: var(--aui-color-text);
+  font-size: var(--aui-font-size-sm);
+  font-weight: var(--aui-font-weight-medium);
+  line-height: 1.4;
+}
+
+.aui-field__required {
+  color: var(--aui-color-danger);
+}
+
+.aui-field__control {
+  width: 100%;
+}
+
+.aui-field__description {
+  color: var(--aui-color-text-muted);
+  font-size: var(--aui-font-size-xs);
+  line-height: 1.4;
+}
+
+.aui-field__error {
+  color: var(--aui-color-danger);
+  font-size: var(--aui-font-size-xs);
+  line-height: 1.4;
+}

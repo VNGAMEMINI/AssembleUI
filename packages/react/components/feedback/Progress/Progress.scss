@@ -1,0 +1,49 @@
+.aui-progress {
+  width: 100%;
+  overflow: hidden;
+  background: var(--aui-color-surface-muted);
+  border-radius: var(--aui-radius-full);
+}
+
+.aui-progress__bar {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--aui-color-primary);
+  transition:
+    width var(--aui-motion-duration-normal)
+    var(--aui-motion-ease-standard);
+}
+
+.aui-progress--sm {
+  height: var(--aui-space-1);
+}
+
+.aui-progress--md {
+  height: var(--aui-space-2);
+}
+
+.aui-progress--lg {
+  height: var(--aui-space-3);
+}
+
+.aui-progress--primary .aui-progress__bar {
+  background: var(--aui-color-primary);
+}
+
+.aui-progress--success .aui-progress__bar {
+  background: var(--aui-color-success);
+}
+
+.aui-progress--warning .aui-progress__bar {
+  background: var(--aui-color-warning);
+}
+
+.aui-progress--danger .aui-progress__bar {
+  background: var(--aui-color-danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-progress__bar {
+    transition: none;
+  }
+}

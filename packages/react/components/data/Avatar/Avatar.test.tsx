@@ -1,5 +1,3 @@
-import { createRef } from "react";
-
 import { describe, expect, it } from "vitest";
 
 import { fireEvent, render, screen } from "@testing-library/react";
@@ -45,10 +43,26 @@ describe("Avatar", () => {
     expect(screen.getByText("AB")).toBeInTheDocument();
   });
 
-  it("supports sizes", () => {
+  it("uses md size and circle shape by default", () => {
+    render(<Avatar>A</Avatar>);
+
+    const avatar = screen.getByText("A").parentElement;
+
+    expect(avatar).toHaveClass(
+      "aui-avatar",
+      "aui-avatar--md",
+      "aui-avatar--circle",
+    );
+  });
+
+  it("supports every declared size", () => {
     const { rerender } = render(<Avatar size="sm">A</Avatar>);
 
     expect(screen.getByText("A").parentElement).toHaveClass("aui-avatar--sm");
+
+    rerender(<Avatar size="md">A</Avatar>);
+
+    expect(screen.getByText("A").parentElement).toHaveClass("aui-avatar--md");
 
     rerender(<Avatar size="lg">A</Avatar>);
 
@@ -120,5 +134,34 @@ describe("Avatar", () => {
     const fallback = screen.getByText("AB");
 
     expect(fallback).not.toHaveAttribute("aria-hidden");
+  });
+
+  it("retries when src changes after an image error", () => {
+    const { rerender } = render(
+      <Avatar src="/avatar-a.png" alt="User avatar">
+        AB
+      </Avatar>,
+    );
+
+    const firstImage = screen.getByRole("img", {
+      name: "User avatar",
+    });
+
+    fireEvent.error(firstImage);
+
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    expect(screen.getByText("AB")).toBeInTheDocument();
+
+    rerender(
+      <Avatar src="/avatar-b.png" alt="User avatar">
+        AB
+      </Avatar>,
+    );
+
+    const secondImage = screen.getByRole("img", {
+      name: "User avatar",
+    });
+
+    expect(secondImage).toHaveAttribute("src", "/avatar-b.png");
   });
 });

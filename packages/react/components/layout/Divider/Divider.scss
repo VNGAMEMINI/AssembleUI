@@ -1,0 +1,17 @@
+.aui-divider {
+  flex-shrink: 0;
+  border: 0;
+  background: var(--aui-color-border);
+}
+
+.aui-divider--horizontal {
+  width: 100%;
+  height: var(--aui-border-width-thin);
+  margin: 0;
+}
+
+.aui-divider--vertical {
+  width: var(--aui-border-width-thin);
+  height: 100%;
+  min-height: var(--aui-space-4);
+}

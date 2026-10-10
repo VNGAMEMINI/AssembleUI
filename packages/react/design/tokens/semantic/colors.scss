@@ -6,7 +6,6 @@
 
   --aui-color-background: #{$white};
   --aui-color-surface: #{$gray-50};
-  --aui-color-surface-raised: #{$white};
   --aui-color-surface-muted: #{$gray-100};
 
   --aui-color-text: #{$gray-900};
@@ -17,16 +16,21 @@
   --aui-color-on-primary: #{$white};
 
   --aui-color-success: #{$green-600};
+  --aui-color-success-subtle: #{$green-50};
   --aui-color-on-success: #{$white};
 
   --aui-color-warning: #{$yellow-600};
+  --aui-color-warning-subtle: #{$yellow-50};
   --aui-color-on-warning: #{$gray-900};
 
   --aui-color-danger: #{$red-600};
+  --aui-color-danger-subtle: #{$red-50};
   --aui-color-on-danger: #{$white};
 
   --aui-color-info: #{$blue-600};
+  --aui-color-info-subtle: #{$blue-50};
   --aui-color-on-info: #{$white};
 
+  --aui-color-overlay: #{rgba($black, 0.5)};
   --aui-color-transparent: #{$transparent};
 }

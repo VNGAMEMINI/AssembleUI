@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@assemble-ui/react": [
+        "./packages/react/index.ts"
+      ],
+      "@assemble-ui/react/components": [
+        "./packages/react/components/index.ts"
+      ],
+      "@assemble-ui/react/patterns": [
+        "./packages/react/patterns/index.ts"
+      ],
+      "@assemble-ui/react/templates": [
+        "./packages/react/templates/index.ts"
+      ],
+      "@assemble-ui/react/*": [
+        "./packages/react/*"
+      ]
+    },
+    "types": [
+      "vitest/globals"
+    ]
+  },
+  "include": [
+    "packages",
+    "demo",
+    "playground",
+    "tests"
+  ]
+}

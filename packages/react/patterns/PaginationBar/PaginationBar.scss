@@ -1,0 +1,31 @@
+.aui-pagination-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--aui-space-4);
+  width: 100%;
+}
+
+.aui-pagination-bar__summary {
+  min-width: 0;
+  color: var(--aui-color-text-muted);
+  font-family: var(--aui-font-family-base);
+  font-size: var(--aui-text-body-size);
+}
+
+.aui-pagination-bar__pagination {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 48rem) {
+  .aui-pagination-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .aui-pagination-bar__pagination {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

@@ -1,0 +1,201 @@
+import { createRef } from "react";
+import { render, screen } from "@testing-library/react";
+import { Breadcrumb } from "./Breadcrumb";
+
+describe("Breadcrumb", () => {
+  const items = [
+    { id: "home", label: "Home", href: "/" },
+    { id: "products", label: "Products", href: "/products" },
+    { id: "current", label: "Current" },
+  ];
+
+  it("renders all items", () => {
+    render(<Breadcrumb items={items} />);
+
+    expect(screen.getByText("Home")).toBeInTheDocument();
+    expect(screen.getByText("Products")).toBeInTheDocument();
+    expect(screen.getByText("Current")).toBeInTheDocument();
+  });
+
+  it("renders navigation semantics", () => {
+    render(<Breadcrumb items={items} />);
+
+    expect(
+      screen.getByRole("navigation", { name: "Breadcrumb" }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders links for non-current items", () => {
+    render(<Breadcrumb items={items} />);
+
+    expect(
+      screen.getByRole("link", { name: "Home" }),
+    ).toHaveAttribute("href", "/");
+
+    expect(
+      screen.getByRole("link", { name: "Products" }),
+    ).toHaveAttribute("href", "/products");
+  });
+
+  it("marks the current item", () => {
+    render(<Breadcrumb items={items} />);
+
+    expect(screen.getByText("Current")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  it("uses the supplied separator", () => {
+    render(<Breadcrumb items={items} separator=">" />);
+
+    expect(screen.getAllByText(">")).toHaveLength(2);
+  });
+
+  it("supports an explicit current item", () => {
+    render(
+      <Breadcrumb
+        items={[
+          { id: "home", label: "Home", href: "/" },
+          { id: "products", 
+            label: "Products",
+            href: "/products",
+            current: true,
+          },
+          { id: "details", label: "Details", href: "/details" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByText("Products")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  it("uses the explicit current item instead of forcing the last item", () => {
+    render(
+      <Breadcrumb
+        items={[
+          { id: "home", label: "Home", href: "/" },
+          { id: "products", 
+            label: "Products",
+            href: "/products",
+            current: true,
+          },
+          { id: "details", label: "Details", href: "/details" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByText("Products")).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+
+    expect(screen.getByText("Details")).not.toHaveAttribute(
+      "aria-current",
+    );
+  });
+
+  it("renders the explicit current item as a label even when it has an href", () => {
+    render(
+      <Breadcrumb
+        items={[
+          { id: "home", label: "Home", href: "/" },
+          {
+            id: "products",
+            label: "Products",
+            href: "/products",
+            current: true,
+          },
+        ]}
+      />,
+    );
+
+    const current = screen.getByText("Products");
+
+    expect(current.tagName).toBe("SPAN");
+    expect(current).toHaveAttribute("aria-current", "page");
+    expect(
+      screen.queryByRole("link", { name: "Products" }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("supports className", () => {
+    render(
+      <Breadcrumb
+        items={items}
+        className="custom-breadcrumb"
+      />,
+    );
+
+    expect(screen.getByRole("navigation")).toHaveClass(
+      "aui-breadcrumb",
+      "custom-breadcrumb",
+    );
+  });
+
+  it("renders ReactNode labels", () => {
+    render(
+      <Breadcrumb
+        items={[
+          { id: "home", label: <strong>Home</strong> },
+          { id: "current", label: "Current" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByText("Home").tagName).toBe("STRONG");
+  });
+
+  it("forwards native attributes", () => {
+    render(
+      <Breadcrumb
+        items={items}
+        id="main-breadcrumb"
+        data-testid="breadcrumb"
+      />,
+    );
+
+    const navigation = screen.getByRole("navigation", {
+      name: "Breadcrumb",
+    });
+
+    expect(navigation).toHaveAttribute(
+      "id",
+      "main-breadcrumb",
+    );
+    expect(navigation).toHaveAttribute(
+      "data-testid",
+      "breadcrumb",
+    );
+  });
+
+  it("forwards a ref to the navigation element", () => {
+    const ref = createRef<HTMLElement>();
+
+    render(<Breadcrumb ref={ref} items={items} />);
+
+    expect(ref.current).toBe(
+      screen.getByRole("navigation", {
+        name: "Breadcrumb",
+      }),
+    );
+  });
+
+  it("allows a custom aria-label", () => {
+    render(
+      <Breadcrumb
+        items={items}
+        aria-label="Product breadcrumbs"
+      />,
+    );
+
+    expect(
+      screen.getByRole("navigation", {
+        name: "Product breadcrumbs",
+      }),
+    ).toBeInTheDocument();
+  });
+});

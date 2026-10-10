@@ -1,0 +1,34 @@
+.aui-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.aui-icon > svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.aui-icon--xs {
+  font-size: var(--aui-font-size-xs);
+}
+
+.aui-icon--sm {
+  font-size: var(--aui-font-size-sm);
+}
+
+.aui-icon--md {
+  font-size: var(--aui-font-size-md);
+}
+
+.aui-icon--lg {
+  font-size: var(--aui-font-size-lg);
+}
+
+.aui-icon--xl {
+  font-size: var(--aui-font-size-xl);
+}

@@ -1,0 +1,30 @@
+.aui-dashboard-page-template {
+  display: grid;
+  gap: var(--aui-space-6);
+  width: 100%;
+  min-width: 0;
+  color: var(--aui-color-text);
+}
+
+.aui-dashboard-page-template__header,
+.aui-dashboard-page-template__stats,
+.aui-dashboard-page-template__toolbar,
+.aui-dashboard-page-template__content,
+.aui-dashboard-page-template__pagination {
+  min-width: 0;
+}
+
+.aui-dashboard-page-template__content {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.aui-dashboard-page-template__pagination {
+  width: 100%;
+}
+
+@media (max-width: 48rem) {
+  .aui-dashboard-page-template {
+    gap: var(--aui-space-5);
+  }
+}

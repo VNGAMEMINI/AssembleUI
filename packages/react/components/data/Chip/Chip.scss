@@ -1,3 +1,4 @@
+@use "../../../styles/mixins/focus";
 @use "../../../styles/mixins/interactive";
 
 .aui-chip {
@@ -82,10 +83,6 @@
     cursor: pointer;
 
     @include interactive.interactive;
-  }
-
-  &__remove:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 1px;
+    @include focus.focus-ring;
   }
 }

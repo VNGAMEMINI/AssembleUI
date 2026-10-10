@@ -1,0 +1,30 @@
+.aui-description-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.aui-description-list--columns-1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.aui-description-list--columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.aui-description-list--columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.aui-description-list__item {
+  min-width: 0;
+}
+
+.aui-description-list__label {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+}
+
+.aui-description-list__value {
+  margin: 0;
+}

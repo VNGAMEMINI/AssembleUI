@@ -1,0 +1,45 @@
+.aui-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.aui-image--fit-contain {
+  object-fit: contain;
+}
+
+.aui-image--fit-cover {
+  object-fit: cover;
+}
+
+.aui-image--fit-fill {
+  object-fit: fill;
+}
+
+.aui-image--fit-none {
+  object-fit: none;
+}
+
+.aui-image--fit-scale-down {
+  object-fit: scale-down;
+}
+
+.aui-image--radius-none {
+  border-radius: var(--aui-radius-none);
+}
+
+.aui-image--radius-sm {
+  border-radius: var(--aui-radius-sm);
+}
+
+.aui-image--radius-md {
+  border-radius: var(--aui-radius-md);
+}
+
+.aui-image--radius-lg {
+  border-radius: var(--aui-radius-lg);
+}
+
+.aui-image--radius-full {
+  border-radius: var(--aui-radius-full);
+}

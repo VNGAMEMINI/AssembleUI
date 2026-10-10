@@ -1,0 +1,69 @@
+@use "../../../styles/mixins/focus" as focus;
+
+.aui-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+
+  padding: 0;
+  border: 0;
+  margin: 0;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  line-height: 1;
+
+  cursor: pointer;
+
+  @include focus.focus-ring;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: var(--aui-state-disabled-opacity);
+  }
+}
+
+.aui-icon-button__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  vertical-align: middle;
+
+  > svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+}
+
+.aui-icon-button--sm {
+  width: var(--aui-space-8);
+  height: var(--aui-space-8);
+
+  .aui-icon-button__icon {
+    font-size: var(--aui-font-size-sm);
+  }
+}
+
+.aui-icon-button--md {
+  width: var(--aui-space-10);
+  height: var(--aui-space-10);
+
+  .aui-icon-button__icon {
+    font-size: var(--aui-font-size-md);
+  }
+}
+
+.aui-icon-button--lg {
+  width: var(--aui-space-12);
+  height: var(--aui-space-12);
+
+  .aui-icon-button__icon {
+    font-size: var(--aui-font-size-lg);
+  }
+}

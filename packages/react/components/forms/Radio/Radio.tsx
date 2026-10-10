@@ -3,7 +3,7 @@ import type { RadioProps } from "./Radio.types";
 
 import {
   classNames,
-  generateId,
+  createAccessibilityMetadata,
 } from "../../../core/utils";
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
@@ -22,36 +22,22 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     },
     ref,
   ) => {
-    const radioId = id ?? generateId("aui-radio");
-
-    const descriptionId = description
-      ? `${radioId}-description`
-      : undefined;
-
-    const errorId = error
-      ? `${radioId}-error`
-      : undefined;
-
-    const generatedDescribedBy = [
-      description && !error ? descriptionId : undefined,
+    const {
+      id: radioId,
+      descriptionId,
       errorId,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    const describedBy = [
+      describedBy,
+      ariaInvalid,
+    } = createAccessibilityMetadata({
+      id,
+      idPrefix: "aui-radio",
+      description,
+      error,
       externalDescribedBy,
-      generatedDescribedBy,
-    ]
-      .filter(Boolean)
-      .join(" ") || undefined;
+      externalInvalid,
+    });
 
-    const invalid = Boolean(error);
-
-    const ariaInvalid =
-      error != null
-        ? true
-        : externalInvalid;
+    const invalid = error != null;
 
     return (
       <div className="aui-radio-field">
@@ -85,7 +71,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
           )}
         </div>
 
-        {description != null && !error && (
+        {description != null && error == null && (
           <div
             className="aui-radio-field__description"
             id={descriptionId}

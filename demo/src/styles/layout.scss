@@ -1,0 +1,13 @@
+.demo-layout {
+  min-height: 100vh;
+}
+
+.demo-preview {
+  min-width: 0;
+}
+
+@media (max-width: 48rem) {
+  .demo-layout {
+    width: 100%;
+  }
+}

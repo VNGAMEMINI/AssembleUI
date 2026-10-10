@@ -1,0 +1,31 @@
+.aui-text {
+  margin: 0;
+  font-family: var(--aui-font-family-base);
+  font-size: var(--aui-text-body-size);
+  font-weight: var(--aui-text-body-weight);
+  color: var(--aui-color-text);
+}
+
+.aui-text--xs {
+  font-size: var(--aui-font-size-xs);
+}
+
+.aui-text--sm {
+  font-size: var(--aui-font-size-sm);
+}
+
+.aui-text--md {
+  font-size: var(--aui-font-size-md);
+}
+
+.aui-text--lg {
+  font-size: var(--aui-font-size-lg);
+}
+
+.aui-text--default {
+  color: var(--aui-color-text);
+}
+
+.aui-text--muted {
+  color: var(--aui-color-text-muted);
+}

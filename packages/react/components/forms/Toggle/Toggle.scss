@@ -1,0 +1,11 @@
+.aui-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.aui-toggle--pressed {
+  // State styling is intentionally minimal.
+  // Consumers can customize the visual state.
+}

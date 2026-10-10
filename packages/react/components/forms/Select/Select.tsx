@@ -4,7 +4,7 @@ import type { SelectProps } from "./Select.types";
 
 import {
   classNames,
-  generateId,
+  createAccessibilityMetadata,
 } from "../../../core/utils";
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -23,36 +23,22 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
-    const selectId = id ?? generateId("aui-select");
-
-    const descriptionId = description
-      ? `${selectId}-description`
-      : undefined;
-
-    const errorId = error
-      ? `${selectId}-error`
-      : undefined;
-
-    const generatedDescribedBy = [
-      description && !error ? descriptionId : undefined,
+    const {
+      id: selectId,
+      descriptionId,
       errorId,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    const describedBy = [
+      describedBy,
+      ariaInvalid,
+    } = createAccessibilityMetadata({
+      id,
+      idPrefix: "aui-select",
+      description,
+      error,
       externalDescribedBy,
-      generatedDescribedBy,
-    ]
-      .filter(Boolean)
-      .join(" ") || undefined;
+      externalInvalid,
+    });
 
-    const invalid = Boolean(error);
-
-    const ariaInvalid =
-      error != null
-        ? true
-        : externalInvalid;
+    const invalid = error != null;
 
     return (
       <div className="aui-select-field">
@@ -83,7 +69,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           aria-describedby={describedBy}
         />
 
-        {description != null && !error && (
+        {description != null && error == null && (
           <div
             className="aui-select-field__description"
             id={descriptionId}

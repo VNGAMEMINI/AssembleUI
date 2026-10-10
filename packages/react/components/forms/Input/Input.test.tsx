@@ -139,6 +139,19 @@ it("preserves external aria-describedby", () => {
   expect(input).toHaveAttribute("aria-describedby", "external-help");
 });
 
+it("preserves external aria-invalid when there is no error", () => {
+  render(
+    <Input
+      aria-invalid="true"
+      label="Username"
+    />,
+  );
+
+  const input = screen.getByLabelText("Username");
+
+  expect(input).toHaveAttribute("aria-invalid", "true");
+});
+
 it("merges external aria-describedby with generated description", () => {
   render(
     <Input aria-describedby="external-help" description="Your username" />,

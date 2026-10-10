@@ -1,6 +1,6 @@
 import type {
-  SelectHTMLAttributes,
   ReactNode,
+  SelectHTMLAttributes,
 } from "react";
 
 export interface SelectProps

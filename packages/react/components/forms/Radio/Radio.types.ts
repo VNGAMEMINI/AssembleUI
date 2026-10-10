@@ -3,7 +3,6 @@ import type {
   ReactNode,
 } from "react";
 
-
 export interface RadioProps
   extends Omit<
     InputHTMLAttributes<HTMLInputElement>,

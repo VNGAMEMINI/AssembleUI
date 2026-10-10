@@ -13,22 +13,50 @@ describe("Badge", () => {
     expect(screen.getByText("New")).toBeInTheDocument();
   });
 
-  it("uses the neutral variant by default", () => {
+  it("uses neutral and md by default", () => {
     render(<Badge>New</Badge>);
 
-    expect(screen.getByText("New")).toHaveClass("aui-badge--neutral");
+    expect(screen.getByText("New")).toHaveClass(
+      "aui-badge",
+      "aui-badge--neutral",
+      "aui-badge--md",
+    );
   });
 
-  it("supports variants", () => {
-    render(<Badge variant="success">Active</Badge>);
+  it("supports every declared variant", () => {
+    const { rerender } = render(<Badge variant="neutral">Neutral</Badge>);
 
-    expect(screen.getByText("Active")).toHaveClass("aui-badge--success");
+    expect(screen.getByText("Neutral")).toHaveClass("aui-badge--neutral");
+
+    rerender(<Badge variant="success">Success</Badge>);
+
+    expect(screen.getByText("Success")).toHaveClass("aui-badge--success");
+
+    rerender(<Badge variant="warning">Warning</Badge>);
+
+    expect(screen.getByText("Warning")).toHaveClass("aui-badge--warning");
+
+    rerender(<Badge variant="danger">Danger</Badge>);
+
+    expect(screen.getByText("Danger")).toHaveClass("aui-badge--danger");
+
+    rerender(<Badge variant="info">Info</Badge>);
+
+    expect(screen.getByText("Info")).toHaveClass("aui-badge--info");
   });
 
-  it("supports sizes", () => {
-    render(<Badge size="sm">Small</Badge>);
+  it("supports all sizes", () => {
+    const { rerender } = render(<Badge size="sm">Small</Badge>);
 
     expect(screen.getByText("Small")).toHaveClass("aui-badge--sm");
+
+    rerender(<Badge size="md">Medium</Badge>);
+
+    expect(screen.getByText("Medium")).toHaveClass("aui-badge--md");
+
+    rerender(<Badge size="lg">Large</Badge>);
+
+    expect(screen.getByText("Large")).toHaveClass("aui-badge--lg");
   });
 
   it("merges custom className", () => {

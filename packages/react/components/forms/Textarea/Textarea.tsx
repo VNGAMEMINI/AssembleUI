@@ -4,7 +4,7 @@ import type { TextareaProps } from "./Textarea.types";
 
 import {
   classNames,
-  generateId,
+  createAccessibilityMetadata,
 } from "../../../core/utils";
 
 const Textarea = forwardRef<
@@ -26,39 +26,22 @@ const Textarea = forwardRef<
     },
     ref,
   ) => {
-    const textareaId =
-      id ?? generateId("aui-textarea");
-
-    const descriptionId = description
-      ? `${textareaId}-description`
-      : undefined;
-
-    const errorId = error
-      ? `${textareaId}-error`
-      : undefined;
-
-    const generatedDescribedBy = [
-      description && !error
-        ? descriptionId
-        : undefined,
+    const {
+      id: textareaId,
+      descriptionId,
       errorId,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    const describedBy = [
+      describedBy,
+      ariaInvalid,
+    } = createAccessibilityMetadata({
+      id,
+      idPrefix: "aui-textarea",
+      description,
+      error,
       externalDescribedBy,
-      generatedDescribedBy,
-    ]
-      .filter(Boolean)
-      .join(" ") || undefined;
+      externalInvalid,
+    });
 
-    const invalid = Boolean(error);
-
-    const ariaInvalid =
-      error != null
-        ? true
-        : externalInvalid;
+    const invalid = error != null;
 
     return (
       <div className="aui-textarea-field">
@@ -89,7 +72,7 @@ const Textarea = forwardRef<
           aria-describedby={describedBy}
         />
 
-        {description != null && !error && (
+        {description != null && error == null && (
           <div
             className="aui-textarea-field__description"
             id={descriptionId}

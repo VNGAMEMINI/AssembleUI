@@ -1,0 +1,39 @@
+.aui-spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  border: var(--aui-border-width-medium) solid var(--aui-color-border);
+  border-top-color: var(--aui-color-primary);
+  border-radius: var(--aui-radius-full);
+  animation:
+    aui-spinner-rotate
+    var(--aui-motion-duration-normal)
+    var(--aui-motion-ease-standard)
+    infinite;
+}
+
+.aui-spinner--sm {
+  width: var(--aui-space-4);
+  height: var(--aui-space-4);
+}
+
+.aui-spinner--md {
+  width: var(--aui-space-6);
+  height: var(--aui-space-6);
+}
+
+.aui-spinner--lg {
+  width: var(--aui-space-8);
+  height: var(--aui-space-8);
+}
+
+@keyframes aui-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-spinner {
+    animation: none;
+  }
+}

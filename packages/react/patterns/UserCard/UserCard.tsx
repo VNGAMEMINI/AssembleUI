@@ -1,9 +1,20 @@
 import { forwardRef } from "react";
+
 import { Avatar } from "../../components/data/Avatar";
 import { Badge } from "../../components/data/Badge";
-import { Button } from "../../components/forms/Button";
-import type { UserCardProps } from "./UserCard.types";
 import { classNames } from "../../core/utils";
+
+import type { UserCardProps } from "./UserCard.types";
+
+function getInitials(name: string): string {
+  return name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
 
 const UserCard = forwardRef<HTMLElement, UserCardProps>(
   (
@@ -12,9 +23,9 @@ const UserCard = forwardRef<HTMLElement, UserCardProps>(
       description,
       avatarSrc,
       avatarAlt,
+      avatarFallback,
       badge,
-      actionLabel,
-      onAction,
+      action,
       className,
       ...props
     },
@@ -25,13 +36,23 @@ const UserCard = forwardRef<HTMLElement, UserCardProps>(
       ref={ref}
       className={classNames("aui-user-card", className)}
     >
-      <Avatar src={avatarSrc} alt={avatarAlt ?? name} size="lg" />
+      <Avatar
+        src={avatarSrc}
+        alt={avatarAlt ?? name}
+        size="lg"
+      >
+        {avatarFallback ?? getInitials(name)}
+      </Avatar>
 
       <div className="aui-user-card__content">
         <div className="aui-user-card__header">
-          <h3 className="aui-user-card__name">{name}</h3>
+          <h3 className="aui-user-card__name">
+            {name}
+          </h3>
 
-          {badge != null && <Badge>{badge}</Badge>}
+          {badge != null && (
+            <Badge>{badge}</Badge>
+          )}
         </div>
 
         {description != null && (
@@ -40,10 +61,10 @@ const UserCard = forwardRef<HTMLElement, UserCardProps>(
           </div>
         )}
 
-        {actionLabel != null && (
-          <Button type="button" size="small" onClick={onAction}>
-            {actionLabel}
-          </Button>
+        {action != null && (
+          <div className="aui-user-card__action">
+            {action}
+          </div>
         )}
       </div>
     </article>

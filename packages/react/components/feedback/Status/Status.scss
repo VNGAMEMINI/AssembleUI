@@ -1,0 +1,32 @@
+.aui-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aui-space-2);
+  font-family: var(--aui-font-family-base);
+  font-size: var(--aui-text-body-size);
+  font-weight: var(--aui-text-body-weight);
+  color: var(--aui-color-text);
+}
+
+.aui-status__indicator {
+  width: var(--aui-space-2);
+  height: var(--aui-space-2);
+  flex: 0 0 auto;
+  border-radius: var(--aui-radius-full);
+  background: var(--aui-color-text-muted);
+}
+.aui-status--success .aui-status__indicator {
+  background: var(--aui-color-success);
+}
+
+.aui-status--warning .aui-status__indicator {
+  background: var(--aui-color-warning);
+}
+
+.aui-status--danger .aui-status__indicator {
+  background: var(--aui-color-danger);
+}
+
+.aui-status--info .aui-status__indicator {
+  background: var(--aui-color-info);
+}

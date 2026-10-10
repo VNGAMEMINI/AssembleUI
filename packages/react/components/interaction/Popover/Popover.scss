@@ -1,0 +1,43 @@
+.aui-popover {
+  position: fixed;
+  z-index: 1100;
+
+  min-width: 12rem;
+  max-width: min(
+    24rem,
+    calc(100vw - (var(--aui-space-4) * 2))
+  );
+
+  padding: var(--aui-space-4);
+
+  color: var(--aui-color-text);
+  background: var(--aui-color-surface);
+
+  border:
+    var(--aui-border-width-thin)
+    solid
+    var(--aui-color-border);
+
+  border-radius: var(--aui-radius-md);
+
+  box-shadow: var(--aui-shadow-lg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aui-popover {
+    animation:
+      aui-popover-enter
+      120ms
+      ease-out;
+  }
+}
+
+@keyframes aui-popover-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

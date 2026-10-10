@@ -6,7 +6,7 @@ import * as Patterns from "@assemble-ui/react/patterns";
 import * as Templates from "@assemble-ui/react/templates";
 
 describe("package exports", () => {
-  it("exports all form components from root", () => {
+  it("exports form components from root", () => {
     expect(Root.Button).toBeDefined();
     expect(Root.Input).toBeDefined();
     expect(Root.Checkbox).toBeDefined();
@@ -16,7 +16,7 @@ describe("package exports", () => {
     expect(Root.Switch).toBeDefined();
   });
 
-  it("exports all form components from components entry", () => {
+  it("exports components from components entry", () => {
     expect(Components.Button).toBeDefined();
     expect(Components.Input).toBeDefined();
     expect(Components.Checkbox).toBeDefined();
@@ -26,11 +26,23 @@ describe("package exports", () => {
     expect(Components.Switch).toBeDefined();
   });
 
-  it("exports patterns from the patterns entry", () => {
-    expect(Patterns.FormField).toBeDefined();
+  it("exports all current patterns from root", () => {
+    expect(Root.ActionMenu).toBeDefined();
+    expect(Root.SearchBar).toBeDefined();
+    expect(Root.UserCard).toBeDefined();
   });
 
-  it("keeps templates entry independent", () => {
-    expect(Object.keys(Templates)).toEqual([]);
+  it("exports all current patterns from patterns entry", () => {
+    expect(Patterns.ActionMenu).toBeDefined();
+    expect(Patterns.SearchBar).toBeDefined();
+    expect(Patterns.UserCard).toBeDefined();
+  });
+
+  it("exports current templates from root", () => {
+    expect(Root.ProfilePageTemplate).toBeDefined();
+  });
+
+  it("exports current templates from templates entry", () => {
+    expect(Templates.ProfilePageTemplate).toBeDefined();
   });
 });

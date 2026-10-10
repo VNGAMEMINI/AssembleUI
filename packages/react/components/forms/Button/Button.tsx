@@ -8,10 +8,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant = "primary",
-      size = "medium",
+      size = "md",
       className,
       children,
       disabled,
+      type = "button",
       ...props
     },
     ref,
@@ -20,6 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         {...props}
         ref={ref}
+        type={type}
         className={classNames(
           "aui-button",
           `aui-button--${variant}`,

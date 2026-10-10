@@ -232,6 +232,22 @@ describe("Textarea", () => {
     );
   });
 
+  it("preserves external aria-invalid when there is no error", () => {
+    render(
+      <Textarea
+        aria-invalid="true"
+        label="Description"
+      />,
+    );
+
+    const textarea = screen.getByLabelText("Description");
+
+    expect(textarea).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+  });
+
   it("merges external aria-describedby with generated description", () => {
     render(
       <Textarea
