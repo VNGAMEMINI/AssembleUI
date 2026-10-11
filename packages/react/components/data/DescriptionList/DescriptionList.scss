@@ -1,6 +1,6 @@
 .aui-description-list {
   display: grid;
-  gap: 1rem;
+  gap: var(--aui-space-4);
   margin: 0;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .aui-description-list__label {
-  margin: 0 0 0.25rem;
+  margin: 0 0 var(--aui-space-1);
   font-weight: 600;
 }
 

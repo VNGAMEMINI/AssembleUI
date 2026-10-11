@@ -103,8 +103,8 @@ function readTemplateEntry(
 describe("Template contract", () => {
   const templates = getTemplateNames();
 
-  it("allows the template layer to be empty", () => {
-    expect(templates).toBeDefined();
+  it("contains at least one Template", () => {
+    expect(templates.length).toBeGreaterThan(0);
   });
 
   it.each(templates)(

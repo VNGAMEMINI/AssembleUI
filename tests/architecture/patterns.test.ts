@@ -1,15 +1,8 @@
 import { describe, expect, it } from "vitest";
-import {
-  existsSync,
-  readdirSync,
-  readFileSync,
-} from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const patternsRoot = join(
-  process.cwd(),
-  "packages/react/patterns",
-);
+const patternsRoot = join(process.cwd(), "packages/react/patterns");
 
 function getPatternDirectories(): string[] {
   if (!existsSync(patternsRoot)) {
@@ -19,11 +12,7 @@ function getPatternDirectories(): string[] {
   return readdirSync(patternsRoot, {
     withFileTypes: true,
   })
-    .filter(
-      (entry) =>
-        entry.isDirectory() &&
-        !entry.name.startsWith("."),
-    )
+    .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
     .map((entry) => join(patternsRoot, entry.name));
 }
 
@@ -81,21 +70,14 @@ describe("Architecture: Pattern contract", () => {
       const source = readFileSync(sourcePath, "utf8");
 
       const importPattern =
-        /(?:from\s+|import\s*\(\s*)["']([^"']+)["']/g;
+        /\b(?:import|export)\s+(?:type\s+)?(?:[\w$\s{},*]+?\sfrom\s*)?["']([^"']+)["']|\bimport\s*\(\s*["']([^"']+)["']\s*\)/g;
 
       for (const match of source.matchAll(importPattern)) {
-        const importPath = match[1];
+        const importPath = match[1] ?? match[2];
 
-        if (
-          /(?:^|\/)(templates|registry|Registry)(?:\/|$)/.test(
-            importPath,
-          )
-        ) {
+        if (/(?:^|\/)(templates|registry|Registry)(?:\/|$)/.test(importPath)) {
           violations.push(
-            `${relative(
-              process.cwd(),
-              sourcePath,
-            )} -> ${importPath}`,
+            `${relative(process.cwd(), sourcePath)} -> ${importPath}`,
           );
         }
       }
@@ -118,20 +100,17 @@ describe("Architecture: Pattern contract", () => {
       const source = readFileSync(sourcePath, "utf8");
 
       const importPattern =
-        /(?:from\s+|import\s*\(\s*)["']([^"']+)["']/g;
+        /\b(?:import|export)\s+(?:type\s+)?(?:[\w$\s{},*]+?\sfrom\s*)?["']([^"']+)["']|\bimport\s*\(\s*["']([^"']+)["']\s*\)/g;
 
       for (const match of source.matchAll(importPattern)) {
-        const importPath = match[1];
+        const importPath = match[1] ?? match[2];
 
         if (
           importPath.includes("/patterns/") ||
           importPath === "@assemble-ui/react/patterns"
         ) {
           violations.push(
-            `${relative(
-              process.cwd(),
-              sourcePath,
-            )} -> ${importPath}`,
+            `${relative(process.cwd(), sourcePath)} -> ${importPath}`,
           );
         }
       }

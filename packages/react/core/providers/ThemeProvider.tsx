@@ -13,14 +13,23 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
+  // Capture the document's original theme once and restore it on unmount.
   useEffect(() => {
     const root = document.documentElement;
-
-    root.setAttribute("data-aui-theme", theme);
+    const previousTheme = root.getAttribute("data-aui-theme");
 
     return () => {
-      root.removeAttribute("data-aui-theme");
+      if (previousTheme === null) {
+        root.removeAttribute("data-aui-theme");
+      } else {
+        root.setAttribute("data-aui-theme", previousTheme);
+      }
     };
+  }, []);
+
+  // Theme changes must not trigger restoration of the original attribute.
+  useEffect(() => {
+    document.documentElement.setAttribute("data-aui-theme", theme);
   }, [theme]);
 
   return (

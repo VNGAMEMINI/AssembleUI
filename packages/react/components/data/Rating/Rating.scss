@@ -1,7 +1,7 @@
 .aui-rating {
   display: inline-flex;
   align-items: center;
-  gap: 0.125rem;
+  gap: var(--aui-space-1);
 
   &__star {
     position: relative;
@@ -10,14 +10,14 @@
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--aui-color-border, #d1d5db);
+    color: var(--aui-color-border);
     cursor: pointer;
     overflow: hidden;
 
     &:focus-visible {
-      outline: 2px solid var(--aui-color-primary, #2563eb);
-      outline-offset: 2px;
-      border-radius: 0.25rem;
+      outline: 2px solid var(--aui-state-focus-ring);
+      outline-offset: var(--aui-space-1);
+      border-radius: var(--aui-radius-sm);
     }
 
     &:disabled {
@@ -38,7 +38,7 @@
   &__star-fill {
     width: var(--aui-rating-fill);
     overflow: hidden;
-    color: var(--aui-color-warning, #f59e0b);
+    color: var(--aui-color-warning);
   }
 
   &--readonly {
