@@ -1,15 +1,6 @@
 import { describe, expect, it } from "vitest";
-import {
-  existsSync,
-  readFileSync,
-  readdirSync,
-} from "node:fs";
-import {
-  dirname,
-  join,
-  relative,
-  resolve,
-} from "node:path";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { dirname, join, relative, resolve } from "node:path";
 
 const packageRoot = join(process.cwd(), "packages/react");
 
@@ -49,35 +40,23 @@ function getSourceFiles(directory: string): string[] {
   return files;
 }
 
-function getImports(directory: string): Array<{
-  file: string;
-  importPath: string;
-}> {
-  const importPattern =
-    /(?:from\s+|import\s*\(\s*)["']([^"']+)["']/g;
-
+function getImports(directory: string): Array<{ file: string; importPath: string }> {
   return getSourceFiles(directory).flatMap((file) => {
     const source = readFileSync(file, "utf8");
-    const imports: Array<{
-      file: string;
-      importPath: string;
-    }> = [];
+    const importPattern =
+      /\b(?:import|export)\s+(?:type\s+)?(?:[\w$\s{},*]+?\sfrom\s*)?["']([^"']+)["']|\bimport\s*\(\s*["']([^"']+)["']\s*\)/g;
+    const imports: Array<{ file: string; importPath: string }> = [];
+    let match: RegExpExecArray | null;
 
-    for (const match of source.matchAll(importPattern)) {
-      imports.push({
-        file,
-        importPath: match[1],
-      });
+    while ((match = importPattern.exec(source)) !== null) {
+      imports.push({ file, importPath: match[1] ?? match[2] });
     }
 
     return imports;
   });
 }
 
-function assertNoImports(
-  layer: keyof typeof layerRoots,
-  forbidden: string[],
-) {
+function assertNoImports(layer: keyof typeof layerRoots, forbidden: string[]) {
   const imports = getImports(layerRoots[layer]);
 
   const violations = imports.filter(({ importPath }) =>
@@ -110,10 +89,7 @@ function getComponentDirectories(): string[] {
       continue;
     }
 
-    const categoryPath = join(
-      layerRoots.components,
-      category.name,
-    );
+    const categoryPath = join(layerRoots.components, category.name);
 
     for (const component of readdirSync(categoryPath, {
       withFileTypes: true,
@@ -122,9 +98,7 @@ function getComponentDirectories(): string[] {
         continue;
       }
 
-      componentDirectories.push(
-        resolve(categoryPath, component.name),
-      );
+      componentDirectories.push(resolve(categoryPath, component.name));
     }
   }
 
@@ -167,8 +141,7 @@ function getComponentDirectory(
   return (
     componentDirectories.find(
       (directory) =>
-        resolvedPath === directory ||
-        resolvedPath.startsWith(`${directory}/`),
+        resolvedPath === directory || resolvedPath.startsWith(`${directory}/`),
     ) ?? null
   );
 }
@@ -179,36 +152,31 @@ function getComponentImportViolations(): Array<{
 }> {
   const componentDirectories = getComponentDirectories();
 
-  return getImports(layerRoots.components).filter(
-    ({ file, importPath }) => {
-      const importedFile = resolveImportPath(file, importPath);
+  return getImports(layerRoots.components).filter(({ file, importPath }) => {
+    const importedFile = resolveImportPath(file, importPath);
 
-      if (!importedFile) {
-        return false;
-      }
+    if (!importedFile) {
+      return false;
+    }
 
-      const importerComponent = getComponentDirectory(
-        file,
-        componentDirectories,
-      );
+    const importerComponent = getComponentDirectory(file, componentDirectories);
 
-      const importedComponent = getComponentDirectory(
-        importedFile,
-        componentDirectories,
-      );
+    const importedComponent = getComponentDirectory(
+      importedFile,
+      componentDirectories,
+    );
 
-      if (!importerComponent || !importedComponent) {
-        return false;
-      }
+    if (!importerComponent || !importedComponent) {
+      return false;
+    }
 
-      return importerComponent !== importedComponent;
-    },
-  );
+    return importerComponent !== importedComponent;
+  });
 }
 
 describe("Architecture: layer dependencies", () => {
-  it("Components must not import Patterns or Templates", () => {
-    assertNoImports("components", ["patterns", "templates"]);
+  it("Components must not import Components, Patterns, or Templates", () => {
+    assertNoImports("components", ["components", "patterns", "templates"]);
   });
 
   it("Components must not import other Components", () => {

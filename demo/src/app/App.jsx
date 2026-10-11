@@ -1,32 +1,17 @@
-import {
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import {
-  useTheme,
-} from "@assemble-ui/react";
+import { useTheme } from "@assemble-ui/react";
 
-import {
-  getDemoRegistry,
-} from "../demo-system/registry";
+import { getDemoRegistry } from "../demo-system/registry";
 
-import {
-  buildDemoNavigation,
-} from "../demo-system/navigation";
+import { buildDemoNavigation } from "../demo-system/navigation";
 
-import {
-  resolveDemo,
-} from "../demo-system/resolve";
+import { resolveDemo } from "../demo-system/resolve";
 
 import "./App.scss";
 
 function getCurrentPath() {
-  const path = window.location.hash.replace(
-    /^#/,
-    "",
-  );
+  const path = window.location.hash.replace(/^#/, "");
 
   return path || "/components/container";
 }
@@ -36,19 +21,26 @@ function formatType(type) {
 }
 
 export function App() {
-  const [path, setPath] = useState(
-    getCurrentPath,
-  );
+  const [path, setPath] = useState(getCurrentPath);
 
   const [search, setSearch] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("idle");
+
+  async function handleCopyUsage() {
+    try {
+      await navigator.clipboard.writeText(importCode);
+      setCopyStatus("copied");
+    } catch {
+      setCopyStatus("error");
+    }
+  }
 
   const { theme, setTheme } = useTheme();
 
   const demos = getDemoRegistry();
 
-  const demoNavigation = buildDemoNavigation(
-    demos,
-  );
+  const demoNavigation = buildDemoNavigation(demos);
 
   const filteredNavigation = useMemo(() => {
     const value = search.trim().toLowerCase();
@@ -61,9 +53,7 @@ export function App() {
       .map((group) => ({
         ...group,
         items: group.items.filter((item) =>
-          item.label
-            .toLowerCase()
-            .includes(value),
+          item.label.toLowerCase().includes(value),
         ),
       }))
       .filter((group) => group.items.length > 0);
@@ -74,16 +64,10 @@ export function App() {
       setPath(getCurrentPath());
     };
 
-    window.addEventListener(
-      "hashchange",
-      handleHashChange,
-    );
+    window.addEventListener("hashchange", handleHashChange);
 
     return () => {
-      window.removeEventListener(
-        "hashchange",
-        handleHashChange,
-      );
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
 
@@ -91,18 +75,29 @@ export function App() {
 
   const DemoComponent = demo.component;
 
+  const importCode = `import { ${demo.name} } from "@assemble-ui/react";`;
+
   return (
     <div className="demo-app">
-      <aside className="demo-sidebar">
+      {sidebarOpen && (
+        <button
+          className="demo-sidebar-backdrop"
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`demo-sidebar${sidebarOpen ? " demo-sidebar--open" : ""}`}
+      >
         <header className="demo-sidebar-header">
           <a
             className="demo-logo"
             href="#/components/container"
             aria-label="AssembleUI home"
           >
-            <span className="demo-logo__symbol">
-              A
-            </span>
+            <span className="demo-logo__symbol">A</span>
 
             <span className="demo-logo__content">
               <strong>AssembleUI</strong>
@@ -112,14 +107,8 @@ export function App() {
         </header>
 
         <div className="demo-sidebar-body">
-          <label
-            className="demo-search"
-            htmlFor="demo-search"
-          >
-            <span
-              className="demo-search__icon"
-              aria-hidden="true"
-            >
+          <label className="demo-search" htmlFor="demo-search">
+            <span className="demo-search__icon" aria-hidden="true">
               ⌕
             </span>
 
@@ -136,50 +125,33 @@ export function App() {
             <kbd>/</kbd>
           </label>
 
-          <nav
-            className="demo-navigation"
-            aria-label="Demo navigation"
-          >
+          <nav className="demo-navigation" aria-label="Demo navigation">
             {filteredNavigation.map((group) => (
-              <section
-                className="demo-navigation__group"
-                key={group.group}
-              >
-                <h2>
-                  {group.group}
-                </h2>
+              <section className="demo-navigation__group" key={group.group}>
+                <h2>{group.group}</h2>
 
                 <div>
                   {group.items.map((item) => {
-                    const itemPath =
-                      item.path.replace(/^#/, "");
+                    const itemPath = item.path.replace(/^#/, "");
 
-                    const active =
-                      path === itemPath;
+                    const active = path === itemPath;
 
                     return (
                       <a
                         className={[
                           "demo-navigation__item",
-                          active
-                            ? "demo-navigation__item--active"
-                            : "",
+                          active ? "demo-navigation__item--active" : "",
                         ]
                           .filter(Boolean)
                           .join(" ")}
                         href={item.path}
                         key={item.id}
-                        aria-current={
-                          active
-                            ? "page"
-                            : undefined
-                        }
+                        onClick={() => setSidebarOpen(false)}
+                        aria-current={active ? "page" : undefined}
                       >
                         <span className="demo-navigation__indicator" />
 
-                        <span>
-                          {item.label}
-                        </span>
+                        <span>{item.label}</span>
                       </a>
                     );
                   })}
@@ -188,9 +160,7 @@ export function App() {
             ))}
 
             {filteredNavigation.length === 0 && (
-              <div className="demo-navigation__empty">
-                No demos found.
-              </div>
+              <div className="demo-navigation__empty">No demos found.</div>
             )}
           </nav>
         </div>
@@ -200,11 +170,7 @@ export function App() {
             className="demo-theme"
             type="button"
             onClick={() => {
-              setTheme((current) =>
-                current === "light"
-                  ? "dark"
-                  : "light",
-              );
+              setTheme((current) => (current === "light" ? "dark" : "light"));
             }}
             aria-label="Toggle theme"
           >
@@ -213,28 +179,18 @@ export function App() {
             </span>
 
             <span className="demo-theme__text">
-              <strong>
-                {theme === "light"
-                  ? "Light"
-                  : "Dark"}
-              </strong>
+              <strong>{theme === "light" ? "Light" : "Dark"}</strong>
 
-              <small>
-                Switch appearance
-              </small>
+              <small>Switch appearance</small>
             </span>
 
             <span className="demo-theme__state">
-              {theme === "light"
-                ? "LIGHT"
-                : "DARK"}
+              {theme === "light" ? "LIGHT" : "DARK"}
             </span>
           </button>
 
           <div className="demo-sidebar-footer__meta">
-            <span>
-              {demos.length} demos
-            </span>
+            <span>{demos.length} demos</span>
 
             <span>AssembleUI</span>
           </div>
@@ -243,12 +199,20 @@ export function App() {
 
       <main className="demo-main">
         <header className="demo-topbar">
+          <button
+            className="demo-mobile-menu"
+            type="button"
+            aria-label={sidebarOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={sidebarOpen}
+            onClick={() => setSidebarOpen((open) => !open)}
+          >
+            <span aria-hidden="true">{sidebarOpen ? "×" : "☰"}</span>
+          </button>
+
           <div className="demo-topbar__path">
             <span>Explorer</span>
             <span>/</span>
-            <strong>
-              {formatType(demo.type)}
-            </strong>
+            <strong>{formatType(demo.type)}</strong>
             <span>/</span>
             <strong>{demo.title}</strong>
           </div>
@@ -274,8 +238,7 @@ export function App() {
               <h1>{demo.title}</h1>
 
               <p>
-                Interactive example and visual
-                reference for this AssembleUI
+                Interactive example and visual reference for this AssembleUI
                 {` ${demo.type}`}.
               </p>
             </div>
@@ -290,10 +253,7 @@ export function App() {
             <div className="demo-section-heading">
               <div>
                 <h2>Preview</h2>
-                <p>
-                  This example is rendered directly
-                  from the library.
-                </p>
+                <p>This example is rendered directly from the library.</p>
               </div>
             </div>
 
@@ -301,9 +261,18 @@ export function App() {
               <div className="demo-preview__toolbar">
                 <span>Interactive preview</span>
 
-                <span>
-                  {formatType(demo.type)}
-                </span>
+                <button
+                  className="demo-copy-button"
+                  type="button"
+                  onClick={handleCopyUsage}
+                  aria-live="polite"
+                >
+                  {copyStatus === "copied"
+                    ? "Copied!"
+                    : copyStatus === "error"
+                      ? "Copy failed"
+                      : "Copy import"}
+                </button>
               </div>
 
               <div className="demo-preview__canvas">
@@ -314,25 +283,23 @@ export function App() {
 
           <section className="demo-details">
             <div className="demo-detail">
-              <span>Type</span>
-              <strong>
-                {formatType(demo.type)}
-              </strong>
+              <span>Category</span>
+              <strong>{formatType(demo.type)}</strong>
             </div>
 
             <div className="demo-detail">
-              <span>Name</span>
+              <span>Element</span>
+              <strong>&lt;{demo.name}/&gt;</strong>
+            </div>
+
+            <div className="demo-detail">
+              <span>Export</span>
               <strong>{demo.name}</strong>
             </div>
 
             <div className="demo-detail">
-              <span>Route</span>
-              <strong>{demo.path}</strong>
-            </div>
-
-            <div className="demo-detail">
-              <span>Discovery</span>
-              <strong>Automatic</strong>
+              <span>Package</span>
+              <strong>@assemble-ui/react</strong>
             </div>
           </section>
         </div>

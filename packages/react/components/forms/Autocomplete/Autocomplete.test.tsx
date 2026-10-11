@@ -33,6 +33,9 @@ describe("Autocomplete", () => {
       />,
     );
 
+    const input = screen.getByRole("combobox", { name: "Framework" });
+    fireEvent.focus(input);
+
     expect(screen.getByText("React")).toBeInTheDocument();
     expect(screen.getByText("Vue")).toBeInTheDocument();
     expect(screen.getByText("Svelte")).toBeInTheDocument();
@@ -50,6 +53,7 @@ describe("Autocomplete", () => {
       name: "Framework",
     });
 
+    fireEvent.focus(input);
     fireEvent.change(input, {
       target: {
         value: "rea",
@@ -153,5 +157,75 @@ describe("Autocomplete", () => {
       "aui-autocomplete__input",
       "custom-autocomplete",
     );
+  });
+});
+
+describe("Autocomplete accessibility", () => {
+  const options = [
+    { value: "react", label: "React" },
+    { value: "vue", label: "Vue" },
+  ];
+
+  it("uses unique listbox and option IDs for multiple instances", () => {
+    render(
+      <>
+        <Autocomplete aria-label="Framework one" options={options} />
+        <Autocomplete aria-label="Framework two" options={options} />
+      </>,
+    );
+
+    const inputs = [
+      screen.getByRole("combobox", { name: "Framework one" }),
+      screen.getByRole("combobox", { name: "Framework two" }),
+    ];
+
+    expect(inputs[0].getAttribute("aria-controls")).not.toBe(
+      inputs[1].getAttribute("aria-controls"),
+    );
+
+    for (const input of inputs) {
+      fireEvent.focus(input);
+
+      const listId = input.getAttribute("aria-controls");
+      expect(listId).toBeTruthy();
+      expect(document.getElementById(listId!)).toBeInTheDocument();
+    }
+
+    const listIds = inputs.map((input) => input.getAttribute("aria-controls"));
+    expect(new Set(listIds).size).toBe(2);
+  });
+});
+
+describe("Autocomplete keyboard navigation", () => {
+  const options = [
+    { value: "react", label: "React" },
+    { value: "vue", label: "Vue" },
+  ];
+
+  it("activates options with ArrowDown and closes with Escape", () => {
+    render(
+      <Autocomplete aria-label="Framework" options={options} />,
+    );
+
+    const input = screen.getByRole("combobox", {
+      name: "Framework",
+    });
+
+    fireEvent.focus(input);
+    fireEvent.keyDown(input, { key: "ArrowDown" });
+
+    const activeId = input.getAttribute("aria-activedescendant");
+
+    expect(activeId).toBeTruthy();
+    expect(document.getElementById(activeId!)).toHaveTextContent("React");
+    expect(document.getElementById(activeId!)).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+
+    fireEvent.keyDown(input, { key: "Escape" });
+
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+    expect(input).toHaveAttribute("aria-expanded", "false");
   });
 });

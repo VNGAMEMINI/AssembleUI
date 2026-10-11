@@ -1,13 +1,16 @@
 .aui-calendar {
+  box-sizing: border-box;
   width: min(100%, 20rem);
+  border: 1px solid var(--aui-color-border);
+  border-radius: var(--aui-radius-md);
 }
 
 .aui-calendar__header {
   display: grid;
   grid-template-columns: 2rem minmax(0, 1fr) 2rem;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: var(--aui-space-2);
+  margin-bottom: var(--aui-space-3);
 }
 
 .aui-calendar__nav {
@@ -35,7 +38,7 @@
 }
 
 .aui-calendar__weekdays {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--aui-space-1);
   font-size: 0.75rem;
   text-align: center;
   opacity: 0.7;

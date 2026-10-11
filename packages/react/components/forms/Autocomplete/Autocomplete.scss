@@ -1,14 +1,99 @@
 .aui-autocomplete {
   position: relative;
   width: 100%;
+  min-width: 0;
 }
 
 .aui-autocomplete__input {
+  display: block;
+  box-sizing: border-box;
   width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: var(--aui-space-2) 40px var(--aui-space-2) var(--aui-space-3);
+  color: var(--aui-color-text);
+  background: var(--aui-color-surface);
+  border: 1px solid var(--aui-color-border);
+  border-radius: var(--aui-radius-md);
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.aui-autocomplete__input::placeholder {
+  color: var(--aui-color-text-muted);
+}
+
+.aui-autocomplete__input:hover {
+  border-color: var(--aui-color-border-hover);
+}
+
+.aui-autocomplete__input:focus {
+  border-color: var(--aui-state-focus-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-state-focus-ring) 14%, transparent);
 }
 
 .aui-autocomplete__list {
-  margin: 0;
-  padding: 0;
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  right: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  max-height: 240px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: var(--aui-space-1) 0 0;
+  padding: var(--aui-space-1);
   list-style: none;
+  color: var(--aui-color-text);
+  background: var(--aui-color-surface);
+  border: 1px solid var(--aui-color-border);
+  border-radius: var(--aui-radius-md);
+  box-shadow: var(--aui-shadow-md);
+  animation: aui-autocomplete-appear 140ms ease-out;
+}
+
+.aui-autocomplete__list [role="option"] {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  box-sizing: border-box;
+  padding: var(--aui-space-2) var(--aui-space-3);
+  border-radius: var(--aui-radius-sm);
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+.aui-autocomplete__list [role="option"]:hover,
+.aui-autocomplete__list [role="option"][aria-selected="true"] {
+  color: var(--aui-color-text);
+  background: var(--aui-color-surface-muted);
+}
+
+@keyframes aui-autocomplete-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-autocomplete__input,
+  .aui-autocomplete__list [role="option"] {
+    transition: none;
+  }
+
+  .aui-autocomplete__list {
+    animation: none;
+  }
 }

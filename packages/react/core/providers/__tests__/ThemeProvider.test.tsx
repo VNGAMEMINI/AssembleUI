@@ -104,6 +104,66 @@ describe("ThemeProvider", () => {
     act(() => root.unmount());
   });
 
+  it("restores the previous theme attribute when unmounted", () => {
+    document.documentElement.setAttribute("data-aui-theme", "custom");
+
+    const { root } = render(
+      createElement(ThemeProvider, { defaultTheme: "dark" }),
+    );
+
+    expect(document.documentElement.getAttribute("data-aui-theme")).toBe(
+      "dark",
+    );
+
+    act(() => root.unmount());
+
+    expect(document.documentElement.getAttribute("data-aui-theme")).toBe(
+      "custom",
+    );
+  });
+
+  it("restores the original theme after multiple theme changes", () => {
+    document.documentElement.setAttribute("data-aui-theme", "custom");
+
+    let updateTheme:
+      | ((theme: "light" | "dark" | "custom") => void)
+      | undefined;
+
+    function Consumer() {
+      const { setTheme } = useTheme();
+      updateTheme = setTheme;
+      return null;
+    }
+
+    const { root } = render(
+      createElement(
+        ThemeProvider,
+        { defaultTheme: "light" },
+        createElement(Consumer),
+      ),
+    );
+
+    expect(document.documentElement.getAttribute("data-aui-theme")).toBe(
+      "light",
+    );
+
+    act(() => updateTheme?.("dark"));
+    expect(document.documentElement.getAttribute("data-aui-theme")).toBe(
+      "dark",
+    );
+
+    act(() => updateTheme?.("light"));
+    expect(document.documentElement.getAttribute("data-aui-theme")).toBe(
+      "light",
+    );
+
+    act(() => root.unmount());
+
+    expect(document.documentElement.getAttribute("data-aui-theme")).toBe(
+      "custom",
+    );
+  });
+
   it("does not add a wrapper element", () => {
     const { container, root } = render(
       createElement(ThemeProvider, null, createElement("span")),

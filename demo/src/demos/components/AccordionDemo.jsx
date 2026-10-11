@@ -33,8 +33,6 @@ export function AccordionDemo() {
         aria-label="Thông tin AssembleUI"
       />
 
-      <h4>Cho phép mở nhiều mục</h4>
-
       <Accordion
         items={items}
         multiple
