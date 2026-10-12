@@ -27,7 +27,7 @@ function walk(dir) {
     const result = original.replace(
       /((?:from\s*|import\s*\()\s*["'])(\.{1,2}\/[^"']+)(["'])/g,
       (match, prefix, specifier, suffix) => {
-        if (path.extname(specifier)) return match;
+        if (/\.(?:js|mjs|cjs|json|node)$/.test(specifier)) return match;
 
         const base = path.resolve(path.dirname(file), specifier);
         const fileTarget = `${base}.d.ts`;
