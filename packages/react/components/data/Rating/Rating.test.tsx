@@ -70,4 +70,47 @@ describe("Rating", () => {
       screen.getByRole("group"),
     ).toHaveAttribute("aria-label", "Rating: 3.5 out of 5");
   });
+
+
+  it.each([
+    [-1, 0],
+    [0, 0],
+    [3.5, 3.5],
+    [5, 5],
+    [8, 5],
+    [Number.NaN, 0],
+    [Number.POSITIVE_INFINITY, 0],
+  ])("clamps value %s to %s", (value, expected) => {
+    render(<Rating value={value} />);
+
+    expect(screen.getByRole("group")).toHaveAttribute(
+      "aria-label",
+      `Rating: ${expected} out of 5`,
+    );
+  });
+
+  it("fills a fractional star using a percentage width", () => {
+    render(<Rating value={3.5} />);
+
+    const stars = screen.getAllByRole("button");
+    const fourthStarFill = stars[3].querySelector(
+      ".aui-rating__star-fill",
+    );
+
+    expect(fourthStarFill).not.toBeNull();
+    expect(
+      fourthStarFill?.getAttribute("style"),
+    ).toContain("--aui-rating-fill: 50%");
+  });
+
+  it("uses the default maximum when max is invalid", () => {
+    render(<Rating max={0} />);
+
+    expect(screen.getAllByRole("button")).toHaveLength(5);
+    expect(screen.getByRole("group")).toHaveAttribute(
+      "aria-label",
+      "Rating: 0 out of 5",
+    );
+  });
+
 });

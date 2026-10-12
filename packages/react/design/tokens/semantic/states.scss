@@ -1,7 +1,13 @@
 :root {
   --aui-state-disabled-opacity: 0.5;
+  --aui-state-disabled-cursor: not-allowed;
 
   --aui-state-focus-ring: var(--aui-color-primary);
+  --aui-state-focus-ring-width: 2px;
+  --aui-state-focus-ring-offset: var(--aui-space-1);
 
   --aui-state-hover-opacity: 0.9;
+  --aui-state-active-opacity: 0.8;
+  --aui-state-selected-opacity: 1;
+  --aui-state-loading-opacity: 0.7;
 }

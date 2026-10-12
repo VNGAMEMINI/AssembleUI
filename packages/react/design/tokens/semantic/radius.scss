@@ -1,6 +1,9 @@
 @use "../primitives/radius" as radius;
 
 :root {
+  --aui-radius-2xl: #{radius.$radius-2xl};
+  --aui-radius-3xl: #{radius.$radius-3xl};
+
   --aui-radius-none: #{radius.$radius-none};
   --aui-radius-sm: #{radius.$radius-sm};
   --aui-radius-md: #{radius.$radius-md};

@@ -1,6 +1,12 @@
 @use "../primitives/border" as border;
 
 :root {
+  --aui-border-width-thick: #{border.$border-width-thick};
+  --aui-border-style-none: #{border.$border-style-none};
+  --aui-border-style-solid: #{border.$border-style-solid};
+  --aui-border-style-dashed: #{border.$border-style-dashed};
+  --aui-border-style-dotted: #{border.$border-style-dotted};
+
   --aui-border-width-none: #{border.$border-width-none};
   --aui-border-width-thin: #{border.$border-width-thin};
   --aui-border-width-default: #{border.$border-width-default};

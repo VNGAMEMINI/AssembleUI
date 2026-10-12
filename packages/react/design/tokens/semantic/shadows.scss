@@ -1,6 +1,11 @@
 @use "../primitives/shadows" as shadows;
 
 :root {
+  --aui-shadow-xs: #{shadows.$shadow-xs};
+  --aui-shadow-xl: #{shadows.$shadow-xl};
+  --aui-shadow-2xl: #{shadows.$shadow-2xl};
+  --aui-shadow-inner: #{shadows.$shadow-inner};
+
   --aui-shadow-sm: #{shadows.$shadow-sm};
   --aui-shadow-md: #{shadows.$shadow-md};
   --aui-shadow-lg: #{shadows.$shadow-lg};

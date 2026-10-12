@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@assemble-ui/react": [
+        "../../packages/react/index.ts"
+      ],
+      "@assemble-ui/react/templates": [
+        "../../packages/react/templates/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "./template-public-types.ts"
+  ]
+}
