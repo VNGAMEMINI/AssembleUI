@@ -48,18 +48,13 @@ your application imports easier to organize.
 ```tsx
 import { Button } from "@vnallmini/react/components";
 import { UserCard } from "@vnallmini/react/patterns";
-import {
-  ProfilePageTemplate,
-} from "@vnallmini/react/templates";
+import { ProfilePageTemplate } from "@vnallmini/react/templates";
 ```
 
 The root entry also exports the public theme API:
 
 ```tsx
-import {
-  ThemeProvider,
-  useTheme,
-} from "@vnallmini/react";
+import { ThemeProvider, useTheme } from "@vnallmini/react";
 ```
 
 Theme configuration and component props should follow the API
@@ -82,7 +77,45 @@ SCSS files from the library.
 
 ## Quick start
 
-This example combines a button, a user card, and a profile page template.
+Import the components you need and the compiled stylesheet.
+
+```tsx
+// src/main.tsx
+import "@vnallmini/react/styles";
+```
+
+Create a simple profile interface:
+
+```tsx
+import { Button, ThemeProvider, UserCard } from "@vnallmini/react";
+
+export function App() {
+  return (
+    <ThemeProvider defaultTheme="light">
+      <UserCard
+        name="Alex Morgan"
+        description="Frontend developer"
+        badge="Member"
+        action={
+          <Button
+            variant="primary"
+            onClick={() => console.log("Profile opened")}
+          >
+            View profile
+          </Button>
+        }
+      />
+    </ThemeProvider>
+  );
+}
+```
+
+`Button` is a reusable component. `UserCard` is a composed pattern. `ThemeProvider` supplies the theme context and applies the active theme to the document.
+
+## Template example
+
+For page-level composition, use `ProfilePageTemplate` and provide a `data` object that follows the exported `ProfilePageData` type.
+
 
 ```tsx
 import {
@@ -96,10 +129,7 @@ function ProfileExample() {
   return (
     <ThemeProvider defaultTheme="light">
       <div>
-        <Button
-          variant="primary"
-          onClick={() => console.log("Button clicked")}
-        >
+        <Button variant="primary" onClick={() => console.log("Button clicked")}>
           Say hello
         </Button>
 
@@ -133,9 +163,7 @@ function ProfileExample() {
                 id: "about",
                 title: "About",
                 description: "A short introduction.",
-                items: [
-                  { id: "role", label: "Role", value: "Developer" },
-                ],
+                items: [{ id: "role", label: "Role", value: "Developer" }],
               },
             ],
           }}
@@ -213,13 +241,13 @@ declaration files for their public exports.
 
 ## Package exports
 
-| Import path | Purpose |
-| --- | --- |
-| `@vnallmini/react` | Root public API |
-| `@vnallmini/react/components` | Components |
-| `@vnallmini/react/patterns` | Composed patterns |
-| `@vnallmini/react/templates` | Page templates |
-| `@vnallmini/react/styles` | Compiled stylesheet |
+| Import path                   | Purpose             |
+| ----------------------------- | ------------------- |
+| `@vnallmini/react`            | Root public API     |
+| `@vnallmini/react/components` | Components          |
+| `@vnallmini/react/patterns`   | Composed patterns   |
+| `@vnallmini/react/templates`  | Page templates      |
+| `@vnallmini/react/styles`     | Compiled stylesheet |
 
 ## Development
 
