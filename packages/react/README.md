@@ -116,7 +116,6 @@ export function App() {
 
 For page-level composition, use `ProfilePageTemplate` and provide a `data` object that follows the exported `ProfilePageData` type.
 
-
 ```tsx
 import {
   Button,
