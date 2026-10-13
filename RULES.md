@@ -71,7 +71,7 @@ The application owns the style entry:
 ```text
 main.scss
    ↓
-@assemble-ui/react/styles
+@vnallmini/react/styles
 ```
 
 Component SCSS may remain colocated beside the Component, but its import belongs to the style graph, not the React graph.
@@ -122,7 +122,7 @@ No business logic, API calls, routing or application state belongs in Core.
 Consumers use package exports:
 
 ```ts
-import { Button } from "@assemble-ui/react";
+import { Button } from "@vnallmini/react";
 ```
 
 Internal source paths are not part of the public API.

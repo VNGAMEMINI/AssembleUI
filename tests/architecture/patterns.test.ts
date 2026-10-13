@@ -107,7 +107,7 @@ describe("Architecture: Pattern contract", () => {
 
         if (
           importPath.includes("/patterns/") ||
-          importPath === "@assemble-ui/react/patterns"
+          importPath === "@vnallmini/react/patterns"
         ) {
           violations.push(
             `${relative(process.cwd(), sourcePath)} -> ${importPath}`,

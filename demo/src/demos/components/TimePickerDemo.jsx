@@ -1,4 +1,4 @@
-import { TimePicker } from "@assemble-ui/react";
+import { TimePicker } from "@vnallmini/react";
 
 export function TimePickerDemo() {
   return (

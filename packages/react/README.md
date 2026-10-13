@@ -20,7 +20,7 @@ Its public API follows three composition levels:
 Install the package and its React peer dependencies:
 
 ```bash
-npm install @assemble-ui/react react react-dom
+npm install @vnallmini/react react react-dom
 ```
 
 ## Importing the public API
@@ -34,7 +34,7 @@ import {
   ProfilePageTemplate,
   ThemeProvider,
   useTheme,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 ```
 
 Use names that are exported by the library. The example illustrates
@@ -46,11 +46,11 @@ Import components, patterns, or templates separately when that makes
 your application imports easier to organize.
 
 ```tsx
-import { Button } from "@assemble-ui/react/components";
-import { UserCard } from "@assemble-ui/react/patterns";
+import { Button } from "@vnallmini/react/components";
+import { UserCard } from "@vnallmini/react/patterns";
 import {
   ProfilePageTemplate,
-} from "@assemble-ui/react/templates";
+} from "@vnallmini/react/templates";
 ```
 
 The root entry also exports the public theme API:
@@ -59,7 +59,7 @@ The root entry also exports the public theme API:
 import {
   ThemeProvider,
   useTheme,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 ```
 
 Theme configuration and component props should follow the API
@@ -73,10 +73,10 @@ For example, in a Vite React application:
 
 ```tsx
 // src/main.tsx
-import "@assemble-ui/react/styles";
+import "@vnallmini/react/styles";
 ```
 
-The `@assemble-ui/react/styles` entry resolves to the package's
+The `@vnallmini/react/styles` entry resolves to the package's
 compiled stylesheet. Applications do not need to import internal
 SCSS files from the library.
 
@@ -90,7 +90,7 @@ import {
   UserCard,
   ProfilePageTemplate,
   ThemeProvider,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 function ProfileExample() {
   return (
@@ -163,7 +163,7 @@ The components entry groups exports into these categories:
 - Navigation
 
 Import a component from the root entry or from
-`@assemble-ui/react/components`.
+`@vnallmini/react/components`.
 
 ### Patterns
 
@@ -182,7 +182,7 @@ The patterns entry currently exports:
 - `ContentHeader`
 - `StatsOverview`
 
-Import patterns from `@assemble-ui/react/patterns` or the root entry.
+Import patterns from `@vnallmini/react/patterns` or the root entry.
 
 ### Templates
 
@@ -191,7 +191,7 @@ The templates entry currently exports:
 - `ProfilePageTemplate`
 - `DashboardPageTemplate`
 
-Import templates from `@assemble-ui/react/templates` or the root entry.
+Import templates from `@vnallmini/react/templates` or the root entry.
 
 ### Theme API
 
@@ -215,11 +215,11 @@ declaration files for their public exports.
 
 | Import path | Purpose |
 | --- | --- |
-| `@assemble-ui/react` | Root public API |
-| `@assemble-ui/react/components` | Components |
-| `@assemble-ui/react/patterns` | Composed patterns |
-| `@assemble-ui/react/templates` | Page templates |
-| `@assemble-ui/react/styles` | Compiled stylesheet |
+| `@vnallmini/react` | Root public API |
+| `@vnallmini/react/components` | Components |
+| `@vnallmini/react/patterns` | Composed patterns |
+| `@vnallmini/react/templates` | Page templates |
+| `@vnallmini/react/styles` | Compiled stylesheet |
 
 ## Development
 

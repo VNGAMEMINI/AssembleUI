@@ -1,6 +1,6 @@
 import {
   Chip,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function ChipDemo() {
   return (

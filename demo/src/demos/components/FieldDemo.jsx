@@ -1,4 +1,4 @@
-import { Field, Input } from "@assemble-ui/react";
+import { Field, Input } from "@vnallmini/react";
 
 export function FieldDemo() {
   return (

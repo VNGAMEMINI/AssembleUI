@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Drawer } from "@assemble-ui/react";
+import { Button, Drawer } from "@vnallmini/react";
 
 export function DrawerDemo() {
   const [open, setOpen] = useState(false);

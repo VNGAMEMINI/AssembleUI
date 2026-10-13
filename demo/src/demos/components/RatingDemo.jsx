@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Rating } from "@assemble-ui/react";
+import { Rating } from "@vnallmini/react";
 
 export function RatingDemo() {
   const [value, setValue] = useState(3);

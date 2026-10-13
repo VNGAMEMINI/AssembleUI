@@ -20,4 +20,4 @@ interfaces with Sass and TypeScript declarations.
 ## Installation
 
 ```bash
-npm install @assemble-ui/react
+npm install @vnallmini/react

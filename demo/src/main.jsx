@@ -2,9 +2,9 @@ import { createRoot } from "react-dom/client";
 
 import {
   ThemeProvider,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
-import "@assemble-ui/react/styles";
+import "@vnallmini/react/styles";
 
 import "./styles/index.scss";
 

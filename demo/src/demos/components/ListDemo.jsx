@@ -1,6 +1,6 @@
 import {
   List,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function ListDemo() {
   return (

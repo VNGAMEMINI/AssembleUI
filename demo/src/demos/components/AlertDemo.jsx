@@ -1,4 +1,4 @@
-import { Alert } from "@assemble-ui/react";
+import { Alert } from "@vnallmini/react";
 
 export function AlertDemo() {
   return (

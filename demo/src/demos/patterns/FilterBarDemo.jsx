@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FilterBar } from "@assemble-ui/react";
+import { FilterBar } from "@vnallmini/react";
 
 export function FilterBarDemo() {
   const [applied, setApplied] = useState("Chưa áp dụng bộ lọc");

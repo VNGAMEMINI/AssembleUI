@@ -1,4 +1,4 @@
-import { Accordion } from "@assemble-ui/react";
+import { Accordion } from "@vnallmini/react";
 
 const items = [
   {

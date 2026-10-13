@@ -1,4 +1,4 @@
-import { DescriptionList } from "@assemble-ui/react";
+import { DescriptionList } from "@vnallmini/react";
 
 const items = [
   { id: "name", label: "Họ tên", value: "Nguyễn Văn An" },

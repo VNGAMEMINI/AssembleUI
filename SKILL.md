@@ -147,7 +147,7 @@ The style flow is:
 ```text
 Application
     ↓
-@assemble-ui/react/styles
+@vnallmini/react/styles
     ↓
 Foundation
     ↓
@@ -165,7 +165,7 @@ The application should load the public style entry once.
 Example:
 
 ```tsx
-import "@assemble-ui/react/styles";
+import "@vnallmini/react/styles";
 ```
 
 Components should not independently import the global AssembleUI stylesheet.
@@ -390,7 +390,7 @@ Pattern
 The primary public API is:
 
 ```tsx
-import { Button, Card, Hero, LandingPage } from "@assemble-ui/react";
+import { Button, Card, Hero, LandingPage } from "@vnallmini/react";
 ```
 
 The package should provide a unified public entry point.
@@ -398,9 +398,9 @@ The package should provide a unified public entry point.
 Granular imports may exist:
 
 ```tsx
-import { Button } from "@assemble-ui/react/components";
-import { Hero } from "@assemble-ui/react/patterns";
-import { LandingPage } from "@assemble-ui/react/templates";
+import { Button } from "@vnallmini/react/components";
+import { Hero } from "@vnallmini/react/patterns";
+import { LandingPage } from "@vnallmini/react/templates";
 ```
 
 but these are secondary entry points.
@@ -775,13 +775,13 @@ The public API must be tested separately from internal implementation.
 For example:
 
 ```tsx
-import { Button } from "@assemble-ui/react";
+import { Button } from "@vnallmini/react";
 ```
 
 and:
 
 ```tsx
-import { Button } from "@assemble-ui/react/components";
+import { Button } from "@vnallmini/react/components";
 ```
 
 should be verified according to the package's supported exports.
@@ -893,7 +893,7 @@ Fix the token architecture instead.
 When an import such as:
 
 ```tsx
-import { Button } from "@assemble-ui/react/components";
+import { Button } from "@vnallmini/react/components";
 ```
 
 fails:
@@ -952,7 +952,7 @@ docs/
 Search for outdated terminology:
 
 ```bash
-grep -R "@assembleui/react" \
+grep -R "@vnallmini/react" \
   --include="*.md" \
   --include="*.mdx" \
   .

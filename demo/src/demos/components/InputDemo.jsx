@@ -1,4 +1,4 @@
-import { Input } from "@assemble-ui/react";
+import { Input } from "@vnallmini/react";
 
 export function InputDemo() {
   return (

@@ -1,4 +1,4 @@
-import { Select } from "@assemble-ui/react";
+import { Select } from "@vnallmini/react";
 
 export function SelectDemo() {
   return (

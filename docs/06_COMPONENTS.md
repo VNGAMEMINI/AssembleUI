@@ -76,5 +76,5 @@ border-radius: var(--aui-radius-md);
 The application loads the public style entry:
 
 ```scss
-@use "@assemble-ui/react/styles";
+@use "@vnallmini/react/styles";
 ```

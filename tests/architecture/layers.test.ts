@@ -64,7 +64,7 @@ function assertNoImports(layer: keyof typeof layerRoots, forbidden: string[]) {
       (target) =>
         importPath.includes(`/${target}/`) ||
         importPath.endsWith(`/${target}`) ||
-        importPath === `@assemble-ui/react/${target}`,
+        importPath === `@vnallmini/react/${target}`,
     ),
   );
 

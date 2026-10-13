@@ -1,4 +1,4 @@
-import { Divider } from "@assemble-ui/react";
+import { Divider } from "@vnallmini/react";
 
 export function DividerDemo() {
   return (

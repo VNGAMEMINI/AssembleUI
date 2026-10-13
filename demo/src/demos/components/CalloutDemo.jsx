@@ -1,4 +1,4 @@
-import { Callout } from "@assemble-ui/react";
+import { Callout } from "@vnallmini/react";
 
 export function CalloutDemo() {
   return (

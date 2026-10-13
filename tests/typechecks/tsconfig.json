@@ -11,10 +11,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@assemble-ui/react": [
+      "@vnallmini/react": [
         "../../packages/react/index.ts"
       ],
-      "@assemble-ui/react/templates": [
+      "@vnallmini/react/templates": [
         "../../packages/react/templates/index.ts"
       ]
     }

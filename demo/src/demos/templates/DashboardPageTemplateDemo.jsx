@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DashboardPageTemplate } from "@assemble-ui/react";
+import { DashboardPageTemplate } from "@vnallmini/react";
 
 const data = {
   title: "Tổng quan dự án",

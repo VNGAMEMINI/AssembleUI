@@ -1,4 +1,4 @@
-import { Link } from "@assemble-ui/react";
+import { Link } from "@vnallmini/react";
 
 export function LinkDemo() {
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NumberInput } from "@assemble-ui/react";
+import { NumberInput } from "@vnallmini/react";
 
 export function NumberInputDemo() {
   const [value, setValue] = useState(10);
