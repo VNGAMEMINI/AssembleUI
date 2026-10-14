@@ -1,38 +1,39 @@
 @use "../primitives/colors" as *;
 
+// Default semantic color tokens and backward-compatible aliases.
 :root {
-  --aui-color-primary: #{$blue-600};
-  --aui-color-primary-hover: #{$blue-700};
+  --aui-token-color-primary: #{$blue-600};
+  --aui-token-color-primary-hover: #{$blue-700};
 
-  --aui-color-background: #{$white};
-  --aui-color-surface: #{$gray-50};
-  --aui-color-surface-muted: #{$gray-100};
-  --aui-color-surface-elevated: #{$gray-100};
+  --aui-token-color-background: #{$white};
+  --aui-token-color-surface: #{$gray-50};
+  --aui-token-color-surface-muted: #{$gray-100};
+  --aui-token-color-surface-elevated: #{$white};
 
-  --aui-color-text: #{$gray-900};
-  --aui-color-text-muted: #{$gray-600};
+  --aui-token-color-text: #{$gray-900};
+  --aui-token-color-text-muted: #{$gray-600};
 
-  --aui-color-border: #{$gray-200};
-  --aui-color-border-hover: #{$gray-300};
+  --aui-token-color-border: #{$gray-200};
+  --aui-token-color-border-hover: #{$gray-300};
 
-  --aui-color-on-primary: #{$white};
+  --aui-token-color-on-primary: #{$white};
 
-  --aui-color-success: #{$green-600};
-  --aui-color-success-subtle: #{$green-50};
-  --aui-color-on-success: #{$white};
+  --aui-token-color-success: #{$green-600};
+  --aui-token-color-success-subtle: #{$green-50};
+  --aui-token-color-on-success: #{$white};
 
-  --aui-color-warning: #{$yellow-600};
-  --aui-color-warning-subtle: #{$yellow-50};
-  --aui-color-on-warning: #{$gray-900};
+  --aui-token-color-warning: #{$yellow-600};
+  --aui-token-color-warning-subtle: #{$yellow-50};
+  --aui-token-color-on-warning: #{$gray-900};
 
-  --aui-color-danger: #{$red-600};
-  --aui-color-danger-subtle: #{$red-50};
-  --aui-color-on-danger: #{$white};
+  --aui-token-color-danger: #{$red-600};
+  --aui-token-color-danger-subtle: #{$red-50};
+  --aui-token-color-on-danger: #{$white};
 
-  --aui-color-info: #{$blue-600};
-  --aui-color-info-subtle: #{$blue-50};
-  --aui-color-on-info: #{$white};
+  --aui-token-color-info: #{$blue-600};
+  --aui-token-color-info-subtle: #{$blue-50};
+  --aui-token-color-on-info: #{$white};
 
-  --aui-color-overlay: #{rgba($black, 0.5)};
-  --aui-color-transparent: #{$transparent};
+  --aui-token-color-overlay: #{rgba($black, 0.5)};
+  --aui-token-color-transparent: #{$transparent};
 }

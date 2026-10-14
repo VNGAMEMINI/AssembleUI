@@ -1,44 +1,44 @@
 @use "../primitives/typography" as typography;
 
 :root {
-  --aui-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --aui-font-family-heading: var(--aui-font-family-base);
-  --aui-font-family-monospace: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --aui-token-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --aui-token-font-family-heading: var(--aui-token-font-family-base);
+  --aui-token-font-family-monospace: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
-  --aui-font-size-2xs: #{typography.$font-size-2xs};
-  --aui-font-size-xs: #{typography.$font-size-xs};
-  --aui-font-size-sm: #{typography.$font-size-sm};
-  --aui-font-size-md: #{typography.$font-size-md};
-  --aui-font-size-lg: #{typography.$font-size-lg};
-  --aui-font-size-xl: #{typography.$font-size-xl};
-  --aui-font-size-2xl: #{typography.$font-size-2xl};
-  --aui-font-size-3xl: #{typography.$font-size-3xl};
-  --aui-font-size-4xl: #{typography.$font-size-4xl};
-  --aui-font-size-5xl: #{typography.$font-size-5xl};
-  --aui-font-size-6xl: #{typography.$font-size-6xl};
+  --aui-token-font-size-2xs: #{typography.$font-size-2xs};
+  --aui-token-font-size-xs: #{typography.$font-size-xs};
+  --aui-token-font-size-sm: #{typography.$font-size-sm};
+  --aui-token-font-size-md: #{typography.$font-size-md};
+  --aui-token-font-size-lg: #{typography.$font-size-lg};
+  --aui-token-font-size-xl: #{typography.$font-size-xl};
+  --aui-token-font-size-2xl: #{typography.$font-size-2xl};
+  --aui-token-font-size-3xl: #{typography.$font-size-3xl};
+  --aui-token-font-size-4xl: #{typography.$font-size-4xl};
+  --aui-token-font-size-5xl: #{typography.$font-size-5xl};
+  --aui-token-font-size-6xl: #{typography.$font-size-6xl};
 
-  --aui-font-weight-normal: #{typography.$font-weight-normal};
-  --aui-font-weight-medium: #{typography.$font-weight-medium};
-  --aui-font-weight-semibold: #{typography.$font-weight-semibold};
-  --aui-font-weight-bold: #{typography.$font-weight-bold};
+  --aui-token-font-weight-normal: #{typography.$font-weight-normal};
+  --aui-token-font-weight-medium: #{typography.$font-weight-medium};
+  --aui-token-font-weight-semibold: #{typography.$font-weight-semibold};
+  --aui-token-font-weight-bold: #{typography.$font-weight-bold};
 
-  --aui-line-height-none: #{typography.$line-height-none};
-  --aui-line-height-tight: #{typography.$line-height-tight};
-  --aui-line-height-normal: #{typography.$line-height-normal};
-  --aui-line-height-relaxed: #{typography.$line-height-relaxed};
-  --aui-line-height-loose: #{typography.$line-height-loose};
+  --aui-token-line-height-none: #{typography.$line-height-none};
+  --aui-token-line-height-tight: #{typography.$line-height-tight};
+  --aui-token-line-height-normal: #{typography.$line-height-normal};
+  --aui-token-line-height-relaxed: #{typography.$line-height-relaxed};
+  --aui-token-line-height-loose: #{typography.$line-height-loose};
 
-  --aui-letter-spacing-tighter: #{typography.$letter-spacing-tighter};
-  --aui-letter-spacing-tight: #{typography.$letter-spacing-tight};
-  --aui-letter-spacing-normal: #{typography.$letter-spacing-normal};
-  --aui-letter-spacing-wide: #{typography.$letter-spacing-wide};
-  --aui-letter-spacing-wider: #{typography.$letter-spacing-wider};
-  --aui-letter-spacing-widest: #{typography.$letter-spacing-widest};
+  --aui-token-letter-spacing-tighter: #{typography.$letter-spacing-tighter};
+  --aui-token-letter-spacing-tight: #{typography.$letter-spacing-tight};
+  --aui-token-letter-spacing-normal: #{typography.$letter-spacing-normal};
+  --aui-token-letter-spacing-wide: #{typography.$letter-spacing-wide};
+  --aui-token-letter-spacing-wider: #{typography.$letter-spacing-wider};
+  --aui-token-letter-spacing-widest: #{typography.$letter-spacing-widest};
 
-  --aui-text-body-size: var(--aui-font-size-md);
-  --aui-text-body-weight: var(--aui-font-weight-normal);
-  --aui-text-body-line-height: var(--aui-line-height-normal);
-  --aui-text-heading-weight: var(--aui-font-weight-semibold);
-  --aui-text-caption-size: var(--aui-font-size-sm);
-  --aui-text-caption-line-height: var(--aui-line-height-normal);
+  --aui-token-text-body-size: var(--aui-token-font-size-md);
+  --aui-token-text-body-weight: var(--aui-token-font-weight-normal);
+  --aui-token-text-body-line-height: var(--aui-token-line-height-normal);
+  --aui-token-text-heading-weight: var(--aui-token-font-weight-semibold);
+  --aui-token-text-caption-size: var(--aui-token-font-size-sm);
+  --aui-token-text-caption-line-height: var(--aui-token-line-height-normal);
 }

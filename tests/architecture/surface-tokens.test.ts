@@ -31,16 +31,16 @@ describe("Architecture: surface tokens", () => {
 
   it("defines the elevated surface semantic token by default", () => {
     expect(semanticColors).toMatch(
-      /--aui-color-surface-elevated:\s*#\{\$gray-100\};/,
+      /--aui-token-color-surface-elevated:\s*#\{\$white\};/,
     );
   });
 
   it("overrides semantic surface tokens in the dark theme", () => {
     expect(darkTheme).toMatch(
-      /--aui-color-surface-elevated:\s*#\{\$gray-700\};/,
+      /--aui-theme-color-surface-elevated:\s*#\{\$gray-700\};/,
     );
     expect(darkTheme).toMatch(
-      /--aui-color-overlay:\s*rgba\(0,\s*0,\s*0,\s*0\.8\);/,
+      /--aui-theme-color-overlay:\s*#\{\s*rgba\(\$black,\s*0\.8\)\s*\};/,
     );
   });
 

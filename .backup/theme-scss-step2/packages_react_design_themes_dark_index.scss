@@ -1,0 +1,74 @@
+@use "../../tokens/primitives/colors" as *;
+
+[data-aui-theme="dark"] {
+  --aui-theme-color-primary: #{$blue-500};
+  --aui-theme-color-primary-hover: #{$blue-400};
+
+  --aui-theme-color-background: #{$gray-900};
+  --aui-theme-color-surface: #{$gray-800};
+  --aui-theme-color-surface-muted: #{$gray-700};
+  --aui-theme-color-surface-elevated: #{$gray-700};
+
+  --aui-theme-color-text: #{$gray-100};
+  --aui-theme-color-text-muted: #{$gray-400};
+
+  --aui-theme-color-border: #{$gray-700};
+  --aui-theme-color-border-hover: #{$gray-600};
+
+  --aui-theme-color-on-primary: #{$gray-900};
+
+  --aui-theme-color-success: #{$green-400};
+  --aui-theme-color-success-subtle: #{$green-900};
+  --aui-theme-color-on-success: #{$gray-900};
+
+  --aui-theme-color-warning: #{$yellow-400};
+  --aui-theme-color-warning-subtle: #{$yellow-900};
+  --aui-theme-color-on-warning: #{$gray-900};
+
+  --aui-theme-color-danger: #{$red-400};
+  --aui-theme-color-danger-subtle: #{$red-900};
+  --aui-theme-color-on-danger: #{$gray-900};
+
+  --aui-theme-color-info: #{$blue-400};
+  --aui-theme-color-info-subtle: #{$blue-900};
+  --aui-theme-color-on-info: #{$gray-900};
+
+  --aui-theme-color-overlay: #{rgba($black, 0.8)};
+  --aui-theme-color-transparent: #{$transparent};
+
+  // Semantic tokens resolve against the active theme scope.
+  --aui-token-color-primary: var(--aui-theme-color-primary);
+  --aui-token-color-primary-hover: var(--aui-theme-color-primary-hover);
+
+  --aui-token-color-background: var(--aui-theme-color-background);
+  --aui-token-color-surface: var(--aui-theme-color-surface);
+  --aui-token-color-surface-muted: var(--aui-theme-color-surface-muted);
+  --aui-token-color-surface-elevated: var(--aui-theme-color-surface-elevated);
+
+  --aui-token-color-text: var(--aui-theme-color-text);
+  --aui-token-color-text-muted: var(--aui-theme-color-text-muted);
+
+  --aui-token-color-border: var(--aui-theme-color-border);
+  --aui-token-color-border-hover: var(--aui-theme-color-border-hover);
+
+  --aui-token-color-on-primary: var(--aui-theme-color-on-primary);
+
+  --aui-token-color-success: var(--aui-theme-color-success);
+  --aui-token-color-success-subtle: var(--aui-theme-color-success-subtle);
+  --aui-token-color-on-success: var(--aui-theme-color-on-success);
+
+  --aui-token-color-warning: var(--aui-theme-color-warning);
+  --aui-token-color-warning-subtle: var(--aui-theme-color-warning-subtle);
+  --aui-token-color-on-warning: var(--aui-theme-color-on-warning);
+
+  --aui-token-color-danger: var(--aui-theme-color-danger);
+  --aui-token-color-danger-subtle: var(--aui-theme-color-danger-subtle);
+  --aui-token-color-on-danger: var(--aui-theme-color-on-danger);
+
+  --aui-token-color-info: var(--aui-theme-color-info);
+  --aui-token-color-info-subtle: var(--aui-theme-color-info-subtle);
+  --aui-token-color-on-info: var(--aui-theme-color-on-info);
+
+  --aui-token-color-overlay: var(--aui-theme-color-overlay);
+  --aui-token-color-transparent: var(--aui-theme-color-transparent);
+}
