@@ -23,19 +23,19 @@ Khuyến nghị sử dụng phiên bản mới nhất của các công cụ sau.
 Sử dụng npm
 
 ```bash
-npm install @assembleui/react
+npm install @vnallmini/react
 ```
 
 Hoặc
 
 ```bash
-pnpm add @assembleui/react
+pnpm add @vnallmini/react
 ```
 
 Hoặc
 
 ```bash
-yarn add @assembleui/react
+yarn add @vnallmini/react
 ```
 
 ---
@@ -49,7 +49,7 @@ Ví dụ:
 ```jsx
 // main.jsx
 
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -68,7 +68,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 Ví dụ
 
 ```jsx
-import { Button } from "@assembleui/react";
+import { Button } from "@vnallmini/react";
 
 export default function App() {
   return <Button>Hello AssembleUI</Button>;
@@ -80,7 +80,7 @@ export default function App() {
 # Sử dụng nhiều Component
 
 ```jsx
-import { Button, Input, Card } from "@assembleui/react";
+import { Button, Input, Card } from "@vnallmini/react";
 
 export default function App() {
   return (
@@ -106,7 +106,7 @@ main.jsx
 
 ↓
 
-@assembleui/react/styles
+@vnallmini/react/styles
 
 ↓
 
@@ -128,7 +128,7 @@ Browser
 Mặc định AssembleUI sử dụng Theme mặc định.
 
 ```jsx
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 ```
 
 Sau này có thể chuyển Theme.
@@ -136,13 +136,13 @@ Sau này có thể chuyển Theme.
 Ví dụ
 
 ```jsx
-import "@assembleui/react/themes/dark";
+import "@vnallmini/react/themes/dark";
 ```
 
 Hoặc
 
 ```jsx
-import "@assembleui/react/themes/light";
+import "@vnallmini/react/themes/light";
 ```
 
 Theme chỉ thay đổi Design Tokens.
@@ -180,7 +180,7 @@ Chỉ Component được import mới được đưa vào Bundle.
 Ví dụ
 
 ```jsx
-import { Button } from "@assembleui/react";
+import { Button } from "@vnallmini/react";
 ```
 
 Bundle sẽ không chứa
@@ -221,9 +221,9 @@ package.json
 # Ví dụ hoàn chỉnh
 
 ```jsx
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 
-import { Button, Card, Input } from "@assembleui/react";
+import { Button, Card, Input } from "@vnallmini/react";
 
 export default function App() {
   return (
@@ -285,7 +285,7 @@ Component không tự import CSS.
 
 ## Nên
 
-✔ Import `@assembleui/react/styles` một lần trong `main.jsx`.
+✔ Import `@vnallmini/react/styles` một lần trong `main.jsx`.
 
 ✔ Sử dụng Component thông qua package chính.
 
@@ -342,19 +342,19 @@ Khuyến nghị sử dụng phiên bản mới nhất của các công cụ sau.
 Sử dụng npm
 
 ```bash
-npm install @assembleui/react
+npm install @vnallmini/react
 ```
 
 Hoặc
 
 ```bash
-pnpm add @assembleui/react
+pnpm add @vnallmini/react
 ```
 
 Hoặc
 
 ```bash
-yarn add @assembleui/react
+yarn add @vnallmini/react
 ```
 
 ---
@@ -368,7 +368,7 @@ Ví dụ:
 ```jsx
 // main.jsx
 
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 Ví dụ
 
 ```jsx
-import { Button } from "@assembleui/react";
+import { Button } from "@vnallmini/react";
 
 export default function App() {
   return <Button>Hello AssembleUI</Button>;
@@ -399,7 +399,7 @@ export default function App() {
 # Sử dụng nhiều Component
 
 ```jsx
-import { Button, Input, Card } from "@assembleui/react";
+import { Button, Input, Card } from "@vnallmini/react";
 
 export default function App() {
   return (
@@ -425,7 +425,7 @@ main.jsx
 
 ↓
 
-@assembleui/react/styles
+@vnallmini/react/styles
 
 ↓
 
@@ -447,7 +447,7 @@ Browser
 Mặc định AssembleUI sử dụng Theme mặc định.
 
 ```jsx
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 ```
 
 Sau này có thể chuyển Theme.
@@ -455,13 +455,13 @@ Sau này có thể chuyển Theme.
 Ví dụ
 
 ```jsx
-import "@assembleui/react/themes/dark";
+import "@vnallmini/react/themes/dark";
 ```
 
 Hoặc
 
 ```jsx
-import "@assembleui/react/themes/light";
+import "@vnallmini/react/themes/light";
 ```
 
 Theme chỉ thay đổi Design Tokens.
@@ -499,7 +499,7 @@ Chỉ Component được import mới được đưa vào Bundle.
 Ví dụ
 
 ```jsx
-import { Button } from "@assembleui/react";
+import { Button } from "@vnallmini/react";
 ```
 
 Bundle sẽ không chứa
@@ -540,9 +540,9 @@ package.json
 # Ví dụ hoàn chỉnh
 
 ```jsx
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 
-import { Button, Card, Input } from "@assembleui/react";
+import { Button, Card, Input } from "@vnallmini/react";
 
 export default function App() {
   return (
@@ -604,7 +604,7 @@ Component không tự import CSS.
 
 ## Nên
 
-✔ Import `@assembleui/react/styles` một lần trong `main.jsx`.
+✔ Import `@vnallmini/react/styles` một lần trong `main.jsx`.
 
 ✔ Sử dụng Component thông qua package chính.
 

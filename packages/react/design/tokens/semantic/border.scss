@@ -1,8 +1,14 @@
 @use "../primitives/border" as border;
 
 :root {
-  --aui-border-width-none: #{border.$border-width-none};
-  --aui-border-width-thin: #{border.$border-width-thin};
-  --aui-border-width-default: #{border.$border-width-default};
-  --aui-border-width-medium: #{border.$border-width-medium};
+  --aui-token-border-width-thick: #{border.$border-width-thick};
+  --aui-token-border-style-none: #{border.$border-style-none};
+  --aui-token-border-style-solid: #{border.$border-style-solid};
+  --aui-token-border-style-dashed: #{border.$border-style-dashed};
+  --aui-token-border-style-dotted: #{border.$border-style-dotted};
+
+  --aui-token-border-width-none: #{border.$border-width-none};
+  --aui-token-border-width-thin: #{border.$border-width-thin};
+  --aui-token-border-width-default: #{border.$border-width-default};
+  --aui-token-border-width-medium: #{border.$border-width-medium};
 }

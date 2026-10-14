@@ -1,6 +1,6 @@
 import {
   Avatar,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function AvatarDemo() {
   return (

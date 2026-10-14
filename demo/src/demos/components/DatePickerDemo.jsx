@@ -1,4 +1,4 @@
-import { DatePicker } from "@assemble-ui/react";
+import { DatePicker } from "@vnallmini/react";
 
 export function DatePickerDemo() {
   return (

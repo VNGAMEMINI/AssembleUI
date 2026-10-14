@@ -1,22 +1,23 @@
 # AssembleUI
 
-AssembleUI is an open-source React UI library for building reusable,
-composable, and maintainable user interfaces with Sass.
+AssembleUI is a React UI library for building reusable and composable
+interfaces with Sass and TypeScript declarations.
 
 ## Features
 
-- Reusable React components.
+- Reusable UI components.
 - Composable patterns and page templates.
 - Sass-based styling and design tokens.
-- Public package entry points for modular imports.
+- Public entry points for modular imports.
 - TypeScript declarations.
 
 ## Requirements
 
-- Node.js compatible with the development toolchain.
-- React 19 and React DOM 19.
+- React 19
+- React DOM 19
+- A JavaScript or TypeScript project with npm-compatible package management
 
 ## Installation
 
 ```bash
-npm install @assemble-ui/react
+npm install @vnallmini/react

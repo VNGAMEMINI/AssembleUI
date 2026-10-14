@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import * as Root from "@assemble-ui/react";
-import * as Components from "@assemble-ui/react/components";
-import * as Patterns from "@assemble-ui/react/patterns";
-import * as Templates from "@assemble-ui/react/templates";
+import * as Root from "@vnallmini/react";
+import * as Components from "@vnallmini/react/components";
+import * as Patterns from "@vnallmini/react/patterns";
+import * as Templates from "@vnallmini/react/templates";
 
 describe("package exports", () => {
   it("exports form components from root", () => {

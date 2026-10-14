@@ -2,7 +2,7 @@ import {
   Button,
   EmptyState,
   Icon,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function EmptyStateDemo() {
   return (

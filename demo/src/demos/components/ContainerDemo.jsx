@@ -1,6 +1,6 @@
 import {
   Container,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function ContainerDemo() {
   return (

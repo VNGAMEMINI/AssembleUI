@@ -1,4 +1,4 @@
-import { Button, Popover } from "@assemble-ui/react";
+import { Button, Popover } from "@vnallmini/react";
 
 export function PopoverDemo() {
   return (

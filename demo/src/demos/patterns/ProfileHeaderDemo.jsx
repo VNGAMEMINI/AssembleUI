@@ -2,7 +2,7 @@ import {
   Badge,
   Button,
   ProfileHeader,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function ProfileHeaderDemo() {
   return (

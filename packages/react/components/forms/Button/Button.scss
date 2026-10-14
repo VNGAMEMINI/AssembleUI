@@ -23,15 +23,15 @@
   transition:
     background-color var(--aui-motion-duration-fast)
       var(--aui-motion-ease-standard),
-    color var(--aui-motion-duration-fast)
-      var(--aui-motion-ease-standard),
-    border-color var(--aui-motion-duration-fast)
-      var(--aui-motion-ease-standard),
-    opacity var(--aui-motion-duration-fast)
-      var(--aui-motion-ease-standard);
+    color var(--aui-motion-duration-fast) var(--aui-motion-ease-standard),
+    border-color var(--aui-motion-duration-fast) var(--aui-motion-ease-standard),
+    opacity var(--aui-motion-duration-fast) var(--aui-motion-ease-standard);
 
   &:hover:not(:disabled) {
     background: var(--aui-color-primary-hover);
+  }
+  &:active:not(:disabled) {
+    opacity: var(--aui-state-active-opacity);
   }
 
   &:focus-visible {
@@ -40,7 +40,7 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    cursor: var(--aui-state-disabled-cursor);
     opacity: var(--aui-state-disabled-opacity);
   }
 }
@@ -69,6 +69,9 @@
   &:hover:not(:disabled) {
     background: var(--aui-color-primary-hover);
   }
+  &:active:not(:disabled) {
+    opacity: var(--aui-state-active-opacity);
+  }
 }
 
 .aui-button--secondary {
@@ -89,5 +92,8 @@
 
   &:hover:not(:disabled) {
     background: var(--aui-color-surface);
+  }
+  &:active:not(:disabled) {
+    opacity: var(--aui-state-active-opacity);
   }
 }

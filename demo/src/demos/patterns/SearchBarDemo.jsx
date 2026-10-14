@@ -4,7 +4,7 @@ import {
 
 import {
   SearchBar,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function SearchBarDemo() {
   const [query, setQuery] = useState("");

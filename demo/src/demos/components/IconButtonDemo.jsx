@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconButton } from "@assemble-ui/react";
+import { IconButton } from "@vnallmini/react";
 
 export function IconButtonDemo() {
   const [liked, setLiked] = useState(false);

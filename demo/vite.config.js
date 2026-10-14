@@ -12,23 +12,23 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: "@assemble-ui/react/styles",
+        find: "@vnallmini/react/styles",
         replacement: `${reactPackageRoot}/index.scss`,
       },
       {
-        find: "@assemble-ui/react/patterns",
+        find: "@vnallmini/react/patterns",
         replacement: `${reactPackageRoot}/patterns/index.ts`,
       },
       {
-        find: "@assemble-ui/react/components",
+        find: "@vnallmini/react/components",
         replacement: `${reactPackageRoot}/components/index.ts`,
       },
       {
-        find: "@assemble-ui/react/templates",
+        find: "@vnallmini/react/templates",
         replacement: `${reactPackageRoot}/templates/index.ts`,
       },
       {
-        find: "@assemble-ui/react",
+        find: "@vnallmini/react",
         replacement: `${reactPackageRoot}/index.ts`,
       },
     ],

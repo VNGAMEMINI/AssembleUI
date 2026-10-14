@@ -183,7 +183,7 @@ Người dùng không import Foundation trực tiếp.
 Foundation sẽ được import thông qua:
 
 ```scss
-@assembleui/react/styles;
+@vnallmini/react/styles;
 ```
 
 ---
@@ -364,7 +364,7 @@ Component
 Khi người dùng import
 
 ```scss
-@assembleui/react/styles;
+@vnallmini/react/styles;
 ```
 
 AssembleUI sẽ thực hiện

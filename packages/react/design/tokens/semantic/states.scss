@@ -1,7 +1,13 @@
 :root {
-  --aui-state-disabled-opacity: 0.5;
+  --aui-token-state-disabled-opacity: 0.5;
+  --aui-token-state-disabled-cursor: not-allowed;
 
-  --aui-state-focus-ring: var(--aui-color-primary);
+  --aui-token-state-focus-ring: var(--aui-token-color-primary);
+  --aui-token-state-focus-ring-width: 2px;
+  --aui-token-state-focus-ring-offset: var(--aui-token-space-1);
 
-  --aui-state-hover-opacity: 0.9;
+  --aui-token-state-hover-opacity: 0.9;
+  --aui-token-state-active-opacity: 0.8;
+  --aui-token-state-selected-opacity: 1;
+  --aui-token-state-loading-opacity: 0.7;
 }

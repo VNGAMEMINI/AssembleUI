@@ -1,6 +1,6 @@
 import {
   Stat,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function StatDemo() {
   return (

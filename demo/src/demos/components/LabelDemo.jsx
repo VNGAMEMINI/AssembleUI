@@ -1,4 +1,4 @@
-import { Label } from "@assemble-ui/react";
+import { Label } from "@vnallmini/react";
 
 export function LabelDemo() {
   return (

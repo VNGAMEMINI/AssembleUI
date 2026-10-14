@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, ContentHeader } from "@assemble-ui/react";
+import { Button, ContentHeader } from "@vnallmini/react";
 
 export function ContentHeaderDemo() {
   const [message, setMessage] = useState("");

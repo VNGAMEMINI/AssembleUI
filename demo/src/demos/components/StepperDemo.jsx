@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Stepper } from "@assemble-ui/react";
+import { Stepper } from "@vnallmini/react";
 
 const steps = [
   {

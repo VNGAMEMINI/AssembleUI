@@ -1,4 +1,4 @@
-import { Textarea } from "@assemble-ui/react";
+import { Textarea } from "@vnallmini/react";
 
 export function TextareaDemo() {
   return (

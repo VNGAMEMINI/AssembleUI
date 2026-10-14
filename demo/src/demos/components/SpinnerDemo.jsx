@@ -1,4 +1,4 @@
-import { Spinner } from "@assemble-ui/react";
+import { Spinner } from "@vnallmini/react";
 
 export function SpinnerDemo() {
   return (

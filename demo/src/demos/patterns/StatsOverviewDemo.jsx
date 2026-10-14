@@ -1,4 +1,4 @@
-import { StatsOverview } from "@assemble-ui/react";
+import { StatsOverview } from "@vnallmini/react";
 
 export function StatsOverviewDemo() {
   return (

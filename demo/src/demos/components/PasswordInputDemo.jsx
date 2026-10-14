@@ -1,4 +1,4 @@
-import { PasswordInput } from "@assemble-ui/react";
+import { PasswordInput } from "@vnallmini/react";
 
 export function PasswordInputDemo() {
   return (

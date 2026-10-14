@@ -1,4 +1,4 @@
-import { Icon } from "@assemble-ui/react";
+import { Icon } from "@vnallmini/react";
 
 export function IconDemo() {
   return (

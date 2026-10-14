@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Radio } from "@assemble-ui/react";
+import { Radio } from "@vnallmini/react";
 
 export function RadioDemo() {
   const [value, setValue] = useState("react");

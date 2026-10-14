@@ -1,6 +1,6 @@
 import {
   Table,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function TableDemo() {
   return (

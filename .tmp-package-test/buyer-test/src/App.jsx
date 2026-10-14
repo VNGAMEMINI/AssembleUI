@@ -1,5 +1,5 @@
-import { Button, Heading, Text } from "@assemble-ui/react";
-import "@assemble-ui/react/styles";
+import { Button, Heading, Text } from "@vnallmini/react";
+import "@vnallmini/react/styles";
 
 export default function App() {
   return (

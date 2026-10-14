@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Autocomplete } from "@assemble-ui/react";
+import { Autocomplete } from "@vnallmini/react";
 
 const options = [
   { value: "react", label: "React" },
@@ -31,7 +31,7 @@ export function AutocompleteDemo() {
         Giá trị: <strong>{value || "Trống"}</strong>
       </p>
 
-      <p>
+      <p style={{marginBottom: '10rem'}}>
         Nhập từ khóa và nhấn <strong>Enter</strong> để chọn
         option đầu tiên phù hợp.
       </p>

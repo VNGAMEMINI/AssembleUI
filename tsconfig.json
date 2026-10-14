@@ -19,16 +19,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@assemble-ui/react": [
+      "@vnallmini/react": [
         "./packages/react/index.ts"
       ],
-      "@assemble-ui/react/components": [
+      "@vnallmini/react/components": [
         "./packages/react/components/index.ts"
       ],
-      "@assemble-ui/react/patterns": [
+      "@vnallmini/react/patterns": [
         "./packages/react/patterns/index.ts"
       ],
-      "@assemble-ui/react/templates": [
+      "@vnallmini/react/templates": [
         "./packages/react/templates/index.ts"
       ],
     },

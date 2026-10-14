@@ -1,4 +1,4 @@
-import { Heading } from "@assemble-ui/react";
+import { Heading } from "@vnallmini/react";
 
 export function HeadingDemo() {
   return (

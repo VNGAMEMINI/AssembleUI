@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SearchInput } from "@assemble-ui/react";
+import { SearchInput } from "@vnallmini/react";
 
 export function SearchInputDemo() {
   const [value, setValue] = useState("AssembleUI");

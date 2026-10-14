@@ -19,10 +19,11 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run typecheck && vite build && npm run build:types && npm run build:styles",
-    "build:types": "tsc --project tsconfig.build.json",
-    "build:styles": "npm --workspace @assemble-ui/react run build:styles",
+    "build:types": "tsc --project tsconfig.build.json && node scripts/fix-declaration-imports.mjs",
+    "build:styles": "npm --workspace @vnallmini/react run build:styles",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "typecheck:public": "tsc -p tests/typechecks/tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -35,8 +36,8 @@
   },
   "homepage": "https://github.com/VNGAMEMINI/AssembleUI#readme",
   "dependencies": {
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",

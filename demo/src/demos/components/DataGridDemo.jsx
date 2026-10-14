@@ -1,4 +1,4 @@
-import { DataGrid } from "@assemble-ui/react";
+import { DataGrid } from "@vnallmini/react";
 
 const rows = [
   { id: "1", name: "Nguyễn Văn An", role: "Developer", status: "Active" },

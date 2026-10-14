@@ -220,7 +220,7 @@ import {
 
 Button
 
-} from "@assembleui/react";
+} from "@vnallmini/react";
 ```
 
 Bundle sẽ không chứa Input.
@@ -254,7 +254,7 @@ styles.css
 Người dùng chỉ cần
 
 ```tsx
-import "@assembleui/react/styles";
+import "@vnallmini/react/styles";
 ```
 
 Không cần import CSS của từng Component.
@@ -282,7 +282,7 @@ corporate.css
 Người dùng có thể import
 
 ```tsx
-import "@assembleui/react/themes/dark";
+import "@vnallmini/react/themes/dark";
 ```
 
 ---

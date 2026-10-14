@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { useTheme } from "@assemble-ui/react";
+import { useTheme } from "@vnallmini/react";
 
 import { getDemoRegistry } from "../demo-system/registry";
 
@@ -75,7 +75,7 @@ export function App() {
 
   const DemoComponent = demo.component;
 
-  const importCode = `import { ${demo.name} } from "@assemble-ui/react";`;
+  const importCode = `import { ${demo.name} } from "@vnallmini/react";`;
 
   return (
     <div className="demo-app">
@@ -299,7 +299,7 @@ export function App() {
 
             <div className="demo-detail">
               <span>Package</span>
-              <strong>@assemble-ui/react</strong>
+              <strong>@vnallmini/react</strong>
             </div>
           </section>
         </div>

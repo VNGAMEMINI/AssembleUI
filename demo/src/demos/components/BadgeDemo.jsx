@@ -1,6 +1,6 @@
 import {
   Badge,
-} from "@assemble-ui/react";
+} from "@vnallmini/react";
 
 export function BadgeDemo() {
   return (

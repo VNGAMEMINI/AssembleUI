@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Toast } from "@assemble-ui/react";
+import { Button, Toast } from "@vnallmini/react";
 
 export function ToastDemo() {
   const [open, setOpen] = useState(false);

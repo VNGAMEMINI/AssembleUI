@@ -1,5 +1,6 @@
-@use "../../tokens/primitives/colors" as *;
+@use "../../primitives" as *;
+
 
 [data-aui-theme="light"] {
-  --aui-color-text-muted: #{$gray-500};
+
 }

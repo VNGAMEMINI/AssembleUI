@@ -52,12 +52,12 @@ unless a public UI API or compatibility change is necessary.
 
 The supported package installation is:
 
-    npm install @assemble-ui/react
+    npm install @vnallmini/react
 
 Example:
 
-    import { Button } from "@assemble-ui/react";
-    import "@assemble-ui/react/styles";
+    import { Button } from "@vnallmini/react";
+    import "@vnallmini/react/styles";
 
     export function Example() {
       return <Button variant="primary">Continue</Button>;

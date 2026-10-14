@@ -1,6 +1,6 @@
 {
-  "name": "@assemble-ui/react",
-  "version": "0.1.0",
+  "name": "@vnallmini/react",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -9,7 +9,8 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "!README.md.bak"
   ],
   "exports": {
     ".": {
@@ -31,12 +32,21 @@
     "./styles": "./dist/styles.css"
   },
   "scripts": {
-    "build:styles": "sass index.scss dist/styles.css"
+    "build:styles": "sass --no-source-map index.scss dist/styles.css"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "description": "An open-source React UI library for reusable components, patterns, and templates.",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VNGAMEMINI/AssembleUI.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/VNGAMEMINI/AssembleUI#readme",
+  "bugs": {
+    "url": "https://github.com/VNGAMEMINI/AssembleUI/issues"
+  }
 }
