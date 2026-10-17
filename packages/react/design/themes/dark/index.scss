@@ -1,6 +1,35 @@
-@use "../../primitives" as *;
+@use "../../primitives/colors" as *;
 
 [data-aui-theme="dark"] {
-  --aui-theme-color-body: ;
-  
+  --aui-theme-primary: #{$blue-500};
+  --aui-theme-primary-hover: #{$blue-400};
+
+  --aui-theme-bg: #{$gray-900};
+  --aui-theme-surface: #{$gray-800};
+  --aui-theme-surface-muted: #{$gray-700};
+  --aui-theme-surface-elevated: #{$gray-700};
+
+  --aui-theme-fg: #{$gray-50};
+  --aui-theme-fg-muted: #{$gray-300};
+
+  --aui-theme-border: #{$gray-700};
+  --aui-theme-border-hover: #{$gray-600};
+
+  --aui-theme-on-primary: #{$white};
+
+  --aui-theme-success: #{$green-500};
+  --aui-theme-warning: #{$yellow-500};
+  --aui-theme-danger: #{$red-500};
+  --aui-theme-info: #{$blue-400};
+  --aui-theme-success-subtle: #{$green-900};
+  --aui-theme-on-success: #{$white};
+  --aui-theme-warning-subtle: #{$yellow-900};
+  --aui-theme-on-warning: #{$gray-100};
+  --aui-theme-danger-subtle: #{$red-900};
+  --aui-theme-on-danger: #{$white};
+  --aui-theme-info-subtle: #{$blue-900};
+  --aui-theme-on-info: #{$white};
+
+  --aui-theme-overlay: #{rgba($black, 0.8)};
+  --aui-theme-transparent: #{$transparent};
 }

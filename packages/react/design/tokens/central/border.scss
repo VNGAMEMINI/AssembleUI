@@ -1,0 +1,10 @@
+:root {
+  --aui-token-border-default:
+    var(--aui-token-border-width-default) solid var(--aui-token-color-border);
+
+  --aui-token-border-subtle:
+    var(--aui-token-border-width-thin) solid var(--aui-token-color-border);
+
+  --aui-token-border-focus:
+    var(--aui-token-border-width-medium) solid var(--aui-token-state-focus-ring);
+}

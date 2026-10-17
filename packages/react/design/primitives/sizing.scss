@@ -1,0 +1,22 @@
+@use "./spacing" as spacing;
+
+// Primitive sizing scale.
+$size-0: spacing.$spacing-0;
+$size-1: spacing.$spacing-1;
+$size-2: spacing.$spacing-2;
+$size-3: spacing.$spacing-3;
+$size-4: spacing.$spacing-4;
+$size-6: spacing.$spacing-6;
+$size-8: spacing.$spacing-8;
+$size-10: spacing.$spacing-10;
+$size-12: spacing.$spacing-12;
+$size-16: spacing.$spacing-16;
+
+// Layout constraints are sizing primitives, not spacing values.
+$size-full: 100%;
+$size-screen-width: 100vw;
+$size-screen-height: 100vh;
+$size-content-sm: 40rem;
+$size-content-md: 48rem;
+$size-content-lg: 64rem;
+$size-content-xl: 80rem;

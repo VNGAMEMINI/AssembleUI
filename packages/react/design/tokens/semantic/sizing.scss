@@ -1,0 +1,23 @@
+@use "../../primitives/sizing" as sizing;
+
+:root {
+  --aui-token-size-0: #{sizing.$size-0};
+  --aui-token-size-1: #{sizing.$size-1};
+  --aui-token-size-2: #{sizing.$size-2};
+  --aui-token-size-3: #{sizing.$size-3};
+  --aui-token-size-4: #{sizing.$size-4};
+  --aui-token-size-6: #{sizing.$size-6};
+  --aui-token-size-8: #{sizing.$size-8};
+  --aui-token-size-10: #{sizing.$size-10};
+  --aui-token-size-12: #{sizing.$size-12};
+  --aui-token-size-16: #{sizing.$size-16};
+
+  --aui-token-size-full: #{sizing.$size-full};
+  --aui-token-size-screen-width: #{sizing.$size-screen-width};
+  --aui-token-size-screen-height: #{sizing.$size-screen-height};
+
+  --aui-token-size-content-sm: #{sizing.$size-content-sm};
+  --aui-token-size-content-md: #{sizing.$size-content-md};
+  --aui-token-size-content-lg: #{sizing.$size-content-lg};
+  --aui-token-size-content-xl: #{sizing.$size-content-xl};
+}

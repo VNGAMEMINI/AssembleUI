@@ -729,3 +729,41 @@ Scalable
 ```
 
 The goal is not to create the largest UI library, but to create one of the most maintainable, customizable and architecture-driven UI ecosystems.
+
+
+## Mandatory Architecture Invariant: Themes and Tokens
+
+This rule is mandatory throughout development, refactoring, testing,
+documentation, and final release. Do not silently weaken or replace it.
+
+### `packages/react/design/themes/` — Interface Theme Management
+
+- `light/`: defines values for the light interface.
+- `dark/`: defines values for the dark interface.
+- `custom/`: provides an extension point for user-defined themes.
+- `[data-aui-theme="..."]` defines the scope in which a theme applies.
+
+Themes own interface-specific values. Do not move theme responsibilities
+into the Tokens architecture.
+
+### `packages/react/design/tokens/` — Design Value API
+
+- `semantic/`: defines independent semantic roles.
+- `central/`: combines properties from semantic tokens into higher-level
+  design tokens.
+- `compatibility.scss`: preserves legacy variable names for backward
+  compatibility.
+
+Tokens provide the design-value API. They do not replace the Themes system.
+
+### Non-negotiable constraints
+
+1. Keep Themes and Tokens as distinct architectural responsibilities.
+2. Do not move variables between these layers merely to satisfy a test.
+3. Do not change the established naming contract without an explicit,
+   architecture-level decision.
+4. Any approved architecture change must update implementation, tests,
+   and documentation consistently.
+5. Before modifying either layer, inspect this invariant and the relevant
+   existing tests.
+6. Preserve this invariant through project completion and future refactors.

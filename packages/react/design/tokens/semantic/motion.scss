@@ -1,4 +1,4 @@
-@use "../primitives/motion" as motion;
+@use "../../primitives/motion" as motion;
 
 :root {
   --aui-token-motion-duration-instant: #{motion.$duration-instant};

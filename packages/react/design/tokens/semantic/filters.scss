@@ -1,0 +1,27 @@
+:root {
+  /* Blur */
+  --aui-token-filter-blur-none: blur(0);
+  --aui-token-filter-blur-sm: blur(4px);
+  --aui-token-filter-blur-md: blur(8px);
+  --aui-token-filter-blur-lg: blur(16px);
+  --aui-token-filter-blur-xl: blur(24px);
+
+  /* Brightness */
+  --aui-token-filter-brightness-dim: brightness(0.75);
+  --aui-token-filter-brightness-normal: brightness(1);
+  --aui-token-filter-brightness-bright: brightness(1.15);
+
+  /* Saturation */
+  --aui-token-filter-saturation-muted: saturate(0.75);
+  --aui-token-filter-saturation-normal: saturate(1);
+  --aui-token-filter-saturation-vivid: saturate(1.25);
+
+  /* Backdrop blur */
+  --aui-token-filter-backdrop-blur-sm: blur(4px);
+  --aui-token-filter-backdrop-blur-md: blur(8px);
+  --aui-token-filter-backdrop-blur-lg: blur(16px);
+
+  /* Grayscale */
+  --aui-token-filter-grayscale-none: grayscale(0);
+  --aui-token-filter-grayscale-full: grayscale(1);
+}

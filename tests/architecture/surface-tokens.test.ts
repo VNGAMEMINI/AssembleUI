@@ -9,17 +9,17 @@ function readDesignFile(relativePath: string): string {
 }
 
 describe("Architecture: surface tokens", () => {
-  const surfaces = readDesignFile("tokens/semantic/surfaces.scss");
+  const surfaces = readDesignFile("tokens/central/surfaces.scss");
   const lightTheme = readDesignFile("themes/light/index.scss");
   const darkTheme = readDesignFile("themes/dark/index.scss");
   const semanticColors = readDesignFile("tokens/semantic/colors.scss");
 
   it("maps surface aliases to semantic color tokens", () => {
     const aliases = [
-      ["--aui-surface-page", "--aui-color-background"],
-      ["--aui-surface-default", "--aui-color-surface"],
-      ["--aui-surface-elevated", "--aui-color-surface-elevated"],
-      ["--aui-surface-overlay", "--aui-color-overlay"],
+      ["--aui-token-surface-page", "--aui-token-color-background"],
+      ["--aui-token-surface-default", "--aui-token-color-surface"],
+      ["--aui-token-surface-elevated", "--aui-token-color-surface-elevated"],
+      ["--aui-token-surface-overlay", "--aui-token-color-overlay"],
     ] as const;
 
     for (const [alias, token] of aliases) {
@@ -31,17 +31,19 @@ describe("Architecture: surface tokens", () => {
 
   it("defines the elevated surface semantic token by default", () => {
     expect(semanticColors).toMatch(
-      /--aui-token-color-surface-elevated:\s*#\{\$white\};/,
+      /--aui-token-color-surface-elevated:\s*var\(--aui-theme-surface-elevated,\s*#\{\$white\}\);/,
     );
   });
 
-  it("overrides semantic surface tokens in the dark theme", () => {
+  it("defines dark surface roles in the theme branch", () => {
     expect(darkTheme).toMatch(
-      /--aui-theme-color-surface-elevated:\s*#\{\$gray-700\};/,
+      /--aui-theme-surface-elevated:\s*#\{\$gray-700\};/,
     );
     expect(darkTheme).toMatch(
-      /--aui-theme-color-overlay:\s*#\{\s*rgba\(\$black,\s*0\.8\)\s*\};/,
+      /--aui-theme-overlay:\s*#\{\s*rgba\(\$black,\s*0\.8\)\s*\};/,
     );
+
+    expect(darkTheme).not.toMatch(/--aui-token-[\w-]+\s*:/);
   });
 
   it("does not redefine surface aliases inside themes", () => {
@@ -52,12 +54,12 @@ describe("Architecture: surface tokens", () => {
       expect(
         source,
         `${themeName} theme must use semantic tokens instead of redefining surface aliases`,
-      ).not.toMatch(/--aui-surface-(?:page|default|elevated|overlay)\s*:/);
+      ).not.toMatch(/--aui-token-surface-(?:page|default|elevated|overlay)\s*:/);
     }
   });
 
   it("keeps shadow primitives and semantic mappings consistent", () => {
-    const primitives = readDesignFile("tokens/primitives/shadows.scss");
+    const primitives = readDesignFile("primitives/shadows.scss");
     const semantic = readDesignFile("tokens/semantic/shadows.scss");
 
     expect(primitives).toMatch(
@@ -76,13 +78,16 @@ describe("Architecture: surface tokens", () => {
       ["lg", "shadow-lg"],
     ] as const) {
       expect(semantic).toMatch(
-        new RegExp(`--aui-shadow-${name}:\\s*#\\{shadows\\.\\$${variable}\\};`),
+        new RegExp(`--aui-token-${variable}:\\s*#\\{shadows\\.\\$${variable}\\};`),
+      );
+      expect(semantic).not.toMatch(
+        new RegExp(`--aui-shadow-${name}:\\s*`),
       );
     }
   });
 
   it("keeps border primitives and semantic mappings consistent", () => {
-    const primitives = readDesignFile("tokens/primitives/border.scss");
+    const primitives = readDesignFile("primitives/border.scss");
     const semantic = readDesignFile("tokens/semantic/border.scss");
 
     const expected = [
@@ -97,7 +102,10 @@ describe("Architecture: surface tokens", () => {
         new RegExp(`\\$border-width-${name}:\\s*${value};`),
       );
       expect(semantic).toMatch(
-        new RegExp(`--aui-border-width-${name}:\\s*#\\{border\\.\\$border-width-${name}\\};`),
+        new RegExp(`--aui-token-border-width-${name}:\\s*#\\{border\\.\\$border-width-${name}\\};`),
+      );
+      expect(semantic).not.toMatch(
+        new RegExp(`--aui-border-width-${name}:\\s*`),
       );
     }
   });

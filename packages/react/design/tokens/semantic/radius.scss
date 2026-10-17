@@ -1,4 +1,4 @@
-@use "../primitives/radius" as radius;
+@use "../../primitives/radius" as radius;
 
 :root {
   --aui-token-radius-2xl: #{radius.$radius-2xl};

@@ -1,0 +1,29 @@
+:root {
+  --aui-token-transition-property-colors:
+    color, background-color, border-color, fill, stroke;
+
+  --aui-token-transition-property-opacity: opacity;
+  --aui-token-transition-property-transform: transform;
+  --aui-token-transition-property-common:
+    color, background-color, border-color, opacity, box-shadow, transform;
+
+  --aui-token-transition-colors:
+    var(--aui-token-transition-property-colors)
+    var(--aui-token-motion-duration-fast)
+    var(--aui-token-motion-ease-standard);
+
+  --aui-token-transition-opacity:
+    var(--aui-token-transition-property-opacity)
+    var(--aui-token-motion-duration-normal)
+    var(--aui-token-motion-ease-standard);
+
+  --aui-token-transition-transform:
+    var(--aui-token-transition-property-transform)
+    var(--aui-token-motion-duration-normal)
+    var(--aui-token-motion-ease-out);
+
+  --aui-token-transition-common:
+    var(--aui-token-transition-property-common)
+    var(--aui-token-motion-duration-fast)
+    var(--aui-token-motion-ease-standard);
+}

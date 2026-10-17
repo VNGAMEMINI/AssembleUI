@@ -1,0 +1,40 @@
+@use "../../primitives/colors" as *;
+
+// Canonical semantic color tokens.
+// Themes override these variables in their own data-aui-theme scope.
+:root {
+  --aui-token-color-primary: var(--aui-theme-primary, #{$blue-600});
+  --aui-token-color-primary-hover: var(--aui-theme-primary-hover, #{$blue-700});
+
+  --aui-token-color-background: var(--aui-theme-bg, #{$white});
+  --aui-token-color-surface: var(--aui-theme-surface, #{$gray-50});
+  --aui-token-color-surface-muted: var(--aui-theme-surface-muted, #{$gray-100});
+  --aui-token-color-surface-elevated: var(--aui-theme-surface-elevated, #{$white});
+
+  --aui-token-color-text: var(--aui-theme-fg, #{$gray-900});
+  --aui-token-color-text-muted: var(--aui-theme-fg-muted, #{$gray-600});
+
+  --aui-token-color-border: var(--aui-theme-border, #{$gray-200});
+  --aui-token-color-border-hover: var(--aui-theme-border-hover, #{$gray-300});
+
+  --aui-token-color-on-primary: var(--aui-theme-on-primary, #{$white});
+
+  --aui-token-color-success: var(--aui-theme-success, #{$green-600});
+  --aui-token-color-success-subtle: #{$green-50};
+  --aui-token-color-on-success: #{$white};
+
+  --aui-token-color-warning: var(--aui-theme-warning, #{$yellow-600});
+  --aui-token-color-warning-subtle: #{$yellow-50};
+  --aui-token-color-on-warning: #{$gray-900};
+
+  --aui-token-color-danger: var(--aui-theme-danger, #{$red-600});
+  --aui-token-color-danger-subtle: #{$red-50};
+  --aui-token-color-on-danger: #{$white};
+
+  --aui-token-color-info: var(--aui-theme-info, #{$blue-600});
+  --aui-token-color-info-subtle: #{$blue-50};
+  --aui-token-color-on-info: #{$white};
+
+  --aui-token-color-overlay: var(--aui-theme-overlay, #{rgba($black, 0.5)});
+  --aui-token-color-transparent: #{$transparent};
+}

@@ -1,4 +1,4 @@
-@use "../primitives/shadows" as shadows;
+@use "../../primitives/shadows" as shadows;
 
 :root {
   --aui-token-shadow-xs: #{shadows.$shadow-xs};

@@ -1,4 +1,4 @@
-@use "../primitives/border" as border;
+@use "../../primitives/border" as border;
 
 :root {
   --aui-token-border-width-thick: #{border.$border-width-thick};
