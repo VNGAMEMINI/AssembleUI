@@ -1,0 +1,40 @@
+:root {
+  /* 1. Phát sáng nhẹ (Subtle Glow - Thích hợp cho viền hoặc text nhỏ) */
+  --aui-glow-subtle-pink: 0 0 4px var(--aui-neon-pink);
+  --aui-glow-subtle-cyan: 0 0 4px var(--aui-neon-cyan);
+  --aui-glow-subtle-green: 0 0 4px var(--aui-neon-green);
+  --aui-glow-subtle-yellow: 0 0 4px var(--aui-neon-yellow);
+
+  /* 2. Phát sáng tiêu chuẩn (Standard Glow - Dùng cho nút bấm, icon) */
+  --aui-glow-pink: 0 0 8px var(--aui-neon-pink), 0 0 20px var(--aui-neon-pink);
+  --aui-glow-cyan: 0 0 8px var(--aui-neon-cyan), 0 0 20px var(--aui-neon-cyan);
+  --aui-glow-green: 0 0 8px var(--aui-neon-green), 0 0 20px var(--aui-neon-green);
+  --aui-glow-purple: 0 0 8px var(--aui-neon-purple), 0 0 20px var(--aui-neon-purple);
+  --aui-glow-yellow: 0 0
+  --aui-glow-orange: 0 0 8px var(--neon-orange), 0 0 20px var(--neon-orange);
+
+  /* 3. Phát sáng mạnh/Cực quang (Intense/Deep Glow - Dùng cho tiêu đề lớn hoặc hover state) */
+  --aui-glow-intense-pink:
+    0 0 10px var(--aui-neon-pink), 0 0 30px var(--aui-neon-pink),
+    0 0 50px var(--aui-neon-pink);
+  --aui-glow-intense-cyan:
+    0 0 10px var(--aui-neon-cyan), 0 0 30px var(--aui-neon-cyan),
+    0 0 50px var(--aui-neon-cyan);
+  --aui-glow-intense-green:
+    0 0 10px var(--aui-neon-green), 0 0 30px var(--aui-neon-green),
+    0 0 50px var(--aui-neon-green);
+  --aui-glow-intense-purple:
+    0 0 10px var(--aui-neon-purple), 0 0 30px var(--aui-neon-purple),
+    0 0 50px var(--aui-neon-purple);
+
+  /* 4. Hiệu ứng chữ neon (Text Shadow tương ứng) */
+  --aui-text-glow-pink:
+    0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--aui-neon-pink),
+    0 0 40px var(--aui-neon-pink);
+  --aui-text-glow-cyan:
+    0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--aui-neon-cyan),
+    0 0 40px var(--aui-neon-cyan);
+  --aui-text-glow-yellow:
+    0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--aui-neon-yellow),
+    0 0 40px var(--aui-neon-yellow);
+}

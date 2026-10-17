@@ -1,40 +1,26 @@
 @use "../../primitives/colors" as *;
 
-// Canonical semantic color tokens.
-// Themes override these variables in their own data-aui-theme scope.
 :root {
-  --aui-token-color-primary: var(--aui-theme-primary, #{$blue-600});
-  --aui-token-color-primary-hover: var(--aui-theme-primary-hover, #{$blue-700});
+  /* --- 1. MÀU TRUNG TÍNH (NEUTRALS - Grayscale) --- */
+  --aui-white: #{$white};
+  --aui-black: #{$black};
 
-  --aui-token-color-background: var(--aui-theme-bg, #{$white});
-  --aui-token-color-surface: var(--aui-theme-surface, #{$gray-50});
-  --aui-token-color-surface-muted: var(--aui-theme-surface-muted, #{$gray-100});
-  --aui-token-color-surface-elevated: var(--aui-theme-surface-elevated, #{$white});
+  /* --- 2. MÀU CHỦ ĐẠO (PRIMARY / BRAND) --- */
+  --aui-primary-50: #eff6ff;
+  --aui-primary-100: #dbeafe;
+  --aui-primary-500: #3b82f6; /* Xanh dương chủ đạo */
+  --aui-primary-600: #2563eb;
+  --aui-primary-700: #1d4ed8;
 
-  --aui-token-color-text: var(--aui-theme-fg, #{$gray-900});
-  --aui-token-color-text-muted: var(--aui-theme-fg-muted, #{$gray-600});
+  /* --- 3. MÀU NHẤN (ACCENT) --- */
+  --aui-accent-purple: #8b5cf6;
+  --aui-accent-pink: #ec4899;
+  --aui-accent-teal: #14b8a6;
+  --aui-accent-indigo: #6366f1;
 
-  --aui-token-color-border: var(--aui-theme-border, #{$gray-200});
-  --aui-token-color-border-hover: var(--aui-theme-border-hover, #{$gray-300});
-
-  --aui-token-color-on-primary: var(--aui-theme-on-primary, #{$white});
-
-  --aui-token-color-success: var(--aui-theme-success, #{$green-600});
-  --aui-token-color-success-subtle: var(--aui-theme-success-subtle, #{$green-50});
-  --aui-token-color-on-success: var(--aui-theme-on-success, #{$white});
-
-  --aui-token-color-warning: var(--aui-theme-warning, #{$yellow-600});
-  --aui-token-color-warning-subtle: var(--aui-theme-warning-subtle, #{$yellow-50});
-  --aui-token-color-on-warning: var(--aui-theme-on-warning, #{$gray-900});
-
-  --aui-token-color-danger: var(--aui-theme-danger, #{$red-600});
-  --aui-token-color-danger-subtle: var(--aui-theme-danger-subtle, #{$red-50});
-  --aui-token-color-on-danger: var(--aui-theme-on-danger, #{$white});
-
-  --aui-token-color-info: var(--aui-theme-info, #{$blue-600});
-  --aui-token-color-info-subtle: var(--aui-theme-info-subtle, #{$blue-50});
-  --aui-token-color-on-info: var(--aui-theme-on-info, #{$white});
-
-  --aui-token-color-overlay: var(--aui-theme-overlay, #{rgba($black, 0.5)});
-  --aui-token-color-transparent: #{$transparent};
+  /* --- 4. MÀU TRẠNG THÁI (SEMANTIC) --- */
+  --aui-success: #10b981;
+  --aui-warning: #f59e0b;
+  --aui-danger: #ef4444;
+  --aui-info: #06b6d4;
 }
