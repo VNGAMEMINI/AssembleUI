@@ -1,0 +1,13 @@
+:root {
+  --aui-token-animation-duration-fast: var(--aui-token-motion-duration-fast);
+
+  --aui-token-animation-duration-normal: var(
+    --aui-token-motion-duration-normal
+  );
+
+  --aui-token-animation-duration-slow: var(--aui-token-motion-duration-slow);
+
+  --aui-token-animation-ease-enter: var(--aui-token-motion-ease-out);
+
+  --aui-token-animation-ease-exit: var(--aui-token-motion-ease-in);
+}

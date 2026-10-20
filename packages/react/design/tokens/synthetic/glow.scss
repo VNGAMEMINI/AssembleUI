@@ -1,72 +1,24 @@
+@use "../../primitives/neo" as neo;
+
 :root {
-  /* 1. Phát sáng nhẹ */
-  --aui-token-glow-subtle-pink: 0 0 4px var(--aui-token-neon-pink);
-  --aui-token-glow-subtle-cyan: 0 0 4px var(--aui-token-neon-cyan);
-  --aui-token-glow-subtle-green: 0 0 4px var(--aui-token-neon-green);
-  --aui-token-glow-subtle-yellow: 0 0 4px var(--aui-token-neon-yellow);
+  --aui-token-glow-subtle-pink: 0 0 4px #{neo.$neon-pink};
+  --aui-token-glow-subtle-cyan: 0 0 4px #{neo.$neon-cyan};
+  --aui-token-glow-subtle-green: 0 0 4px #{neo.$neon-green};
+  --aui-token-glow-subtle-yellow: 0 0 4px #{neo.$neon-yellow};
 
-  /* 2. Phát sáng tiêu chuẩn */
-  --aui-token-glow-pink:
-    0 0 8px var(--aui-token-neon-pink),
-    0 0 20px var(--aui-token-neon-pink);
+  --aui-token-glow-pink: 0 0 8px #{neo.$neon-pink}, 0 0 20px #{neo.$neon-pink};
+  --aui-token-glow-cyan: 0 0 8px #{neo.$neon-cyan}, 0 0 20px #{neo.$neon-cyan};
+  --aui-token-glow-green: 0 0 8px #{neo.$neon-green}, 0 0 20px #{neo.$neon-green};
+  --aui-token-glow-purple: 0 0 8px #{neo.$neon-purple}, 0 0 20px #{neo.$neon-purple};
+  --aui-token-glow-yellow: 0 0 8px #{neo.$neon-yellow}, 0 0 20px #{neo.$neon-yellow};
+  --aui-token-glow-orange: 0 0 8px #{neo.$neon-orange}, 0 0 20px #{neo.$neon-orange};
 
-  --aui-token-glow-cyan:
-    0 0 8px var(--aui-token-neon-cyan),
-    0 0 20px var(--aui-token-neon-cyan);
+  --aui-token-glow-intense-pink: 0 0 10px #{neo.$neon-pink}, 0 0 30px #{neo.$neon-pink}, 0 0 50px #{neo.$neon-pink};
+  --aui-token-glow-intense-cyan: 0 0 10px #{neo.$neon-cyan}, 0 0 30px #{neo.$neon-cyan}, 0 0 50px #{neo.$neon-cyan};
+  --aui-token-glow-intense-green: 0 0 10px #{neo.$neon-green}, 0 0 30px #{neo.$neon-green}, 0 0 50px #{neo.$neon-green};
+  --aui-token-glow-intense-purple: 0 0 10px #{neo.$neon-purple}, 0 0 30px #{neo.$neon-purple}, 0 0 50px #{neo.$neon-purple};
 
-  --aui-token-glow-green:
-    0 0 8px var(--aui-token-neon-green),
-    0 0 20px var(--aui-token-neon-green);
-
-  --aui-token-glow-purple:
-    0 0 8px var(--aui-token-neon-purple),
-    0 0 20px var(--aui-token-neon-purple);
-
-  --aui-token-glow-yellow:
-    0 0 8px var(--aui-token-neon-yellow),
-    0 0 20px var(--aui-token-neon-yellow);
-
-  --aui-token-glow-orange:
-    0 0 8px var(--aui-token-neon-orange),
-    0 0 20px var(--aui-token-neon-orange);
-
-  /* 3. Phát sáng mạnh */
-  --aui-token-glow-intense-pink:
-    0 0 10px var(--aui-token-neon-pink),
-    0 0 30px var(--aui-token-neon-pink),
-    0 0 50px var(--aui-token-neon-pink);
-
-  --aui-token-glow-intense-cyan:
-    0 0 10px var(--aui-token-neon-cyan),
-    0 0 30px var(--aui-token-neon-cyan),
-    0 0 50px var(--aui-token-neon-cyan);
-
-  --aui-token-glow-intense-green:
-    0 0 10px var(--aui-token-neon-green),
-    0 0 30px var(--aui-token-neon-green),
-    0 0 50px var(--aui-token-neon-green);
-
-  --aui-token-glow-intense-purple:
-    0 0 10px var(--aui-token-neon-purple),
-    0 0 30px var(--aui-token-neon-purple),
-    0 0 50px var(--aui-token-neon-purple);
-
-  /* 4. Hiệu ứng phát sáng chữ */
-  --aui-text-glow-pink:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px var(--aui-token-neon-pink),
-    0 0 40px var(--aui-token-neon-pink);
-
-  --aui-text-glow-cyan:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px var(--aui-token-neon-cyan),
-    0 0 40px var(--aui-token-neon-cyan);
-
-  --aui-text-glow-yellow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px var(--aui-token-neon-yellow),
-    0 0 40px var(--aui-token-neon-yellow);
+  --aui-text-glow-pink: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #{neo.$neon-pink}, 0 0 40px #{neo.$neon-pink};
+  --aui-text-glow-cyan: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #{neo.$neon-cyan}, 0 0 40px #{neo.$neon-cyan};
+  --aui-text-glow-yellow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #{neo.$neon-yellow}, 0 0 40px #{neo.$neon-yellow};
 }

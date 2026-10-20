@@ -1,4 +1,6 @@
-$aspect-square: 1 / 1;
-$aspect-video: 16 / 9;
-$aspect-portrait: 3 / 4;
-$aspect-landscape: 4 / 3;
+@use "sass:math";
+
+$aspect-square: math.div(1, 1);
+$aspect-video: math.div(16, 9);
+$aspect-portrait: math.div(3, 4);
+$aspect-landscape: math.div(4, 3);

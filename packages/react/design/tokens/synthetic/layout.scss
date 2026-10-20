@@ -1,5 +1,6 @@
-:root {
-  --aui-token-layout-content-width: var(--aui-token-size-content-lg);
+@use "../../primitives/sizing" as size;
 
-  --aui-token-layout-content-wide: var(--aui-token-size-content-xl);
+:root {
+  --aui-token-layout-content-width: #{size.$size-content-lg};
+  --aui-token-layout-content-wide: #{size.$size-content-xl};
 }

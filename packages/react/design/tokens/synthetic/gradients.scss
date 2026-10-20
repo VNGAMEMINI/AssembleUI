@@ -1,65 +1,45 @@
+@use "../../primitives/colors" as colors;
+
 :root {
   /* Primary and accent */
   --aui-token-gradient-primary: linear-gradient(
-    135deg,
-    var(--aui-token-color-primary),
-    var(--aui-token-color-primary-hover)
+    135deg, #{colors.$blue-500}, #{colors.$blue-600}
   );
   --aui-token-gradient-primary-subtle: linear-gradient(
-    135deg,
-    var(--aui-theme-accent-subtle, var(--aui-token-color-surface)),
-    var(--aui-theme-surface)
+    135deg, #{colors.$blue-50}, #{colors.$gray-50}
   );
   --aui-token-gradient-accent: linear-gradient(
-    135deg,
-    var(--aui-theme-accent),
-    var(--aui-theme-accent-hover)
+    135deg, #{colors.$blue-500}, #{colors.$blue-600}
   );
 
   /* Surfaces */
   --aui-token-gradient-surface: linear-gradient(
-    180deg,
-    var(--aui-token-color-surface),
-    var(--aui-token-color-background)
+    180deg, #{colors.$white}, #{colors.$gray-50}
   );
   --aui-token-gradient-surface-elevated: linear-gradient(
-    180deg,
-    var(--aui-theme-surface-elevated, var(--aui-token-color-surface)),
-    var(--aui-theme-surface)
+    180deg, #{colors.$white}, #{colors.$gray-50}
   );
   --aui-token-gradient-neutral: linear-gradient(
-    135deg,
-    var(--aui-theme-surface-2, var(--aui-token-color-surface)),
-    var(--aui-theme-surface-3, var(--aui-token-color-background))
+    135deg, #{colors.$gray-50}, #{colors.$gray-100}
   );
 
   /* Semantic status gradients */
   --aui-token-gradient-success: linear-gradient(
-    135deg,
-    var(--aui-theme-success),
-    var(--aui-theme-success-hover)
+    135deg, #{colors.$green-500}, #{colors.$green-600}
   );
   --aui-token-gradient-warning: linear-gradient(
-    135deg,
-    var(--aui-theme-warning),
-    var(--aui-theme-warning-hover)
+    135deg, #{colors.$yellow-500}, #{colors.$orange-500}
   );
   --aui-token-gradient-danger: linear-gradient(
-    135deg,
-    var(--aui-theme-danger),
-    var(--aui-theme-danger-hover)
+    135deg, #{colors.$red-500}, #{colors.$red-600}
   );
   --aui-token-gradient-info: linear-gradient(
-    135deg,
-    var(--aui-theme-info),
-    var(--aui-theme-info-hover)
+    135deg, #{colors.$cyan-500}, #{colors.$blue-500}
   );
 
   /* Utility */
   --aui-token-gradient-transparent: linear-gradient(
-    180deg,
-    transparent,
-    transparent
+    180deg, transparent, transparent
   );
   --aui-token-gradient-none: none;
 }
