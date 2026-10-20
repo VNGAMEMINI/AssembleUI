@@ -1,7 +1,8 @@
+@use "../../primitives/effect" as *;
+
 :root {
-  /* Blend modes */
-  --aui-token-effect-blend-normal: normal;
-  --aui-token-effect-blend-multiply: multiply;
-  --aui-token-effect-blend-screen: screen;
-  --aui-token-effect-blend-overlay: overlay;
+  --aui-token-effect-blend-normal: $effect-blend-normal;
+  --aui-token-effect-blend-multiply: $effect-blend-multiply;
+  --aui-token-effect-blend-screen: $effect-blend-screen;
+  --aui-token-effect-blend-overlay: $effect-blend-overlay;
 }

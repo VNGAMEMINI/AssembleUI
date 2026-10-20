@@ -1,27 +1,29 @@
+@use "../../primitives/filter" as *;
+
 :root {
   /* Blur */
-  --aui-token-filter-blur-none: blur(0);
-  --aui-token-filter-blur-sm: blur(4px);
-  --aui-token-filter-blur-md: blur(8px);
-  --aui-token-filter-blur-lg: blur(16px);
-  --aui-token-filter-blur-xl: blur(24px);
+  --aui-token-filter-blur-none: $filter-blur-none;
+  --aui-token-filter-blur-sm: $filter-blur-sm;
+  --aui-token-filter-blur-md: $filter-blur-md;
+  --aui-token-filter-blur-lg: $filter-blur-lg;
+  --aui-token-filter-blur-xl: $filter-blur-xl;
 
   /* Brightness */
-  --aui-token-filter-brightness-dim: brightness(0.75);
-  --aui-token-filter-brightness-normal: brightness(1);
-  --aui-token-filter-brightness-bright: brightness(1.15);
+  --aui-token-filter-brightness-dim: $filter-brightness-dim;
+  --aui-token-filter-brightness-normal: $filter-brightness-normal;
+  --aui-token-filter-brightness-bright: $filter-brightness-bright;
 
   /* Saturation */
-  --aui-token-filter-saturation-muted: saturate(0.75);
-  --aui-token-filter-saturation-normal: saturate(1);
-  --aui-token-filter-saturation-vivid: saturate(1.25);
+  --aui-token-filter-saturation-muted: $filter-saturation-muted;
+  --aui-token-filter-saturation-normal: $filter-saturation-normal;
+  --aui-token-filter-saturation-vivid: $filter-saturation-vivid;
 
   /* Backdrop blur */
-  --aui-token-filter-backdrop-blur-sm: blur(4px);
-  --aui-token-filter-backdrop-blur-md: blur(8px);
-  --aui-token-filter-backdrop-blur-lg: blur(16px);
+  --aui-token-filter-backdrop-blur-sm: $filter-backdrop-blur-sm;
+  --aui-token-filter-backdrop-blur-md: $filter-backdrop-blur-md;
+  --aui-token-filter-backdrop-blur-lg: $filter-backdrop-blur-lg;
 
   /* Grayscale */
-  --aui-token-filter-grayscale-none: grayscale(0);
-  --aui-token-filter-grayscale-full: grayscale(1);
+  --aui-token-filter-grayscale-none: $filter-grayscale-none;
+  --aui-token-filter-grayscale-full: $filter-grayscale-full;
 }

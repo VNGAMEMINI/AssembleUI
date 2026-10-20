@@ -1,10 +1,14 @@
+@forward "./animation";
+@forward "./aspect";
 @forward "./border";
-@forward "./breakpoints";
+@forward "./breakpoint";
 @forward "./colors";
-@forward "./effects";
-@forward "./filters";
-@forward "./layout";
+@forward "./effect";
+@forward "./filter";
+@forward "./index";
 @forward "./motion";
+@forward "./neo";
+@forward "./opacity";
 @forward "./radius";
 @forward "./shadows";
 @forward "./sizing";
@@ -12,4 +16,3 @@
 @forward "./states";
 @forward "./typography";
 @forward "./z-index";
-@forward "./neo";

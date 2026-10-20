@@ -8,7 +8,7 @@ application-wide color palettes.
 
 ## 2. Architecture
 
-- `tokens/primitives/`: foundational design values.
+- `primitives/`: foundational design values.
 - `tokens/semantic/`: semantic tokens consumed by components.
 - `themes/light/`: default light theme.
 - `themes/dark/`: dark palette and semantic-token mappings.
@@ -89,3 +89,4 @@ npm run typecheck:public
 npm test -- --run
 npm run build
 git diff --check
+```

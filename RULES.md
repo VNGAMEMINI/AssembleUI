@@ -162,8 +162,7 @@ into the Tokens architecture.
 ### `packages/react/design/tokens/` — Design Value API
 
 - `semantic/`: defines independent semantic roles.
-- `central/`: combines properties from semantic tokens into higher-level
-  design tokens.
+- `synthetic/`: multiple roles combined into one.
 - `compatibility.scss`: preserves legacy variable names for backward
   compatibility.
 
