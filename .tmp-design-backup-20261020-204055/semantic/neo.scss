@@ -1,0 +1,28 @@
+@use "../../primitives/color" as *;
+
+:root {
+  /* Tông màu Hồng & Đỏ Neon */
+  --aui-token-neon-pink: $neon-pink;
+  --aui-token-neon-hotpink: $neon-hotpink;
+  --aui-token-neon-red: $neon-red;
+
+  /* Tông màu Xanh dương & Xanh ngọc Neon */
+  --aui-token-neon-blue: $neon-blue;
+  --aui-token-neon-cyan: $neon-cyan;
+  --aui-token-neon-electric-blue: $neon-electric-blue;
+
+  /* Tông màu Xanh lá Neon */
+  --aui-token-neon-green: $neon-green;
+  --aui-token-neon-lime: $neon-lime;
+  --aui-token-neon-emerald: $neon-emerald;
+
+  /* Tông màu Tím & Hồng tím Neon */
+  --aui-token-neon-purple: $neon-purple;
+  --aui-token-neon-violet: $neon-violet;
+  --aui-token-neon-magenta: $neon-magenta;
+
+  /* Tông màu Vàng & Cam Neon */
+  --aui-token-neon-yellow: $neon-yellow;
+  --aui-token-neon-orange: $neon-orange;
+  --aui-token-neon-amber: $neon-amber;
+}

@@ -1,0 +1,25 @@
+  /* Blur */
+$filter-blur-none: blur(0);
+$filter-blur-sm: blur(4px);
+$filter-blur-md: blur(8px);
+$filter-blur-lg: blur(16px);
+$filter-blur-xl: blur(24px);
+
+  /* Brightness */
+$filter-brightness-dim: brightness(0.75);
+$filter-brightness-normal: brightness(1);
+$filter-brightness-bright: brightness(1.15);
+
+  /* Saturation */
+$filter-saturation-muted: saturate(0.75);
+$filter-saturation-normal: saturate(1);
+$filter-saturation-vivid: saturate(1.25);
+
+  /* Backdrop blur */
+$filter-backdrop-blur-sm: blur(4px);
+$filter-backdrop-blur-md: blur(8px);
+$filter-backdrop-blur-lg: blur(16px);
+
+  /* Grayscale */
+$filter-grayscale-none: grayscale(0);
+$filter-grayscale-full: grayscale(1);

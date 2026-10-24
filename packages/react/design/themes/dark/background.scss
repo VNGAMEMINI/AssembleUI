@@ -1,0 +1,15 @@
+@use "../../primitives/colors" as *;
+
+[data-aui-theme="dark"] {
+  --aui-theme-bg: #{$gray-900};
+  --aui-theme-fg: #{$gray-50};
+  --aui-theme-primary: var(--aui-theme-accent);
+  --aui-theme-primary-hover: var(--aui-theme-accent-hover);
+  --aui-theme-on-primary: var(--aui-theme-on-accent);
+  --aui-theme-bg-subtle: #0a0e14;
+  --aui-theme-surface: #161d27;
+  --aui-theme-surface-2: #1e2733;
+  --aui-theme-surface-3: #273241;
+  --aui-theme-surface-elevated: #{$gray-700};
+  --aui-theme-overlay: #{rgba($black, 0.8)};
+}

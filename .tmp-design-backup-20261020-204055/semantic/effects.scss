@@ -1,0 +1,8 @@
+@use "../../primitives/effect" as *;
+
+:root {
+  --aui-token-effect-blend-normal: $effect-blend-normal;
+  --aui-token-effect-blend-multiply: $effect-blend-multiply;
+  --aui-token-effect-blend-screen: $effect-blend-screen;
+  --aui-token-effect-blend-overlay: $effect-blend-overlay;
+}

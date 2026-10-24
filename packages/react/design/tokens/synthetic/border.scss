@@ -1,0 +1,11 @@
+@use "../../primitives/border" as border;
+
+:root {
+  --aui-token-border-default: #{border.$border-width-default} solid #e5e7eb;
+  --aui-token-border-subtle: #{border.$border-width-thin} solid #e5e7eb;
+  --aui-token-border-focus: #{border.$border-width-medium} solid #3b82f6;
+  --aui-token-border-success: #{border.$border-width-default} solid #10b981;
+  --aui-token-border-warning: #{border.$border-width-default} solid #f59e0b;
+  --aui-token-border-danger: #{border.$border-width-default} solid #ef4444;
+  --aui-token-border-info: #{border.$border-width-default} solid #06b6d4;
+}

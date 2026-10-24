@@ -1,0 +1,15 @@
+@use "../../primitives/motion" as motion;
+
+:root {
+  --aui-token-motion-duration-instant: #{motion.$duration-instant};
+  --aui-token-motion-duration-reduced: #{motion.$duration-reduced};
+  --aui-token-motion-ease-linear: #{motion.$ease-linear};
+  --aui-token-motion-ease-in: #{motion.$ease-in};
+  --aui-token-motion-ease-out: #{motion.$ease-out};
+  --aui-token-motion-ease-in-out: #{motion.$ease-in-out};
+
+  --aui-token-motion-duration-fast: #{motion.$duration-fast};
+  --aui-token-motion-duration-normal: #{motion.$duration-normal};
+  --aui-token-motion-duration-slow: #{motion.$duration-slow};
+  --aui-token-motion-ease-standard: #{motion.$ease-standard};
+}

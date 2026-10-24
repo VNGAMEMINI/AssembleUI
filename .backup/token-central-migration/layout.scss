@@ -1,0 +1,9 @@
+:root {
+  --aui-token-aspect-square: 1 / 1;
+  --aui-token-aspect-video: 16 / 9;
+  --aui-token-aspect-portrait: 3 / 4;
+  --aui-token-aspect-landscape: 4 / 3;
+
+  --aui-token-layout-content-width: var(--aui-token-size-content-lg);
+  --aui-token-layout-content-wide: var(--aui-token-size-content-xl);
+}

@@ -1,0 +1,11 @@
+@use "../../primitives/typography" as type;
+
+:root {
+  --aui-token-font-family-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --aui-token-text-body-size: #{type.$font-size-md};
+  --aui-token-text-body-weight: #{type.$font-weight-normal};
+  --aui-token-text-body-line-height: #{type.$line-height-normal};
+  --aui-token-text-heading-weight: #{type.$font-weight-semibold};
+  --aui-token-text-caption-size: #{type.$font-size-sm};
+  --aui-token-text-caption-line-height: #{type.$line-height-normal};
+}

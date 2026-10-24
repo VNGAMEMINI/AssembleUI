@@ -1,0 +1,12 @@
+@use "../../primitives/shadows" as *;
+
+:root {
+  --aui-token-shadow-xs: #{$shadow-xs};
+  --aui-token-shadow-xl: #{$shadow-xl};
+  --aui-token-shadow-2xl: #{$shadow-2xl};
+  --aui-token-shadow-inner: #{$shadow-inner};
+
+  --aui-token-shadow-sm: #{$shadow-sm};
+  --aui-token-shadow-md: #{$shadow-md};
+  --aui-token-shadow-lg: #{$shadow-lg};
+}

@@ -1,0 +1,53 @@
+@use "../../primitives/colors" as *;
+
+/*
+ * AssembleUI semantic color tokens.
+ *
+ * Semantic tokens are the stable public API.
+ * Themes provide the values through --aui-theme-* roles.
+ */
+
+:root,
+[data-aui-theme] {
+  /* Neutral colors */
+  --aui-token-color-white: #{$white};
+  --aui-token-color-black: #{$black};
+  --aui-token-color-transparent: #{$transparent};
+
+  /* Brand and foreground */
+  --aui-token-color-primary: var(--aui-theme-primary, #{$blue-500});
+  --aui-token-color-primary-hover: var(--aui-theme-primary-hover, #{$blue-600});
+  --aui-token-color-on-primary: var(--aui-theme-on-primary, #{$white});
+
+  --aui-token-color-background: var(--aui-theme-bg, #{$white});
+  --aui-token-color-foreground: var(--aui-theme-fg, #{$gray-900});
+  --aui-token-color-text: var(--aui-theme-fg, #{$gray-900});
+  --aui-token-color-text-muted: var(--aui-theme-text-muted, #{$gray-600});
+
+  /* Surfaces */
+  --aui-token-color-surface: var(--aui-theme-surface, #{$white});
+  --aui-token-color-surface-muted: var(--aui-theme-surface-2, #{$gray-50});
+  --aui-token-color-surface-elevated: var(--aui-theme-surface-elevated, #{$white});
+  --aui-token-color-overlay: var(--aui-theme-overlay, #{rgba($black, 0.45)});
+
+  /* Borders */
+  --aui-token-color-border: var(--aui-theme-border, #{$gray-200});
+  --aui-token-color-border-hover: var(--aui-theme-border-strong, #{$gray-400});
+
+  /* Status colors */
+  --aui-token-color-success: var(--aui-theme-success, #10b981);
+  --aui-token-color-success-subtle: var(--aui-theme-success-bg, #e6f4ec);
+  --aui-token-color-on-success: var(--aui-theme-success-text, #14613a);
+
+  --aui-token-color-warning: var(--aui-theme-warning, #f59e0b);
+  --aui-token-color-warning-subtle: var(--aui-theme-warning-bg, #fdf2dc);
+  --aui-token-color-on-warning: var(--aui-theme-warning-text, #7d4a00);
+
+  --aui-token-color-danger: var(--aui-theme-danger, #ef4444);
+  --aui-token-color-danger-subtle: var(--aui-theme-danger-bg, #fbe8e7);
+  --aui-token-color-on-danger: var(--aui-theme-danger-text, #9b2420);
+
+  --aui-token-color-info: var(--aui-theme-info, #06b6d4);
+  --aui-token-color-info-subtle: var(--aui-theme-info-bg, #e1f4f7);
+  --aui-token-color-on-info: var(--aui-theme-info-text, #085a69);
+}
