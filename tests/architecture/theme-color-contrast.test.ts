@@ -5,10 +5,12 @@ import { describe, expect, it } from "vitest";
 const designRoot = join(process.cwd(), "packages/react/design");
 
 function readTheme(name: "light" | "dark"): string {
-  return readFileSync(
-    join(designRoot, `themes/${name}/index.scss`),
-    "utf8",
-  );
+  const files = ["background.scss", "interact.scss", "text.scss", "alert.scss"];
+  return files
+    .map((file) =>
+      readFileSync(join(designRoot, `themes/${name}/${file}`), "utf8"),
+    )
+    .join("\n");
 }
 
 function relativeLuminance(hex: string): number {

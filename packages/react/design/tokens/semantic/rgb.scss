@@ -1,0 +1,32 @@
+@use "sass:color";
+@use "../../primitives/colors" as colors;
+
+// RGB channel tokens.
+// Usage: rgb(var(--aui-token-rgb-black) / 45%)
+// These tokens contain channels only, not a complete color.
+
+:root,
+[data-aui-theme] {
+  /* Neutral */
+  --aui-token-rgb-black: #{color.channel(colors.$black, "red")} #{color.channel(colors.$black, "green")} #{color.channel(colors.$black, "blue")};
+  --aui-token-rgb-white: #{color.channel(colors.$white, "red")} #{color.channel(colors.$white, "green")} #{color.channel(colors.$white, "blue")};
+
+  /* Gray */
+  --aui-token-rgb-gray-50: #{color.channel(colors.$gray-50, "red")} #{color.channel(colors.$gray-50, "green")} #{color.channel(colors.$gray-50, "blue")};
+  --aui-token-rgb-gray-100: #{color.channel(colors.$gray-100, "red")} #{color.channel(colors.$gray-100, "green")} #{color.channel(colors.$gray-100, "blue")};
+  --aui-token-rgb-gray-200: #{color.channel(colors.$gray-200, "red")} #{color.channel(colors.$gray-200, "green")} #{color.channel(colors.$gray-200, "blue")};
+  --aui-token-rgb-gray-300: #{color.channel(colors.$gray-300, "red")} #{color.channel(colors.$gray-300, "green")} #{color.channel(colors.$gray-300, "blue")};
+  --aui-token-rgb-gray-400: #{color.channel(colors.$gray-400, "red")} #{color.channel(colors.$gray-400, "green")} #{color.channel(colors.$gray-400, "blue")};
+  --aui-token-rgb-gray-500: #{color.channel(colors.$gray-500, "red")} #{color.channel(colors.$gray-500, "green")} #{color.channel(colors.$gray-500, "blue")};
+  --aui-token-rgb-gray-600: #{color.channel(colors.$gray-600, "red")} #{color.channel(colors.$gray-600, "green")} #{color.channel(colors.$gray-600, "blue")};
+  --aui-token-rgb-gray-700: #{color.channel(colors.$gray-700, "red")} #{color.channel(colors.$gray-700, "green")} #{color.channel(colors.$gray-700, "blue")};
+  --aui-token-rgb-gray-800: #{color.channel(colors.$gray-800, "red")} #{color.channel(colors.$gray-800, "green")} #{color.channel(colors.$gray-800, "blue")};
+  --aui-token-rgb-gray-900: #{color.channel(colors.$gray-900, "red")} #{color.channel(colors.$gray-900, "green")} #{color.channel(colors.$gray-900, "blue")};
+
+  /* Brand and status primitives */
+  --aui-token-rgb-primary: #{color.channel(colors.$blue-500, "red")} #{color.channel(colors.$blue-500, "green")} #{color.channel(colors.$blue-500, "blue")};
+  --aui-token-rgb-success: #{color.channel(colors.$green-500, "red")} #{color.channel(colors.$green-500, "green")} #{color.channel(colors.$green-500, "blue")};
+  --aui-token-rgb-warning: #{color.channel(colors.$yellow-500, "red")} #{color.channel(colors.$yellow-500, "green")} #{color.channel(colors.$yellow-500, "blue")};
+  --aui-token-rgb-danger: #{color.channel(colors.$red-500, "red")} #{color.channel(colors.$red-500, "green")} #{color.channel(colors.$red-500, "blue")};
+  --aui-token-rgb-info: #{color.channel(colors.$cyan-500, "red")} #{color.channel(colors.$cyan-500, "green")} #{color.channel(colors.$cyan-500, "blue")};
+}

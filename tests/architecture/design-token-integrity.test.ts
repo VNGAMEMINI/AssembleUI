@@ -15,8 +15,8 @@ function readToken(relativePath: string): string {
 }
 
 describe("Architecture: design token integrity", () => {
-  const gradients = readToken("central/gradients.scss");
-  const centralStates = readToken("central/states.scss");
+  const gradients = readToken("synthetic/gradients.scss");
+  const syntheticStates = readToken("synthetic/states.scss");
   const semanticStates = readToken("semantic/states.scss");
   const sizing = readToken("semantic/sizing.scss");
 
@@ -46,31 +46,10 @@ describe("Architecture: design token integrity", () => {
     }
   });
 
-  it("provides fallbacks for optional surface theme aliases", () => {
-    const expectedFallbacks = [
-      [
-        "--aui-theme-accent-subtle",
-        "--aui-token-color-surface",
-      ],
-      [
-        "--aui-theme-surface-elevated",
-        "--aui-token-color-surface",
-      ],
-      [
-        "--aui-theme-surface-2",
-        "--aui-token-color-surface",
-      ],
-      [
-        "--aui-theme-surface-3",
-        "--aui-token-color-background",
-      ],
-    ] as const;
-
-    for (const [themeToken, fallbackToken] of expectedFallbacks) {
-      expect(gradients).toContain(
-        `var(${themeToken}, var(${fallbackToken}))`,
-      );
-    }
+  it("keeps synthetic gradients independent of runtime CSS variables", () => {
+    // Synthetic gradients are concrete values derived from design primitives.
+    // Runtime theme fallbacks belong in semantic/theme token contracts.
+    expect(gradients).not.toMatch(/var\s*\(/);
   });
 
   it("defines physical sizing tokens from sizing primitives", () => {
@@ -92,8 +71,8 @@ describe("Architecture: design token integrity", () => {
   });
 
   it("uses one canonical focus-ring offset declaration", () => {
-    expect(centralStates).toContain(
-      "--aui-token-state-focus-ring-offset: var(--aui-token-space-1);",
+    expect(syntheticStates).toContain(
+      "--aui-token-state-focus-ring-offset: #{spacing.$spacing-1};",
     );
 
     expect(semanticStates).not.toContain(
@@ -102,8 +81,8 @@ describe("Architecture: design token integrity", () => {
   });
 
   it("uses the sizing token for focus-ring width", () => {
-    expect(semanticStates).toContain(
-      "--aui-token-state-focus-ring-width: var(--aui-token-size-medium);",
+    expect(syntheticStates).toContain(
+      "--aui-token-state-focus-ring-width: #{size.$size-medium};",
     );
   });
 
@@ -132,8 +111,8 @@ describe("Architecture: design token integrity", () => {
   });
 
   it("keeps theme-specific shadow values in their own theme files", () => {
-    const light = read("themes/light/index.scss");
-    const dark = read("themes/dark/index.scss");
+    const light = read("themes/light/shadow.scss");
+    const dark = read("themes/dark/shadow.scss");
 
     for (const name of ["sm", "md", "lg"] as const) {
       expect(light).toMatch(

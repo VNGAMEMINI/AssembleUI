@@ -15,8 +15,23 @@ function extractTokens(source: string, prefix: string): Set<string> {
 
 describe("Architecture: theme and token contract", () => {
   const rootSource = readDesignFile("tokens/semantic/colors.scss");
-  const lightSource = readDesignFile("themes/light/index.scss");
-  const darkSource = readDesignFile("themes/dark/index.scss");
+  const themeFiles = [
+    "background.scss",
+    "interact.scss",
+    "border.scss",
+    "text.scss",
+    "alert.scss",
+    "shadow.scss",
+    "selection-area.scss",
+    "chart.scss",
+  ];
+
+  const lightSource = themeFiles
+    .map((file) => readDesignFile(`themes/light/${file}`))
+    .join("\n");
+  const darkSource = themeFiles
+    .map((file) => readDesignFile(`themes/dark/${file}`))
+    .join("\n");
 
   const rootTokens = extractTokens(rootSource, "--aui-token-color-");
   const lightTheme = extractTokens(lightSource, "--aui-theme-");

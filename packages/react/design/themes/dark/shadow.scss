@@ -1,14 +1,13 @@
-@use "../../primitives/sizing" as *;
-
 [data-aui-theme="dark"] {
-  --aui-theme-shadow-sm: #{$size-none} #{$size-thin} #{$size-medium}
-    rgb(0 0 0 / 0.4);
+  --aui-theme-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+
   --aui-theme-shadow-md:
-    #{$size-none} #{$size-thin} #{$size-medium} rgb(0 0 0 / 0.4),
+    0 1px 2px rgb(0 0 0 / 0.4),
     0 4px 12px rgb(0 0 0 / 0.3);
+
   --aui-theme-shadow-lg:
-    #{$size-none} #{$size-thick} #{$size-big} rgb(0 0 0 / 0.3),
+    0 4px 6px rgb(0 0 0 / 0.3),
     0 12px 32px rgb(0 0 0 / 0.5);
-  --aui-theme-focus-ring: #{$size-none} #{$size-none} #{$size-none}
-    #{$size-thick} rgb(127 158 255 / 0.4);
+
+  --aui-theme-focus-ring: 0 0 0 4px rgb(127 158 255 / 0.4);
 }

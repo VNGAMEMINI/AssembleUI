@@ -1,8 +1,11 @@
-@use "../../primitives/colors" as colors;
-
-:root {
-  --aui-token-surface-page: #{colors.$white};
-  --aui-token-surface-default: #{colors.$white};
-  --aui-token-surface-elevated: #{colors.$white};
-  --aui-token-surface-overlay: #{rgba(colors.$black, 0.45)};
+/*
+ * Compatibility aliases for existing components.
+ * Values resolve through semantic tokens so active themes are respected.
+ */
+:root,
+[data-aui-theme] {
+  --aui-token-surface-page: var(--aui-token-color-background);
+  --aui-token-surface-default: var(--aui-token-color-surface);
+  --aui-token-surface-elevated: var(--aui-token-color-surface-elevated);
+  --aui-token-surface-overlay: var(--aui-token-color-overlay);
 }

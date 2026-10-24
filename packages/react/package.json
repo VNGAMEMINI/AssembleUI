@@ -29,10 +29,12 @@
       "types": "./dist/templates/index.d.ts",
       "import": "./dist/templates/index.js"
     },
-    "./styles": "./dist/styles.css"
+    "./styles": "./dist/styles.css",
+    "./themes/dark": "./dist/themes/dark.css",
+    "./themes/light": "./dist/themes/light.css"
   },
   "scripts": {
-    "build:styles": "sass --no-source-map index.scss dist/styles.css"
+    "build:styles": "mkdir -p dist/themes && sass --no-source-map index.scss dist/styles.css && sass --no-source-map design/themes/dark/index.scss dist/themes/dark.css && sass --no-source-map design/themes/light/index.scss dist/themes/light.css"
   },
   "peerDependencies": {
     "react": "^19.0.0",
