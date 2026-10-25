@@ -1,3 +1,3 @@
 @function spacing($size) {
-  @return var(--aui-space-#{$size});
+  @return var(--aui-token-space-#{$size});
 }

@@ -77,7 +77,7 @@ color: #2563eb;
 
 Đúng
 
-color: var(--aui-color-primary);
+color: var(--aui-token-color-primary);
 ```
 
 ---

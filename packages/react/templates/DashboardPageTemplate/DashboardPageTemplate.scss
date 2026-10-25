@@ -1,9 +1,9 @@
 .aui-dashboard-page-template {
   display: grid;
-  gap: var(--aui-space-6);
+  gap: var(--aui-token-space-6);
   width: 100%;
   min-width: 0;
-  color: var(--aui-color-text);
+  color: var(--aui-token-color-text);
 }
 
 .aui-dashboard-page-template__header,
@@ -25,6 +25,6 @@
 
 @media (max-width: 48rem) {
   .aui-dashboard-page-template {
-    gap: var(--aui-space-5);
+    gap: var(--aui-token-space-5);
   }
 }

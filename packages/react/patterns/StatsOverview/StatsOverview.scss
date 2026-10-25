@@ -1,13 +1,13 @@
 .aui-stats-overview {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-space-5);
+  gap: var(--aui-token-space-5);
 }
 
 .aui-stats-overview__header {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-space-1);
+  gap: var(--aui-token-space-1);
 }
 
 .aui-stats-overview__title {
@@ -24,7 +24,7 @@
     4,
     minmax(0, 1fr)
   );
-  gap: var(--aui-space-4);
+  gap: var(--aui-token-space-4);
 }
 
 @media (max-width: 1024px) {

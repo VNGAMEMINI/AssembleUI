@@ -1,10 +1,10 @@
 @mixin focus-ring {
   &:focus-visible {
     outline:
-      var(--aui-border-width-medium)
+      var(--aui-token-border-width-medium)
       solid
-      var(--aui-state-focus-ring);
+      var(--aui-token-state-focus-ring);
 
-    outline-offset: var(--aui-space-1);
+    outline-offset: var(--aui-token-space-1);
   }
 }

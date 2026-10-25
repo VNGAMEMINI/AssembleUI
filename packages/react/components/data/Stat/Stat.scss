@@ -1,44 +1,44 @@
 .aui-stat {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-space-1);
+  gap: var(--aui-token-space-1);
 
   width: 100%;
 }
 
 .aui-stat__label {
-  color: var(--aui-color-text);
+  color: var(--aui-token-color-text);
 
-  font-size: var(--aui-font-size-sm);
+  font-size: var(--aui-token-font-size-sm);
 }
 
 .aui-stat__value {
-  color: var(--aui-color-text);
+  color: var(--aui-token-color-text);
 
-  font-size: var(--aui-font-size-md);
-  font-weight: var(--aui-font-weight-medium);
+  font-size: var(--aui-token-font-size-md);
+  font-weight: var(--aui-token-font-weight-medium);
 }
 
 .aui-stat__description {
-  color: var(--aui-color-text);
+  color: var(--aui-token-color-text);
 
-  font-size: var(--aui-font-size-xs);
+  font-size: var(--aui-token-font-size-xs);
 }
 
 .aui-stat--positive {
   .aui-stat__value {
-    color: var(--aui-color-success);
+    color: var(--aui-token-color-success);
   }
 }
 
 .aui-stat--negative {
   .aui-stat__value {
-    color: var(--aui-color-danger);
+    color: var(--aui-token-color-danger);
   }
 }
 
 .aui-stat--neutral {
   .aui-stat__value {
-    color: var(--aui-color-text);
+    color: var(--aui-token-color-text);
   }
 }

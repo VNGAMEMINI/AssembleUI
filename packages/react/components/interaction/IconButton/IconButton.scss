@@ -22,7 +22,7 @@
 
   &:disabled {
     cursor: not-allowed;
-    opacity: var(--aui-state-disabled-opacity);
+    opacity: var(--aui-token-state-disabled-opacity);
   }
 }
 
@@ -42,28 +42,28 @@
 }
 
 .aui-icon-button--sm {
-  width: var(--aui-space-8);
-  height: var(--aui-space-8);
+  width: var(--aui-token-space-8);
+  height: var(--aui-token-space-8);
 
   .aui-icon-button__icon {
-    font-size: var(--aui-font-size-sm);
+    font-size: var(--aui-token-font-size-sm);
   }
 }
 
 .aui-icon-button--md {
-  width: var(--aui-space-10);
-  height: var(--aui-space-10);
+  width: var(--aui-token-space-10);
+  height: var(--aui-token-space-10);
 
   .aui-icon-button__icon {
-    font-size: var(--aui-font-size-md);
+    font-size: var(--aui-token-font-size-md);
   }
 }
 
 .aui-icon-button--lg {
-  width: var(--aui-space-12);
-  height: var(--aui-space-12);
+  width: var(--aui-token-space-12);
+  height: var(--aui-token-space-12);
 
   .aui-icon-button__icon {
-    font-size: var(--aui-font-size-lg);
+    font-size: var(--aui-token-font-size-lg);
   }
 }

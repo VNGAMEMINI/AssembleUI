@@ -268,7 +268,7 @@ background: #ffffff;
 Đúng
 
 ```scss
-background: var(--aui-color-background);
+background: var(--aui-token-color-background);
 ```
 
 ---

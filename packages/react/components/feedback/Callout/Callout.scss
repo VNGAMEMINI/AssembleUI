@@ -1,10 +1,10 @@
 .aui-callout {
   width: 100%;
-  padding: var(--aui-space-3);
-  border: 1px solid var(--aui-color-border);
-  border-radius: var(--aui-radius-md);
-  background: var(--aui-color-surface);
-  color: var(--aui-color-text);
+  padding: var(--aui-token-space-3);
+  border: 1px solid var(--aui-token-border-width-1);
+  border-radius: var(--aui-token-radius-md);
+  background: var(--aui-token-color-surface);
+  color: var(--aui-token-color-text);
 }
 
 .aui-callout__title {
@@ -12,21 +12,21 @@
 }
 
 .aui-callout__content {
-  margin-top: var(--aui-space-1);
+  margin-top: var(--aui-token-space-1);
 }
 
 .aui-callout--info {
-  border-color: var(--aui-color-info);
+  border-color: var(--aui-token-color-info);
 }
 
 .aui-callout--success {
-  border-color: var(--aui-color-success);
+  border-color: var(--aui-token-color-success);
 }
 
 .aui-callout--warning {
-  border-color: var(--aui-color-warning);
+  border-color: var(--aui-token-color-warning);
 }
 
 .aui-callout--danger {
-  border-color: var(--aui-color-danger);
+  border-color: var(--aui-token-color-danger);
 }

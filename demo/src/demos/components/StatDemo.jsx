@@ -9,7 +9,7 @@ export function StatDemo() {
         display: "grid",
         gridTemplateColumns:
           "repeat(3, minmax(0, 1fr))",
-        gap: "var(--aui-space-6)",
+        gap: "var(--aui-token-space-6)",
         width: "100%",
       }}
     >

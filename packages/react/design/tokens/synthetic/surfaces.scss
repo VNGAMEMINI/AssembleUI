@@ -1,6 +1,5 @@
 /*
- * Compatibility aliases for existing components.
- * Values resolve through semantic tokens so active themes are respected.
+ * Semantic surface tokens resolve through the canonical color tokens.
  */
 :root,
 [data-aui-theme] {

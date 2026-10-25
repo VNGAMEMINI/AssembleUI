@@ -7,7 +7,7 @@ export function ChipDemo() {
     <div
       style={{
         display: "flex",
-        gap: "var(--aui-space-3)",
+        gap: "var(--aui-token-space-3)",
         flexWrap: "wrap",
       }}
     >

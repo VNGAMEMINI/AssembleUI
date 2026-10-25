@@ -157,7 +157,7 @@ Ví dụ
 
 ```css
 :root {
-  --aui-font-family: system-ui;
+  --aui-token-font-family-base: system-ui;
 }
 ```
 

@@ -3,58 +3,58 @@
 .aui-textarea-field {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-space-2);
+  gap: var(--aui-token-space-2);
 
   &__label {
-    color: var(--aui-color-text);
-    font-size: var(--aui-font-size-sm);
-    font-weight: var(--aui-font-weight-medium);
+    color: var(--aui-token-color-text);
+    font-size: var(--aui-token-font-size-sm);
+    font-weight: var(--aui-token-font-weight-medium);
   }
 
   &__description,
   &__error {
-    font-size: var(--aui-font-size-sm);
+    font-size: var(--aui-token-font-size-sm);
   }
 
   &__description {
-    color: var(--aui-color-text-muted);
+    color: var(--aui-token-color-text-muted);
   }
 
   &__error {
-    color: var(--aui-color-danger);
+    color: var(--aui-token-color-danger);
   }
 }
 
 .aui-textarea {
   width: 100%;
   min-height: calc(
-    var(--aui-space-10) * 3
+    var(--aui-token-space-10) * 3
   );
 
-  padding: var(--aui-space-3);
+  padding: var(--aui-token-space-3);
 
-  border: var(--aui-border-width-default) solid
-    var(--aui-color-border);
-  border-radius: var(--aui-radius-md);
+  border: var(--aui-token-border-width-default) solid
+    var(--aui-token-color-border);
+  border-radius: var(--aui-token-radius-md);
 
-  background: var(--aui-color-background);
-  color: var(--aui-color-text);
+  background: var(--aui-token-color-background);
+  color: var(--aui-token-color-text);
 
-  font-family: var(--aui-font-family-base);
-  font-size: var(--aui-font-size-md);
-  line-height: var(--aui-line-height-normal);
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-font-size-md);
+  line-height: var(--aui-token-line-height-normal);
 
   resize: vertical;
 
   @include focus.focus-ring;
 
   &:disabled {
-    opacity: var(--aui-state-disabled-opacity);
+    opacity: var(--aui-token-state-disabled-opacity);
     cursor: not-allowed;
     resize: none;
   }
 
   &--invalid {
-    border-color: var(--aui-color-danger);
+    border-color: var(--aui-token-color-danger);
   }
 }

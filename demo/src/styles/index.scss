@@ -7,7 +7,7 @@
     system-ui,
     sans-serif;
 
-  color-scheme: light;
+  color-scheme: light dark;
 }
 
 * {
@@ -23,8 +23,8 @@ body,
 
 html,
 body {
-  background: var(--aui-surface-page);
-  color: var(--aui-color-text);
+  background: var(--aui-token-surface-page);
+  color: var(--aui-token-color-text);
 
   transition:
     background-color 160ms ease,

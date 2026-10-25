@@ -3,16 +3,16 @@
 .aui-pagination {
   display: inline-flex;
   align-items: center;
-  gap: var(--aui-space-1);
+  gap: var(--aui-token-space-1);
 
-  font-family: var(--aui-font-family-base);
-  font-size: var(--aui-text-body-size);
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-text-body-size);
 }
 
 .aui-pagination__list {
   display: flex;
   align-items: center;
-  gap: var(--aui-space-1);
+  gap: var(--aui-token-space-1);
 
   margin: 0;
   padding: 0;
@@ -24,16 +24,16 @@
 }
 
 .aui-pagination__button {
-  min-width: var(--aui-space-8);
-  min-height: var(--aui-space-8);
+  min-width: var(--aui-token-space-8);
+  min-height: var(--aui-token-space-8);
 
-  padding: var(--aui-space-1) var(--aui-space-2);
+  padding: var(--aui-token-space-1) var(--aui-token-space-2);
 
-  border: var(--aui-border-width-thin) solid var(--aui-color-border);
-  border-radius: var(--aui-radius-sm);
+  border: var(--aui-token-border-width-thin) solid var(--aui-token-color-border);
+  border-radius: var(--aui-token-radius-sm);
 
   background: transparent;
-  color: var(--aui-color-text);
+  color: var(--aui-token-color-text);
 
   font: inherit;
 
@@ -42,29 +42,29 @@
   @include focus.focus-ring;
 
   &:hover:not(:disabled) {
-    background: var(--aui-color-surface-muted);
+    background: var(--aui-token-color-surface-muted);
   }
 
   &:disabled {
-    opacity: var(--aui-state-disabled-opacity);
+    opacity: var(--aui-token-state-disabled-opacity);
     cursor: not-allowed;
   }
 
   &--current {
-    border-color: var(--aui-color-primary);
-    background: var(--aui-color-primary);
-    color: var(--aui-color-on-primary);
+    border-color: var(--aui-token-color-primary);
+    background: var(--aui-token-color-primary);
+    color: var(--aui-token-color-on-primary);
   }
 }
 
 .aui-pagination__ellipsis {
   display: inline-flex;
 
-  min-width: var(--aui-space-8);
-  min-height: var(--aui-space-8);
+  min-width: var(--aui-token-space-8);
+  min-height: var(--aui-token-space-8);
 
   align-items: center;
   justify-content: center;
 
-  color: var(--aui-color-text-muted);
+  color: var(--aui-token-color-text-muted);
 }

@@ -5,37 +5,37 @@
   flex-shrink: 0;
   overflow: hidden;
 
-  color: var(--aui-color-on-primary);
-  background: var(--aui-color-primary);
+  color: var(--aui-token-color-on-primary);
+  background: var(--aui-token-color-primary);
 
-  font-weight: var(--aui-font-weight-medium);
+  font-weight: var(--aui-token-font-weight-medium);
   line-height: 1;
   user-select: none;
 
   &--sm {
     width: 2rem;
     height: 2rem;
-    font-size: var(--aui-font-size-xs);
+    font-size: var(--aui-token-font-size-xs);
   }
 
   &--md {
     width: 2.5rem;
     height: 2.5rem;
-    font-size: var(--aui-font-size-sm);
+    font-size: var(--aui-token-font-size-sm);
   }
 
   &--lg {
     width: 3rem;
     height: 3rem;
-    font-size: var(--aui-font-size-md);
+    font-size: var(--aui-token-font-size-md);
   }
 
   &--circle {
-    border-radius: var(--aui-radius-full);
+    border-radius: var(--aui-token-radius-full);
   }
 
   &--square {
-    border-radius: var(--aui-radius-md);
+    border-radius: var(--aui-token-radius-md);
   }
 
   &__image {

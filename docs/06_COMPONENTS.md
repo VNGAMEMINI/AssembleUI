@@ -68,9 +68,9 @@ Card + Button + Text
 Prefer semantic variables:
 
 ```scss
-color: var(--aui-color-primary);
-padding: var(--aui-spacing-4);
-border-radius: var(--aui-radius-md);
+color: var(--aui-token-color-primary);
+padding: var(--aui-token-space-4);
+border-radius: var(--aui-token-radius-md);
 ```
 
 The application loads the public style entry:

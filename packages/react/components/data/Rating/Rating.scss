@@ -1,7 +1,7 @@
 .aui-rating {
   display: inline-flex;
   align-items: center;
-  gap: var(--aui-space-1);
+  gap: var(--aui-token-space-1);
 
   &__star {
     position: relative;
@@ -10,14 +10,14 @@
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--aui-color-border);
+    color: var(--aui-token-color-border);
     cursor: pointer;
     overflow: hidden;
 
     &:focus-visible {
-      outline: 2px solid var(--aui-state-focus-ring);
-      outline-offset: var(--aui-space-1);
-      border-radius: var(--aui-radius-sm);
+      outline: 2px solid var(--aui-token-state-focus-ring);
+      outline-offset: var(--aui-token-space-1);
+      border-radius: var(--aui-token-radius-sm);
     }
 
     &:disabled {
@@ -38,7 +38,7 @@
   &__star-fill {
     width: var(--aui-rating-fill);
     overflow: hidden;
-    color: var(--aui-color-warning);
+    color: var(--aui-token-color-warning);
   }
 
   &--readonly {

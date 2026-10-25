@@ -14,7 +14,7 @@ describe("Architecture: surface tokens", () => {
   const darkTheme = readDesignFile("themes/dark/background.scss");
   const semanticColors = readDesignFile("tokens/semantic/colors.scss");
 
-  it("maps compatibility surface aliases to semantic color tokens", () => {
+  it("maps synthetic surface tokens to semantic color tokens", () => {
     const aliases = [
       ["--aui-token-surface-page", "--aui-token-color-background"],
       ["--aui-token-surface-default", "--aui-token-color-surface"],
@@ -29,10 +29,11 @@ describe("Architecture: surface tokens", () => {
     }
   });
 
-  it("maps the elevated surface semantic token to its theme role", () => {
+  it("keeps the elevated surface semantic token fixed and theme-independent", () => {
     expect(semanticColors).toMatch(
-      /--aui-token-color-surface-elevated:\s*var\(\s*--aui-theme-surface-elevated,\s*#\{\$white\}\s*\);/,
+      /--aui-token-color-surface-elevated:\s*#\{colors\.\$white\};/,
     );
+    expect(semanticColors).not.toMatch(/var\s*\(\s*--aui-theme-/);
     expect(darkTheme).toMatch(
       /--aui-theme-surface-elevated:\s*#\{\$gray-700\};/,
     );
@@ -65,7 +66,7 @@ describe("Architecture: surface tokens", () => {
     }
   });
 
-  it("keeps shadow primitives and theme-aware semantic mappings consistent", () => {
+  it("keeps semantic shadow tokens tied to primitives, not themes", () => {
     const primitives = readDesignFile("primitives/shadows.scss");
     const semantic = readDesignFile("tokens/semantic/shadows.scss");
 
@@ -78,9 +79,9 @@ describe("Architecture: surface tokens", () => {
         new RegExp(`\\$shadow-${name}:\\s*${dimensions};`),
       );
       expect(semantic).toContain(`--aui-token-shadow-${name}:`);
-      expect(semantic).toContain(`var(--aui-theme-shadow-${name},`);
       expect(semantic).toContain(`#{$shadow-${name}}`);
     }
+    expect(semantic).not.toMatch(/var\s*\(\s*--aui-theme-/);
 
     for (const name of ["xs", "xl", "2xl", "inner"] as const) {
       expect(semantic).toContain(`--aui-token-shadow-${name}:`);
