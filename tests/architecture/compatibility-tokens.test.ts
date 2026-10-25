@@ -40,6 +40,7 @@ describe("Architecture: canonical token usage", () => {
     for (const sourceFile of sourceFiles) {
       const source = readFileSync(join(tokenRoot, sourceFile), "utf8");
       expect(source, `packages/react/design/tokens/${sourceFile}`).not.toMatch(/var\(\s*--aui-theme-/);
+      expect(source, `packages/react/design/tokens/${sourceFile}`).not.toMatch(/\[\s*data-aui-theme(?:\s|\])/);
     }
   });
 });

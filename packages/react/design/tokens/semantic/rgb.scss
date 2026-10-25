@@ -5,8 +5,7 @@
 // Usage: rgb(var(--aui-token-rgb-black) / 45%)
 // These tokens contain channels only, not a complete color.
 
-:root,
-[data-aui-theme] {
+:root {
   /* Neutral */
   --aui-token-rgb-black: #{color.channel(colors.$black, "red")} #{color.channel(colors.$black, "green")} #{color.channel(colors.$black, "blue")};
   --aui-token-rgb-white: #{color.channel(colors.$white, "red")} #{color.channel(colors.$white, "green")} #{color.channel(colors.$white, "blue")};

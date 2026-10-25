@@ -257,7 +257,7 @@ export function App() {
               </div>
             </div>
 
-            <div className="demo-preview">
+            <div className="demo-preview-frame">
               <div className="demo-preview__toolbar">
                 <span>Interactive preview</span>
 
