@@ -1,13 +1,13 @@
 .aui-accordion {
   width: 100%;
 
-  color: var(--aui-token-color-text);
-  background: var(--aui-token-color-surface);
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
 
   border:
     var(--aui-token-border-width-thin)
     solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
 
   border-radius: var(--aui-token-radius-md);
 
@@ -18,7 +18,7 @@
   border-bottom:
     var(--aui-token-border-width-thin)
     solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
 
   &:last-child {
     border-bottom: 0;
@@ -55,14 +55,14 @@
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background: var(--aui-token-color-surface-muted);
+    background: var(--aui-theme-surface-2);
   }
 
   &:focus-visible {
     outline:
       var(--aui-token-border-width-medium)
       solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-theme-state-focus-ring);
 
     outline-offset: -2px;
   }
@@ -99,7 +99,7 @@
     var(--aui-token-space-4)
     var(--aui-token-space-4);
 
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }
 
 .aui-accordion__item--disabled {

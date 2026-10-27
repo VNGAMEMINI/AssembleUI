@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
 
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-size: var(--aui-token-font-size-sm);
   line-height: 1.5;
 
@@ -45,13 +45,13 @@
 
 .aui-list--divided > li + li {
   border-top: var(--aui-token-border-width-thin) solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
 }
 
 .aui-list--horizontal.aui-list--divided > li + li {
   border-top: 0;
   border-left: var(--aui-token-border-width-thin) solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
   padding-left: var(--aui-token-space-4);
 }
 

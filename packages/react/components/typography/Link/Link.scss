@@ -1,7 +1,7 @@
 @use "../../../styles/mixins/focus" as focus;
 
 .aui-link {
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-primary);
   font-family: var(--aui-token-font-family-base);
   text-decoration-color: currentColor;
   text-underline-offset: 0.15em;

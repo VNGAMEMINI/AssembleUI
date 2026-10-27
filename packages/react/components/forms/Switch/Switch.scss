@@ -20,7 +20,7 @@
     display: inline-flex;
     align-items: center;
 
-    color: var(--aui-token-color-text);
+    color: var(--aui-theme-text);
     font-size: var(--aui-token-font-size-sm);
     font-weight: var(--aui-token-font-weight-medium);
   }
@@ -35,11 +35,11 @@
   }
 
   &__description {
-    color: var(--aui-token-color-text-muted);
+    color: var(--aui-theme-text-muted);
   }
 
   &__error {
-    color: var(--aui-token-color-danger);
+    color: var(--aui-theme-danger);
   }
 }
 
@@ -48,7 +48,7 @@
   height: var(--aui-token-space-4);
   margin: 0;
 
-  accent-color: var(--aui-token-color-primary);
+  accent-color: var(--aui-theme-primary);
 
   cursor: pointer;
 
@@ -66,6 +66,6 @@
   }
 
   &--invalid {
-    outline-color: var(--aui-token-color-danger);
+    outline-color: var(--aui-theme-danger);
   }
 }

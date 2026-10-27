@@ -6,7 +6,7 @@
 .aui-combobox-field__label {
   display: inline-block;
   margin-bottom: var(--aui-token-space-2);
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   font-weight: var(--aui-token-font-weight-medium);
@@ -22,21 +22,21 @@
   padding:
     var(--aui-token-space-2)
     var(--aui-token-space-3);
-  color: var(--aui-token-color-text);
-  background: var(--aui-token-color-surface);
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
   border:
     var(--aui-token-border-width-thin)
     solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
   border-radius: var(--aui-token-radius-sm);
   font: inherit;
 
   &:focus {
-    border-color: var(--aui-token-state-focus-ring);
+    border-color: var(--aui-theme-state-focus-ring);
     outline:
       var(--aui-token-border-width-medium)
       solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-theme-state-focus-ring);
     outline-offset: 1px;
   }
 
@@ -57,11 +57,11 @@
   padding: var(--aui-token-space-1);
   overflow-y: auto;
   list-style: none;
-  background: var(--aui-token-color-surface);
+  background: var(--aui-theme-surface);
   border:
     var(--aui-token-border-width-thin)
     solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
   border-radius: var(--aui-token-radius-sm);
   box-shadow: var(--aui-token-shadow-sm);
 }
@@ -75,7 +75,7 @@
 
   &:hover,
   &--active {
-    background: var(--aui-token-color-surface-muted);
+    background: var(--aui-theme-surface-2);
   }
 
   &--selected {
@@ -92,7 +92,7 @@
   padding:
     var(--aui-token-space-2)
     var(--aui-token-space-3);
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }
 
 .aui-combobox-field__description,
@@ -103,16 +103,16 @@
 }
 
 .aui-combobox-field__description {
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }
 
 .aui-combobox-field__error {
-  color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
 }
 
 .aui-combobox-field--invalid {
   .aui-combobox__input {
-    border-color: var(--aui-token-color-danger);
+    border-color: var(--aui-theme-danger);
   }
 }
 

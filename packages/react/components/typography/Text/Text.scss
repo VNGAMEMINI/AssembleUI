@@ -3,7 +3,7 @@
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   font-weight: var(--aui-token-text-body-weight);
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 }
 
 .aui-text--xs {
@@ -23,9 +23,9 @@
 }
 
 .aui-text--default {
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 }
 
 .aui-text--muted {
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }

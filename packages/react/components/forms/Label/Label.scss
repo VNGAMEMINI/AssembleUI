@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--aui-token-space-1);
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-size: var(--aui-token-font-size-sm);
   font-weight: var(--aui-token-font-weight-medium);
   line-height: 1.4;
@@ -10,5 +10,5 @@
 }
 
 .aui-label__required {
-  color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
 }

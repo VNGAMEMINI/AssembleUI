@@ -1,14 +1,14 @@
 .aui-progress {
   width: 100%;
   overflow: hidden;
-  background: var(--aui-token-color-surface-muted);
+  background: var(--aui-theme-surface-2);
   border-radius: var(--aui-token-radius-full);
 }
 
 .aui-progress__bar {
   height: 100%;
   border-radius: inherit;
-  background: var(--aui-token-color-primary);
+  background: var(--aui-theme-primary);
   transition:
     width var(--aui-token-motion-duration-normal)
     var(--aui-token-motion-ease-standard);
@@ -27,19 +27,19 @@
 }
 
 .aui-progress--primary .aui-progress__bar {
-  background: var(--aui-token-color-primary);
+  background: var(--aui-theme-primary);
 }
 
 .aui-progress--success .aui-progress__bar {
-  background: var(--aui-token-color-success);
+  background: var(--aui-theme-success);
 }
 
 .aui-progress--warning .aui-progress__bar {
-  background: var(--aui-token-color-warning);
+  background: var(--aui-theme-warning);
 }
 
 .aui-progress--danger .aui-progress__bar {
-  background: var(--aui-token-color-danger);
+  background: var(--aui-theme-danger);
 }
 
 @media (prefers-reduced-motion: reduce) {

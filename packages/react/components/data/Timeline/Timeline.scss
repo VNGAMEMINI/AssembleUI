@@ -72,13 +72,13 @@
 }
 
 .aui-timeline__item--success {
-  color: var(--aui-token-color-success, currentColor);
+  color: var(--aui-theme-success, currentColor);
 }
 
 .aui-timeline__item--warning {
-  color: var(--aui-token-color-warning, currentColor);
+  color: var(--aui-theme-warning, currentColor);
 }
 
 .aui-timeline__item--error {
-  color: var(--aui-token-color-danger, currentColor);
+  color: var(--aui-theme-danger, currentColor);
 }

@@ -16,7 +16,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-color-primary);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.13em;
@@ -56,9 +56,9 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
   padding: 0.45rem 0.7rem;
-  color: var(--aui-token-color-success);
-  background: var(--aui-token-color-success-subtle);
-  border: 1px solid color-mix(in srgb, var(--aui-token-color-success) 18%, transparent);
+  color: var(--aui-theme-success);
+  background: var(--aui-theme-success-bg);
+  border: 1px solid color-mix(in srgb, var(--aui-theme-success) 18%, transparent);
   border-radius: 999px;
   font-size: 0.68rem;
   font-weight: 750;
@@ -129,7 +129,7 @@
 .demo-preview__toolbar > span::before {
   width: 0.42rem;
   height: 0.42rem;
-  background: var(--aui-token-color-success);
+  background: var(--aui-theme-success);
   border-radius: 50%;
   content: "";
 }
@@ -152,9 +152,9 @@
 }
 
 .demo-copy-button:hover {
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-color-primary);
   background: var(--demo-accent-soft);
-  border-color: color-mix(in srgb, var(--aui-token-color-primary) 38%, var(--demo-border));
+  border-color: color-mix(in srgb, var(--aui-theme-color-primary) 38%, var(--demo-border));
 }
 
 .demo-copy-button:disabled {

@@ -10,7 +10,7 @@
   border-bottom:
     var(--aui-token-border-width-thin)
     solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
 }
 
 .aui-tabs__tab {
@@ -21,7 +21,7 @@
     var(--aui-token-space-2)
     var(--aui-token-space-3);
 
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
   background: transparent;
 
   border: 0;
@@ -35,15 +35,15 @@
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    color: var(--aui-token-color-text);
-    background: var(--aui-token-color-surface-muted);
+    color: var(--aui-theme-text);
+    background: var(--aui-theme-surface-2);
   }
 
   &:focus-visible {
     outline:
       var(--aui-token-border-width-medium)
       solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-theme-state-focus-ring);
 
     outline-offset: -2px;
   }
@@ -55,7 +55,7 @@
 }
 
 .aui-tabs__tab--active {
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-primary);
   font-weight: 600;
 
   &::after {
@@ -70,20 +70,20 @@
       var(--aui-token-border-width-medium);
 
     background:
-      var(--aui-token-color-primary);
+      var(--aui-theme-primary);
   }
 }
 
 .aui-tabs__panel {
   padding: var(--aui-token-space-4);
 
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 
   &:focus-visible {
     outline:
       var(--aui-token-border-width-medium)
       solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-theme-state-focus-ring);
 
     outline-offset: -2px;
   }

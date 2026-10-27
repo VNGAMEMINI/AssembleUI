@@ -3,29 +3,29 @@
 
 :root {
   // Colors
-  --aui-color-primary: var(--aui-token-color-primary);
-  --aui-color-primary-hover: var(--aui-token-color-primary-hover);
-  --aui-color-background: var(--aui-token-color-background);
-  --aui-color-surface: var(--aui-token-color-surface);
-  --aui-color-surface-muted: var(--aui-token-color-surface-muted);
-  --aui-color-text: var(--aui-token-color-text);
-  --aui-color-text-muted: var(--aui-token-color-text-muted);
-  --aui-color-border: var(--aui-token-color-border);
-  --aui-color-border-hover: var(--aui-token-color-border-hover);
-  --aui-color-on-primary: var(--aui-token-color-on-primary);
-  --aui-color-success: var(--aui-token-color-success);
-  --aui-color-success-subtle: var(--aui-token-color-success-subtle);
-  --aui-color-on-success: var(--aui-token-color-on-success);
-  --aui-color-warning: var(--aui-token-color-warning);
-  --aui-color-warning-subtle: var(--aui-token-color-warning-subtle);
-  --aui-color-on-warning: var(--aui-token-color-on-warning);
-  --aui-color-danger: var(--aui-token-color-danger);
-  --aui-color-danger-subtle: var(--aui-token-color-danger-subtle);
-  --aui-color-on-danger: var(--aui-token-color-on-danger);
-  --aui-color-info: var(--aui-token-color-info);
-  --aui-color-info-subtle: var(--aui-token-color-info-subtle);
-  --aui-color-on-info: var(--aui-token-color-on-info);
-  --aui-color-overlay: var(--aui-token-color-overlay);
+  --aui-color-primary: var(--aui-theme-color-primary);
+  --aui-color-primary-hover: var(--aui-theme-color-primary-hover);
+  --aui-color-background: var(--aui-theme-color-background);
+  --aui-color-surface: var(--aui-theme-color-surface);
+  --aui-color-surface-muted: var(--aui-theme-color-surface-muted);
+  --aui-color-text: var(--aui-theme-color-text);
+  --aui-color-text-muted: var(--aui-theme-color-text-muted);
+  --aui-color-border: var(--aui-theme-color-border);
+  --aui-color-border-hover: var(--aui-theme-color-border-hover);
+  --aui-color-on-primary: var(--aui-theme-color-on-primary);
+  --aui-color-success: var(--aui-theme-color-success);
+  --aui-color-success-subtle: var(--aui-theme-color-success-subtle);
+  --aui-color-on-success: var(--aui-theme-color-on-success);
+  --aui-color-warning: var(--aui-theme-color-warning);
+  --aui-color-warning-subtle: var(--aui-theme-color-warning-subtle);
+  --aui-color-on-warning: var(--aui-theme-color-on-warning);
+  --aui-color-danger: var(--aui-theme-color-danger);
+  --aui-color-danger-subtle: var(--aui-theme-color-danger-subtle);
+  --aui-color-on-danger: var(--aui-theme-color-on-danger);
+  --aui-color-info: var(--aui-theme-color-info);
+  --aui-color-info-subtle: var(--aui-theme-color-info-subtle);
+  --aui-color-on-info: var(--aui-theme-color-on-info);
+  --aui-color-overlay: var(--aui-theme-color-overlay);
   --aui-color-transparent: var(--aui-token-color-transparent);
 
   // Border widths
@@ -79,7 +79,7 @@
   --aui-state-active-opacity: var(--aui-token-state-active-opacity);
   --aui-state-disabled-cursor: var(--aui-token-state-disabled-cursor);
   --aui-state-disabled-opacity: var(--aui-token-state-disabled-opacity);
-  --aui-state-focus-ring: var(--aui-token-state-focus-ring);
+  --aui-state-focus-ring: var(--aui-theme-state-focus-ring);
   --aui-state-hover-opacity: var(--aui-token-state-hover-opacity);
 
   // Text roles

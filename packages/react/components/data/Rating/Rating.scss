@@ -10,12 +10,12 @@
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--aui-token-color-border);
+    color: var(--aui-theme-border);
     cursor: pointer;
     overflow: hidden;
 
     &:focus-visible {
-      outline: 2px solid var(--aui-token-state-focus-ring);
+      outline: 2px solid var(--aui-theme-state-focus-ring);
       outline-offset: var(--aui-token-space-1);
       border-radius: var(--aui-token-radius-sm);
     }
@@ -38,7 +38,7 @@
   &__star-fill {
     width: var(--aui-rating-fill);
     overflow: hidden;
-    color: var(--aui-token-color-warning);
+    color: var(--aui-theme-warning);
   }
 
   &--readonly {

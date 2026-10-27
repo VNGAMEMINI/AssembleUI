@@ -88,8 +88,8 @@
 
 .demo-search:focus-within {
   background: var(--demo-panel);
-  border-color: var(--aui-token-color-primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-token-color-primary) 16%, transparent);
+  border-color: var(--aui-theme-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-theme-color-primary) 16%, transparent);
 }
 
 .demo-search__icon {
@@ -171,7 +171,7 @@
 
 .demo-navigation__item--active,
 .demo-navigation__item--active:hover {
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-color-primary);
   background: var(--demo-accent-soft);
   font-weight: 650;
 }
@@ -185,8 +185,8 @@
 }
 
 .demo-navigation__item--active .demo-navigation__indicator {
-  background: var(--aui-token-color-primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-token-color-primary) 15%, transparent);
+  background: var(--aui-theme-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-theme-color-primary) 15%, transparent);
 }
 
 .demo-navigation__empty {
@@ -218,7 +218,7 @@
 
 .demo-theme:hover {
   background: var(--demo-accent-soft);
-  border-color: color-mix(in srgb, var(--aui-token-color-primary) 45%, var(--demo-border));
+  border-color: color-mix(in srgb, var(--aui-theme-color-primary) 45%, var(--demo-border));
 }
 
 .demo-theme:active {
@@ -231,7 +231,7 @@
   height: 2.25rem;
   flex: 0 0 auto;
   place-items: center;
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-color-primary);
   background: var(--demo-panel);
   border: 1px solid var(--demo-border);
   border-radius: 0.7rem;
@@ -324,8 +324,8 @@
 }
 
 .demo-source:hover {
-  color: var(--aui-token-color-primary);
-  border-color: var(--aui-token-color-primary);
+  color: var(--aui-theme-color-primary);
+  border-color: var(--aui-theme-color-primary);
 }
 
 .demo-mobile-menu,
@@ -339,7 +339,7 @@
 .demo-theme:focus-visible,
 .demo-mobile-menu:focus-visible,
 .demo-copy-button:focus-visible {
-  outline: 2px solid var(--aui-token-color-primary);
+  outline: 2px solid var(--aui-theme-color-primary);
   outline-offset: 3px;
 }
 

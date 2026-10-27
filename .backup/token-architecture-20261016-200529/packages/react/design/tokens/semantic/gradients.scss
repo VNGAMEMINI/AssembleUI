@@ -1,14 +1,14 @@
 :root {
   --aui-token-gradient-primary: linear-gradient(
     135deg,
-    var(--aui-token-color-primary),
-    var(--aui-token-color-primary-hover)
+    var(--aui-theme-color-primary),
+    var(--aui-theme-color-primary-hover)
   );
 
   --aui-token-gradient-surface: linear-gradient(
     180deg,
-    var(--aui-token-color-surface),
-    var(--aui-token-color-background)
+    var(--aui-theme-color-surface),
+    var(--aui-theme-color-background)
   );
 
   --aui-token-gradient-none: none;

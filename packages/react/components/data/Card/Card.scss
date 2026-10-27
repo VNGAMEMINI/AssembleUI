@@ -1,8 +1,8 @@
 .aui-card {
   width: 100%;
 
-  color: var(--aui-token-color-text);
-  background: var(--aui-token-color-surface);
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
 
   border-radius: var(--aui-token-radius-md);
 }
@@ -14,7 +14,7 @@
 
 .aui-card--outlined {
   border: var(--aui-token-border-width-thin) solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
 }
 
 .aui-card--elevated {

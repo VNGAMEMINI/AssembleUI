@@ -1,7 +1,7 @@
 :root {
-  --aui-token-surface-page: var(--aui-token-color-background);
-  --aui-token-surface-default: var(--aui-token-color-surface);
-  --aui-token-surface-elevated: var(--aui-token-color-surface-elevated);
-  --aui-token-surface-overlay: var(--aui-token-color-overlay);
+  --aui-token-surface-page: var(--aui-theme-color-background);
+  --aui-token-surface-default: var(--aui-theme-color-surface);
+  --aui-token-surface-elevated: var(--aui-theme-color-surface-elevated);
+  --aui-token-surface-overlay: var(--aui-theme-color-overlay);
 
 }

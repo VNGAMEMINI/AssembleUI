@@ -1,8 +1,8 @@
 .aui-spinner {
   display: inline-block;
   flex-shrink: 0;
-  border: var(--aui-token-border-width-medium) solid var(--aui-token-color-border);
-  border-top-color: var(--aui-token-color-primary);
+  border: var(--aui-token-border-width-medium) solid var(--aui-theme-border);
+  border-top-color: var(--aui-theme-primary);
   border-radius: var(--aui-token-radius-full);
   animation:
     aui-spinner-rotate

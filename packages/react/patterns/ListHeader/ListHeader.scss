@@ -20,7 +20,7 @@
 
 .aui-list-header__title {
   margin: 0;
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-font-size-lg);
   font-weight: var(--aui-token-font-weight-semibold);
@@ -28,7 +28,7 @@
 }
 
 .aui-list-header__count {
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   line-height: 1.5;
@@ -36,7 +36,7 @@
 
 .aui-list-header__description {
   margin-top: var(--aui-token-space-1);
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   line-height: 1.5;

@@ -8,7 +8,7 @@
 
   text-align: center;
 
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 }
 
 .aui-empty-state__icon {
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
 
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }
 
 .aui-empty-state__content {
@@ -32,7 +32,7 @@
 }
 
 .aui-empty-state__description {
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }
 
 .aui-empty-state__action {

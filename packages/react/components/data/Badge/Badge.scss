@@ -28,27 +28,27 @@
   }
 
   &--neutral {
-    color: var(--aui-token-color-text);
-    background: var(--aui-token-color-surface);
+    color: var(--aui-theme-text);
+    background: var(--aui-theme-surface);
   }
 
   &--success {
-    color: var(--aui-token-color-on-success);
-    background: var(--aui-token-color-success);
+    color: var(--aui-theme-on-success);
+    background: var(--aui-theme-success);
   }
 
   &--warning {
-    color: var(--aui-token-color-on-warning);
-    background: var(--aui-token-color-warning);
+    color: var(--aui-theme-on-warning);
+    background: var(--aui-theme-warning);
   }
 
   &--danger {
-    color: var(--aui-token-color-on-danger);
-    background: var(--aui-token-color-danger);
+    color: var(--aui-theme-on-danger);
+    background: var(--aui-theme-danger);
   }
 
   &--info {
-    color: var(--aui-token-color-on-info);
-    background: var(--aui-token-color-info);
+    color: var(--aui-theme-on-info);
+    background: var(--aui-theme-info);
   }
 }

@@ -31,7 +31,7 @@
   right: calc(-50% + 1rem);
   height: 1px;
   content: "";
-  background: var(--aui-token-color-border);
+  background: var(--aui-theme-border);
 }
 
 .aui-stepper--vertical
@@ -42,7 +42,7 @@
   left: 1rem;
   width: 1px;
   content: "";
-  background: var(--aui-token-color-border);
+  background: var(--aui-theme-border);
 }
 
 .aui-stepper__trigger {
@@ -78,10 +78,10 @@
   flex: 0 0 auto;
   width: 2rem;
   height: 2rem;
-  border: 1px solid var(--aui-token-color-border);
+  border: 1px solid var(--aui-theme-border);
   border-radius: 50%;
-  background: var(--aui-token-color-surface);
-  color: var(--aui-token-color-text-muted);
+  background: var(--aui-theme-surface);
+  color: var(--aui-theme-text-muted);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   font-weight: var(--aui-token-font-weight-semibold);
@@ -100,7 +100,7 @@
 }
 
 .aui-stepper__label {
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   font-weight: var(--aui-token-font-weight-semibold);
@@ -109,7 +109,7 @@
 
 .aui-stepper__description {
   margin-top: var(--aui-token-space-1);
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   line-height: 1.4;
@@ -117,16 +117,16 @@
 
 .aui-stepper__step--active
   .aui-stepper__indicator {
-  border-color: var(--aui-token-color-primary);
-  background: var(--aui-token-color-primary);
-  color: var(--aui-token-color-on-primary);
+  border-color: var(--aui-theme-primary);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
 }
 
 .aui-stepper__step--completed
   .aui-stepper__indicator {
-  border-color: var(--aui-token-color-primary);
-  background: var(--aui-token-color-primary);
-  color: var(--aui-token-color-on-primary);
+  border-color: var(--aui-theme-primary);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
 }
 
 .aui-stepper__step--disabled {
@@ -138,7 +138,7 @@
 }
 
 .aui-stepper__trigger:focus-visible {
-  outline: 2px solid var(--aui-token-state-focus-ring);
+  outline: 2px solid var(--aui-theme-state-focus-ring);
   outline-offset: 2px;
 }
 

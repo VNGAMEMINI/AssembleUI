@@ -10,8 +10,8 @@
   border: var(--aui-token-border-width-default) solid transparent;
   border-radius: var(--aui-token-radius-md);
 
-  background: var(--aui-token-color-primary);
-  color: var(--aui-token-color-on-primary);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
 
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-font-size-md);
@@ -28,14 +28,14 @@
     opacity var(--aui-token-motion-duration-fast) var(--aui-token-motion-ease-standard);
 
   &:hover:not(:disabled) {
-    background: var(--aui-token-color-primary-hover);
+    background: var(--aui-theme-primary-hover);
   }
   &:active:not(:disabled) {
     opacity: var(--aui-token-state-active-opacity);
   }
 
   &:focus-visible {
-    outline: var(--aui-token-border-width-medium) solid var(--aui-token-state-focus-ring);
+    outline: var(--aui-token-border-width-medium) solid var(--aui-theme-state-focus-ring);
     outline-offset: var(--aui-token-space-1);
   }
 
@@ -63,11 +63,11 @@
 }
 
 .aui-button--primary {
-  background: var(--aui-token-color-primary);
-  color: var(--aui-token-color-on-primary);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
 
   &:hover:not(:disabled) {
-    background: var(--aui-token-color-primary-hover);
+    background: var(--aui-theme-primary-hover);
   }
   &:active:not(:disabled) {
     opacity: var(--aui-token-state-active-opacity);
@@ -75,23 +75,23 @@
 }
 
 .aui-button--secondary {
-  background: var(--aui-token-color-surface);
-  color: var(--aui-token-color-text);
-  border-color: var(--aui-token-color-border);
+  background: var(--aui-theme-surface);
+  color: var(--aui-theme-text);
+  border-color: var(--aui-theme-border);
 }
 
 .aui-button--danger {
-  background: var(--aui-token-color-danger);
-  color: var(--aui-token-color-on-danger);
+  background: var(--aui-theme-danger);
+  color: var(--aui-theme-on-danger);
 }
 
 .aui-button--ghost {
   background: var(--aui-token-color-transparent);
-  color: var(--aui-token-color-primary);
+  color: var(--aui-theme-primary);
   border-color: var(--aui-token-color-transparent);
 
   &:hover:not(:disabled) {
-    background: var(--aui-token-color-surface);
+    background: var(--aui-theme-surface);
   }
   &:active:not(:disabled) {
     opacity: var(--aui-token-state-active-opacity);

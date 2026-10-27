@@ -5,7 +5,7 @@
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   font-weight: var(--aui-token-text-body-weight);
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 }
 
 .aui-status__indicator {
@@ -13,20 +13,20 @@
   height: var(--aui-token-space-2);
   flex: 0 0 auto;
   border-radius: var(--aui-token-radius-full);
-  background: var(--aui-token-color-text-muted);
+  background: var(--aui-theme-text-muted);
 }
 .aui-status--success .aui-status__indicator {
-  background: var(--aui-token-color-success);
+  background: var(--aui-theme-success);
 }
 
 .aui-status--warning .aui-status__indicator {
-  background: var(--aui-token-color-warning);
+  background: var(--aui-theme-warning);
 }
 
 .aui-status--danger .aui-status__indicator {
-  background: var(--aui-token-color-danger);
+  background: var(--aui-theme-danger);
 }
 
 .aui-status--info .aui-status__indicator {
-  background: var(--aui-token-color-info);
+  background: var(--aui-theme-info);
 }

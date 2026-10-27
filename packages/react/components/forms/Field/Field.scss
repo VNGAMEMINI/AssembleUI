@@ -9,14 +9,14 @@
   display: inline-flex;
   align-items: center;
   gap: var(--aui-token-space-1);
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-size: var(--aui-token-font-size-sm);
   font-weight: var(--aui-token-font-weight-medium);
   line-height: 1.4;
 }
 
 .aui-field__required {
-  color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
 }
 
 .aui-field__control {
@@ -24,13 +24,13 @@
 }
 
 .aui-field__description {
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
   font-size: var(--aui-token-font-size-xs);
   line-height: 1.4;
 }
 
 .aui-field__error {
-  color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
   font-size: var(--aui-token-font-size-xs);
   line-height: 1.4;
 }

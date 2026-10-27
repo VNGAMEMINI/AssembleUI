@@ -6,14 +6,14 @@
 .aui-date-picker-field__label {
   display: inline-block;
   margin-bottom: var(--aui-token-space-2);
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
   font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-text-body-size);
   font-weight: var(--aui-token-font-weight-medium);
 }
 
 .aui-date-picker-field__required {
-  color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
 }
 
 .aui-date-picker {
@@ -22,21 +22,21 @@
   padding:
     var(--aui-token-space-2)
     var(--aui-token-space-3);
-  color: var(--aui-token-color-text);
-  background: var(--aui-token-color-surface);
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
   border:
     var(--aui-token-border-width-thin)
     solid
-    var(--aui-token-color-border);
+    var(--aui-theme-border);
   border-radius: var(--aui-token-radius-sm);
   font: inherit;
 
   &:focus {
-    border-color: var(--aui-token-state-focus-ring);
+    border-color: var(--aui-theme-state-focus-ring);
     outline:
       var(--aui-token-border-width-medium)
       solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-theme-state-focus-ring);
     outline-offset: 1px;
   }
 
@@ -54,16 +54,16 @@
 }
 
 .aui-date-picker-field__description {
-  color: var(--aui-token-color-text-muted);
+  color: var(--aui-theme-text-muted);
 }
 
 .aui-date-picker-field__error {
-  color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
 }
 
 .aui-date-picker-field--invalid {
   .aui-date-picker {
-    border-color: var(--aui-token-color-danger);
+    border-color: var(--aui-theme-danger);
   }
 }
 

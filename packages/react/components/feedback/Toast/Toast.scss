@@ -47,40 +47,40 @@
   cursor: pointer;
 
   &:hover {
-    background: var(--aui-token-color-surface-muted);
+    background: var(--aui-theme-surface-2);
   }
 
   &:focus-visible {
     outline:
       var(--aui-token-border-width-medium)
       solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-theme-state-focus-ring);
     outline-offset: 2px;
   }
 }
 
 .aui-toast--info {
-  color: var(--aui-token-color-info);
-  background: var(--aui-token-color-info-subtle);
-  border-color: var(--aui-token-color-info);
+  color: var(--aui-theme-info);
+  background: var(--aui-theme-info-bg);
+  border-color: var(--aui-theme-info);
 }
 
 .aui-toast--success {
-  color: var(--aui-token-color-success);
-  background: var(--aui-token-color-success-subtle);
-  border-color: var(--aui-token-color-success);
+  color: var(--aui-theme-success);
+  background: var(--aui-theme-success-bg);
+  border-color: var(--aui-theme-success);
 }
 
 .aui-toast--warning {
-  color: var(--aui-token-color-warning);
-  background: var(--aui-token-color-warning-subtle);
-  border-color: var(--aui-token-color-warning);
+  color: var(--aui-theme-warning);
+  background: var(--aui-theme-warning-bg);
+  border-color: var(--aui-theme-warning);
 }
 
 .aui-toast--error {
-  color: var(--aui-token-color-danger);
-  background: var(--aui-token-color-danger-subtle);
-  border-color: var(--aui-token-color-danger);
+  color: var(--aui-theme-danger);
+  background: var(--aui-theme-danger-bg);
+  border-color: var(--aui-theme-danger);
 }
 
 @media (prefers-reduced-motion: reduce) {

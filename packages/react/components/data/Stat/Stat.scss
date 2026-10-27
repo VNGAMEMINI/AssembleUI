@@ -7,38 +7,38 @@
 }
 
 .aui-stat__label {
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 
   font-size: var(--aui-token-font-size-sm);
 }
 
 .aui-stat__value {
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 
   font-size: var(--aui-token-font-size-md);
   font-weight: var(--aui-token-font-weight-medium);
 }
 
 .aui-stat__description {
-  color: var(--aui-token-color-text);
+  color: var(--aui-theme-text);
 
   font-size: var(--aui-token-font-size-xs);
 }
 
 .aui-stat--positive {
   .aui-stat__value {
-    color: var(--aui-token-color-success);
+    color: var(--aui-theme-success);
   }
 }
 
 .aui-stat--negative {
   .aui-stat__value {
-    color: var(--aui-token-color-danger);
+    color: var(--aui-theme-danger);
   }
 }
 
 .aui-stat--neutral {
   .aui-stat__value {
-    color: var(--aui-token-color-text);
+    color: var(--aui-theme-text);
   }
 }
