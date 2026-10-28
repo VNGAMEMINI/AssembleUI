@@ -23,3 +23,7 @@
 .aui-container--full {
   max-width: none;
 }
+
+.aui-container--border {
+  border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
+}

@@ -1,32 +1,44 @@
 .aui-callout {
+  display: block;
   width: 100%;
   padding: var(--aui-token-space-3);
-  border: 1px solid var(--aui-token-border-width-1);
+  border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-md);
   background: var(--aui-theme-surface);
   color: var(--aui-theme-text);
+  overflow-wrap: anywhere;
 }
 
 .aui-callout__title {
-  font-weight: 600;
+  font-weight: var(--aui-token-font-weight-semibold);
+  line-height: 1.5;
 }
 
 .aui-callout__content {
   margin-top: var(--aui-token-space-1);
+  line-height: 1.6;
 }
 
 .aui-callout--info {
-  border-color: var(--aui-theme-info);
+  border-color: var(--aui-theme-info-border);
+  background: var(--aui-theme-info-bg);
+  color: var(--aui-theme-info-text);
 }
 
 .aui-callout--success {
-  border-color: var(--aui-theme-success);
+  border-color: var(--aui-theme-success-border);
+  background: var(--aui-theme-success-bg);
+  color: var(--aui-theme-success-text);
 }
 
 .aui-callout--warning {
-  border-color: var(--aui-theme-warning);
+  border-color: var(--aui-theme-warning-border);
+  background: var(--aui-theme-warning-bg);
+  color: var(--aui-theme-warning-text);
 }
 
 .aui-callout--danger {
-  border-color: var(--aui-theme-danger);
+  border-color: var(--aui-theme-danger-border);
+  background: var(--aui-theme-danger-bg);
+  color: var(--aui-theme-danger-text);
 }
