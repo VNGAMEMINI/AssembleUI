@@ -1,15 +1,15 @@
-import {
-  Container,
-} from "@vnallmini/react";
+import { Container } from "@vnallmini/react";
+
+const sizes = ["sm", "md", "lg", "xl", "full"];
 
 export function ContainerDemo() {
   return (
-    <div className="demo-preview">
-      <Container size="md">
-        <div className="demo-result">
-          Container tự động được phát hiện.
-        </div>
-      </Container>
+    <div className="demo-preview aui-container-demo" data-demo-full>
+      {sizes.map((size) => (
+        <Container key={size} size={size} className="aui-container--border">
+          <p>Container: {size}</p>
+        </Container>
+      ))}
     </div>
   );
 }
