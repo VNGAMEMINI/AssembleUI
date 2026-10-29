@@ -13,7 +13,7 @@ export function ComboboxDemo() {
   const [value, setValue] = useState("react");
 
   return (
-    <div className="demo-preview">
+    <div className="demo-preview" data-demo-full>
       <Combobox
         label="Framework"
         options={options}
