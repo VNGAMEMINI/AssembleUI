@@ -1,3 +1,35 @@
 .aui-file-input {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  color: var(--aui-theme-text);
+  font: inherit;
+
+  &::file-selector-button {
+    margin-inline-end: var(--aui-token-space-3);
+    padding: var(--aui-token-space-2) var(--aui-token-space-4);
+
+    border: var(--aui-token-border-width-default) solid
+      var(--aui-theme-border);
+    border-radius: var(--aui-token-radius-md);
+
+    background: var(--aui-theme-surface-2);
+    color: var(--aui-theme-text);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  &::file-selector-button:hover {
+    border-color: var(--aui-theme-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--aui-theme-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: var(--aui-token-state-disabled-opacity);
+  }
 }
