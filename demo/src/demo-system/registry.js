@@ -42,23 +42,25 @@ function createDemoEntry(filePath, module) {
   };
 }
 
-export function getDemoRegistry() {
-  return Object.entries(demoModules)
-    .map(([filePath, module]) =>
-      createDemoEntry(filePath, module),
-    )
-    .filter(Boolean)
-    .sort((a, b) => {
-      if (a.type !== b.type) {
-        return a.type.localeCompare(b.type);
-      }
+const demoRegistry = Object.entries(demoModules)
+  .map(([filePath, module]) => createDemoEntry(filePath, module))
+  .filter(Boolean)
+  .sort((a, b) => {
+    if (a.type !== b.type) {
+      return a.type.localeCompare(b.type);
+    }
 
-      return a.name.localeCompare(b.name);
-    });
+    return a.name.localeCompare(b.name);
+  });
+
+const demosByPath = new Map(
+  demoRegistry.map((demo) => [demo.path, demo]),
+);
+
+export function getDemoRegistry() {
+  return demoRegistry;
 }
 
 export function getDemoByPath(path) {
-  return getDemoRegistry().find(
-    (demo) => demo.path === path,
-  );
+  return demosByPath.get(path);
 }

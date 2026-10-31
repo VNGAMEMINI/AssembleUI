@@ -1,25 +1,29 @@
 .aui-container {
   width: 100%;
   margin-inline: auto;
-  padding-inline: var(--aui-space-4);
+  padding-inline: var(--aui-token-space-4);
 }
 
 .aui-container--sm {
-  max-width: 40rem;
+  max-width: var(--aui-token-size-content-sm);
 }
 
 .aui-container--md {
-  max-width: 48rem;
+  max-width: var(--aui-token-size-content-md);
 }
 
 .aui-container--lg {
-  max-width: 64rem;
+  max-width: var(--aui-token-size-content-lg);
 }
 
 .aui-container--xl {
-  max-width: 80rem;
+  max-width: var(--aui-token-size-content-xl);
 }
 
 .aui-container--full {
   max-width: none;
+}
+
+.aui-container--border {
+  border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
 }

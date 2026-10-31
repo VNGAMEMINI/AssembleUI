@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -11,6 +11,17 @@ function readDesignFile(relativePath: string): string {
 function extractTokens(source: string, prefix: string): Set<string> {
   const pattern = new RegExp(`(${prefix}[\\w-]+)\\s*:`, "g");
   return new Set([...source.matchAll(pattern)].map(([, token]) => token!));
+}
+
+function readTokenSources(directory: string): string[] {
+  return readdirSync(directory).flatMap((name) => {
+    const path = join(directory, name);
+    return statSync(path).isDirectory()
+      ? readTokenSources(path)
+      : path.endsWith(".scss")
+        ? [readFileSync(path, "utf8")]
+        : [];
+  });
 }
 
 describe("Architecture: theme and token contract", () => {
@@ -56,22 +67,21 @@ describe("Architecture: theme and token contract", () => {
     expect(darkTheme.has("--aui-theme-border")).toBe(true);
   });
 
-  it("maps semantic status colors to theme roles with fallbacks", () => {
-    const mappings: Record<string, string> = {
-      "--aui-token-color-on-primary": "--aui-theme-on-primary",
-      "--aui-token-color-success": "--aui-theme-success",
-      "--aui-token-color-warning": "--aui-theme-warning",
-      "--aui-token-color-danger": "--aui-theme-danger",
-      "--aui-token-color-info": "--aui-theme-info",
-    };
+  it("keeps all tokens independent from theme-role custom properties", () => {
+    for (const source of readTokenSources(join(designRoot, "tokens"))) {
+      expect(source).not.toMatch(/var\s*\(\s*--aui-theme-/);
+    }
+  });
 
-    for (const [token, themeRole] of Object.entries(mappings)) {
-      const escapedToken = token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const escapedRole = themeRole.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-      expect(rootSource).toMatch(
-        new RegExp(`${escapedToken}:\\s*var\\(${escapedRole},\\s*.+\\);`),
-      );
+  it("defines semantic status colors as fixed values", () => {
+    for (const token of [
+      "--aui-token-color-on-primary",
+      "--aui-token-color-success",
+      "--aui-token-color-warning",
+      "--aui-token-color-danger",
+      "--aui-token-color-info",
+    ]) {
+      expect(rootSource).toMatch(new RegExp(`${token}:\\s*(?!var\\().+;`));
     }
   });
 

@@ -8,7 +8,7 @@ export function AvatarDemo() {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "var(--aui-space-4)",
+        gap: "var(--aui-token-space-4)",
         flexWrap: "wrap",
       }}
     >

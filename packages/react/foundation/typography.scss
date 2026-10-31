@@ -1,11 +1,11 @@
 /* packages/react/foundation/typography.scss */
 
 html {
-  font-family: var(--aui-font-family-base);
+  font-family: var(--aui-token-font-family-base);
 }
 
 body {
-  line-height: var(--aui-line-height-normal);
+  line-height: var(--aui-token-line-height-normal);
   text-rendering: optimizeLegibility;
 }
 
@@ -15,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--aui-font-weight-semibold);
+  font-weight: var(--aui-token-font-weight-semibold);
 }
 
 button,

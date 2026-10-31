@@ -2,26 +2,25 @@ import { useState } from "react";
 import { FileInput } from "@vnallmini/react";
 
 export function FileInputDemo() {
-  const [fileName, setFileName] = useState("");
+  const [fileNames, setFileNames] = useState([]);
 
   return (
     <div className="demo-preview">
       <FileInput
         accept=".png,.jpg,.jpeg"
+        multiple
         onChange={(files) => {
-          setFileName(files?.[0]?.name ?? "");
+          setFileNames(
+            Array.from(files ?? []).map((file) => file.name),
+          );
         }}
         aria-label="Chọn hình ảnh"
       />
 
-      <p>
-        {fileName ? (
-          <>
-            File đã chọn: <strong>{fileName}</strong>
-          </>
-        ) : (
-          "Chưa chọn file."
-        )}
+      <p aria-live="polite">
+        {fileNames.length > 0
+          ? `Đã chọn ${fileNames.length} tệp: ${fileNames.join(", ")}`
+          : "Chưa chọn tệp nào."}
       </p>
     </div>
   );

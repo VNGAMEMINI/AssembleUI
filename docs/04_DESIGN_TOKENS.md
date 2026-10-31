@@ -100,11 +100,11 @@ Mà luôn sử dụng Token.
 Ví dụ
 
 ```css
-var(--aui-color-primary)
+var(--aui-token-color-primary)
 
-var(--aui-space-md)
+var(--aui-token-space-4)
 
-var(--aui-radius-lg)
+var(--aui-token-radius-lg)
 ```
 
 ---
@@ -159,13 +159,13 @@ Border
 Ví dụ
 
 ```css
---aui-color-primary
+--aui-token-color-primary
 
---aui-color-success
+--aui-token-color-success
 
---aui-color-surface
+--aui-token-color-surface
 
---aui-color-text
+--aui-token-color-text
 ```
 
 ---
@@ -189,11 +189,11 @@ XL
 ```
 
 ```css
---aui-space-xs
+--aui-token-space-2
 
---aui-space-md
+--aui-token-space-4
 
---aui-space-xl
+--aui-token-space-8
 ```
 
 ---
@@ -203,15 +203,15 @@ XL
 Quản lý bo góc.
 
 ```css
---aui-radius-none
+--aui-token-radius-none
 
---aui-radius-sm
+--aui-token-radius-sm
 
---aui-radius-md
+--aui-token-radius-md
 
---aui-radius-lg
+--aui-token-radius-lg
 
---aui-radius-full
+--aui-token-radius-full
 ```
 
 ---
@@ -221,13 +221,13 @@ Quản lý bo góc.
 Định nghĩa Shadow.
 
 ```css
---aui-shadow-xs
+--aui-token-shadow-xs
 
---aui-shadow-sm
+--aui-token-shadow-sm
 
---aui-shadow-md
+--aui-token-shadow-md
 
---aui-shadow-lg
+--aui-token-shadow-lg
 ```
 
 ---
@@ -255,11 +255,11 @@ Line Height
 Ví dụ
 
 ```css
---aui-font-family
+--aui-token-font-family-base
 
---aui-font-size-md
+--aui-token-font-size-md
 
---aui-font-weight-bold
+--aui-token-font-weight-bold
 ```
 
 ---
@@ -271,13 +271,13 @@ Ví dụ
 Ví dụ
 
 ```css
---aui-duration-fast
+--aui-token-motion-duration-fast
 
---aui-duration-normal
+--aui-token-motion-duration-normal
 
---aui-duration-slow
+--aui-token-motion-duration-slow
 
---aui-easing-standard
+--aui-token-motion-ease-standard
 ```
 
 ---
@@ -289,13 +289,13 @@ Responsive của toàn bộ thư viện.
 Ví dụ
 
 ```css
---aui-breakpoint-sm
+--aui-token-breakpoint-sm
 
---aui-breakpoint-md
+--aui-token-breakpoint-md
 
---aui-breakpoint-lg
+--aui-token-breakpoint-lg
 
---aui-breakpoint-xl
+--aui-token-breakpoint-xl
 ```
 
 ---
@@ -305,11 +305,11 @@ Ví dụ
 Định nghĩa độ trong suốt.
 
 ```css
---aui-opacity-disabled
+--aui-token-state-disabled-opacity
 
---aui-opacity-overlay
+--aui-token-opacity-5
 
---aui-opacity-hover
+--aui-token-state-hover-opacity
 ```
 
 ---
@@ -321,13 +321,13 @@ Quản lý Layer.
 Ví dụ
 
 ```css
---aui-z-dropdown
+--aui-token-z-index-dropdown
 
---aui-z-modal
+--aui-token-z-index-modal
 
---aui-z-popover
+--aui-token-z-index-popover
 
---aui-z-tooltip
+--aui-token-z-index-tooltip
 ```
 
 ---
@@ -362,7 +362,7 @@ Theme Light
 
 ```css
 :root {
-  --aui-color-primary: #2563eb;
+  --aui-token-color-primary: #2563eb;
 }
 ```
 
@@ -370,7 +370,7 @@ Theme Dark
 
 ```css
 :root {
-  --aui-color-primary: #60a5fa;
+  --aui-token-color-primary: #60a5fa;
 }
 ```
 
@@ -440,7 +440,7 @@ background: #2563eb;
 Mà viết
 
 ```css
-background: var(--aui-color-primary);
+background: var(--aui-token-color-primary);
 ```
 
 Khi đổi Theme
@@ -470,7 +470,7 @@ Không sửa Button.
 Đúng
 
 ```css
-padding: var(--aui-space-md);
+padding: var(--aui-token-space-4);
 ```
 
 Sai
@@ -492,7 +492,7 @@ border-radius: 6px;
 Đúng
 
 ```css
-border-radius: var(--aui-radius-md);
+border-radius: var(--aui-token-radius-md);
 ```
 
 ---
@@ -511,7 +511,7 @@ Sai
 
 ```css
 :root {
-  --aui-color-primary: red;
+  --aui-token-color-primary: red;
 }
 ```
 

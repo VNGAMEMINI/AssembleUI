@@ -388,7 +388,7 @@ spacing(md)
 
 ↓
 
---aui-space-md
+--aui-token-space-4
 ```
 
 ---

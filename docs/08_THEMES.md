@@ -58,7 +58,7 @@ background
 
 ↓
 
-var(--aui-color-primary)
+var(--aui-token-color-primary)
 ```
 
 Khi đổi Theme
@@ -68,7 +68,7 @@ Theme
 
 ↓
 
---aui-color-primary
+--aui-token-color-primary
 
 ↓
 
@@ -102,13 +102,11 @@ Ví dụ
 
 ```scss
 :root {
+  --aui-token-color-primary: #2563eb;
 
-    --aui-color-primary: #2563eb;
+  --aui-token-color-surface: #ffffff;
 
-    --aui-color-surface: #ffffff;
-
-    --aui-color-text: #111827;
-
+  --aui-token-color-text: #111827;
 }
 ```
 
@@ -120,13 +118,11 @@ Ví dụ
 
 ```scss
 :root {
+  --aui-token-color-primary: #60a5fa;
 
-    --aui-color-primary: #60a5fa;
+  --aui-token-color-surface: #18181b;
 
-    --aui-color-surface: #18181b;
-
-    --aui-color-text: #f8fafc;
-
+  --aui-token-color-text: #f8fafc;
 }
 ```
 
@@ -140,11 +136,9 @@ Ví dụ
 
 ```scss
 :root {
+  --aui-token-color-primary: #0057b8;
 
-    --aui-color-primary: #0057b8;
-
-    --aui-color-radius-md: 2px;
-
+  --aui-token-radius-md: 2px;
 }
 ```
 
@@ -205,30 +199,24 @@ Surface
 Sai
 
 ```scss
-.aui-button{
-
-padding:20px;
-
+.aui-button {
+  padding: 20px;
 }
 ```
 
 Sai
 
 ```scss
-.aui-card{
-
-display:flex;
-
+.aui-card {
+  display: flex;
 }
 ```
 
 Sai
 
 ```scss
-.aui-modal{
-
-position:fixed;
-
+.aui-modal {
+  position: fixed;
 }
 ```
 
@@ -265,21 +253,19 @@ Browser
 Button
 
 ```scss
-background:
-
-var(--aui-color-primary);
+background: var(--aui-token-color-primary);
 ```
 
 Light Theme
 
 ```css
---aui-color-primary:#2563eb;
+--aui-token-color-primary: #2563eb;
 ```
 
 Dark Theme
 
 ```css
---aui-color-primary:#60a5fa;
+--aui-token-color-primary: #60a5fa;
 ```
 
 Button sẽ đổi màu mà không cần sửa CSS.
@@ -354,13 +340,11 @@ Ví dụ
 
 ```scss
 :root {
+  --aui-token-color-primary: #ff5722;
 
-    --aui-color-primary: #ff5722;
+  --aui-token-radius-md: 20px;
 
-    --aui-radius-md: 20px;
-
-    --aui-font-family: Inter;
-
+  --aui-token-font-family-base: Inter;
 }
 ```
 
@@ -397,12 +381,8 @@ Khi cần đổi Theme trong thời gian chạy.
 Ví dụ
 
 ```jsx
-<ThemeProvider
-    theme="dark"
->
-
-    <App/>
-
+<ThemeProvider theme="dark">
+  <App />
 </ThemeProvider>
 ```
 
@@ -451,20 +431,16 @@ Templates
 Đúng
 
 ```scss
-:root{
-
---aui-color-primary:#3b82f6;
-
+:root {
+  --aui-token-color-primary: #3b82f6;
 }
 ```
 
 Sai
 
 ```scss
-.button{
-
-background:red;
-
+.button {
+  background: red;
 }
 ```
 
@@ -475,20 +451,16 @@ background:red;
 Sai
 
 ```scss
-.card{
-
-padding:40px;
-
+.card {
+  padding: 40px;
 }
 ```
 
 Đúng
 
 ```scss
-:root{
-
---aui-space-xl:40px;
-
+:root {
+  --aui-token-space-8: 40px;
 }
 ```
 
@@ -499,10 +471,8 @@ padding:40px;
 Sai
 
 ```scss
-.container{
-
-max-width:1200px;
-
+.container {
+  max-width: 1200px;
 }
 ```
 
@@ -515,15 +485,13 @@ Layout thuộc Style Engine.
 Sai
 
 ```scss
-background:#2563eb;
+background: #2563eb;
 ```
 
 Đúng
 
 ```scss
-background:
-
-var(--aui-color-primary);
+background: var(--aui-token-color-primary);
 ```
 
 ---

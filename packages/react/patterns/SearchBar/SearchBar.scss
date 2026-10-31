@@ -1,7 +1,7 @@
 .aui-search-bar {
   display: flex;
   align-items: flex-start;
-  gap: var(--aui-space-2);
+  gap: var(--aui-token-space-2);
   width: 100%;
 
   &__input {

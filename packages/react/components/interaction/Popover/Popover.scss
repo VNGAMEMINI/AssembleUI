@@ -5,22 +5,22 @@
   min-width: 12rem;
   max-width: min(
     24rem,
-    calc(100vw - (var(--aui-space-4) * 2))
+    calc(100vw - (var(--aui-token-space-4) * 2))
   );
 
-  padding: var(--aui-space-4);
+  padding: var(--aui-token-space-4);
 
-  color: var(--aui-color-text);
-  background: var(--aui-color-surface);
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
 
   border:
-    var(--aui-border-width-thin)
+    var(--aui-token-border-width-thin)
     solid
-    var(--aui-color-border);
+    var(--aui-theme-border);
 
-  border-radius: var(--aui-radius-md);
+  border-radius: var(--aui-token-radius-md);
 
-  box-shadow: var(--aui-shadow-lg);
+  box-shadow: var(--aui-token-shadow-popover);
 }
 
 @media (prefers-reduced-motion: no-preference) {

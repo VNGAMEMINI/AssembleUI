@@ -3,8 +3,9 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: var(--aui-space-4);
+  gap: var(--aui-token-space-4);
   width: 100%;
+  min-width: 0;
 }
 
 .aui-data-toolbar__heading {
@@ -13,43 +14,59 @@
 }
 
 .aui-data-toolbar__title {
-  color: var(--aui-color-text);
-  font-family: var(--aui-font-family-base);
-  font-size: var(--aui-font-size-lg);
-  font-weight: var(--aui-font-weight-semibold);
+  color: var(--aui-theme-text);
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-font-size-lg);
+  font-weight: var(--aui-token-font-weight-semibold);
   line-height: 1.25;
 }
 
 .aui-data-toolbar__description {
-  margin-top: var(--aui-space-1);
-  color: var(--aui-color-text-muted);
-  font-family: var(--aui-font-family-base);
-  font-size: var(--aui-text-body-size);
+  margin-top: var(--aui-token-space-1);
+  color: var(--aui-theme-text-muted);
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-text-body-size);
   line-height: 1.5;
 }
 
 .aui-data-toolbar__controls {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 1 24rem;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: var(--aui-space-4);
+  gap: var(--aui-token-space-3);
   min-width: 0;
 }
 
 .aui-data-toolbar__filters {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 1 14rem;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-end;
+  gap: var(--aui-token-space-2);
   min-width: 0;
+
+  > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
 }
 
 .aui-data-toolbar__actions {
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--aui-space-2);
+  gap: var(--aui-token-space-2);
+  min-width: 0;
 }
 
 @media (max-width: 48rem) {
@@ -58,14 +75,31 @@
     flex-direction: column;
   }
 
+  .aui-data-toolbar__heading,
   .aui-data-toolbar__controls {
-    align-items: stretch;
-    flex-direction: column;
     width: 100%;
   }
 
-  .aui-data-toolbar__filters,
-  .aui-data-toolbar__actions {
+  .aui-data-toolbar__controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .aui-data-toolbar__filters {
+    justify-content: flex-start;
     width: 100%;
+  }
+
+  .aui-data-toolbar__actions {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+@media (max-width: 30rem) {
+  .aui-data-toolbar__actions {
+    > * {
+      flex: 1 1 auto;
+    }
   }
 }

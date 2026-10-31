@@ -1,41 +1,46 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
-const compatibilityPath = join(
-  process.cwd(),
-  "packages/react/design/tokens/compatibility.scss",
-);
+const root = process.cwd();
+const tokenEntryPath = join(root, "packages/react/design/tokens/index.scss");
+const activeSassRoots = [
+  "packages/react/foundation",
+  "packages/react/styles",
+  "demo/src",
+];
+const tokenRoot = join(root, "packages/react/design/tokens");
 
-const source = readFileSync(compatibilityPath, "utf8");
+describe("Architecture: canonical token usage", () => {
+  it("removes the compatibility token layer", () => {
+    expect(
+      existsSync(join(root, "packages/react/design/tokens/compatibility.scss")),
+    ).toBe(false);
+    expect(readFileSync(tokenEntryPath, "utf8")).not.toContain("compatibility");
+  });
 
-describe("Architecture: compatibility tokens", () => {
-  const aliases = [
-    ["--aui-color-primary", "--aui-token-color-primary"],
-    ["--aui-color-primary-hover", "--aui-token-color-primary-hover"],
-    ["--aui-color-background", "--aui-token-color-background"],
-    ["--aui-color-surface", "--aui-token-color-surface"],
-    ["--aui-color-surface-muted", "--aui-token-color-surface-muted"],
-    ["--aui-color-text", "--aui-token-color-text"],
-    ["--aui-color-text-muted", "--aui-token-color-text-muted"],
-    ["--aui-color-border", "--aui-token-color-border"],
-    ["--aui-color-border-hover", "--aui-token-color-border-hover"],
-    ["--aui-color-success", "--aui-token-color-success"],
-    ["--aui-color-warning", "--aui-token-color-warning"],
-    ["--aui-color-danger", "--aui-token-color-danger"],
-    ["--aui-color-info", "--aui-token-color-info"],
-  ] as const;
+  it("keeps active Sass outside components, patterns, and templates on canonical tokens", () => {
+    const legacyReference = /var\(\s*--aui-(?!token-|theme-)[\w-]+/;
 
-  it("preserves legacy color aliases mapped to canonical tokens", () => {
-    for (const [legacy, canonical] of aliases) {
-      expect(source).toMatch(
-        new RegExp(`${legacy}:\\s*var\\(${canonical}\\);`),
-      );
+    for (const sassRoot of activeSassRoots) {
+      const sourceFiles = readdirSync(join(root, sassRoot), { recursive: true })
+        .filter((path): path is string => typeof path === "string" && path.endsWith(".scss"));
+
+      for (const sourceFile of sourceFiles) {
+        const source = readFileSync(join(root, sassRoot, sourceFile), "utf8");
+        expect(source, `${sassRoot}/${sourceFile}`).not.toMatch(legacyReference);
+      }
     }
   });
 
-  it("keeps compatibility aliases separate from semantic definitions", () => {
-    expect(source).toContain("Backward-compatible aliases");
-    expect(source).not.toMatch(/--aui-token-color-[\w-]+\s*:/);
+  it("keeps token definitions independent of theme variables", () => {
+    const sourceFiles = readdirSync(tokenRoot, { recursive: true })
+      .filter((path): path is string => typeof path === "string" && path.endsWith(".scss"));
+
+    for (const sourceFile of sourceFiles) {
+      const source = readFileSync(join(tokenRoot, sourceFile), "utf8");
+      expect(source, `packages/react/design/tokens/${sourceFile}`).not.toMatch(/var\(\s*--aui-theme-/);
+      expect(source, `packages/react/design/tokens/${sourceFile}`).not.toMatch(/\[\s*data-aui-theme(?:\s|\])/);
+    }
   });
 });

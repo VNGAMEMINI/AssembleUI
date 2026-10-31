@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  padding: var(--aui-space-3) var(--aui-space-4);
-  background: var(--aui-color-primary);
-  color: var(--aui-color-on-primary);
+  padding: var(--aui-token-space-3) var(--aui-token-space-4);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
   text-decoration: none;
   transform: translateY(-200%);
   transition: transform 150ms ease;
@@ -13,7 +13,7 @@
   &:focus-visible {
     transform: translateY(0);
     outline: 2px solid
-      var(--aui-state-focus-ring);
-    outline-offset: var(--aui-space-1);
+      var(--aui-theme-state-focus-ring);
+    outline-offset: var(--aui-token-space-1);
   }
 }

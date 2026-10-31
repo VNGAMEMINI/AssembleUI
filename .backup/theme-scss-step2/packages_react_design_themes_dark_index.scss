@@ -37,38 +37,38 @@
   --aui-theme-color-transparent: #{$transparent};
 
   // Semantic tokens resolve against the active theme scope.
-  --aui-token-color-primary: var(--aui-theme-color-primary);
-  --aui-token-color-primary-hover: var(--aui-theme-color-primary-hover);
+  --aui-theme-color-primary: var(--aui-theme-color-primary);
+  --aui-theme-color-primary-hover: var(--aui-theme-color-primary-hover);
 
-  --aui-token-color-background: var(--aui-theme-color-background);
-  --aui-token-color-surface: var(--aui-theme-color-surface);
-  --aui-token-color-surface-muted: var(--aui-theme-color-surface-muted);
-  --aui-token-color-surface-elevated: var(--aui-theme-color-surface-elevated);
+  --aui-theme-color-background: var(--aui-theme-color-background);
+  --aui-theme-color-surface: var(--aui-theme-color-surface);
+  --aui-theme-color-surface-muted: var(--aui-theme-color-surface-muted);
+  --aui-theme-color-surface-elevated: var(--aui-theme-color-surface-elevated);
 
-  --aui-token-color-text: var(--aui-theme-color-text);
-  --aui-token-color-text-muted: var(--aui-theme-color-text-muted);
+  --aui-theme-color-text: var(--aui-theme-color-text);
+  --aui-theme-color-text-muted: var(--aui-theme-color-text-muted);
 
-  --aui-token-color-border: var(--aui-theme-color-border);
-  --aui-token-color-border-hover: var(--aui-theme-color-border-hover);
+  --aui-theme-color-border: var(--aui-theme-color-border);
+  --aui-theme-color-border-hover: var(--aui-theme-color-border-hover);
 
-  --aui-token-color-on-primary: var(--aui-theme-color-on-primary);
+  --aui-theme-color-on-primary: var(--aui-theme-color-on-primary);
 
-  --aui-token-color-success: var(--aui-theme-color-success);
-  --aui-token-color-success-subtle: var(--aui-theme-color-success-subtle);
-  --aui-token-color-on-success: var(--aui-theme-color-on-success);
+  --aui-theme-color-success: var(--aui-theme-color-success);
+  --aui-theme-color-success-subtle: var(--aui-theme-color-success-subtle);
+  --aui-theme-color-on-success: var(--aui-theme-color-on-success);
 
-  --aui-token-color-warning: var(--aui-theme-color-warning);
-  --aui-token-color-warning-subtle: var(--aui-theme-color-warning-subtle);
-  --aui-token-color-on-warning: var(--aui-theme-color-on-warning);
+  --aui-theme-color-warning: var(--aui-theme-color-warning);
+  --aui-theme-color-warning-subtle: var(--aui-theme-color-warning-subtle);
+  --aui-theme-color-on-warning: var(--aui-theme-color-on-warning);
 
-  --aui-token-color-danger: var(--aui-theme-color-danger);
-  --aui-token-color-danger-subtle: var(--aui-theme-color-danger-subtle);
-  --aui-token-color-on-danger: var(--aui-theme-color-on-danger);
+  --aui-theme-color-danger: var(--aui-theme-color-danger);
+  --aui-theme-color-danger-subtle: var(--aui-theme-color-danger-subtle);
+  --aui-theme-color-on-danger: var(--aui-theme-color-on-danger);
 
-  --aui-token-color-info: var(--aui-theme-color-info);
-  --aui-token-color-info-subtle: var(--aui-theme-color-info-subtle);
-  --aui-token-color-on-info: var(--aui-theme-color-on-info);
+  --aui-theme-color-info: var(--aui-theme-color-info);
+  --aui-theme-color-info-subtle: var(--aui-theme-color-info-subtle);
+  --aui-theme-color-on-info: var(--aui-theme-color-on-info);
 
-  --aui-token-color-overlay: var(--aui-theme-color-overlay);
+  --aui-theme-color-overlay: var(--aui-theme-color-overlay);
   --aui-token-color-transparent: var(--aui-theme-color-transparent);
 }

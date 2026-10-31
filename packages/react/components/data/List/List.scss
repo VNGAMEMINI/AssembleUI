@@ -3,8 +3,8 @@
   margin: 0;
   padding: 0;
 
-  color: var(--aui-color-text);
-  font-size: var(--aui-font-size-sm);
+  color: var(--aui-theme-text);
+  font-size: var(--aui-token-font-size-sm);
   line-height: 1.5;
 
   list-style: none;
@@ -19,17 +19,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--aui-space-4);
+  gap: var(--aui-token-space-4);
 
   overflow-x: auto;
 }
 
 .aui-list--comfortable {
-  --aui-list-item-space: var(--aui-space-3);
+  --aui-list-item-space: var(--aui-token-space-3);
 }
 
 .aui-list--compact {
-  --aui-list-item-space: var(--aui-space-2);
+  --aui-list-item-space: var(--aui-token-space-2);
 }
 
 .aui-list > li {
@@ -44,15 +44,15 @@
 }
 
 .aui-list--divided > li + li {
-  border-top: var(--aui-border-width-thin) solid
-    var(--aui-color-border);
+  border-top: var(--aui-token-border-width-thin) solid
+    var(--aui-theme-border);
 }
 
 .aui-list--horizontal.aui-list--divided > li + li {
   border-top: 0;
-  border-left: var(--aui-border-width-thin) solid
-    var(--aui-color-border);
-  padding-left: var(--aui-space-4);
+  border-left: var(--aui-token-border-width-thin) solid
+    var(--aui-theme-border);
+  padding-left: var(--aui-token-space-4);
 }
 
 .aui-list > li > :first-child {

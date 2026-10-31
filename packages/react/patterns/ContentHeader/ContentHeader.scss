@@ -1,7 +1,7 @@
 .aui-content-header {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-space-4);
+  gap: var(--aui-token-space-4);
 }
 
 .aui-content-header__breadcrumbs {
@@ -12,7 +12,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--aui-space-6);
+  gap: var(--aui-token-space-6);
 }
 
 .aui-content-header__content {
@@ -30,7 +30,7 @@
 .aui-content-header__actions {
   display: flex;
   align-items: center;
-  gap: var(--aui-space-2);
+  gap: var(--aui-token-space-2);
   flex-shrink: 0;
 }
 

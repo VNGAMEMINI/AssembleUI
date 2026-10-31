@@ -1,11 +1,9 @@
 /*
- * Compatibility aliases for existing components.
- * Values resolve through semantic tokens so active themes are respected.
+ * Semantic surface tokens resolve through the canonical color tokens.
  */
-:root,
-[data-aui-theme] {
+:root {
   --aui-token-surface-page: var(--aui-token-color-background);
-  --aui-token-surface-default: var(--aui-token-color-surface);
-  --aui-token-surface-elevated: var(--aui-token-color-surface-elevated);
+  --aui-token-surface-default: var(--aui-theme-surface);
+  --aui-token-surface-elevated: var(--aui-theme-surface-elevated);
   --aui-token-surface-overlay: var(--aui-token-color-overlay);
 }

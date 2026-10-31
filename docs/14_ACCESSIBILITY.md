@@ -529,7 +529,7 @@ outline: none;
 
 ```css
 :focus-visible {
-  outline: 2px solid var(--aui-color-primary);
+  outline: 2px solid var(--aui-token-color-primary);
 }
 ```
 

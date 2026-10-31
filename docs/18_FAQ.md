@@ -662,13 +662,13 @@ Không viết lại cùng một UI nhiều lần.
 Sai
 
 ```scss
-background:#2563eb;
+background: #2563eb;
 ```
 
 Đúng
 
 ```scss
-background:var(--aui-color-primary);
+background: var(--aui-token-color-primary);
 ```
 
 ---

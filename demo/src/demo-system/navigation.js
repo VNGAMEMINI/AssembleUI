@@ -1,7 +1,7 @@
 const GROUPS = {
-  components: "Component",
-  patterns: "Pattern",
-  templates: "Template",
+  components: "Components",
+  patterns: "Patterns",
+  templates: "Templates",
 };
 
 export function buildDemoNavigation(demos) {

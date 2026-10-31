@@ -1,11 +1,73 @@
 .aui-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: var(--aui-token-space-2);
+
+  min-height: var(--aui-token-space-10);
+  padding: var(--aui-token-space-1)
+    var(--aui-token-space-3);
+
+  border: var(--aui-token-border-width-default) solid
+    var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-md);
+
+  background: var(--aui-theme-surface);
+  color: var(--aui-theme-text);
+
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-font-size-md);
+  font-weight: var(--aui-token-font-weight-medium);
+  line-height: var(--aui-token-line-height-normal);
+
   cursor: pointer;
+  user-select: none;
+
+  transition:
+    background-color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    border-color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    box-shadow var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-surface-2);
+    border-color: var(--aui-theme-border-strong);
+  }
+
+  &:active:not(:disabled) {
+    opacity: var(--aui-token-state-active-opacity);
+  }
+
+  &:focus-visible {
+    outline: var(--aui-token-border-width-medium) solid
+      var(--aui-theme-state-focus-ring);
+    outline-offset: var(--aui-token-space-1);
+  }
+
+  &:disabled {
+    cursor: var(--aui-token-state-disabled-cursor);
+    opacity: var(--aui-token-state-disabled-opacity);
+  }
 }
 
 .aui-toggle--pressed {
-  // State styling is intentionally minimal.
-  // Consumers can customize the visual state.
+  border-color: var(--aui-theme-primary);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
+
+  &:hover:not(:disabled) {
+    border-color: var(--aui-theme-primary-hover);
+    background: var(--aui-theme-primary-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-toggle {
+    transition: none;
+  }
 }

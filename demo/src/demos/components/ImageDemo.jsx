@@ -12,7 +12,7 @@ export function ImageDemo() {
         display: "grid",
         gridTemplateColumns:
           "repeat(2, minmax(0, 1fr))",
-        gap: "var(--aui-space-4)",
+        gap: "var(--aui-token-space-4)",
       }}
     >
       <Image

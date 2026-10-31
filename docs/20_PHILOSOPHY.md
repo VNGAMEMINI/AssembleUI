@@ -105,25 +105,13 @@ Ví dụ
 Đúng
 
 ```tsx
-<Button>
-
-Save
-
-</Button>
+<Button>Save</Button>
 ```
 
 Sai
 
 ```tsx
-<Button
-
-text="Save"
-
-content="Save"
-
-label="Save"
-
-/>
+<Button text="Save" content="Save" label="Save" />
 ```
 
 Nếu có hai cách làm.
@@ -361,13 +349,13 @@ UI
 Sai
 
 ```scss
-color:#2563eb;
+color: #2563eb;
 ```
 
 Đúng
 
 ```scss
-color:var(--aui-color-primary);
+color: var(--aui-token-color-primary);
 ```
 
 Mọi giá trị đều phải đi qua Design Tokens.

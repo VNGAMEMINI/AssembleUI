@@ -89,8 +89,7 @@ export function ProfilePageTemplateDemo() {
       {
         id: "projects",
         title: "Projects",
-        description:
-          "Recent projects created by this profile.",
+        description: "Recent projects created by this profile.",
         items: [
           {
             id: "assemble-ui",
@@ -130,5 +129,9 @@ export function ProfilePageTemplateDemo() {
     ],
   };
 
-  return <ProfilePageTemplate data={data} />;
+  return (
+    <div className="demo-preview" data-demo-full>
+      <ProfilePageTemplate data={data} />
+    </div>
+  );
 }

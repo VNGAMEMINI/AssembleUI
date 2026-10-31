@@ -10,7 +10,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 2rem minmax(0, 1fr);
-  column-gap: var(--aui-space-3);
+  column-gap: var(--aui-token-space-3);
   min-height: 4rem;
 }
 
@@ -18,7 +18,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding-top: var(--aui-space-1);
+  padding-top: var(--aui-token-space-1);
 }
 
 .aui-timeline__marker::after {
@@ -45,14 +45,14 @@
 
 .aui-timeline__body {
   min-width: 0;
-  padding-bottom: var(--aui-space-5);
+  padding-bottom: var(--aui-token-space-5);
 }
 
 .aui-timeline__header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--aui-space-3);
+  gap: var(--aui-token-space-3);
 }
 
 .aui-timeline__title {
@@ -68,17 +68,17 @@
 }
 
 .aui-timeline__content {
-  margin-top: var(--aui-space-1);
+  margin-top: var(--aui-token-space-1);
 }
 
 .aui-timeline__item--success {
-  color: var(--aui-color-success, currentColor);
+  color: var(--aui-theme-success, currentColor);
 }
 
 .aui-timeline__item--warning {
-  color: var(--aui-color-warning, currentColor);
+  color: var(--aui-theme-warning, currentColor);
 }
 
 .aui-timeline__item--error {
-  color: var(--aui-color-danger, currentColor);
+  color: var(--aui-theme-danger, currentColor);
 }

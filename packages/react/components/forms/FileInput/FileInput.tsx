@@ -3,21 +3,9 @@ import type { ChangeEvent } from "react";
 import { classNames } from "../../../core/utils";
 import type { FileInputProps } from "./FileInput.types";
 
-export const FileInput = forwardRef<
-  HTMLInputElement,
-  FileInputProps
->(
-  (
-    {
-      className,
-      onChange,
-      ...props
-    },
-    ref,
-  ) => {
-    const handleChange = (
-      event: ChangeEvent<HTMLInputElement>,
-    ) => {
+export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
+  ({ className, onChange, ...props }, ref) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       onChange?.(event.target.files, event);
     };
 
@@ -27,10 +15,7 @@ export const FileInput = forwardRef<
         ref={ref}
         type="file"
         onChange={handleChange}
-        className={classNames(
-          "aui-file-input",
-          className,
-        )}
+        className={classNames("aui-file-input", className)}
       />
     );
   },
