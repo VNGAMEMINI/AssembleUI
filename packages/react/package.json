@@ -8,6 +8,7 @@
   "style": "./dist/styles.css",
   "files": [
     "dist",
+    "design/primitives",
     "README.md",
     "LICENSE",
     "!README.md.bak"
@@ -31,10 +32,13 @@
     },
     "./styles": "./dist/styles.css",
     "./themes/dark": "./dist/themes/dark.css",
-    "./themes/light": "./dist/themes/light.css"
+    "./themes/light": "./dist/themes/light.css",
+    "./primitives": "./design/primitives/index.scss",
+    "./tokens": "./dist/tokens.css",
+    "./themes": "./dist/themes.css"
   },
   "scripts": {
-    "build:styles": "mkdir -p dist/themes && sass --no-source-map index.scss dist/styles.css && sass --no-source-map design/themes/dark/index.scss dist/themes/dark.css && sass --no-source-map design/themes/light/index.scss dist/themes/light.css"
+    "build:styles": "mkdir -p dist/themes && sass --no-source-map index.scss dist/styles.css && sass --no-source-map design/tokens/index.scss dist/tokens.css && sass --no-source-map design/themes/index.scss dist/themes.css && sass --no-source-map design/themes/dark/index.scss dist/themes/dark.css && sass --no-source-map design/themes/light/index.scss dist/themes/light.css"
   },
   "peerDependencies": {
     "react": "^19.0.0",

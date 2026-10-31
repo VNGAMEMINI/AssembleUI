@@ -1,3 +1,5 @@
+@use "../../../styles/mixins/focus" as focus;
+
 .aui-rating {
   display: inline-flex;
   align-items: center;
@@ -5,20 +7,35 @@
 
   &__star {
     position: relative;
-    width: 1.5rem;
-    height: 1.5rem;
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+
+    width: 2rem;
+    height: 2rem;
     padding: 0;
+
     border: 0;
+    border-radius: var(--aui-token-radius-sm);
     background: transparent;
+
     color: var(--aui-theme-border);
     cursor: pointer;
-    overflow: hidden;
+    line-height: 1;
 
-    &:focus-visible {
-      outline: 2px solid var(--aui-theme-state-focus-ring);
-      outline-offset: var(--aui-token-space-1);
-      border-radius: var(--aui-token-radius-sm);
+    transition:
+      background-color 150ms ease,
+      transform 150ms ease;
+
+    &:hover:not(:disabled) {
+      background: var(--aui-theme-warning-bg);
     }
+
+    &:active:not(:disabled) {
+      transform: scale(0.94);
+    }
+
+    @include focus.focus-ring;
 
     &:disabled {
       cursor: default;
@@ -29,16 +46,24 @@
   &__star-fill {
     position: absolute;
     inset: 0;
+
     display: grid;
     place-items: center;
-    font-size: 1.25rem;
+
+    font-size: 1.5rem;
     line-height: 1;
+    pointer-events: none;
+  }
+
+  &__star-base {
+    color: var(--aui-theme-border-strong);
   }
 
   &__star-fill {
     width: var(--aui-rating-fill);
     overflow: hidden;
     color: var(--aui-theme-warning);
+    white-space: nowrap;
   }
 
   &--readonly {

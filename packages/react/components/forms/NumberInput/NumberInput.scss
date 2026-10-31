@@ -1,3 +1,51 @@
+@use "../../../styles/mixins/focus" as focus;
+
 .aui-number-input {
+  display: block;
   width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  min-height: var(--aui-token-space-10);
+  padding-inline: var(--aui-token-space-3);
+
+  border: var(--aui-token-border-width-default) solid
+    var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-md);
+
+  background: var(--aui-theme-bg);
+  color: var(--aui-theme-text);
+
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+
+  transition: border-color 150ms ease;
+
+  @include focus.focus-ring;
+
+  &::placeholder {
+    color: var(--aui-theme-text-muted);
+    opacity: 1;
+  }
+
+  &:hover:not(:disabled):not(:focus-visible) {
+    border-color: var(--aui-theme-text-muted);
+  }
+
+  &:disabled {
+    opacity: var(--aui-token-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &:read-only {
+    cursor: default;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--aui-theme-danger);
+  }
+
+  // Giữ nút tăng/giảm mặc định của trình duyệt.
+  // Không ẩn spinner để tránh làm giảm khả năng sử dụng.
 }

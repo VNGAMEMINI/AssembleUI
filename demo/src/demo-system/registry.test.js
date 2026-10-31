@@ -36,6 +36,18 @@ describe("Demo Registry", () => {
     expect(typeof demo.component).toBe("function");
   });
 
+  it("discovers DashboardPageTemplateDemo automatically", () => {
+    const demo = getDemoByPath(
+      "/templates/dashboard-page-template",
+    );
+
+    expect(demo).toBeDefined();
+    expect(demo.type).toBe("templates");
+    expect(demo.name).toBe("DashboardPageTemplate");
+    expect(demo.title).toBe("DashboardPageTemplate");
+    expect(typeof demo.component).toBe("function");
+  });
+
   it("creates kebab-case demo paths", () => {
     const demo = getDemoByPath(
       "/templates/profile-page-template",

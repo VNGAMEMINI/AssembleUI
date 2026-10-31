@@ -3,24 +3,26 @@
   align-items: flex-start;
   gap: var(--aui-token-space-4);
 
+  box-sizing: border-box;
   min-width: 0;
   padding: var(--aui-token-space-4);
 
   color: var(--aui-theme-text);
-  background: var(--aui-token-surface-elevated);
+  background: var(--aui-theme-surface-elevated);
   border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-lg);
   box-shadow: var(--aui-token-shadow-sm);
 
   &__content {
     display: grid;
-    flex: 1;
+    flex: 1 1 auto;
     gap: var(--aui-token-space-2);
     min-width: 0;
   }
 
   &__header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: var(--aui-token-space-2);
     min-width: 0;
@@ -28,6 +30,8 @@
 
   &__name {
     margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
 
     color: var(--aui-theme-text);
     font-size: var(--aui-token-font-size-md);
@@ -37,11 +41,22 @@
   &__description {
     color: var(--aui-theme-text-muted);
     font-size: var(--aui-token-font-size-sm);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
   }
 
   &__action {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: var(--aui-token-space-2);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 30rem) {
+  .aui-user-card {
+    gap: var(--aui-token-space-3);
+    padding: var(--aui-token-space-3);
   }
 }

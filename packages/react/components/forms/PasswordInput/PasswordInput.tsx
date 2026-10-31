@@ -23,6 +23,7 @@ export const PasswordInput = forwardRef<
           ref={ref}
           type={visible ? "text" : "password"}
           className={classNames(
+            "aui-input",
             "aui-password-input__input",
             className,
           )}

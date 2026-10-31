@@ -1,21 +1,114 @@
+@use "../../../styles/mixins/focus" as focus;
+
 .aui-search-input {
-  position: relative;
   display: flex;
   align-items: center;
+  gap: var(--aui-token-space-2);
+
   width: 100%;
-}
+  min-width: 0;
+  box-sizing: border-box;
 
-.aui-search-input__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
+  min-height: var(--aui-token-space-10);
+  padding-inline: var(--aui-token-space-3);
 
-.aui-search-input__field {
-  width: 100%;
-}
+  border: var(--aui-token-border-width-default) solid
+    var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-md);
 
-.aui-search-input__clear {
-  flex: 0 0 auto;
+  background: var(--aui-theme-bg);
+  color: var(--aui-theme-text);
+
+  transition: border-color 150ms ease;
+
+  &:hover:not(:has(:disabled)) {
+    border-color: var(--aui-theme-text-muted);
+  }
+
+  &:focus-within {
+    border-color: var(--aui-token-state-focus-ring);
+    outline: var(--aui-token-border-width-medium) solid
+      var(--aui-token-state-focus-ring);
+    outline-offset: var(--aui-token-space-1);
+  }
+
+  &:has(:disabled) {
+    opacity: var(--aui-token-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    color: var(--aui-theme-text-muted);
+    line-height: 1;
+  }
+
+  &__field {
+    display: block;
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-width: 0;
+    min-height: inherit;
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+    border-radius: 0;
+
+    background: transparent;
+    color: inherit;
+
+    font: inherit;
+    line-height: inherit;
+
+    &::placeholder {
+      color: var(--aui-theme-text-muted);
+      opacity: 1;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  &__clear {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+
+    width: var(--aui-token-space-6);
+    height: var(--aui-token-space-6);
+    padding: 0;
+
+    border: 0;
+    border-radius: var(--aui-token-radius-sm);
+
+    background: transparent;
+    color: var(--aui-theme-text-muted);
+
+    font: inherit;
+    font-size: 1.125rem;
+    line-height: 1;
+
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+
+    &:hover {
+      background: var(--aui-theme-border);
+      color: var(--aui-theme-text);
+    }
+
+    @include focus.focus-ring;
+  }
 }

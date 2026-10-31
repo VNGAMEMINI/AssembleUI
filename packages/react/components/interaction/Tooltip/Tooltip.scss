@@ -1,25 +1,41 @@
 .aui-tooltip {
   position: relative;
   display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .aui-tooltip__content {
   position: absolute;
-  z-index: 1000;
+  z-index: 1100;
+  box-sizing: border-box;
 
-  max-width: 20rem;
-  padding: var(--aui-token-space-1) var(--aui-token-space-2);
+  width: max-content;
+  max-width: min(20rem, calc(100vw - 2rem));
+  min-width: 0;
+  padding: var(--aui-token-space-2) var(--aui-token-space-3);
 
-  border-radius: var(--aui-token-radius-sm);
+  border: var(--aui-token-border-width-default) solid
+    var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-md);
 
   background: var(--aui-theme-text);
   color: var(--aui-theme-bg);
 
+  font-family: var(--aui-token-font-family-base);
   font-size: var(--aui-token-font-size-sm);
-  line-height: var(--aui-token-line-height-tight);
+  line-height: var(--aui-token-line-height-normal);
+  font-weight: var(--aui-token-font-weight-normal);
 
   white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-align: start;
+
   pointer-events: none;
+  box-shadow: var(--aui-token-shadow-md, 0 4px 12px rgb(0 0 0 / 18%));
 }
 
 .aui-tooltip__content--top {
@@ -44,4 +60,11 @@
   top: 50%;
   right: calc(100% + var(--aui-token-space-2));
   transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-tooltip__content {
+    animation: none;
+    transition: none;
+  }
 }

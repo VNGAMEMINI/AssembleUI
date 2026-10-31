@@ -69,7 +69,7 @@ export function DashboardPageTemplateDemo() {
   const [page, setPage] = useState(1);
 
   return (
-    <div className="demo-preview">
+    <div className="demo-preview" data-demo-full>
       <DashboardPageTemplate
         data={{
           ...data,

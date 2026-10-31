@@ -16,9 +16,7 @@
   border: 1px solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-md);
   outline: none;
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .aui-autocomplete__input::placeholder {
