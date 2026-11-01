@@ -181,5 +181,16 @@ describe("Architecture: theme entry points", () => {
     expect(source).toContain("var(--aui-theme-surface)");
     expect(source).toContain("var(--aui-theme-surface-elevated)");
     expect(source).not.toMatch(/var\(\s*--aui-token-surface-/);
+
+    for (const themeName of ["light", "dark"] as const) {
+      const themeSource = readDesignFile(`themes/${themeName}/background.scss`);
+
+      expect(themeSource, `${themeName} surface`).toMatch(
+        /--aui-theme-surface:\s*[^;]+;/,
+      );
+      expect(themeSource, `${themeName} elevated surface`).toMatch(
+        /--aui-theme-surface-elevated:\s*[^;]+;/,
+      );
+    }
   });
 });
