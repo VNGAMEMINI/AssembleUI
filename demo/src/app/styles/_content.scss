@@ -16,7 +16,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: var(--aui-theme-color-primary);
+  color: var(--aui-theme-primary);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.13em;
@@ -152,9 +152,9 @@
 }
 
 .demo-copy-button:hover {
-  color: var(--aui-theme-color-primary);
+  color: var(--aui-theme-primary);
   background: var(--demo-accent-soft);
-  border-color: color-mix(in srgb, var(--aui-theme-color-primary) 38%, var(--demo-border));
+  border-color: color-mix(in srgb, var(--aui-theme-primary) 38%, var(--demo-border));
 }
 
 .demo-copy-button:disabled {

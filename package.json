@@ -1,11 +1,16 @@
 {
   "name": "assembleui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
-  "description": "",
+  "description": "AssembleUI design system and component library built with React, TypeScript, Vite, and Sass.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": ">=22.22.2",
+    "npm": ">=10.0.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,7 +26,11 @@
     "build": "npm run typecheck && vite build && npm run build:types && npm run build:styles",
     "build:types": "tsc --project tsconfig.build.json && node scripts/fix-declaration-imports.mjs",
     "build:styles": "npm --workspace @vnallmini/react run build:styles",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "vitest",
+    "test:coverage": "vitest --run --coverage",
+    "quality": "npm run lint && npm run typecheck && npm run test:coverage",
     "typecheck": "tsc --noEmit",
     "typecheck:public": "tsc -p tests/typechecks/tsconfig.json"
   },
@@ -40,18 +49,26 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@testing-library/dom": "^10.0.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
     "@vitejs/plugin-react": "^6.0.5",
+    "@vitest/coverage-v8": "^4.1.12",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.0.0",
     "happy-dom": "^20.14.0",
     "jsdom": "^30.0.1",
     "sass": "^1.105.1",
-    "typescript": "^7.0.2",
+    "typescript": "^5.9.2",
     "vite": "^8.2.1",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.12"
   },
   "workspaces": [
     "packages/*"

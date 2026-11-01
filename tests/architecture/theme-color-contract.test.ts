@@ -155,4 +155,31 @@ describe("Architecture: theme entry points", () => {
     expect(source).toMatch(/@forward\s+["']\.\/dark["'];/);
     expect(source).toMatch(/@forward\s+["']\.\/custom["'];/);
   });
+
+  it("uses the supported theme-role variables in the demo shell", () => {
+    const demoSources = [
+      readFileSync(join(process.cwd(), "demo/src/styles/index.scss"), "utf8"),
+      readFileSync(join(process.cwd(), "demo/src/app/styles/_shell.scss"), "utf8"),
+      readFileSync(join(process.cwd(), "demo/src/app/styles/_content.scss"), "utf8"),
+      readFileSync(join(process.cwd(), "demo/styles/main.scss"), "utf8"),
+    ].join("\n");
+
+    expect(demoSources).not.toMatch(/var\(\s*--aui-theme-color-primary\b/);
+    expect(demoSources).not.toMatch(/var\(\s*--aui-token-surface-page\b/);
+    expect(demoSources).toContain("--aui-theme-primary");
+  });
+
+  it("uses theme-aware surfaces in ProfilePageTemplate", () => {
+    const source = readFileSync(
+      join(
+        process.cwd(),
+        "packages/react/templates/ProfilePageTemplate/ProfilePageTemplate.scss",
+      ),
+      "utf8",
+    );
+
+    expect(source).toContain("var(--aui-theme-surface)");
+    expect(source).toContain("var(--aui-theme-surface-elevated)");
+    expect(source).not.toMatch(/var\(\s*--aui-token-surface-/);
+  });
 });

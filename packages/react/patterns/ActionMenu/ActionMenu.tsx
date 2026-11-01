@@ -5,7 +5,6 @@ import { Link } from "../../components/typography/Link";
 import { classNames } from "../../core/utils";
 
 import type {
-  ActionMenuItem,
   ActionMenuProps,
 } from "./ActionMenu.types";
 
