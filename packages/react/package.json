@@ -1,6 +1,6 @@
 {
   "name": "@vnallmini/react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -48,7 +48,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VNGAMEMINI/AssembleUI.git",
+    "url": "git+https://github.com/VNGAMEMINI/AssembleUI.git",
     "directory": "packages/react"
   },
   "homepage": "https://github.com/VNGAMEMINI/AssembleUI#readme",

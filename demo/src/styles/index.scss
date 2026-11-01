@@ -21,8 +21,8 @@ body,
 
 html,
 body {
-  background: var(--aui-token-surface-page);
-  color: var(--aui-theme-text);
+  background: var(--demo-page);
+  color: var(--demo-text);
 
   transition:
     background-color 160ms ease,

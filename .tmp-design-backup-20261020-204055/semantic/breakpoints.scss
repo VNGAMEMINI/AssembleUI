@@ -1,9 +1,0 @@
-@use "../../primitives/breakpoint" as *;
-
-:root {
-  --aui-token-breakpoint-sm: $breakpoint-sm;
-  --aui-token-breakpoint-md: $breakpoint-md;
-  --aui-token-breakpoint-lg: $breakpoint-lg;
-  --aui-token-breakpoint-xl: $breakpoint-xl;
-  --aui-token-breakpoint-2xl: $breakpoint-2xl;
-}

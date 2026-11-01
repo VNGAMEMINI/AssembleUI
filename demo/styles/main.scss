@@ -5,14 +5,14 @@ body,
 }
 
 html {
-  background: var(--aui-token-surface-page);
-  color: var(--aui-theme-text);
+  background: var(--demo-page);
+  color: var(--demo-text);
 }
 
 body {
   margin: 0;
-  background: var(--aui-token-surface-page);
-  color: var(--aui-theme-text);
+  background: var(--demo-page);
+  color: var(--demo-text);
   font-family: var(--aui-token-font-family-sans);
 }
 
@@ -24,8 +24,8 @@ body {
   min-height: 100vh;
   padding: 48px 24px 64px;
 
-  background: var(--aui-token-surface-page);
-  color: var(--aui-theme-text);
+  background: var(--demo-page);
+  color: var(--demo-text);
 
   transition:
     background-color 160ms ease,
@@ -44,7 +44,7 @@ body {
 .demo-eyebrow {
   margin: 0 0 8px;
 
-  color: var(--aui-theme-color-primary);
+  color: var(--aui-theme-primary);
 
   font-size: var(--aui-token-font-size-sm);
   font-weight: var(--aui-token-font-weight-medium);
@@ -139,7 +139,7 @@ body {
 }
 
 .demo-section__content > input:focus {
-  outline: var(--aui-token-border-width-medium) solid var(--aui-theme-color-primary);
+  outline: var(--aui-token-border-width-medium) solid var(--aui-theme-primary);
 
   outline-offset: 2px;
 }
