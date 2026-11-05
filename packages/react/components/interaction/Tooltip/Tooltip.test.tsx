@@ -3,6 +3,7 @@ import {
   screen,
   fireEvent,
 } from "@testing-library/react";
+import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { Tooltip } from "./Tooltip";
 
@@ -296,4 +297,33 @@ describe("Tooltip", () => {
     expect(onFocus).toHaveBeenCalled();
     expect(onBlur).toHaveBeenCalled();
   });
+  it("forwards ref and preserves the root DOM contract", () => {
+    const ref = createRef<HTMLSpanElement>();
+
+    render(
+      <Tooltip
+        ref={ref}
+        id="custom-tooltip-root"
+        title="Root tooltip"
+        data-state="custom"
+        className="custom-class"
+        style={{ color: "red", zIndex: 1200 }}
+        content="Help"
+      >
+        <button>Trigger</button>
+      </Tooltip>,
+    );
+
+    const root = screen.getByTitle("Root tooltip");
+
+    expect(ref.current).toBe(root);
+    expect(root).toHaveAttribute("id", "custom-tooltip-root");
+    expect(root).toHaveAttribute("data-state", "custom");
+    expect(root).toHaveClass("aui-tooltip", "custom-class");
+    expect(root).toHaveStyle({
+      color: "red",
+      zIndex: 1200,
+    });
+  });
+
 });

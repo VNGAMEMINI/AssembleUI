@@ -1,5 +1,6 @@
 import type {
   FocusEventHandler,
+  HTMLAttributes,
   MouseEventHandler,
   ReactElement,
   ReactNode,
@@ -11,7 +12,7 @@ export type TooltipPlacement =
   | "bottom"
   | "left";
 
-export interface TooltipTriggerProps {
+export interface TooltipTriggerProps extends Omit<HTMLAttributes<HTMLElement>, "children"> {
   "aria-describedby"?: string;
   onMouseEnter?: MouseEventHandler<HTMLElement>;
   onMouseLeave?: MouseEventHandler<HTMLElement>;
@@ -19,7 +20,7 @@ export interface TooltipTriggerProps {
   onBlur?: FocusEventHandler<HTMLElement>;
 }
 
-export interface TooltipProps {
+export interface TooltipProps extends Omit<HTMLAttributes<HTMLSpanElement>, "children" | "content"> {
   children: ReactElement<TooltipTriggerProps>;
   content: ReactNode;
   placement?: TooltipPlacement;

@@ -1,80 +1,144 @@
 import {
+  createContext,
   forwardRef,
+  useContext,
   useEffect,
   useId,
 } from "react";
+
 import { createPortal } from "react-dom";
 
 import { useDisclosure } from "../../../core/hooks";
 import { classNames } from "../../../core/utils";
 
-import type { ModalProps } from "./Modal.types";
+import type {
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 
-const Modal = forwardRef<HTMLDivElement, ModalProps>(
+import type {
+  ModalContentProps,
+  ModalProps,
+} from "./Modal.types";
+
+interface ModalContextValue {
+  onClose: () => void;
+  closeOnBackdrop: boolean;
+}
+
+const ModalContext = createContext<ModalContextValue | null>(
+  null,
+);
+
+function useModalContext(): ModalContextValue {
+  const context = useContext(ModalContext);
+
+  if (context == null) {
+    throw new Error(
+      "Modal.Content must be rendered inside Modal.",
+    );
+  }
+
+  return context;
+}
+
+function ModalRoot({
+  open,
+  defaultOpen = false,
+  onOpenChange,
+  closeOnBackdrop = true,
+  closeOnEscape = true,
+  children,
+}: ModalProps) {
+  const { isOpen, onClose } = useDisclosure({
+    open,
+    defaultIsOpen: defaultOpen,
+    onOpenChange,
+  });
+
+  useEffect(() => {
+    if (!isOpen || !closeOnEscape) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown,
+      );
+    };
+  }, [isOpen, closeOnEscape, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+    };
+  }, [isOpen]);
+
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
+    <ModalContext.Provider
+      value={{
+        onClose,
+        closeOnBackdrop,
+      }}
+    >
+      {children}
+    </ModalContext.Provider>
+  );
+}
+
+const ModalContent = forwardRef<
+  HTMLDivElement,
+  ModalContentProps
+>(
   (
     {
-      open,
-      defaultOpen = false,
-      onOpenChange,
       title,
       description,
       children,
       footer,
       closeLabel = "Close",
-      closeOnBackdrop = true,
-      closeOnEscape = true,
       className,
       ...props
     },
     ref,
   ) => {
+    const {
+      onClose,
+      closeOnBackdrop,
+    } = useModalContext();
+
     const generatedId = useId();
-    const titleId = `aui-modal-title-${generatedId.replace(/:/g, "")}`;
-    const descriptionId = `aui-modal-description-${generatedId.replace(
-      /:/g,
-      "",
-    )}`;
+    const idSuffix = generatedId.replace(/:/g, "");
 
-    const { isOpen, onClose } = useDisclosure({
-      open,
-      defaultIsOpen: defaultOpen,
-      onOpenChange,
-    });
-
-    useEffect(() => {
-      if (!isOpen || !closeOnEscape) {
-        return;
-      }
-
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === "Escape") {
-          onClose();
-        }
-      };
-
-      document.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        document.removeEventListener("keydown", handleKeyDown);
-      };
-    }, [isOpen, closeOnEscape, onClose]);
-
-    useEffect(() => {
-      if (!isOpen) {
-        return;
-      }
-
-      const previousOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-
-      return () => {
-        document.body.style.overflow = previousOverflow;
-      };
-    }, [isOpen]);
-
-    if (!isOpen) {
-      return null;
-    }
+    const titleId = `aui-modal-title-${idSuffix}`;
+    const descriptionId =
+      `aui-modal-description-${idSuffix}`;
 
     const modal = (
       <div
@@ -96,9 +160,14 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
           aria-modal="true"
           aria-labelledby={titleId}
           aria-describedby={
-            description != null ? descriptionId : undefined
+            description != null
+              ? descriptionId
+              : undefined
           }
-          className={classNames("aui-modal__dialog", className)}
+          className={classNames(
+            "aui-modal__dialog",
+            className,
+          )}
         >
           <header className="aui-modal__header">
             <div className="aui-modal__heading">
@@ -142,10 +211,17 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       </div>
     );
 
-    return createPortal(modal, document.body);
+    return createPortal(
+      modal,
+      document.body,
+    );
   },
 );
 
-Modal.displayName = "Modal";
+ModalContent.displayName = "Modal.Content";
+
+const Modal = Object.assign(ModalRoot, {
+  Content: ModalContent,
+});
 
 export { Modal };

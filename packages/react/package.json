@@ -35,7 +35,11 @@
     "./themes/light": "./dist/themes/light.css",
     "./primitives": "./design/primitives/index.scss",
     "./tokens": "./dist/tokens.css",
-    "./themes": "./dist/themes.css"
+    "./themes": "./dist/themes.css",
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js"
+    }
   },
   "scripts": {
     "build:styles": "mkdir -p dist/themes && sass --no-source-map index.scss dist/styles.css && sass --no-source-map design/tokens/index.scss dist/tokens.css && sass --no-source-map design/themes/index.scss dist/themes.css && sass --no-source-map design/themes/dark/index.scss dist/themes/dark.css && sass --no-source-map design/themes/light/index.scss dist/themes/light.css"

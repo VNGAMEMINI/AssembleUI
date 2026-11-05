@@ -37,13 +37,17 @@ export function DataGrid<T extends Record<string, unknown>>({
   rowKey,
   emptyState = "No data",
   className,
+  style,
+  ...rootProps
 }: DataGridProps<T>) {
   return (
     <div
+      {...rootProps}
       className={classNames(
         "aui-data-grid",
         className,
       )}
+      style={style}
     >
       <table className="aui-data-grid__table">
         <thead className="aui-data-grid__head">

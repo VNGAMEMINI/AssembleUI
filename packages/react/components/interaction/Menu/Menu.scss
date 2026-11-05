@@ -73,3 +73,30 @@
       opacity 120ms ease;
   }
 }
+
+.aui-menu--popup {
+  position: fixed;
+  z-index: 1100;
+
+  box-shadow: var(--aui-token-shadow-lg);
+
+  animation: aui-menu-popup-enter 120ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-menu--popup {
+    animation: none;
+  }
+}
+
+@keyframes aui-menu-popup-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

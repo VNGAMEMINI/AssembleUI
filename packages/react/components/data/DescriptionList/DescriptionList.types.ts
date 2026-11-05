@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 export interface DescriptionListItem {
   id: string;
@@ -6,8 +6,7 @@ export interface DescriptionListItem {
   value: ReactNode;
 }
 
-export interface DescriptionListProps {
+export interface DescriptionListProps extends Omit<HTMLAttributes<HTMLDListElement>, "children"> {
   items: DescriptionListItem[];
   columns?: 1 | 2 | 3;
-  className?: string;
 }

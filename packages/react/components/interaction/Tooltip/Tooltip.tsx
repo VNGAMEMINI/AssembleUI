@@ -1,5 +1,6 @@
 import {
   cloneElement,
+  forwardRef,
   useId,
   useState,
 } from "react";
@@ -11,14 +12,18 @@ import type {
 import { useDisclosure } from "../../../core/hooks";
 import type { TooltipProps } from "./Tooltip.types";
 
-export function Tooltip({
-  children,
-  content,
-  placement = "top",
-  open,
-  defaultOpen = false,
-  onOpenChange,
-}: TooltipProps) {
+export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
+  function Tooltip({
+    children,
+    content,
+    placement = "top",
+    open,
+    defaultOpen = false,
+    onOpenChange,
+    className,
+    style,
+    ...rootProps
+  }: TooltipProps, ref) {
   const generatedId = useId();
   const tooltipId = `aui-tooltip-${generatedId.replace(/:/g, "")}`;
 
@@ -91,7 +96,12 @@ export function Tooltip({
   });
 
   return (
-    <span className="aui-tooltip">
+    <span
+      {...rootProps}
+      ref={ref}
+      className={["aui-tooltip", className].filter(Boolean).join(" ")}
+      style={style}
+    >
       {trigger}
 
       {isOpen ? (
@@ -105,6 +115,7 @@ export function Tooltip({
       ) : null}
     </span>
   );
-}
+  },
+);
 
 Tooltip.displayName = "Tooltip";

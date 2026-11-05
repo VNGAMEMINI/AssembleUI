@@ -19,6 +19,8 @@ export const DatePicker = forwardRef<
       className,
       disabled,
       required,
+      "aria-describedby": externalDescribedBy,
+      "aria-invalid": externalInvalid,
       ...props
     },
     ref,
@@ -31,6 +33,8 @@ export const DatePicker = forwardRef<
       idPrefix: "date-picker",
       description,
       error,
+      externalDescribedBy,
+      externalInvalid,
     });
 
     return (

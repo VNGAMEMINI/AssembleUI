@@ -1,13 +1,27 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
 
-import { Modal } from "./Modal";
+import {
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
+
+import {
+  Modal,
+} from "./Modal";
 
 describe("Modal", () => {
-  it("does not render when closed", () => {
+  it("does not render content when closed", () => {
     render(
-      <Modal open={false} title="Test modal">
-        Content
+      <Modal open={false}>
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -16,51 +30,67 @@ describe("Modal", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("renders when open", () => {
+  it("renders Modal.Content when open", () => {
     render(
-      <Modal open title="Test modal">
-        Content
+      <Modal open>
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
-    expect(screen.getByText("Content")).toBeInTheDocument();
+    expect(
+      screen.getByRole("dialog"),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Content"),
+    ).toBeInTheDocument();
   });
 
   it("supports defaultOpen", () => {
     render(
-      <Modal defaultOpen title="Test modal">
-        Content
+      <Modal defaultOpen>
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(
+      screen.getByRole("dialog"),
+    ).toBeInTheDocument();
   });
 
-  it("calls onOpenChange when closed", () => {
+  it("calls onOpenChange when the close button is clicked", () => {
     const onOpenChange = vi.fn();
 
     render(
       <Modal
         open
-        title="Test modal"
         onOpenChange={onOpenChange}
       >
-        Content
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Close" }),
+      screen.getByRole("button", {
+        name: "Close",
+      }),
     );
 
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
-  it("connects title with aria-labelledby", () => {
+  it("connects the title with aria-labelledby", () => {
     render(
-      <Modal open title="Profile">
-        Content
+      <Modal open>
+        <Modal.Content title="Profile">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -75,14 +105,15 @@ describe("Modal", () => {
     );
   });
 
-  it("connects description with aria-describedby", () => {
+  it("connects the description with aria-describedby", () => {
     render(
-      <Modal
-        open
-        title="Profile"
-        description="Profile information"
-      >
-        Content
+      <Modal open>
+        <Modal.Content
+          title="Profile"
+          description="Profile information"
+        >
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -97,14 +128,29 @@ describe("Modal", () => {
     );
   });
 
-  it("renders a custom close label", () => {
+  it("does not set aria-describedby without a description", () => {
     render(
-      <Modal
-        open
-        title="Test modal"
-        closeLabel="Close dialog"
-      >
-        Content
+      <Modal open>
+        <Modal.Content title="Profile">
+          Content
+        </Modal.Content>
+      </Modal>,
+    );
+
+    expect(
+      screen.getByRole("dialog"),
+    ).not.toHaveAttribute("aria-describedby");
+  });
+
+  it("supports a custom close label", () => {
+    render(
+      <Modal open>
+        <Modal.Content
+          title="Test modal"
+          closeLabel="Close dialog"
+        >
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -121,10 +167,11 @@ describe("Modal", () => {
     render(
       <Modal
         open
-        title="Test modal"
         onOpenChange={onOpenChange}
       >
-        Content
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -141,11 +188,12 @@ describe("Modal", () => {
     render(
       <Modal
         open
-        title="Test modal"
         closeOnEscape={false}
         onOpenChange={onOpenChange}
       >
-        Content
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -162,10 +210,11 @@ describe("Modal", () => {
     render(
       <Modal
         open
-        title="Test modal"
         onOpenChange={onOpenChange}
       >
-        Content
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -185,11 +234,12 @@ describe("Modal", () => {
     render(
       <Modal
         open
-        title="Test modal"
         closeOnBackdrop={false}
         onOpenChange={onOpenChange}
       >
-        Content
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -205,38 +255,49 @@ describe("Modal", () => {
 
   it("renders footer content", () => {
     render(
-      <Modal
-        open
-        title="Test modal"
-        footer={<button type="button">Save</button>}
-      >
-        Content
+      <Modal open>
+        <Modal.Content
+          title="Test modal"
+          footer={
+            <button type="button">
+              Save
+            </button>
+          }
+        >
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
     expect(
-      screen.getByRole("button", { name: "Save" }),
+      screen.getByRole("button", {
+        name: "Save",
+      }),
     ).toBeInTheDocument();
   });
 
   it("renders through a document body portal", () => {
     render(
-      <Modal open title="Test modal">
-        Content
+      <Modal open>
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
     const dialog = screen.getByRole("dialog");
 
-    expect(dialog.parentElement?.parentElement).toBe(
-      document.body,
-    );
+    expect(
+      dialog.parentElement?.parentElement,
+    ).toBe(document.body);
   });
 
   it("locks body scrolling while open", () => {
     const { unmount } = render(
-      <Modal open title="Test modal">
-        Content
+      <Modal open>
+        <Modal.Content title="Test modal">
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
@@ -247,21 +308,94 @@ describe("Modal", () => {
     expect(document.body.style.overflow).toBe("");
   });
 
-  it("forwards the ref", () => {
-    const ref = { current: null as HTMLDivElement | null };
+  it("forwards a ref to the dialog element", () => {
+    const ref = {
+      current: null as HTMLDivElement | null,
+    };
 
     render(
-      <Modal
-        ref={ref}
-        open
-        title="Test modal"
-      >
-        Content
+      <Modal open>
+        <Modal.Content
+          ref={ref}
+          title="Test modal"
+        >
+          Content
+        </Modal.Content>
       </Modal>,
     );
 
     expect(ref.current).toBe(
       screen.getByRole("dialog"),
     );
+  });
+
+  it("forwards native attributes to the dialog", () => {
+    render(
+      <Modal open>
+        <Modal.Content
+          title="Test modal"
+          data-testid="modal-dialog"
+          aria-label="Profile dialog"
+        >
+          Content
+        </Modal.Content>
+      </Modal>,
+    );
+
+    expect(
+      screen.getByTestId("modal-dialog"),
+    ).toHaveAttribute(
+      "aria-label",
+      "Profile dialog",
+    );
+  });
+
+  it("supports a custom class name on Modal.Content", () => {
+    render(
+      <Modal open>
+        <Modal.Content
+          title="Test modal"
+          className="custom-modal"
+        >
+          Content
+        </Modal.Content>
+      </Modal>,
+    );
+
+    expect(
+      screen.getByRole("dialog"),
+    ).toHaveClass("aui-modal__dialog", "custom-modal");
+  });
+
+  it("renders independently controlled buttons outside Modal", () => {
+    const onOpenChange = vi.fn();
+
+    render(
+      <>
+        <button
+          type="button"
+          onClick={() => onOpenChange(true)}
+        >
+          Open Modal
+        </button>
+
+        <Modal
+          open={false}
+          onOpenChange={onOpenChange}
+        >
+          <Modal.Content title="Test modal">
+            Content
+          </Modal.Content>
+        </Modal>
+      </>,
+    );
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Open Modal",
+      }),
+    );
+
+    expect(onOpenChange).toHaveBeenCalledWith(true);
   });
 });

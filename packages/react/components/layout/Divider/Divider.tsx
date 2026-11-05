@@ -18,7 +18,16 @@ function setRef<T>(ref: Ref<T>, value: T | null): void {
 }
 
 export const Divider = forwardRef<HTMLElement, DividerProps>(
-  ({ orientation = "horizontal", className, ...props }, ref) => {
+  (
+    {
+      orientation = "horizontal",
+      className,
+      role,
+      "aria-orientation": ariaOrientation,
+      ...props
+    },
+    ref,
+  ) => {
     if (orientation === "vertical") {
       const verticalRef: RefCallback<HTMLDivElement> = (element) => {
         setRef(ref, element);
@@ -28,8 +37,8 @@ export const Divider = forwardRef<HTMLElement, DividerProps>(
         <div
           {...props}
           ref={verticalRef}
-          role="separator"
-          aria-orientation="vertical"
+          role={role ?? "separator"}
+          aria-orientation={ariaOrientation ?? "vertical"}
           className={classNames(
             "aui-divider",
             "aui-divider--vertical",
@@ -47,6 +56,8 @@ export const Divider = forwardRef<HTMLElement, DividerProps>(
       <hr
         {...props}
         ref={horizontalRef}
+        role={role}
+        aria-orientation={ariaOrientation}
         className={classNames(
           "aui-divider",
           "aui-divider--horizontal",

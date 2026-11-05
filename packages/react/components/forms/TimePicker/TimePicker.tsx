@@ -19,6 +19,8 @@ export const TimePicker = forwardRef<
       className,
       disabled,
       required,
+      "aria-describedby": externalDescribedBy,
+      "aria-invalid": externalInvalid,
       ...props
     },
     ref,
@@ -31,6 +33,8 @@ export const TimePicker = forwardRef<
       idPrefix: "time-picker",
       description,
       error,
+      externalDescribedBy,
+      externalInvalid,
     });
 
     return (

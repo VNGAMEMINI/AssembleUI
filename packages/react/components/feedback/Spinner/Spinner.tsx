@@ -7,6 +7,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
     {
       size = "md",
       label = "Loading",
+      "aria-label": ariaLabel,
       className,
       role = "status",
       ...props
@@ -18,7 +19,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
         {...props}
         ref={ref}
         role={role}
-        aria-label={label}
+        aria-label={ariaLabel ?? label}
         className={classNames(
           "aui-spinner",
           `aui-spinner--${size}`,

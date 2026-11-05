@@ -35,6 +35,11 @@ export default defineConfig({
         "templates/index.ts",
       ),
 
+      "@vnallmini/react/core": path.join(
+        packageRoot,
+        "core/index.ts",
+      ),
+
       "@vnallmini/react/styles": path.join(packageRoot, "index.scss"),
 
       "@vnallmini/react": path.join(packageRoot, "index.ts"),

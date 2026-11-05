@@ -1,5 +1,8 @@
 export * from "./Drawer";
+
 export type {
+  DrawerContentProps,
+  DrawerItemProps,
+  DrawerPlacement,
   DrawerProps,
-  DrawerSide,
 } from "./Drawer.types";

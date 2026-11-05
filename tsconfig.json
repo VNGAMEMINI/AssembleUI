@@ -31,6 +31,9 @@
       "@vnallmini/react/templates": [
         "./packages/react/templates/index.ts"
       ],
+      "@vnallmini/react/core": [
+        "./packages/react/core/index.ts"
+      ],
     },
     "types": [
       "vitest/globals"

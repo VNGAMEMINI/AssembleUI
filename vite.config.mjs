@@ -1,8 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
+
+  resolve: {
+    alias: {
+      "@vnallmini/react/core": path.resolve(
+        "packages/react/core/index.ts",
+      ),
+    },
+  },
 
   build: {
     lib: {
@@ -11,6 +20,7 @@ export default defineConfig({
         "components/index": "packages/react/components/index.ts",
         "patterns/index": "packages/react/patterns/index.ts",
         "templates/index": "packages/react/templates/index.ts",
+        "core/index": "packages/react/core/index.ts",
       },
       formats: ["es"],
     },

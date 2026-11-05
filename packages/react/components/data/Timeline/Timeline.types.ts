@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 export interface TimelineItem {
   id: string;
@@ -9,7 +9,6 @@ export interface TimelineItem {
   status?: "default" | "success" | "warning" | "error";
 }
 
-export interface TimelineProps {
+export interface TimelineProps extends Omit<HTMLAttributes<HTMLOListElement>, "children"> {
   items: TimelineItem[];
-  className?: string;
 }

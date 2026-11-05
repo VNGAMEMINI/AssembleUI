@@ -8,6 +8,14 @@ import {
 
 import { classNames } from "../../../core/utils";
 
+import {
+  getAdjacentTab,
+  getBoundaryTab,
+  getEnabledTabs,
+  getInitialTabValue,
+  isEnabledTab,
+} from "./module/_tabs.utils";
+
 import type {
   KeyboardEvent,
 } from "react";
@@ -34,18 +42,12 @@ const Tabs = forwardRef<
   ) => {
     const reactId = useId();
 
-    const enabledItems = items.filter(
-      (item) => !item.disabled,
-    );
+    const enabledItems = getEnabledTabs(items);
 
-    const initialValue =
-      defaultValue &&
-      enabledItems.some(
-        (item) =>
-          item.id === defaultValue,
-      )
-        ? defaultValue
-        : enabledItems[0]?.id;
+    const initialValue = getInitialTabValue(
+      enabledItems,
+      defaultValue,
+    );
 
     const [internalValue, setInternalValue] =
       useState<string | undefined>(
@@ -76,12 +78,7 @@ const Tabs = forwardRef<
     const setValue = (
       nextValue: string,
     ) => {
-      if (
-        !enabledItems.some(
-          (item) =>
-            item.id === nextValue,
-        )
-      ) {
+      if (!isEnabledTab(enabledItems, nextValue)) {
         return;
       }
 
@@ -137,39 +134,22 @@ const Tabs = forwardRef<
     };
 
     const focusNext = () => {
-      if (!enabledItems.length) {
-        return;
-      }
-
-      const currentIndex =
-        getActiveIndex();
-
-      const nextIndex =
-        currentIndex >=
-        enabledItems.length - 1
-          ? 0
-          : currentIndex + 1;
-
       focusItem(
-        enabledItems[nextIndex],
+        getAdjacentTab(
+          enabledItems,
+          getActiveIndex(),
+          1,
+        ),
       );
     };
 
     const focusPrevious = () => {
-      if (!enabledItems.length) {
-        return;
-      }
-
-      const currentIndex =
-        getActiveIndex();
-
-      const previousIndex =
-        currentIndex <= 0
-          ? enabledItems.length - 1
-          : currentIndex - 1;
-
       focusItem(
-        enabledItems[previousIndex],
+        getAdjacentTab(
+          enabledItems,
+          getActiveIndex(),
+          -1,
+        ),
       );
     };
 
@@ -191,15 +171,15 @@ const Tabs = forwardRef<
 
         case "Home":
           event.preventDefault();
-          focusItem(enabledItems[0]);
+          focusItem(
+            getBoundaryTab(enabledItems, "first"),
+          );
           break;
 
         case "End":
           event.preventDefault();
           focusItem(
-            enabledItems[
-              enabledItems.length - 1
-            ],
+            getBoundaryTab(enabledItems, "last"),
           );
           break;
 
@@ -211,10 +191,7 @@ const Tabs = forwardRef<
     useEffect(() => {
       if (
         activeValue &&
-        enabledItems.some(
-          (item) =>
-            item.id === activeValue,
-        )
+        isEnabledTab(enabledItems, activeValue)
       ) {
         return;
       }

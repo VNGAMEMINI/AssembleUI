@@ -155,4 +155,49 @@ describe("DatePicker", () => {
 
     expect(ref.current).toBeInstanceOf(HTMLInputElement);
   });
+
+  it("merges external aria-describedby with generated description", () => {
+    render(
+      <DatePicker
+        label="Date"
+        description="Select a date"
+        aria-describedby="external-help"
+      />,
+    );
+
+    const input = screen.getByLabelText("Date");
+    const describedBy = input.getAttribute("aria-describedby")?.split(" ");
+
+    expect(describedBy).toContain("external-help");
+    expect(describedBy).toHaveLength(2);
+  });
+
+  it("preserves external aria-invalid when there is no error", () => {
+    render(
+      <DatePicker
+        label="Date"
+        aria-invalid="grammar"
+      />,
+    );
+
+    expect(screen.getByLabelText("Date")).toHaveAttribute(
+      "aria-invalid",
+      "grammar",
+    );
+  });
+
+  it("prioritizes error state over external aria-invalid", () => {
+    render(
+      <DatePicker
+        label="Date"
+        error="Invalid date"
+        aria-invalid="false"
+      />,
+    );
+
+    expect(screen.getByLabelText("Date")).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+  });
 });

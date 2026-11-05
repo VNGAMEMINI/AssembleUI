@@ -11,7 +11,8 @@
     "packages/react/index.ts",
     "packages/react/components/index.ts",
     "packages/react/patterns/index.ts",
-    "packages/react/templates/index.ts"
+    "packages/react/templates/index.ts",
+    "packages/react/core/index.ts"
   ],
   "exclude": [
     "packages/react/dist",

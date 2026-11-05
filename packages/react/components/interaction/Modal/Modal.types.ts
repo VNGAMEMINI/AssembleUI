@@ -1,17 +1,25 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type {
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 
-export interface ModalProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+export interface ModalProps {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
 
+  closeOnBackdrop?: boolean;
+  closeOnEscape?: boolean;
+
+  children?: ReactNode;
+}
+
+export interface ModalContentProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   title: ReactNode;
   description?: ReactNode;
   children?: ReactNode;
   footer?: ReactNode;
 
   closeLabel?: string;
-  closeOnBackdrop?: boolean;
-  closeOnEscape?: boolean;
 }

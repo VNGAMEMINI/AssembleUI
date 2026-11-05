@@ -1,5 +1,0 @@
-export * from "./Popover";
-export type {
-  PopoverPlacement,
-  PopoverProps,
-} from "./Popover.types";

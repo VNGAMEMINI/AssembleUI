@@ -8,14 +8,18 @@ export const DescriptionList = ({
   items,
   columns = 1,
   className,
+  style,
+  ...rootProps
 }: DescriptionListProps) => {
   return (
     <dl
+      {...rootProps}
       className={classNames(
         "aui-description-list",
         `aui-description-list--columns-${columns}`,
         className,
       )}
+      style={style}
     >
       {items.map((item: DescriptionListItem) => (
         <div

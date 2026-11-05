@@ -17,6 +17,9 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       onClose,
       closeLabel = "Close",
       className,
+      role: providedRole,
+      "aria-labelledby": ariaLabelledby,
+      "aria-describedby": ariaDescribedby,
       ...props
     },
     ref,
@@ -42,16 +45,18 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       return null;
     }
 
-    const role = status === "error" ? "alert" : "status";
+    const role = providedRole ?? (status === "error" ? "alert" : "status");
 
     return (
       <div
         {...props}
         ref={ref}
         role={role}
-        aria-labelledby={title != null ? titleId : undefined}
+        aria-labelledby={
+          ariaLabelledby ?? (title != null ? titleId : undefined)
+        }
         aria-describedby={
-          message != null ? messageId : undefined
+          ariaDescribedby ?? (message != null ? messageId : undefined)
         }
         className={classNames(
           "aui-toast",

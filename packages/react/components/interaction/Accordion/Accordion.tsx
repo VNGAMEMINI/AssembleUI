@@ -7,6 +7,12 @@ import {
 
 import { classNames } from "../../../core/utils";
 
+import {
+  getAdjacentEnabledItem,
+  getBoundaryEnabledItem,
+  normalizeOpenIds,
+} from "./module/_accordion.utils";
+
 import type {
   KeyboardEvent,
 } from "react";
@@ -121,11 +127,6 @@ const Accordion = forwardRef<
       );
     };
 
-    const getEnabledItems = () =>
-      items.filter(
-        (item) => !item.disabled,
-      );
-
     const focusItem = (
       item: AccordionItem | undefined,
     ) => {
@@ -154,68 +155,49 @@ const Accordion = forwardRef<
         return;
       }
 
-      const enabledItems =
-        getEnabledItems();
-
-      if (!enabledItems.length) {
-        return;
-      }
-
       const currentItem =
         items[currentIndex];
 
-      const enabledIndex =
-        enabledItems.findIndex(
-          (item) =>
-            item.id ===
-            currentItem.id,
-        );
-
       switch (event.key) {
-        case "ArrowDown": {
+        case "ArrowDown":
           event.preventDefault();
-
-          const nextIndex =
-            enabledIndex ===
-            enabledItems.length - 1
-              ? 0
-              : enabledIndex + 1;
-
           focusItem(
-            enabledItems[nextIndex],
+            getAdjacentEnabledItem(
+              items,
+              currentItem.id,
+              1,
+            ),
           );
-
           break;
-        }
 
-        case "ArrowUp": {
+        case "ArrowUp":
           event.preventDefault();
-
-          const previousIndex =
-            enabledIndex <= 0
-              ? enabledItems.length - 1
-              : enabledIndex - 1;
-
           focusItem(
-            enabledItems[
-              previousIndex
-            ],
+            getAdjacentEnabledItem(
+              items,
+              currentItem.id,
+              -1,
+            ),
           );
-
           break;
-        }
 
         case "Home":
           event.preventDefault();
-          focusItem(enabledItems[0]);
+          focusItem(
+            getBoundaryEnabledItem(
+              items,
+              "start",
+            ),
+          );
           break;
 
         case "End":
           event.preventDefault();
           focusItem(
-            enabledItems[
-              enabledItems.length - 1
-            ],
+            getBoundaryEnabledItem(
+              items,
+              "end",
+            ),
           );
           break;
 
@@ -225,56 +207,20 @@ const Accordion = forwardRef<
     };
 
     useEffect(() => {
-      const validIds = new Set(
-        items
-          .filter(
-            (item) =>
-              !item.disabled,
-          )
-          .map((item) => item.id),
+      const normalizedIds = normalizeOpenIds(
+        items,
+        activeOpenIds,
+        multiple,
       );
 
-      const normalizedIds =
-        activeOpenIds.filter((id) =>
-          validIds.has(id),
+      const hasChanged =
+        normalizedIds.length !== activeOpenIds.length ||
+        normalizedIds.some(
+          (id, index) => id !== activeOpenIds[index],
         );
 
-      if (!multiple) {
-        const firstId =
-          normalizedIds[0];
-
-        const nextIds = firstId
-          ? [firstId]
-          : [];
-
-        if (
-          nextIds.length !==
-            activeOpenIds.length ||
-          nextIds.some(
-            (id, index) =>
-              id !==
-              activeOpenIds[index],
-          )
-        ) {
-          if (!isControlled) {
-            setInternalOpenIds(
-              nextIds,
-            );
-          }
-        }
-
-        return;
-      }
-
-      if (
-        normalizedIds.length !==
-          activeOpenIds.length
-      ) {
-        if (!isControlled) {
-          setInternalOpenIds(
-            normalizedIds,
-          );
-        }
+      if (hasChanged && !isControlled) {
+        setInternalOpenIds(normalizedIds);
       }
     }, [
       activeOpenIds,

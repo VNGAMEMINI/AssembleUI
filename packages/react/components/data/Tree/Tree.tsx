@@ -138,6 +138,9 @@ export const Tree = ({
   selectedId,
   onSelect,
   className,
+  style: rootStyle,
+  role = "tree",
+  ...rootProps
 }: TreeProps) => {
   const [internalExpandedIds, setInternalExpandedIds] =
     useState(defaultExpandedIds);
@@ -166,11 +169,13 @@ export const Tree = ({
 
   return (
     <ul
+      {...rootProps}
       className={classNames(
         "aui-tree",
         className,
       )}
-      role="tree"
+      style={rootStyle}
+      role={role}
     >
       {data.map((node) => (
         <TreeNodeItem

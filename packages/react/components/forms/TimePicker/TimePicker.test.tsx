@@ -161,4 +161,49 @@ describe("TimePicker", () => {
 
     expect(ref.current?.type).toBe("time");
   });
+
+  it("merges external aria-describedby with generated description", () => {
+    render(
+      <TimePicker
+        label="Time"
+        description="Choose a time"
+        aria-describedby="external-help"
+      />,
+    );
+
+    const input = screen.getByLabelText("Time");
+    const describedBy = input.getAttribute("aria-describedby")?.split(" ");
+
+    expect(describedBy).toContain("external-help");
+    expect(describedBy).toHaveLength(2);
+  });
+
+  it("preserves external aria-invalid when there is no error", () => {
+    render(
+      <TimePicker
+        label="Time"
+        aria-invalid="grammar"
+      />,
+    );
+
+    expect(screen.getByLabelText("Time")).toHaveAttribute(
+      "aria-invalid",
+      "grammar",
+    );
+  });
+
+  it("prioritizes error state over external aria-invalid", () => {
+    render(
+      <TimePicker
+        label="Time"
+        error="Invalid time"
+        aria-invalid="false"
+      />,
+    );
+
+    expect(screen.getByLabelText("Time")).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
+  });
 });

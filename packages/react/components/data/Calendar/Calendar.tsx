@@ -2,44 +2,18 @@ import { useMemo, useState } from "react";
 
 import { classNames } from "../../../core/utils";
 import type { CalendarProps } from "./Calendar.types";
-
-const startOfMonth = (date: Date) =>
-  new Date(date.getFullYear(), date.getMonth(), 1);
-
-const isSameDay = (a: Date, b: Date) =>
-  a.getFullYear() === b.getFullYear() &&
-  a.getMonth() === b.getMonth() &&
-  a.getDate() === b.getDate();
-
-const isBeforeDay = (a: Date, b: Date) =>
-  new Date(a.getFullYear(), a.getMonth(), a.getDate()).getTime() <
-  new Date(b.getFullYear(), b.getMonth(), b.getDate()).getTime();
-
-const isAfterDay = (a: Date, b: Date) =>
-  new Date(a.getFullYear(), a.getMonth(), a.getDate()).getTime() >
-  new Date(b.getFullYear(), b.getMonth(), b.getDate()).getTime();
-
-const getCalendarDays = (month: Date) => {
-  const firstDay = startOfMonth(month);
-  const startOffset = firstDay.getDay();
-  const start = new Date(
-    month.getFullYear(),
-    month.getMonth(),
-    1 - startOffset,
-  );
-
-  return Array.from({ length: 42 }, (_, index) => {
-    const date = new Date(start);
-    date.setDate(start.getDate() + index);
-    return date;
-  });
-};
-
-const formatMonth = (date: Date) =>
-  new Intl.DateTimeFormat(undefined, {
-    month: "long",
-    year: "numeric",
-  }).format(date);
+import {
+  formatMonth,
+  getCalendarDays,
+  isAfterDay,
+  isBeforeDay,
+  isSameDay,
+  startOfMonth,
+} from "./module/_calendar.date";
+import {
+  CALENDAR_DAY_COUNT,
+  CALENDAR_WEEKDAYS,
+} from "./module/_calendar.constants";
 
 export const Calendar = ({
   value,
@@ -51,6 +25,9 @@ export const Calendar = ({
   onChange,
   onMonthChange,
   className,
+  style,
+  "data-testid": testId = "calendar",
+  ...rootProps
 }: CalendarProps) => {
   const initialMonth = startOfMonth(
     month ?? defaultMonth ?? value ?? defaultValue ?? new Date(),
@@ -103,8 +80,10 @@ export const Calendar = ({
 
   return (
     <div
+      {...rootProps}
       className={classNames("aui-calendar", className)}
-      data-testid="calendar"
+      style={style}
+      data-testid={testId}
     >
       <div className="aui-calendar__header">
         <button
@@ -137,11 +116,9 @@ export const Calendar = ({
         className="aui-calendar__weekdays"
         aria-hidden="true"
       >
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
-          (day) => (
-            <span key={day}>{day}</span>
-          ),
-        )}
+        {CALENDAR_WEEKDAYS.map((day) => (
+          <span key={day}>{day}</span>
+        ))}
       </div>
 
       <div
@@ -149,7 +126,7 @@ export const Calendar = ({
         role="grid"
         aria-label={formatMonth(currentMonth)}
       >
-        {days.map((date) => {
+        {days.slice(0, CALENDAR_DAY_COUNT).map((date) => {
           const outsideMonth =
             date.getMonth() !== currentMonth.getMonth();
 

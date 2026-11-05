@@ -20,6 +20,10 @@ export function Rating({
   onChange,
   ariaLabel,
   className,
+  style: rootStyle,
+  role = "group",
+  "aria-label": nativeAriaLabel,
+  ...rootProps
 }: RatingProps) {
   const safeMax =
     Number.isInteger(max) && max > 0 ? max : DEFAULT_MAX;
@@ -57,10 +61,12 @@ export function Rating({
 
   return (
     <div
+      {...rootProps}
       className={classes}
-      role="group"
+      style={rootStyle}
+      role={role}
       aria-label={
-        ariaLabel ?? `Rating: ${currentValue} out of ${safeMax}`
+        ariaLabel ?? nativeAriaLabel ?? `Rating: ${currentValue} out of ${safeMax}`
       }
     >
       {Array.from({ length: safeMax }, (_, index) => {

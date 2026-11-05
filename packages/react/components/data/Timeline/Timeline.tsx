@@ -7,9 +7,15 @@ import type {
 export const Timeline = ({
   items,
   className,
+  style,
+  ...rootProps
 }: TimelineProps) => {
   return (
-    <ol className={classNames("aui-timeline", className)}>
+    <ol
+      {...rootProps}
+      className={classNames("aui-timeline", className)}
+      style={style}
+    >
       {items.map((item: TimelineItem) => (
         <li
           key={item.id}
