@@ -505,6 +505,30 @@ describe("Menu with trigger", () => {
     expect(trigger).toHaveFocus();
   });
 
+  it("respects preventDefault for popup Escape", () => {
+  const onKeyDown = vi.fn(
+    (event: { preventDefault: () => void }) => {
+      event.preventDefault();
+    },
+  );
+
+  render(
+    <Menu
+      defaultOpen
+      onKeyDown={onKeyDown}
+      trigger={<button>Actions</button>}
+      items={popupItems}
+    />,
+  );
+
+  fireEvent.keyDown(screen.getByRole("menu"), {
+    key: "Escape",
+  });
+
+  expect(onKeyDown).toHaveBeenCalledTimes(1);
+  expect(screen.getByRole("menu")).toBeInTheDocument();
+});
+
   it("does not close on Escape when closeOnEscape is false", () => {
     render(
       <Menu

@@ -25,9 +25,9 @@ function useMenuDismiss({
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") {
+        if (event.defaultPrevented || event.key !== "Escape") {
         return;
-      }
+        }
 
       event.preventDefault();
       onClose();

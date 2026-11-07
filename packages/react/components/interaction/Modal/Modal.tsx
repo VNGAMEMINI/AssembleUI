@@ -9,12 +9,10 @@ import {
 import { createPortal } from "react-dom";
 
 import { useDisclosure } from "../../../core/hooks";
-import { classNames } from "../../../core/utils";
-
-import type {
-  HTMLAttributes,
-  ReactNode,
-} from "react";
+import {
+  acquireScrollLock,
+  classNames,
+} from "../../../core/utils";
 
 import type {
   ModalContentProps,
@@ -85,15 +83,7 @@ function ModalRoot({
       return;
     }
 
-    const previousOverflow =
-      document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow =
-        previousOverflow;
-    };
+    return acquireScrollLock();
   }, [isOpen]);
 
   if (!isOpen) {

@@ -4,23 +4,23 @@ import {
   useContext,
   useEffect,
   useId,
-  useRef,
 } from "react";
 
 import { createPortal } from "react-dom";
 
 import { useDisclosure } from "../../../core/hooks";
-import { classNames } from "../../../core/utils";
-
-import type {
-  Ref,
-} from "react";
+import {
+  acquireScrollLock,
+  classNames,
+} from "../../../core/utils";
 
 import type {
   DrawerContentProps,
   DrawerItemProps,
   DrawerProps,
 } from "./Drawer.types";
+
+import { useDrawerFocus } from "./module/_useDrawerFocus";
 
 interface DrawerContextValue {
   onClose: () => void;
@@ -62,9 +62,11 @@ function DrawerRoot({
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
+      if (event.defaultPrevented || event.key !== "Escape") {
+        return;
       }
+
+      onClose();
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -79,12 +81,7 @@ function DrawerRoot({
       return;
     }
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
+    return acquireScrollLock();
   }, [isOpen]);
 
   if (!isOpen) {
@@ -133,23 +130,15 @@ const DrawerContent = forwardRef<
     const descriptionId =
       `aui-drawer-description-${generatedId}`;
 
-    const dialogRef = useRef<HTMLDivElement>(null);
+    const {
+      dialogRef,
+      handleKeyDown,
+    } = useDrawerFocus(onKeyDown);
 
     const gridTemplateColumns =
       typeof columns === "number"
         ? `repeat(${Math.max(1, Math.floor(columns))}, minmax(0, 1fr))`
         : columns;
-
-    useEffect(() => {
-      const previousActiveElement =
-        document.activeElement as HTMLElement | null;
-
-      dialogRef.current?.focus();
-
-      return () => {
-        previousActiveElement?.focus();
-      };
-    }, []);
 
     const setDialogRef = (node: HTMLDivElement | null) => {
       dialogRef.current = node;
@@ -159,53 +148,6 @@ const DrawerContent = forwardRef<
       } else if (forwardedRef != null) {
         (forwardedRef as { current: HTMLDivElement | null }).current =
           node;
-      }
-    };
-
-    const handleKeyDown = (
-      event: React.KeyboardEvent<HTMLDivElement>,
-    ) => {
-      onKeyDown?.(event);
-
-      if (event.defaultPrevented || event.key !== "Tab") {
-        return;
-      }
-
-      const dialog = dialogRef.current;
-
-      if (!dialog) {
-        return;
-      }
-
-      const focusableElements = dialog.querySelectorAll<HTMLElement>(
-        [
-          "a[href]",
-          "button:not([disabled])",
-          "input:not([disabled])",
-          "select:not([disabled])",
-          "textarea:not([disabled])",
-          '[tabindex]:not([tabindex="-1"])',
-        ].join(","),
-      );
-
-      if (focusableElements.length === 0) {
-        event.preventDefault();
-        dialog.focus();
-        return;
-      }
-
-      const first = focusableElements[0];
-      const last = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (
-        !event.shiftKey &&
-        document.activeElement === last
-      ) {
-        event.preventDefault();
-        first.focus();
       }
     };
 

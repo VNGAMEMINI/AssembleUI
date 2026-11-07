@@ -33,6 +33,7 @@ const Accordion = forwardRef<
       openIds,
       defaultOpenIds = [],
       onOpenChange,
+      onKeyDown,
       className,
       ...props
     },
@@ -129,13 +130,14 @@ const Accordion = forwardRef<
 
     const focusItem = (
       item: AccordionItem | undefined,
+      rootElement: HTMLDivElement,
     ) => {
       if (!item || item.disabled) {
         return;
       }
 
       requestAnimationFrame(() => {
-        document
+        rootElement
           .querySelector<HTMLButtonElement>(
             `[data-accordion-item-id="${CSS.escape(
               item.id,
@@ -167,6 +169,7 @@ const Accordion = forwardRef<
               currentItem.id,
               1,
             ),
+            event.currentTarget,
           );
           break;
 
@@ -178,6 +181,7 @@ const Accordion = forwardRef<
               currentItem.id,
               -1,
             ),
+            event.currentTarget,
           );
           break;
 
@@ -188,6 +192,7 @@ const Accordion = forwardRef<
               items,
               "start",
             ),
+            event.currentTarget,
           );
           break;
 
@@ -198,6 +203,7 @@ const Accordion = forwardRef<
               items,
               "end",
             ),
+            event.currentTarget,
           );
           break;
 
@@ -237,7 +243,13 @@ const Accordion = forwardRef<
           "aui-accordion",
           className,
         )}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(event) => {
+          onKeyDown?.(event);
+
+          if (!event.defaultPrevented) {
+            handleKeyDown(event);
+          }
+        }}
       >
         {items.map((item) => {
           const open =

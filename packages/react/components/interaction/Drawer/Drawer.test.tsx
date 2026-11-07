@@ -15,6 +15,10 @@ import {
   Drawer,
 } from "./Drawer";
 
+import {
+  Modal,
+} from "../Modal/Modal";
+
 describe("Drawer", () => {
   it("does not render while closed by default", () => {
     render(
@@ -308,4 +312,156 @@ describe("Drawer", () => {
       document.body.querySelector(".aui-drawer"),
     ).toBeInTheDocument();
   });
+
+  it("respects preventDefault for Escape", () => {
+    const onOpenChange = vi.fn();
+
+    render(
+      <Drawer open onOpenChange={onOpenChange}>
+        <Drawer.Content
+          title="Workspace"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              event.preventDefault();
+            }
+          }}
+        >
+          Content
+        </Drawer.Content>
+      </Drawer>,
+    );
+
+    fireEvent.keyDown(screen.getByRole("dialog"), {
+      key: "Escape",
+    });
+
+    expect(onOpenChange).not.toHaveBeenCalled();
+  });
+
+  it("wraps Tab from the last focusable element to the first", () => {
+    render(
+      <Drawer defaultOpen>
+        <Drawer.Content title="Workspace">
+          <button type="button">First action</button>
+          <button type="button">Last action</button>
+        </Drawer.Content>
+      </Drawer>,
+    );
+
+    const closeButton = screen.getByRole("button", {
+      name: "Close",
+    });
+    const lastButton = screen.getByRole("button", {
+      name: "Last action",
+    });
+
+    lastButton.focus();
+
+    fireEvent.keyDown(lastButton, {
+      key: "Tab",
+    });
+
+    expect(closeButton).toHaveFocus();
+  });
+
+  it("restores focus when the drawer unmounts", () => {
+    const triggerView = render(
+      <button type="button">Open drawer</button>,
+    );
+
+    const trigger = screen.getByRole("button", {
+      name: "Open drawer",
+    });
+
+    trigger.focus();
+
+    const drawerView = render(
+      <Drawer defaultOpen>
+        <Drawer.Content title="Workspace">
+          Content
+        </Drawer.Content>
+      </Drawer>,
+    );
+
+    expect(screen.getByRole("dialog")).toHaveFocus();
+
+    drawerView.unmount();
+
+    expect(trigger).toHaveFocus();
+
+    triggerView.unmount();
+  });
+
+  it("keeps scrolling locked when Drawer closes before Modal", () => {
+    document.body.style.overflow = "auto";
+
+    const { rerender, unmount } = render(
+      <>
+        <Drawer open>
+          <Drawer.Content title="Workspace">
+            Drawer content
+          </Drawer.Content>
+        </Drawer>
+
+        <Modal open>
+          <Modal.Content title="Confirmation">
+            Modal content
+          </Modal.Content>
+        </Modal>
+      </>,
+    );
+
+    expect(document.body.style.overflow).toBe("hidden");
+
+    rerender(
+      <Modal open>
+        <Modal.Content title="Confirmation">
+          Modal content
+        </Modal.Content>
+      </Modal>,
+    );
+
+    expect(document.body.style.overflow).toBe("hidden");
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe("auto");
+  });
+
+  it("keeps scrolling locked when Modal closes before Drawer", () => {
+    document.body.style.overflow = "auto";
+
+    const { rerender, unmount } = render(
+      <>
+        <Drawer open>
+          <Drawer.Content title="Workspace">
+            Drawer content
+          </Drawer.Content>
+        </Drawer>
+
+        <Modal open>
+          <Modal.Content title="Confirmation">
+            Modal content
+          </Modal.Content>
+        </Modal>
+      </>,
+    );
+
+    expect(document.body.style.overflow).toBe("hidden");
+
+    rerender(
+      <Drawer open>
+        <Drawer.Content title="Workspace">
+          Drawer content
+        </Drawer.Content>
+      </Drawer>,
+    );
+
+    expect(document.body.style.overflow).toBe("hidden");
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe("auto");
+  });
+
 });

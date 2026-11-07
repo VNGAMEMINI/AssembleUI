@@ -20,6 +20,14 @@ import {
   classNames,
   createAccessibilityMetadata,
 } from "../../../core/utils";
+import {
+  filterComboboxOptions,
+  findSelectedOption,
+  getBoundaryEnabledIndex,
+  getEnabledOptionIndexes,
+  getNextEnabledIndex,
+  getOptionLabel,
+} from "./module/_combobox.utils";
 
 const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
   (
@@ -77,13 +85,9 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
           return defaultInputValue;
         }
 
-        const defaultOption = options.find(
-          (option) => option.id === defaultValue,
+        return getOptionLabel(
+          options.find((option) => option.id === defaultValue),
         );
-
-        return typeof defaultOption?.label === "string"
-          ? defaultOption.label
-          : "";
       });
 
     const [uncontrolledOpen, setUncontrolledOpen] =
@@ -110,48 +114,17 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
         : uncontrolledOpen;
 
     const selectedOption = useMemo(
-      () =>
-        options.find(
-          (option) => option.id === value,
-        ),
+      () => findSelectedOption(options, value),
       [options, value],
     );
 
-    const normalizedInputValue =
-      inputValue.trim().toLocaleLowerCase();
-
     const filteredOptions = useMemo(
-      () => {
-        if (!normalizedInputValue) {
-          return options;
-        }
-
-        return options.filter((option) => {
-          const labelText =
-            typeof option.label === "string"
-              ? option.label
-              : "";
-
-          return labelText
-            .toLocaleLowerCase()
-            .includes(normalizedInputValue);
-        });
-      },
-      [options, normalizedInputValue],
+      () => filterComboboxOptions(options, inputValue),
+      [options, inputValue],
     );
 
     const enabledIndexes = useMemo(
-      () =>
-        filteredOptions.reduce<number[]>(
-          (indexes, option, index) => {
-            if (!option.disabled) {
-              indexes.push(index);
-            }
-
-            return indexes;
-          },
-          [],
-        ),
+      () => getEnabledOptionIndexes(filteredOptions),
       [filteredOptions],
     );
 
@@ -182,45 +155,28 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
 
       onValueChange?.(option.id);
 
-      const labelText =
-        typeof option.label === "string"
-          ? option.label
-          : "";
-
-      setInputValue(labelText);
+      setInputValue(getOptionLabel(option));
       setActiveIndex(-1);
       setOpen(false);
     };
 
     const moveActiveIndex = (direction: 1 | -1) => {
-      if (enabledIndexes.length === 0) {
-        return;
-      }
-
-      const currentPosition =
-        enabledIndexes.indexOf(activeIndex);
-
-      const nextPosition =
-        currentPosition === -1
-          ? direction === 1
-            ? 0
-            : enabledIndexes.length - 1
-          : (currentPosition + direction + enabledIndexes.length) %
-            enabledIndexes.length;
-
-      setActiveIndex(enabledIndexes[nextPosition]);
+      setActiveIndex(
+        getNextEnabledIndex(enabledIndexes, activeIndex, direction),
+      );
     };
 
     const moveToBoundary = (boundary: "start" | "end") => {
-      if (enabledIndexes.length === 0) {
+      const nextIndex = getBoundaryEnabledIndex(
+        enabledIndexes,
+        boundary,
+      );
+
+      if (nextIndex < 0) {
         return;
       }
 
-      setActiveIndex(
-        boundary === "start"
-          ? enabledIndexes[0]
-          : enabledIndexes[enabledIndexes.length - 1],
-      );
+      setActiveIndex(nextIndex);
     };
 
     const handleInputKeyDown = (

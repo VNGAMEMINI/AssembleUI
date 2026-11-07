@@ -15,3 +15,4 @@ export type {
   AccessibilityResult,
 } from "./accessibility";
 export * from "./positioning";
+export * from "./scrollLock";

@@ -11,6 +11,10 @@ import {
   vi,
 } from "vitest";
 
+import type {
+  KeyboardEvent as ReactKeyboardEvent,
+} from "react";
+
 import { Accordion } from "./Accordion";
 
 const items = [
@@ -459,6 +463,120 @@ describe("Accordion", () => {
     await waitFor(() => {
       expect(account).toHaveFocus();
     });
+  });
+
+  it("calls the consumer onKeyDown handler", () => {
+    const onKeyDown = vi.fn();
+
+    render(
+      <Accordion
+        items={items}
+        onKeyDown={onKeyDown}
+      />,
+    );
+
+    fireEvent.keyDown(
+      screen.getByRole("button", {
+        name: "General",
+      }),
+      {
+        key: "ArrowDown",
+      },
+    );
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+  });
+
+  it("respects preventDefault from the consumer onKeyDown handler", () => {
+    const onKeyDown = vi.fn(
+      (
+        event: ReactKeyboardEvent<HTMLDivElement>,
+      ) => {
+        event.preventDefault();
+      },
+    );
+
+    render(
+      <Accordion
+        items={items}
+        onKeyDown={onKeyDown}
+      />,
+    );
+
+    const general = screen.getByRole(
+      "button",
+      {
+        name: "General",
+      },
+    );
+
+    const account = screen.getByRole(
+      "button",
+      {
+        name: "Account",
+      },
+    );
+
+    general.focus();
+
+    fireEvent.keyDown(general, {
+      key: "ArrowDown",
+    });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(general).toHaveFocus();
+    expect(account).not.toHaveFocus();
+  });
+
+  it("keeps keyboard navigation scoped to its own accordion", async () => {
+    const { container } = render(
+      <>
+        <Accordion items={items} />
+        <Accordion items={items} />
+      </>,
+    );
+
+    const accordions =
+      container.querySelectorAll<HTMLDivElement>(
+        ".aui-accordion",
+      );
+
+    const firstAccount =
+      accordions[0].querySelector<HTMLButtonElement>(
+        '[data-accordion-item-id="account"]',
+      );
+
+    const secondGeneral =
+      accordions[1].querySelector<HTMLButtonElement>(
+        '[data-accordion-item-id="general"]',
+      );
+
+    const secondAccount =
+      accordions[1].querySelector<HTMLButtonElement>(
+        '[data-accordion-item-id="account"]',
+      );
+
+    if (
+      !firstAccount ||
+      !secondGeneral ||
+      !secondAccount
+    ) {
+      throw new Error(
+        "Accordion navigation test elements were not found",
+      );
+    }
+
+    secondGeneral.focus();
+
+    fireEvent.keyDown(secondGeneral, {
+      key: "ArrowDown",
+    });
+
+    await waitFor(() => {
+      expect(secondAccount).toHaveFocus();
+    });
+
+    expect(firstAccount).not.toHaveFocus();
   });
 
   it("exposes correct ARIA relationships", () => {
