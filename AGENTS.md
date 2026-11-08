@@ -1,100 +1,72 @@
-# AssembleUI — Agent Instructions
+# AssembleUI Instructions
 
-## 1. Mandatory reading
+## Architecture
 
-Before a non-trivial task, read:
+- Build a composition-first React UI library.
+- Foundation owns low-level conventions and infrastructure.
+- Design System owns design tokens, themes, icons, and design decisions.
+- Style Engine owns reusable styling infrastructure.
+- Core owns reusable React infrastructure such as hooks, contexts, providers, and utilities.
+- Application-specific business logic belongs in the application layer.
+- Follow the actual repository structure; do not create conceptual layers without justified responsibilities.
+- Use TypeScript, React, and SCSS.
+- Source code is the implementation source of truth.
+- Preserve public APIs, behavior, accessibility, refs, and user changes.
 
-1. `AGENTS.md` - repository-wide instructions.
-2. `.agents/skills/` - task-specific workflows.
-3. `docs/` - technical documentation.
-4. Source code and tests - implementation truth.
-4. The relevant `docs/` documents.
-5. The actual source, types, tests, exports, and configuration.
+## Dependency direction
 
-Source code is the implementation source of truth. Do not assume documentation is current without checking the source.
+- Component -> Pattern -> Template.
+- Components are independent building blocks and must not import other Components, Patterns, or Templates.
+- Patterns compose public Components and must not import Templates.
+- Avoid Pattern-to-Pattern dependencies unless explicitly justified by an architecture decision.
+- Templates compose Patterns and must not import other Templates.
+- Avoid circular dependencies at every layer.
+## File organization
 
-## 2. Project principles
+Apply these conventions inside `components/`, `patterns/`, and `templates/`.
 
-- Composition-first React UI library.
-- Architectural hierarchy: Foundation → Component → Pattern → Template.
-- Reusable behavior belongs in Core when it is genuinely cross-component infrastructure.
-- Design values belong in Design System.
-- Sass/SCSS is the styling source; do not introduce plain CSS source files.
-- Preserve public APIs and existing consumer behavior unless explicitly asked to change them.
-- Keep dependency direction explicit and avoid circular dependencies.
+- `_name.ts` / `_name.tsx`: private logic modules.
+- `Name.tsx`: separately composed UI parts, without the private `_` prefix.
+- Keep the main component entry in the item root; place extracted UI parts in `module/`.
+- Keep extracted UI parts focused and import them from the owning component.
+- `Name.test.tsx`: primary tests for the public Component, Pattern, or Template.
+- `_name.test.ts` / `_name.test.tsx`: supplementary tests for extracted private modules or UI parts.
+- `_name.scss`: style partials separated by responsibility.
+- `README.md`: documentation when usage or architecture needs explanation.
 
-## 3. Repository safety
+Place related files inside the relevant item's `module/` directory when separation is justified.
 
-Before editing:
+Do not split files merely to reduce line count. Split only when a responsibility is independently understandable, reusable, or difficult to maintain. Do not create empty modules or unnecessary abstractions.
 
-- Run `git status --short`.
-- Inspect the target implementation and its related tests, types, imports, and exports.
-- Read the relevant diff before touching already-modified files.
-- Identify untracked files and preserve them.
+Private modules must not become public exports. Keep tests close to the implementation they verify.
 
-Never run destructive Git commands or discard user changes without explicit permission. Do not stage, commit, or push unless requested.
+## Safe workflow
 
-Do not modify generated `dist/` files as source code.
+1. Read `git status --short`.
+2. Inspect the relevant source, types, tests, imports, exports, and configuration.
+3. Read existing diffs before editing modified files.
+4. Understand the intended behavior and affected architecture.
+5. Make the smallest complete change.
+6. Verify behavior with relevant tests and checks.
+7. Review the final diff and `git diff --check`.
 
-## 4. Implementation workflow
+Never discard user changes or run destructive Git commands without permission. Do not stage, commit, or push unless requested. Do not edit generated `dist/` files as source.
 
-1. Understand the requested behavior.
-2. Identify the architectural layer.
-3. Inspect existing patterns and conventions.
-4. Plan the smallest correct change.
-5. Implement without unrelated refactoring.
-6. Add or update tests in the existing test file conventions.
-7. Run relevant tests and type checks.
-8. Run build checks when appropriate.
-9. Review `git diff` and `git diff --check`.
-10. Update documentation when behavior or architecture changes.
+## Agent coordination
 
-## 5. Technical constraints
+Use the specialized agents in `.github/agents/` when their expertise is needed:
 
-- TypeScript and React are the implementation baseline.
-- SCSS is the styling language.
-- Reuse existing Core utilities and hooks when appropriate.
-- Do not create abstractions solely to reduce line count.
-- Split a module only when responsibilities are genuinely distinct.
-- Private implementation files use the project's `_name` convention where applicable.
-- Do not expose private implementation modules through public exports.
-- Preserve refs, native attributes, accessibility semantics, and component contracts.
+- `orchestrator.agent.md`: understand and coordinate user requests.
+- `code.agent.md`: implementation logic, defects, and tests.
+- `style.agent.md`: SCSS, design tokens, cascade, and visual behavior.
+- `documentation.agent.md`: README, usage guides, and code comments.
 
-## 6. Verification
+The Orchestrator owns task coordination and final reporting. Delegate only relevant work. Verify delegated results before reporting completion.
 
-Inspect `package.json` before assuming scripts or package commands.
+## Communication
 
-Common checks include:
-
-```bash
-npm run typecheck
-npx vitest run
-npm run build
-npm run typecheck:public
-git diff --check
-git status --short
-```
-
-Use only checks relevant to the change, and report exactly which checks were run and their results.
-
-## 7. Specialized skills
-
-Load the relevant skill before substantial work:
-
-- Architecture: `.agents/skills/architecture/SKILL.md`
-- Components: `.agents/skills/component-development/SKILL.md`
-- Patterns: `.agents/skills/pattern-development/SKILL.md`
-- Templates: `.agents/skills/template-development/SKILL.md`
-- Design System: `.agents/skills/design-system/SKILL.md`
-- Accessibility: `.agents/skills/accessibility/SKILL.md`
-- Testing: `.agents/skills/testing/SKILL.md`
-- Refactoring: `.agents/skills/refactoring/SKILL.md`
-- Public API: `.agents/skills/public-api/SKILL.md`
-
-## 8. Communication
-
-- Explain important architectural decisions briefly.
-- Give exact commands for user-run operations.
-- Never claim to have inspected local files or executed local commands unless actually done.
-- Distinguish verified facts from assumptions.
-- Ask before making a breaking API or architecture decision.
+- Understand requests in the user's language.
+- Communicate between agents in English.
+- Report to the user in the user's language.
+- Distinguish verified results, assumptions, and unresolved issues.
+- Give exact verification commands when the user must run them.

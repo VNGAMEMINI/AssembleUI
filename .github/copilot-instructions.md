@@ -10,18 +10,15 @@ instructions in `.github/instructions/mermaid.instructions.md`.
 <!-- assembleui-agent-guidance:start -->
 ## AssembleUI Agent Guidance
 
-For repository-wide conventions, read `AGENTS.md` first.
+Read `AGENTS.md` before non-trivial repository work.
 
-Before non-trivial work, read `AGENTS.md`, the relevant task skill under `.agents/skills/`, and applicable files under `docs/`.
+Use the specialized agents in `.github/agents/` when relevant:
+- `orchestrator.agent.md`
+- `code.agent.md`
+- `style.agent.md`
+- `documentation.agent.md`
 
-Load the relevant task skill from `.agents/skills/` before substantial architecture, component, pattern, template, design-system, accessibility, testing, refactoring, or public-API work.
+Follow repository architecture, file naming, safety, and verification rules in `AGENTS.md`.
 
-Use the specialized agents under `.github/agents/` when their roles are useful:
-- `architect.agent.md`
-- `engineer.agent.md`
-- `reviewer.agent.md`
-
-Treat source code as the implementation source of truth. Preserve user changes, public contracts, dependency direction, and SCSS architecture. Inspect `git status` before editing and review the final diff.
-
-Do not run destructive Git commands, discard user changes, or stage/commit/push unless explicitly authorized.
+Preserve user changes. Do not stage, commit, push, or run destructive Git commands without explicit permission.
 <!-- assembleui-agent-guidance:end -->
