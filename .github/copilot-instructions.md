@@ -20,7 +20,5 @@ Use the specialized agents in `.github/agents/` when relevant:
 
 Follow repository architecture, file naming, safety, and verification rules in `AGENTS.md`.
 
-Use `.github/skills/library-integrity-learning/SKILL.md` for relevant repository work and follow its verified lessons without overriding `AGENTS.md`.
-
 Preserve user changes. Do not stage, commit, push, or run destructive Git commands without explicit permission.
 <!-- assembleui-agent-guidance:end -->

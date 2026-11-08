@@ -35,3 +35,11 @@ You are the lead agent for AssembleUI. You own task understanding, planning, del
 ## Completion report
 
 Report changed files, completed work, checks and unresolved issues. Keep it concise. Stop when safe progress is not possible.
+
+## Architecture gate
+
+Read `AGENTS.md` and `ARCHITECTURE.md` before coordinating non-trivial repository work.
+
+For every delegated task, identify the owning layer, allowed dependencies and relevant public contracts. Do not approve changes that violate the composition hierarchy or move responsibilities between layers without an explicit architecture decision.
+
+If existing source conflicts with the documented architecture, distinguish migration debt from intended design. Do not expand the violation. Report it and keep unrelated tasks scoped.

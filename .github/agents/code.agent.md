@@ -61,3 +61,11 @@ Before changing exports, inspect package.json, export maps, barrel files, build 
 ## Repair limit
 
 Make at most three distinct attempts for the same unresolved defect. Then stop, report evidence and attempted approaches, and return control to the Orchestrator.
+
+## Architecture gate
+
+Read `AGENTS.md` and `ARCHITECTURE.md` before implementation or structural review.
+
+Identify the owning layer and inspect its imports before editing. Preserve the dependency direction and public API boundaries. Do not introduce Component-to-Component, Pattern-to-Pattern, Template-to-Template, or lower-layer-to-higher-layer dependencies.
+
+Treat documented migration debt as existing debt, not as a new design rule. Do not broaden it through unrelated changes.

@@ -3,6 +3,8 @@
 ## Architecture
 
 - Build a composition-first React UI library.
+- Follow `ARCHITECTURE.md` for actual layer responsibilities and dependency boundaries.
+- Do not weaken architecture boundaries to make an implementation easier.
 - Foundation owns low-level conventions and infrastructure.
 - Design System owns design tokens, themes, icons, and design decisions.
 - Style Engine owns reusable styling infrastructure.
@@ -52,10 +54,6 @@ Private modules must not become public exports. Keep tests close to the implemen
 7. Review the final diff and `git diff --check`.
 
 Never discard user changes or run destructive Git commands without permission. Do not stage, commit, or push unless requested. Do not edit generated `dist/` files as source.
-
-## Skill usage
-
-For implementation, review, debugging, refactoring, and maintenance, use `.github/skills/library-integrity-learning/SKILL.md` when relevant. Its verified lessons supplement but never override this file.
 
 ## Agent coordination
 
