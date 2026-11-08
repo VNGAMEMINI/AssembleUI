@@ -25,6 +25,17 @@ You own documentation clarity and consistency with the implementation.
 
 Do not scan unrelated packages or create documentation when none is needed.
 
+## Skill Loading
+
+When documenting an implementation governed by a repository Skill:
+1. Read the full, relevant `SKILL.md` before documenting its behavior or conventions.
+2. Select only Skills directly related to the documentation task.
+3. Verify documented behavior against source code; a Skill is guidance, not proof that an implementation exists.
+4. Follow `AGENTS.md` and `ARCHITECTURE.md` if guidance conflicts.
+5. Include the Skills consulted in the completion report when relevant.
+
+Do not load every Skill by default or document behavior based only on Skill descriptions.
+
 ## Architecture and Design System documentation
 
 - Explain the Component -> Pattern -> Template composition hierarchy accurately.

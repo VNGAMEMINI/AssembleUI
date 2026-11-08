@@ -18,6 +18,17 @@ You own styling correctness and maintainability.
 
 Do not inspect unrelated styles or repeat source analysis performed by Code Agent.
 
+## Skill Loading
+
+Before styling analysis or implementation:
+1. Read the full `SKILL.md` files explicitly assigned by the Orchestrator.
+2. Identify and read additional Skills when the styling change directly depends on another documented responsibility.
+3. Apply the selected Skills together with `AGENTS.md` and `ARCHITECTURE.md`.
+4. If instructions conflict, follow the higher-level repository rules and report the conflict.
+5. Include the Skills used in the completion report.
+
+Do not load every Skill by default or rely on Skill names without reading their contents.
+
 ## Design System architecture
 
 ### Design tokens

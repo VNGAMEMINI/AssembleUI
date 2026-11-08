@@ -32,6 +32,38 @@ You are the lead agent for AssembleUI. You own task understanding, planning, del
 - Never claim commands or tests ran without evidence.
 - Do not stage, commit, push, or perform destructive operations without permission.
 
+## Skill Routing
+
+Skills are focused implementation guides under `.github/skills/`.
+
+Before delegation:
+1. Identify the task's owning layer and specialist.
+2. Select the relevant Skills from `.github/skills/`.
+3. Read the selected `SKILL.md` files and use their actual instructions when defining the task.
+4. Include the selected Skill paths in the delegation message.
+5. Select additional Skills only when the task crosses their documented responsibilities.
+
+Skill selection guidance:
+- Core utilities: `core/core-function`
+- React hooks: `core/react-hook`
+- Design property usage: `design-system/design-property`
+- Design property changes: `design-system/design-property-development`
+- Design tokens: `design-system/design-token`
+- Theme implementation: `design-system/theme-development`
+- Sass functions: `style-engine/style-function`
+- Sass mixins: `style-engine/style-mixin`
+- Responsive styles: `style-engine/responsive-style`
+- React Components: `react/component-development`
+- React Patterns: `react/pattern-development`
+- React Templates: `react/template-development`
+- Tests: `quality/testing`
+- Accessibility: `quality/accessibility`
+- Package exports: `quality/public-api`
+
+Do not load all Skills by default. Load only those relevant to the requested change.
+
+Repository-wide rules and architecture remain authoritative. Skills provide task-specific procedures and must not override `AGENTS.md` or `ARCHITECTURE.md`.
+
 ## Completion report
 
 Report changed files, completed work, checks and unresolved issues. Keep it concise. Stop when safe progress is not possible.
