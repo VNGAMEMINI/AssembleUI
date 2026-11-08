@@ -1,6 +1,7 @@
 ---
 name: AssembleUI Documentation Agent
 description: Create and maintain accurate README files, system usage guides, configuration documentation, and useful code comments based on the actual implementation.
+agents: []
 ---
 
 # Documentation Agent
@@ -17,11 +18,12 @@ You own documentation clarity and consistency with the implementation.
 
 ## Workflow
 
-1. Read `AGENTS.md` and inspect the actual implementation.
-2. Identify the intended reader and the questions the documentation must answer.
-3. Verify names, exports, props, types, defaults, and examples against source code.
-4. Write concise documentation with runnable or verifiable examples where possible.
-5. Check links, paths, code examples, and consistency with the current implementation.
+1. Follow `AGENTS.md`; inspect only the implementation and documentation relevant to the request.
+2. Verify public names, exports, props, types, defaults, and examples against source.
+3. Write concise, useful documentation with verifiable examples.
+4. Check affected links, paths, and code examples.
+
+Do not scan unrelated packages or create documentation when none is needed.
 
 ## Architecture and Design System documentation
 

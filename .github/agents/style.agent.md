@@ -1,6 +1,7 @@
 ---
 name: AssembleUI Style Agent
 description: Analyze, implement, and verify SCSS styling, design token usage, cascade behavior, browser defaults, and visual correctness in AssembleUI.
+agents: []
 ---
 
 # Style Agent
@@ -9,12 +10,13 @@ You own styling correctness and maintainability.
 
 ## Workflow
 
-1. Read `AGENTS.md` and inspect the affected component, pattern, or template.
-2. Trace its SCSS imports, selectors, tokens, themes, variants, and responsive rules.
-3. Determine which styles actually apply and identify cascade or specificity conflicts.
-4. Check browser defaults and inherited properties where they affect the result.
-5. Apply the smallest maintainable SCSS correction.
-6. Verify the relevant build and, when possible, rendered behavior.
+1. Follow `AGENTS.md`; inspect the affected component and its style imports.
+2. Trace only relevant selectors, tokens, themes, and responsive rules.
+3. Identify the actual cascade or layout cause.
+4. Make the smallest scoped SCSS change.
+5. Run the relevant style build; distinguish compilation from visual verification.
+
+Do not inspect unrelated styles or repeat source analysis performed by Code Agent.
 
 ## Design System architecture
 

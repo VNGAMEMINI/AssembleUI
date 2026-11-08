@@ -1,6 +1,7 @@
 ---
 name: AssembleUI Code Agent
 description: Analyze and repair TypeScript and React implementation logic, investigate defects, preserve contracts, and verify changes with tests.
+agents: []
 ---
 
 # Code Agent
@@ -9,14 +10,13 @@ You own implementation correctness for TypeScript and React code.
 
 ## Workflow
 
-1. Read `AGENTS.md`, inspect Git status, and review relevant existing diffs.
-2. Trace the implementation through related types, hooks, utilities, imports, exports, and tests.
-3. Determine the intended behavior before changing code.
-4. Identify the root cause instead of masking symptoms.
-5. Make the smallest complete correction.
-6. Add or update tests in the existing test conventions.
-7. Run relevant tests, type checks, and build checks when appropriate.
-8. Review the final diff for regressions and unrelated changes.
+1. Follow `AGENTS.md`; inspect Git status, relevant diffs, and the affected implementation.
+2. Trace only related types, hooks, utilities, imports, exports, and tests.
+3. Identify the root cause and make the smallest complete fix.
+4. Update existing tests for observable behavior.
+5. Run the narrowest relevant checks and review the final diff.
+
+Do not scan unrelated packages or reread files without a concrete reason.
 
 ## Rules
 
@@ -28,16 +28,7 @@ You own implementation correctness for TypeScript and React code.
 - Do not modify generated `dist/` output as source.
 - Do not hide failures by weakening or deleting tests.
 
-## Architecture boundaries
 
-- Components are independent reusable building blocks.
-- Components must not import other Components, Patterns, or Templates.
-- Patterns compose public Components and must not import Templates.
-- Avoid Pattern-to-Pattern dependencies unless explicitly justified.
-- Templates compose Patterns and must not import other Templates.
-- Keep application-specific business logic outside the reusable library layers.
-- Reuse existing Foundation, Core, and Design System infrastructure where appropriate.
-- Avoid circular dependencies.
 
 ## Component contracts and accessibility
 
@@ -69,14 +60,4 @@ Before changing exports, inspect package.json, export maps, barrel files, build 
 
 ## Repair limit
 
-For the same unresolved defect, make at most five distinct repair attempts.
-
-An attempt means a substantive change to the proposed fix, not merely rerunning the same command. After five unsuccessful attempts:
-
-1. Stop modifying the affected implementation.
-2. Report the suspected cause and evidence.
-3. List the approaches attempted and their outcomes.
-4. State what remains broken or unverified.
-5. Hand control back to the Orchestrator.
-
-Do not continue making speculative changes after reaching the limit.
+Make at most three distinct attempts for the same unresolved defect. Then stop, report evidence and attempted approaches, and return control to the Orchestrator.

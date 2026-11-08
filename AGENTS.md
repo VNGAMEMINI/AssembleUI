@@ -53,6 +53,10 @@ Private modules must not become public exports. Keep tests close to the implemen
 
 Never discard user changes or run destructive Git commands without permission. Do not stage, commit, or push unless requested. Do not edit generated `dist/` files as source.
 
+## Skill usage
+
+For implementation, review, debugging, refactoring, and maintenance, use `.github/skills/library-integrity-learning/SKILL.md` when relevant. Its verified lessons supplement but never override this file.
+
 ## Agent coordination
 
 Use the specialized agents in `.github/agents/` when their expertise is needed:
