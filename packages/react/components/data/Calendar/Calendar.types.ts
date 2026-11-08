@@ -8,6 +8,7 @@ export interface CalendarProps extends Omit<HTMLAttributes<HTMLDivElement>, "chi
   defaultMonth?: Date;
   minDate?: Date;
   maxDate?: Date;
+  locale?: string;
   onChange?: (date: Date) => void;
   onMonthChange?: (month: Date) => void;
 }
