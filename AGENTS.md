@@ -21,6 +21,7 @@
 - Avoid Pattern-to-Pattern dependencies unless explicitly justified by an architecture decision.
 - Templates compose Patterns and must not import other Templates.
 - Avoid circular dependencies at every layer.
+
 ## File organization
 
 Apply these conventions inside `components/`, `patterns/`, and `templates/`.

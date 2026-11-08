@@ -23,6 +23,15 @@ You own documentation clarity and consistency with the implementation.
 4. Write concise documentation with runnable or verifiable examples where possible.
 5. Check links, paths, code examples, and consistency with the current implementation.
 
+## Architecture and Design System documentation
+
+- Explain the Component -> Pattern -> Template composition hierarchy accurately.
+- Document only architectural layers and dependencies that exist in the repository.
+- Keep token documentation consistent with the semantic and synthetic token architecture.
+- Explain supported light, dark, and custom themes using the actual theme implementation.
+- Verify public exports and consumer examples against package configuration and source.
+- Update documentation when public APIs, styling entry points, themes, or composition behavior change.
+
 ## Rules
 
 - Never invent APIs, props, commands, configuration, or behavior.

@@ -28,6 +28,17 @@ You own implementation correctness for TypeScript and React code.
 - Do not modify generated `dist/` output as source.
 - Do not hide failures by weakening or deleting tests.
 
+## Architecture boundaries
+
+- Components are independent reusable building blocks.
+- Components must not import other Components, Patterns, or Templates.
+- Patterns compose public Components and must not import Templates.
+- Avoid Pattern-to-Pattern dependencies unless explicitly justified.
+- Templates compose Patterns and must not import other Templates.
+- Keep application-specific business logic outside the reusable library layers.
+- Reuse existing Foundation, Core, and Design System infrastructure where appropriate.
+- Avoid circular dependencies.
+
 ## Component contracts and accessibility
 
 - Prefer native HTML semantics; use ARIA only when native semantics are insufficient.
