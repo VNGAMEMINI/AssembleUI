@@ -44,9 +44,7 @@ describe("Architecture: design token integrity", () => {
       expect(
         gradients,
         `Missing gradient token: --aui-token-gradient-${name}`,
-      ).toMatch(
-        new RegExp(`--aui-token-gradient-${name}:\\s*`),
-      );
+      ).toMatch(new RegExp(`--aui-token-gradient-${name}:\\s*`));
     }
   });
 
@@ -71,6 +69,23 @@ describe("Architecture: design token integrity", () => {
       expect(sizing).toContain(
         `--aui-token-size-${name}: #{sizing.${primitive}};`,
       );
+    }
+  });
+
+  it("maps content sizing tokens to their sizing primitives", () => {
+    const contentSizes = [
+      ["sm", "$size-content-sm", "40rem"],
+      ["md", "$size-content-md", "48rem"],
+      ["lg", "$size-content-lg", "64rem"],
+      ["xl", "$size-content-xl", "80rem"],
+    ] as const;
+    const sizingPrimitives = read("primitives/sizing.scss");
+
+    for (const [name, primitive, value] of contentSizes) {
+      expect(sizing).toContain(
+        `--aui-token-size-content-${name}: #{sizing.${primitive}};`,
+      );
+      expect(sizingPrimitives).toContain(`${primitive}: ${value};`);
     }
   });
 
@@ -104,9 +119,7 @@ describe("Architecture: design token integrity", () => {
     ] as const;
 
     for (const [name, primitive] of layers) {
-      expect(zIndex).toContain(
-        `--aui-token-z-index-${name}: #{${primitive}};`,
-      );
+      expect(zIndex).toContain(`--aui-token-z-index-${name}: #{${primitive}};`);
     }
 
     for (const value of [1000, 1100, 1200]) {
@@ -158,9 +171,7 @@ describe("Architecture: design token integrity", () => {
       "--aui-token-z-index-drawer",
       "--aui-token-z-index-skip-link",
     ]) {
-      expect(css, `Missing generated CSS token: ${token}`).toContain(
-        token,
-      );
+      expect(css, `Missing generated CSS token: ${token}`).toContain(token);
     }
   });
 
@@ -169,12 +180,8 @@ describe("Architecture: design token integrity", () => {
     const dark = read("themes/dark/shadow.scss");
 
     for (const name of ["sm", "md", "lg"] as const) {
-      expect(light).toMatch(
-        new RegExp(`--aui-theme-shadow-${name}:\\s*`),
-      );
-      expect(dark).toMatch(
-        new RegExp(`--aui-theme-shadow-${name}:\\s*`),
-      );
+      expect(light).toMatch(new RegExp(`--aui-theme-shadow-${name}:\\s*`));
+      expect(dark).toMatch(new RegExp(`--aui-theme-shadow-${name}:\\s*`));
     }
 
     expect(light).not.toBe(dark);
