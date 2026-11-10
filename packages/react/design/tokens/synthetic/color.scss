@@ -1,0 +1,13 @@
+@use "../../primitives/colors" as colors;
+
+:root {
+  --aui-token-white: #{colors.$white};
+  --aui-token-black: #{colors.$black};
+  --aui-token-primary: #{colors.$blue-500};
+  --aui-token-theme-primary-hover: #{colors.$blue-600};
+
+  --aui-token-success: #{colors.$green-500};
+  --aui-token-warning: #{colors.$yellow-500};
+  --aui-token-danger: #{colors.$red-500};
+  --aui-token-info: #{colors.$cyan-500};
+}

@@ -1,0 +1,38 @@
+.aui-card {
+  width: 100%;
+
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
+
+  border-radius: var(--aui-token-radius-md);
+}
+
+.aui-card--default {
+  border: var(--aui-token-border-width-thin) solid
+    transparent;
+}
+
+.aui-card--outlined {
+  border: var(--aui-token-border-width-thin) solid
+    var(--aui-theme-border);
+}
+
+.aui-card--elevated {
+  box-shadow: var(--aui-token-shadow-card);
+}
+
+.aui-card--padding-none {
+  padding: 0;
+}
+
+.aui-card--padding-sm {
+  padding: var(--aui-token-space-2);
+}
+
+.aui-card--padding-md {
+  padding: var(--aui-token-space-4);
+}
+
+.aui-card--padding-lg {
+  padding: var(--aui-token-space-6);
+}

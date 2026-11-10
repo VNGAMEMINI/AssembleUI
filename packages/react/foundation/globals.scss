@@ -1,0 +1,21 @@
+/* packages/react/foundation/globals.scss */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+}

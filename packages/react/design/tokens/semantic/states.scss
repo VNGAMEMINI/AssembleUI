@@ -1,0 +1,10 @@
+@use "../../primitives/states" as *;
+
+:root {
+  --aui-token-state-disabled-opacity: #{$state-disabled-opacity};
+  --aui-token-state-disabled-cursor: #{$state-disabled-cursor};
+  --aui-token-state-hover-opacity: #{$state-hover-opacity};
+  --aui-token-state-active-opacity: #{$state-active-opacity};
+  --aui-token-state-selected-opacity: #{$state-selected-opacity};
+  --aui-token-state-loading-opacity: #{$state-loading-opacity};
+}

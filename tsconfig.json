@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@vnallmini/react": [
+        "./packages/react/index.ts"
+      ],
+      "@vnallmini/react/components": [
+        "./packages/react/components/index.ts"
+      ],
+      "@vnallmini/react/patterns": [
+        "./packages/react/patterns/index.ts"
+      ],
+      "@vnallmini/react/templates": [
+        "./packages/react/templates/index.ts"
+      ],
+      "@vnallmini/react/core": [
+        "./packages/react/core/index.ts"
+      ],
+    },
+    "types": [
+      "vitest/globals"
+    ]
+  },
+  "include": [
+    "packages",
+    "demo",
+    "playground",
+    "tests"
+  ]
+}

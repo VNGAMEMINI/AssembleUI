@@ -1,0 +1,45 @@
+@use "../../primitives/colors" as colors;
+
+:root {
+  /* Primary and accent */
+  --aui-token-gradient-primary: linear-gradient(
+    135deg, #{colors.$blue-500}, #{colors.$blue-600}
+  );
+  --aui-token-gradient-primary-subtle: linear-gradient(
+    135deg, #{colors.$blue-50}, #{colors.$gray-50}
+  );
+  --aui-token-gradient-accent: linear-gradient(
+    135deg, #{colors.$blue-500}, #{colors.$blue-600}
+  );
+
+  /* Surfaces */
+  --aui-token-gradient-surface: linear-gradient(
+    180deg, #{colors.$white}, #{colors.$gray-50}
+  );
+  --aui-token-gradient-surface-elevated: linear-gradient(
+    180deg, #{colors.$white}, #{colors.$gray-50}
+  );
+  --aui-token-gradient-neutral: linear-gradient(
+    135deg, #{colors.$gray-50}, #{colors.$gray-100}
+  );
+
+  /* Semantic status gradients */
+  --aui-token-gradient-success: linear-gradient(
+    135deg, #{colors.$green-500}, #{colors.$green-600}
+  );
+  --aui-token-gradient-warning: linear-gradient(
+    135deg, #{colors.$yellow-500}, #{colors.$orange-500}
+  );
+  --aui-token-gradient-danger: linear-gradient(
+    135deg, #{colors.$red-500}, #{colors.$red-600}
+  );
+  --aui-token-gradient-info: linear-gradient(
+    135deg, #{colors.$cyan-500}, #{colors.$blue-500}
+  );
+
+  /* Utility */
+  --aui-token-gradient-transparent: linear-gradient(
+    180deg, transparent, transparent
+  );
+  --aui-token-gradient-none: none;
+}

@@ -1,0 +1,16 @@
+@use "../../primitives/z-index" as *;
+
+:root {
+  --aui-token-z-index-base: #{$z-index-0};
+  --aui-token-z-index-raised: #{$z-index-1};
+  --aui-token-z-index-dropdown: #{$z-index-11};
+  --aui-token-z-index-sticky: #{$z-index-3};
+  --aui-token-z-index-overlay: #{$z-index-10};
+  --aui-token-z-index-modal: #{$z-index-10};
+  --aui-token-z-index-drawer: #{$z-index-10};
+  --aui-token-z-index-skip-link: #{$z-index-10};
+  --aui-token-z-index-popover: #{$z-index-11};
+  --aui-token-z-index-autocomplete: #{$z-index-11};
+  --aui-token-z-index-tooltip: #{$z-index-10};
+  --aui-token-z-index-toast: #{$z-index-12};
+}

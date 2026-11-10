@@ -1,0 +1,19 @@
+.aui-skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: var(--aui-token-space-3) var(--aui-token-space-4);
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 150ms ease;
+
+  &:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid
+      var(--aui-theme-state-focus-ring);
+    outline-offset: var(--aui-token-space-1);
+  }
+}

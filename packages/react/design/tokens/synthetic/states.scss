@@ -1,0 +1,9 @@
+@use "../../primitives/colors" as colors;
+@use "../../primitives/sizing" as size;
+@use "../../primitives/spacing" as spacing;
+
+:root {
+  --aui-token-state-focus-ring: #{colors.$blue-500};
+  --aui-token-state-focus-ring-width: #{size.$size-medium};
+  --aui-token-state-focus-ring-offset: #{spacing.$spacing-1};
+}

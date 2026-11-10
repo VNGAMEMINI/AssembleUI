@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build caches
+.vite/
+**/.vite/
+
+# Build output
+dist/
+**/dist/
+
+# Local backups
+.backups/
+**/.backups/
+
+# Local release artifacts
+/assemble-ui-react-0.1.0.tgz
+
+# Test coverage reports
+/coverage/

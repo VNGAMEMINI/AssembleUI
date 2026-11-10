@@ -1,0 +1,22 @@
+@use "../../primitives/sizing" as sizing;
+
+:root {
+  // Viewport and content sizes
+  --aui-token-size-full: #{sizing.$size-full};
+  --aui-token-size-screen-width: #{sizing.$size-screen-width};
+  --aui-token-size-screen-height: #{sizing.$size-screen-height};
+
+  --aui-token-size-content-sm: #{sizing.$size-content-sm};
+  --aui-token-size-content-md: #{sizing.$size-content-md};
+  --aui-token-size-content-lg: #{sizing.$size-content-lg};
+  --aui-token-size-content-xl: #{sizing.$size-content-xl};
+
+  // Physical thickness scale from sizing primitives.
+  --aui-token-size-none: #{sizing.$size-none};
+  --aui-token-size-thin: #{sizing.$size-thin};
+  --aui-token-size-default: #{sizing.$size-default};
+  --aui-token-size-medium: #{sizing.$size-medium};
+  --aui-token-size-thick: #{sizing.$size-thick};
+  --aui-token-size-big: #{sizing.$size-big};
+  --aui-token-size-heavy: #{sizing.$size-heavy};
+}

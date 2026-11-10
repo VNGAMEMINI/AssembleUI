@@ -1,0 +1,7 @@
+@use "../../primitives/filter" as filter;
+@use "../../primitives/states" as states;
+
+:root {
+  --aui-token-effect-glass-backdrop: #{filter.$filter-backdrop-blur-md};
+  --aui-token-effect-disabled-opacity: #{states.$state-disabled-opacity};
+}

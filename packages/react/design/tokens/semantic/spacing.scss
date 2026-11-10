@@ -1,0 +1,23 @@
+@use "../../primitives/spacing" as spacing;
+
+:root {
+  --aui-token-space-0: #{spacing.$spacing-0};
+  --aui-token-space-1: #{spacing.$spacing-1};
+  --aui-token-space-2: #{spacing.$spacing-2};
+  --aui-token-space-3: #{spacing.$spacing-3};
+  --aui-token-space-4: #{spacing.$spacing-4};
+  --aui-token-space-5: #{spacing.$spacing-5};
+  --aui-token-space-6: #{spacing.$spacing-6};
+  --aui-token-space-7: #{spacing.$spacing-7};
+  --aui-token-space-8: #{spacing.$spacing-8};
+  --aui-token-space-9: #{spacing.$spacing-9};
+  --aui-token-space-10: #{spacing.$spacing-10};
+  --aui-token-space-11: #{spacing.$spacing-11};
+  --aui-token-space-12: #{spacing.$spacing-12};
+  --aui-token-space-14: #{spacing.$spacing-14};
+  --aui-token-space-16: #{spacing.$spacing-16};
+  --aui-token-space-20: #{spacing.$spacing-20};
+  --aui-token-space-24: #{spacing.$spacing-24};
+  --aui-token-space-28: #{spacing.$spacing-28};
+  --aui-token-space-32: #{spacing.$spacing-32};
+}

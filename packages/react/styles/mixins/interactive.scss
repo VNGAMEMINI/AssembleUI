@@ -1,0 +1,11 @@
+@mixin interactive {
+  transition:
+    opacity
+    var(--aui-token-motion-duration-normal)
+    var(--aui-token-motion-ease-standard);
+
+  &:hover {
+    opacity:
+      var(--aui-token-state-hover-opacity);
+  }
+}

@@ -1,0 +1,8 @@
+@use "../../primitives/aspect" as *;
+
+:root {
+  --aui-token-aspect-square: #{$aspect-square};
+  --aui-token-aspect-video: #{$aspect-video};
+  --aui-token-aspect-portrait: #{$aspect-portrait};
+  --aui-token-aspect-landscape: #{$aspect-landscape};
+}

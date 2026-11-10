@@ -1,0 +1,51 @@
+@use "../../primitives/colors" as colors;
+
+/*
+ * AssembleUI semantic color tokens.
+ *
+ * Semantic tokens are stable, theme-independent public values.
+ */
+
+:root {
+  /* Neutral colors */
+  --aui-token-color-white: #{colors.$white};
+  --aui-token-color-black: #{colors.$black};
+  --aui-token-color-transparent: #{colors.$transparent};
+
+  /* Brand and foreground */
+  --aui-token-color-primary: #{colors.$blue-500};
+  --aui-token-color-primary-hover: #{colors.$blue-600};
+  --aui-token-color-on-primary: #{colors.$white};
+
+  --aui-token-color-background: #{colors.$white};
+  --aui-token-color-foreground: #{colors.$gray-900};
+  --aui-token-color-text: #{colors.$gray-900};
+  --aui-token-color-text-muted: #{colors.$gray-600};
+
+  /* Surfaces */
+  --aui-token-color-surface: #{colors.$white};
+  --aui-token-color-surface-muted: #{colors.$gray-50};
+  --aui-token-color-surface-elevated: #{colors.$white};
+  --aui-token-color-overlay: #{rgba(colors.$black, 0.45)};
+
+  /* Borders */
+  --aui-token-color-border: #{colors.$gray-200};
+  --aui-token-color-border-hover: #{colors.$gray-400};
+
+  /* Status colors */
+  --aui-token-color-success: #10b981;
+  --aui-token-color-success-subtle: #e6f4ec;
+  --aui-token-color-on-success: #14613a;
+
+  --aui-token-color-warning: #f59e0b;
+  --aui-token-color-warning-subtle: #fdf2dc;
+  --aui-token-color-on-warning: #7d4a00;
+
+  --aui-token-color-danger: #ef4444;
+  --aui-token-color-danger-subtle: #fbe8e7;
+  --aui-token-color-on-danger: #9b2420;
+
+  --aui-token-color-info: #06b6d4;
+  --aui-token-color-info-subtle: #e1f4f7;
+  --aui-token-color-on-info: #085a69;
+}

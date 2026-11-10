@@ -1,0 +1,78 @@
+.aui-date-picker-field {
+  position: relative;
+  width: 100%;
+}
+
+.aui-date-picker-field__label {
+  display: inline-block;
+  margin-bottom: var(--aui-token-space-2);
+  color: var(--aui-theme-text);
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-text-body-size);
+  font-weight: var(--aui-token-font-weight-medium);
+}
+
+.aui-date-picker-field__required {
+  color: var(--aui-theme-danger);
+}
+
+.aui-date-picker {
+  width: 100%;
+  min-height: 2.5rem;
+  padding:
+    var(--aui-token-space-2)
+    var(--aui-token-space-3);
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
+  border:
+    var(--aui-token-border-width-thin)
+    solid
+    var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-sm);
+  font: inherit;
+
+  &:focus {
+    border-color: var(--aui-theme-state-focus-ring);
+    outline:
+      var(--aui-token-border-width-medium)
+      solid
+      var(--aui-theme-state-focus-ring);
+    outline-offset: 1px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.aui-date-picker-field__description,
+.aui-date-picker-field__error {
+  margin-top: var(--aui-token-space-1);
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-text-caption-size);
+}
+
+.aui-date-picker-field__description {
+  color: var(--aui-theme-text-muted);
+}
+
+.aui-date-picker-field__error {
+  color: var(--aui-theme-danger);
+}
+
+.aui-date-picker-field--invalid {
+  .aui-date-picker {
+    border-color: var(--aui-theme-danger);
+  }
+}
+
+.aui-date-picker-field--disabled {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aui-date-picker {
+    scroll-behavior: auto;
+  }
+}

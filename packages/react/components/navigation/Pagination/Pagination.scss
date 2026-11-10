@@ -1,0 +1,70 @@
+@use "../../../styles/mixins/focus" as focus;
+
+.aui-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aui-token-space-1);
+
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-text-body-size);
+}
+
+.aui-pagination__list {
+  display: flex;
+  align-items: center;
+  gap: var(--aui-token-space-1);
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aui-pagination__item {
+  display: inline-flex;
+}
+
+.aui-pagination__button {
+  min-width: var(--aui-token-space-8);
+  min-height: var(--aui-token-space-8);
+
+  padding: var(--aui-token-space-1) var(--aui-token-space-2);
+
+  border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-sm);
+
+  background: transparent;
+  color: var(--aui-theme-text);
+
+  font: inherit;
+
+  cursor: pointer;
+
+  @include focus.focus-ring;
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-surface-2);
+  }
+
+  &:disabled {
+    opacity: var(--aui-token-state-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &--current {
+    border-color: var(--aui-theme-primary);
+    background: var(--aui-theme-primary);
+    color: var(--aui-theme-on-primary);
+  }
+}
+
+.aui-pagination__ellipsis {
+  display: inline-flex;
+
+  min-width: var(--aui-token-space-8);
+  min-height: var(--aui-token-space-8);
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--aui-theme-text-muted);
+}

@@ -1,0 +1,15 @@
+/*
+ * Custom theme extension point.
+ *
+ * Theme roles are separate from semantic tokens.
+ * Consumers may override only the roles they need.
+ */
+[data-aui-theme="custom"] {
+  /*
+   * Example:
+   * --aui-theme-bg: #fff;
+   * --aui-theme-fg: #111;
+   * --aui-theme-border: #ddd;
+   * --aui-theme-primary: #2563eb;
+   */
+}

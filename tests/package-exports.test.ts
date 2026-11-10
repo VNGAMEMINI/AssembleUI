@@ -1,0 +1,48 @@
+import { describe, expect, it } from "vitest";
+
+import * as Root from "@vnallmini/react";
+import * as Components from "@vnallmini/react/components";
+import * as Patterns from "@vnallmini/react/patterns";
+import * as Templates from "@vnallmini/react/templates";
+
+describe("package exports", () => {
+  it("exports form components from root", () => {
+    expect(Root.Button).toBeDefined();
+    expect(Root.Input).toBeDefined();
+    expect(Root.Checkbox).toBeDefined();
+    expect(Root.Radio).toBeDefined();
+    expect(Root.Select).toBeDefined();
+    expect(Root.Textarea).toBeDefined();
+    expect(Root.Switch).toBeDefined();
+  });
+
+  it("exports components from components entry", () => {
+    expect(Components.Button).toBeDefined();
+    expect(Components.Input).toBeDefined();
+    expect(Components.Checkbox).toBeDefined();
+    expect(Components.Radio).toBeDefined();
+    expect(Components.Select).toBeDefined();
+    expect(Components.Textarea).toBeDefined();
+    expect(Components.Switch).toBeDefined();
+  });
+
+  it("exports all current patterns from root", () => {
+    expect(Root.ActionMenu).toBeDefined();
+    expect(Root.SearchBar).toBeDefined();
+    expect(Root.UserCard).toBeDefined();
+  });
+
+  it("exports all current patterns from patterns entry", () => {
+    expect(Patterns.ActionMenu).toBeDefined();
+    expect(Patterns.SearchBar).toBeDefined();
+    expect(Patterns.UserCard).toBeDefined();
+  });
+
+  it("exports current templates from root", () => {
+    expect(Root.ProfilePageTemplate).toBeDefined();
+  });
+
+  it("exports current templates from templates entry", () => {
+    expect(Templates.ProfilePageTemplate).toBeDefined();
+  });
+});
