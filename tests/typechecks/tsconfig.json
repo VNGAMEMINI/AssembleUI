@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
@@ -16,10 +20,14 @@
       ],
       "@vnallmini/react/templates": [
         "../../packages/react/templates/index.ts"
+      ],
+      "@vnallmini/react/core": [
+        "../../packages/react/core/index.ts"
       ]
     }
   },
   "include": [
-    "./template-public-types.ts"
+    "./template-public-types.ts",
+    "./core-date-public-types.ts"
   ]
 }

@@ -7,13 +7,15 @@ import {
   addCalendarMonths,
   formatCalendarDate,
   formatMonth,
-  formatNavigationLabel,
-  getCalendarDays,
   getLocalizedWeekdays,
   isAfterDay,
   isBeforeDay,
   isSameDay,
   startOfMonth,
+} from "../../../core/utils";
+import {
+  formatNavigationLabel,
+  getCalendarDays,
 } from "./module/_calendar.date";
 import { CALENDAR_DAY_COUNT } from "./module/_calendar.constants";
 
