@@ -21,16 +21,13 @@ describe("Textarea", () => {
     ).toBeInTheDocument();
   });
 
-  it("generates an id when one is not provided", () => {
+  it("generates a non-empty id when one is not provided", () => {
     render(<Textarea label="Description" />);
 
     const textarea =
       screen.getByLabelText("Description");
 
-    expect(textarea).toHaveAttribute("id");
-    expect(textarea.id).toMatch(
-      /^aui-textarea-\d+$/,
-    );
+    expect(textarea.id).toBeTruthy();
   });
 
   it("preserves a provided id", () => {
@@ -47,6 +44,42 @@ describe("Textarea", () => {
       "id",
       "description",
     );
+  });
+
+  it("keeps the generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Textarea label="Description" />,
+    );
+
+    const initialId =
+      screen.getByLabelText("Description").id;
+
+    rerender(
+      <Textarea
+        label="Description"
+        description="Additional information"
+      />,
+    );
+
+    expect(
+      screen.getByLabelText("Description"),
+    ).toHaveAttribute("id", initialId);
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Textarea label="First description" />
+        <Textarea label="Second description" />
+      </>,
+    );
+
+    const textareas = screen.getAllByRole("textbox");
+    const ids = textareas.map((textarea) => textarea.id);
+
+    expect(ids[0]).toBeTruthy();
+    expect(ids[1]).toBeTruthy();
+    expect(ids[0]).not.toBe(ids[1]);
   });
 
   it("supports value", () => {

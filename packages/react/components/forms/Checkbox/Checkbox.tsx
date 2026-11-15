@@ -1,9 +1,9 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import type { CheckboxProps } from "./Checkbox.types";
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 
 const Checkbox = forwardRef<
@@ -25,15 +25,16 @@ const Checkbox = forwardRef<
     },
     ref,
   ) => {
+    const generatedId = useId();
+
     const {
       id: checkboxId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-checkbox",
+    } = createAccessibilityMetadataFromId({
+      id: id ?? generatedId,
       description,
       error,
       externalDescribedBy,

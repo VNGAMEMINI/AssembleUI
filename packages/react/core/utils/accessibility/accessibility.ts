@@ -1,5 +1,13 @@
 import { generateId } from "../generateId/generateId";
 
+export interface AccessibilityMetadataOptions {
+  id: string;
+  description?: unknown;
+  error?: unknown;
+  externalDescribedBy?: string;
+  externalInvalid?: boolean | "false" | "true" | "grammar" | "spelling";
+}
+
 export interface AccessibilityOptions {
   id?: string;
   idPrefix: string;
@@ -17,25 +25,23 @@ export interface AccessibilityResult {
   ariaInvalid?: boolean | "false" | "true" | "grammar" | "spelling";
 }
 
-export function createAccessibilityMetadata({
+/**
+ * Creates accessibility metadata from an explicit, stable control ID.
+ *
+ * This function is pure and does not generate IDs.
+ */
+export function createAccessibilityMetadataFromId({
   id,
-  idPrefix,
   description,
   error,
   externalDescribedBy,
   externalInvalid,
-}: AccessibilityOptions): AccessibilityResult {
-  const controlId = id ?? generateId(idPrefix);
-
+}: AccessibilityMetadataOptions): AccessibilityResult {
   const descriptionId =
-    description != null
-      ? `${controlId}-description`
-      : undefined;
+    description != null ? `${id}-description` : undefined;
 
   const errorId =
-    error != null
-      ? `${controlId}-error`
-      : undefined;
+    error != null ? `${id}-error` : undefined;
 
   const generatedDescribedBy = [
     description != null && error == null
@@ -59,10 +65,33 @@ export function createAccessibilityMetadata({
       : externalInvalid;
 
   return {
-    id: controlId,
+    id,
     descriptionId,
     errorId,
     describedBy,
     ariaInvalid,
   };
+}
+
+/**
+ * Legacy API.
+ *
+ * Kept for backward compatibility. New React components should provide
+ * a stable ID through React.useId() and use createAccessibilityMetadataFromId.
+ */
+export function createAccessibilityMetadata({
+  id,
+  idPrefix,
+  description,
+  error,
+  externalDescribedBy,
+  externalInvalid,
+}: AccessibilityOptions): AccessibilityResult {
+  return createAccessibilityMetadataFromId({
+    id: id ?? generateId(idPrefix),
+    description,
+    error,
+    externalDescribedBy,
+    externalInvalid,
+  });
 }

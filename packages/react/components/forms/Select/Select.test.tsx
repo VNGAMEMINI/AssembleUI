@@ -24,13 +24,9 @@ describe("Select", () => {
   it("generates an id when one is not provided", () => {
     render(<Select label="Country" />);
 
-    const select =
-      screen.getByLabelText("Country");
+    const select = screen.getByLabelText("Country");
 
-    expect(select).toHaveAttribute("id");
-    expect(select.id).toMatch(
-      /^aui-select-\d+$/,
-    );
+    expect(select.id).not.toBe("");
   });
 
   it("preserves a provided id", () => {
@@ -44,6 +40,43 @@ describe("Select", () => {
     expect(
       screen.getByLabelText("Country"),
     ).toHaveAttribute("id", "country");
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Select
+        label="Country"
+        description="Initial description"
+      />,
+    );
+
+    const initialId = screen.getByLabelText("Country").id;
+
+    rerender(
+      <Select
+        label="Country"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByLabelText("Country")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Select label="Country" />
+        <Select label="Language" />
+      </>,
+    );
+
+    const country = screen.getByLabelText("Country");
+    const language = screen.getByLabelText("Language");
+
+    expect(country.id).not.toBe(language.id);
   });
 
   it("renders native options", () => {

@@ -28,9 +28,45 @@ describe("Radio", () => {
       screen.getByLabelText("Option A");
 
     expect(radio).toHaveAttribute("id");
-    expect(radio.id).toMatch(
-      /^aui-radio-\d+$/,
+    expect(radio.id).not.toBe("");
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Radio
+        label="Option A"
+        description="Initial description"
+      />,
     );
+
+    const radio = screen.getByLabelText("Option A");
+    const initialId = radio.id;
+
+    rerender(
+      <Radio
+        label="Option A"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByLabelText("Option A")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Radio label="Option A" />
+        <Radio label="Option B" />
+      </>,
+    );
+
+    const optionA = screen.getByLabelText("Option A");
+    const optionB = screen.getByLabelText("Option B");
+
+    expect(optionA.id).not.toBe(optionB.id);
   });
 
   it("preserves a provided id", () => {

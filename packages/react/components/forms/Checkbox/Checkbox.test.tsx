@@ -28,9 +28,45 @@ describe("Checkbox", () => {
       screen.getByLabelText("Accept terms");
 
     expect(checkbox).toHaveAttribute("id");
-    expect(checkbox.id).toMatch(
-      /^aui-checkbox-\d+$/,
+    expect(checkbox.id).not.toBe("");
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Checkbox
+        label="Accept terms"
+        description="Initial description"
+      />,
     );
+
+    const checkbox = screen.getByLabelText("Accept terms");
+    const initialId = checkbox.id;
+
+    rerender(
+      <Checkbox
+        label="Accept terms"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByLabelText("Accept terms")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Checkbox label="Terms" />
+        <Checkbox label="Privacy" />
+      </>,
+    );
+
+    const terms = screen.getByLabelText("Terms");
+    const privacy = screen.getByLabelText("Privacy");
+
+    expect(terms.id).not.toBe(privacy.id);
   });
 
   it("preserves a provided id", () => {

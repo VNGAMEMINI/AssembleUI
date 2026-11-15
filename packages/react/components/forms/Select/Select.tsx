@@ -1,10 +1,10 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 
 import type { SelectProps } from "./Select.types";
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -23,15 +23,16 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
+    const generatedId = useId();
+    const selectId = id ?? generatedId;
+
     const {
-      id: selectId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-select",
+    } = createAccessibilityMetadataFromId({
+      id: selectId,
       description,
       error,
       externalDescribedBy,

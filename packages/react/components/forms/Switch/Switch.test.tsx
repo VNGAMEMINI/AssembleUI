@@ -33,13 +33,9 @@ describe("Switch", () => {
   it("generates an id when one is not provided", () => {
     render(<Switch label="Notifications" />);
 
-    const switchControl =
-      screen.getByRole("switch");
+    const switchControl = screen.getByRole("switch");
 
-    expect(switchControl).toHaveAttribute("id");
-    expect(switchControl.id).toMatch(
-      /^aui-switch-\d+$/,
-    );
+    expect(switchControl.id).not.toBe("");
   });
 
   it("preserves a provided id", () => {
@@ -56,6 +52,47 @@ describe("Switch", () => {
       "id",
       "notifications",
     );
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Switch
+        label="Notifications"
+        description="Initial description"
+      />,
+    );
+
+    const initialId = screen.getByRole("switch").id;
+
+    rerender(
+      <Switch
+        label="Notifications"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByRole("switch")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Switch label="Notifications" />
+        <Switch label="Marketing emails" />
+      </>,
+    );
+
+    const notifications = screen.getByRole("switch", {
+      name: "Notifications",
+    });
+    const marketing = screen.getByRole("switch", {
+      name: "Marketing emails",
+    });
+
+    expect(notifications.id).not.toBe(marketing.id);
   });
 
   it("supports checked", () => {

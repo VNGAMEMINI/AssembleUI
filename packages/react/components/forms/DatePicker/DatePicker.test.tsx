@@ -76,6 +76,63 @@ describe("DatePicker", () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
+  it("generates an id when one is not provided", () => {
+    render(<DatePicker aria-label="Date" />);
+
+    expect(screen.getByLabelText("Date").id).not.toBe("");
+  });
+
+  it("preserves a provided id", () => {
+    render(
+      <DatePicker
+        aria-label="Date"
+        id="birth-date"
+      />,
+    );
+
+    expect(screen.getByLabelText("Date")).toHaveAttribute(
+      "id",
+      "birth-date",
+    );
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <DatePicker
+        label="Date"
+        description="Initial description"
+      />,
+    );
+
+    const initialId = screen.getByLabelText("Date").id;
+
+    rerender(
+      <DatePicker
+        label="Date"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByLabelText("Date")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <DatePicker label="Start date" />
+        <DatePicker label="End date" />
+      </>,
+    );
+
+    const startDate = screen.getByLabelText("Start date");
+    const endDate = screen.getByLabelText("End date");
+
+    expect(startDate.id).not.toBe(endDate.id);
+  });
+
   it("renders description", () => {
     render(
       <DatePicker

@@ -23,7 +23,39 @@ describe("Input", () => {
     const input = screen.getByLabelText("Username");
 
     expect(input).toHaveAttribute("id");
-    expect(input.id).toMatch(/^aui-input-\d+$/);
+    expect(input.id).not.toBe("");
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Input label="Username" description="Initial description" />,
+    );
+
+    const input = screen.getByLabelText("Username");
+    const initialId = input.id;
+
+    rerender(
+      <Input label="Username" description="Updated description" />,
+    );
+
+    expect(screen.getByLabelText("Username")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Input label="Username" />
+        <Input label="Email" />
+      </>,
+    );
+
+    const username = screen.getByLabelText("Username");
+    const email = screen.getByLabelText("Email");
+
+    expect(username.id).not.toBe(email.id);
   });
 
   it("preserves a provided id", () => {

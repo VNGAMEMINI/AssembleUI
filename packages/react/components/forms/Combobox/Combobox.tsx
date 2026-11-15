@@ -1,6 +1,7 @@
 import {
   forwardRef,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -18,7 +19,7 @@ import type {
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 import {
   filterComboboxOptions,
@@ -58,15 +59,16 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     ref,
   ) => {
 
+    const generatedId = useId();
+
     const {
       id: comboboxId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-combobox",
+    } = createAccessibilityMetadataFromId({
+      id: id ?? generatedId,
       description,
       error,
       externalDescribedBy,

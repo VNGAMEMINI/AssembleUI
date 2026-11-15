@@ -1,10 +1,10 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 
 import type { TextareaProps } from "./Textarea.types";
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 
 const Textarea = forwardRef<
@@ -26,15 +26,16 @@ const Textarea = forwardRef<
     },
     ref,
   ) => {
+    const generatedId = useId();
+
     const {
       id: textareaId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-textarea",
+    } = createAccessibilityMetadataFromId({
+      id: id ?? generatedId,
       description,
       error,
       externalDescribedBy,

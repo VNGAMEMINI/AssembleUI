@@ -28,6 +28,7 @@
   },
   "include": [
     "./template-public-types.ts",
-    "./core-date-public-types.ts"
+    "./core-date-public-types.ts",
+    "accessibility-public-types.ts"
   ]
 }

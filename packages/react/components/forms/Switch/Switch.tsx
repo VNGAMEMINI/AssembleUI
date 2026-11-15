@@ -1,5 +1,6 @@
 import {
   forwardRef,
+  useId,
 } from "react";
 
 import type {
@@ -8,7 +9,7 @@ import type {
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 
 const Switch = forwardRef<
@@ -30,15 +31,16 @@ const Switch = forwardRef<
     },
     ref,
   ) => {
+    const generatedId = useId();
+    const switchId = id ?? generatedId;
+
     const {
-      id: switchId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-switch",
+    } = createAccessibilityMetadataFromId({
+      id: switchId,
       description,
       error,
       externalDescribedBy,

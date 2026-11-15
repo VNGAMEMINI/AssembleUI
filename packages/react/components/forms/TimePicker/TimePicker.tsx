@@ -3,7 +3,7 @@ import {
   useId,
 } from "react";
 import { classNames } from "../../../core/utils";
-import { createAccessibilityMetadata } from "../../../core/utils/accessibility";
+import { createAccessibilityMetadataFromId } from "../../../core/utils/accessibility";
 import type { TimePickerProps } from "./TimePicker.types";
 
 export const TimePicker = forwardRef<
@@ -28,9 +28,8 @@ export const TimePicker = forwardRef<
     const generatedId = useId();
     const inputId = id ?? generatedId;
 
-    const metadata = createAccessibilityMetadata({
+    const metadata = createAccessibilityMetadataFromId({
       id: inputId,
-      idPrefix: "time-picker",
       description,
       error,
       externalDescribedBy,

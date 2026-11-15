@@ -1,9 +1,9 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import type { InputProps } from "./Input.types";
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -22,15 +22,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
+    const generatedId = useId();
+
     const {
       id: inputId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-input",
+    } = createAccessibilityMetadataFromId({
+      id: id ?? generatedId,
       description,
       error,
       externalDescribedBy,

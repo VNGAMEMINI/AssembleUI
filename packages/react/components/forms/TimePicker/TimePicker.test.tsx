@@ -74,6 +74,63 @@ describe("TimePicker", () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
+  it("generates an id when one is not provided", () => {
+    render(<TimePicker aria-label="Time" />);
+
+    expect(screen.getByLabelText("Time").id).not.toBe("");
+  });
+
+  it("preserves a provided id", () => {
+    render(
+      <TimePicker
+        aria-label="Time"
+        id="meeting-time"
+      />,
+    );
+
+    expect(screen.getByLabelText("Time")).toHaveAttribute(
+      "id",
+      "meeting-time",
+    );
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <TimePicker
+        label="Time"
+        description="Initial description"
+      />,
+    );
+
+    const initialId = screen.getByLabelText("Time").id;
+
+    rerender(
+      <TimePicker
+        label="Time"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByLabelText("Time")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <TimePicker label="Start time" />
+        <TimePicker label="End time" />
+      </>,
+    );
+
+    const startTime = screen.getByLabelText("Start time");
+    const endTime = screen.getByLabelText("End time");
+
+    expect(startTime.id).not.toBe(endTime.id);
+  });
+
   it("renders description", () => {
     render(
       <TimePicker

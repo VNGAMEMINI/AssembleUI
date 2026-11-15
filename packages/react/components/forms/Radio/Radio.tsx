@@ -1,9 +1,9 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import type { RadioProps } from "./Radio.types";
 
 import {
   classNames,
-  createAccessibilityMetadata,
+  createAccessibilityMetadataFromId,
 } from "../../../core/utils";
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
@@ -22,15 +22,16 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     },
     ref,
   ) => {
+    const generatedId = useId();
+
     const {
       id: radioId,
       descriptionId,
       errorId,
       describedBy,
       ariaInvalid,
-    } = createAccessibilityMetadata({
-      id,
-      idPrefix: "aui-radio",
+    } = createAccessibilityMetadataFromId({
+      id: id ?? generatedId,
       description,
       error,
       externalDescribedBy,

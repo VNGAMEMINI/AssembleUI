@@ -563,6 +563,101 @@ describe("Combobox", () => {
     );
   });
 
+  it("generates an id when one is not provided", () => {
+    render(
+      <Combobox options={options} />,
+    );
+
+    expect(screen.getByRole("combobox").id).not.toBe("");
+  });
+
+  it("preserves a provided id", () => {
+    render(
+      <Combobox
+        options={options}
+        id="country-combobox"
+      />,
+    );
+
+    expect(screen.getByRole("combobox")).toHaveAttribute(
+      "id",
+      "country-combobox",
+    );
+  });
+
+  it("keeps its generated id stable across rerenders", () => {
+    const { rerender } = render(
+      <Combobox
+        options={options}
+        label="Country"
+        description="Initial description"
+      />,
+    );
+
+    const input = screen.getByRole("combobox");
+    const initialId = input.id;
+
+    rerender(
+      <Combobox
+        options={options}
+        label="Country"
+        description="Updated description"
+      />,
+    );
+
+    expect(screen.getByRole("combobox")).toHaveAttribute(
+      "id",
+      initialId,
+    );
+  });
+
+  it("generates unique ids for multiple instances", () => {
+    render(
+      <>
+        <Combobox
+          options={options}
+          label="Country"
+        />
+        <Combobox
+          options={options}
+          label="Language"
+        />
+      </>,
+    );
+
+    const country = screen.getByRole("combobox", {
+      name: "Country",
+    });
+    const language = screen.getByRole("combobox", {
+      name: "Language",
+    });
+
+    expect(country.id).not.toBe(language.id);
+  });
+
+  it("connects input controls to the generated listbox id", () => {
+    render(
+      <Combobox
+        options={options}
+        open
+        id="country"
+      />,
+    );
+
+    const input = screen.getByRole("combobox");
+    const listbox = screen.getByRole("listbox");
+
+    expect(input).toHaveAttribute(
+      "aria-controls",
+      "country-listbox",
+    );
+
+    expect(listbox).toHaveAttribute(
+      "id",
+      "country-listbox",
+    );
+  });
+
   it("forwards ref", () => {
     const ref =
       createRef<HTMLDivElement>();
