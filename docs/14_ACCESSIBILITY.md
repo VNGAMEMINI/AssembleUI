@@ -133,13 +133,6 @@ Esc
 Close
 ```
 
-```
-Menu
-
-↓
-
-Arrow Keys
-```
 
 ```
 Tabs
@@ -395,32 +388,6 @@ Close
 ↓
 
 Restore Focus
-```
-
----
-
-# Dropdown
-
-Dropdown phải hỗ trợ:
-
-```
-Enter
-
-↓
-
-Open
-
-↓
-
-Arrow Keys
-
-↓
-
-Select
-
-↓
-
-Esc
 ```
 
 ---

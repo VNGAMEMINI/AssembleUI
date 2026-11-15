@@ -1,102 +1,56 @@
 .aui-menu {
   display: flex;
   flex-direction: column;
+  gap: var(--aui-token-space-1);
 
-  min-width: 12rem;
-  max-width: min(
-    20rem,
-    calc(100vw - (var(--aui-token-space-4) * 2))
-  );
-
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
   padding: var(--aui-token-space-1);
+
+  list-style: none;
 
   color: var(--aui-theme-text);
   background: var(--aui-theme-surface);
 
-  border:
-    var(--aui-token-border-width-thin)
-    solid
-    var(--aui-theme-border);
-
+  border: 1px solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-md);
 
   box-shadow: var(--aui-token-shadow-sm);
-
-  overflow: hidden;
 }
 
 .aui-menu__item {
-  width: 100%;
-
   display: flex;
   align-items: center;
 
-  min-height: 2.25rem;
-  padding:
-    var(--aui-token-space-2)
-    var(--aui-token-space-3);
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 38px;
 
-  color: inherit;
-  background: transparent;
+  padding: var(--aui-token-space-2) var(--aui-token-space-3);
 
-  border: 0;
+  list-style: none;
   border-radius: var(--aui-token-radius-sm);
 
-  font: inherit;
-  text-align: left;
-
-  cursor: pointer;
-
-  &:hover:not(:disabled) {
-    background: var(--aui-theme-surface-2);
-  }
-
-  &:focus-visible {
-    outline:
-      var(--aui-token-border-width-medium)
-      solid
-      var(--aui-theme-state-focus-ring);
-
-    outline-offset: -2px;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .aui-menu__item {
-    transition:
-      background-color 120ms ease,
-      opacity 120ms ease;
-  }
+.aui-menu__item:hover,
+.aui-menu__item:focus-within {
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface-2);
 }
 
-.aui-menu--popup {
-  position: fixed;
-  z-index: 1100;
-
-  box-shadow: var(--aui-token-shadow-lg);
-
-  animation: aui-menu-popup-enter 120ms ease-out;
+.aui-menu__item > .aui-button {
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aui-menu--popup {
-    animation: none;
-  }
-}
-
-@keyframes aui-menu-popup-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-2px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .aui-menu__item {
+    transition: none;
   }
 }

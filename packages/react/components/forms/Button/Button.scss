@@ -4,10 +4,11 @@
   justify-content: center;
   gap: var(--aui-token-space-2);
 
+  box-sizing: border-box;
   min-height: var(--aui-token-space-10);
   padding-inline: var(--aui-token-space-4);
 
-  border: var(--aui-token-border-width-default) solid transparent;
+  border: 1px solid transparent;
   border-radius: var(--aui-token-radius-md);
 
   background: var(--aui-theme-primary);
@@ -21,22 +22,19 @@
   cursor: pointer;
 
   transition:
-    background-color var(--aui-token-motion-duration-fast)
-      var(--aui-token-motion-ease-standard),
-    color var(--aui-token-motion-duration-fast) var(--aui-token-motion-ease-standard),
-    border-color var(--aui-token-motion-duration-fast) var(--aui-token-motion-ease-standard),
-    opacity var(--aui-token-motion-duration-fast) var(--aui-token-motion-ease-standard);
-
-  &:hover:not(:disabled) {
-    background: var(--aui-theme-primary-hover);
-  }
-  &:active:not(:disabled) {
-    opacity: var(--aui-token-state-active-opacity);
-  }
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
 
   &:focus-visible {
-    outline: var(--aui-token-border-width-medium) solid var(--aui-theme-state-focus-ring);
-    outline-offset: var(--aui-token-space-1);
+    outline: 2px solid var(--aui-theme-state-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:active:not(:disabled) {
+    opacity: var(--aui-token-state-active-opacity);
   }
 
   &:disabled {
@@ -69,31 +67,34 @@
   &:hover:not(:disabled) {
     background: var(--aui-theme-primary-hover);
   }
-  &:active:not(:disabled) {
-    opacity: var(--aui-token-state-active-opacity);
-  }
 }
 
 .aui-button--secondary {
   background: var(--aui-theme-surface);
   color: var(--aui-theme-text);
   border-color: var(--aui-theme-border);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-surface-2);
+    border-color: var(--aui-theme-border-hover);
+  }
 }
 
 .aui-button--danger {
   background: var(--aui-theme-danger);
   color: var(--aui-theme-on-danger);
+
+  &:hover:not(:disabled) {
+    opacity: 0.88;
+  }
 }
 
 .aui-button--ghost {
-  background: var(--aui-token-color-transparent);
+  background: transparent;
   color: var(--aui-theme-primary);
-  border-color: var(--aui-token-color-transparent);
+  border-color: transparent;
 
   &:hover:not(:disabled) {
-    background: var(--aui-theme-surface);
-  }
-  &:active:not(:disabled) {
-    opacity: var(--aui-token-state-active-opacity);
+    background: var(--aui-theme-surface-2);
   }
 }

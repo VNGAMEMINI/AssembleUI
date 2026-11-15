@@ -1,6 +1,6 @@
 export { Menu } from "./Menu";
 
 export type {
-  MenuItem,
   MenuProps,
+  MenuItemProps,
 } from "./Menu.types";

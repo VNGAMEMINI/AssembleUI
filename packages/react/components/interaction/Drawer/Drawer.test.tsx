@@ -1,3 +1,5 @@
+import { StrictMode } from "react";
+
 import {
   fireEvent,
   render,
@@ -455,6 +457,33 @@ describe("Drawer", () => {
           Drawer content
         </Drawer.Content>
       </Drawer>,
+    );
+
+    expect(document.body.style.overflow).toBe("hidden");
+
+    unmount();
+
+    expect(document.body.style.overflow).toBe("auto");
+  });
+
+
+  it("restores scroll locking correctly under StrictMode", () => {
+    document.body.style.overflow = "auto";
+
+    const { unmount } = render(
+      <StrictMode>
+        <Drawer open>
+          <Drawer.Content title="Workspace">
+            Drawer content
+          </Drawer.Content>
+        </Drawer>
+
+        <Modal open>
+          <Modal.Content title="Confirmation">
+            Modal content
+          </Modal.Content>
+        </Modal>
+      </StrictMode>,
     );
 
     expect(document.body.style.overflow).toBe("hidden");

@@ -1,42 +1,31 @@
 import { useState } from "react";
-import { Menu } from "@vnallmini/react";
+import { Button, Menu } from "@vnallmini/react";
 
 export function MenuDemo() {
   const [selected, setSelected] = useState("");
 
-  const items = [
-    {
-      id: "dashboard",
-      label: "Dashboard",
-    },
-    {
-      id: "projects",
-      label: "Projects",
-    },
-    {
-      id: "settings",
-      label: "Settings",
-    },
-    {
-      id: "disabled",
-      label: "Không khả dụng",
-      disabled: true,
-    },
-  ];
+  const items = ["Dashboard", "Projects", "Settings"];
 
   return (
     <div className="demo-preview">
-      <Menu
-        items={items}
-        loopFocus
-        onItemSelect={(item) => {
-          setSelected(item.id);
-        }}
-      />
+      <Menu>
+        {items.map((item) => (
+          <Menu.Item key={item}>
+            <Button variant="ghost" onClick={() => setSelected(item)}>
+              {item}
+            </Button>
+          </Menu.Item>
+        ))}
 
-      <p>
-        Mục đã chọn:{" "}
-        <strong>{selected || "Chưa chọn"}</strong>
+        <Menu.Item>
+          <Button variant="ghost" disabled>
+            Không khả dụng
+          </Button>
+        </Menu.Item>
+      </Menu>
+
+      <p aria-live="polite">
+        Mục đã chọn: <strong>{selected || "Chưa chọn"}</strong>
       </p>
     </div>
   );
