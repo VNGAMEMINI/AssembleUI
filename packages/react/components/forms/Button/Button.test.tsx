@@ -15,29 +15,52 @@ describe("Button", () => {
   it("uses the default variant and size", () => {
     render(<Button>Save</Button>);
 
-    const button = screen.getByRole("button", {
-      name: "Save",
-    });
-
-    expect(button).toHaveClass(
+    expect(
+      screen.getByRole("button", { name: "Save" }),
+    ).toHaveClass(
       "aui-button",
       "aui-button--primary",
       "aui-button--md",
     );
   });
 
-  it("supports variant and size", () => {
+  it.each([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "danger",
+    "info",
+    "ghost",
+  ] as const)("applies the %s variant class", (variant) => {
+    render(<Button variant={variant}>Action</Button>);
+
+    expect(
+      screen.getByRole("button", { name: "Action" }),
+    ).toHaveClass(`aui-button--${variant}`);
+  });
+
+  it.each(["sm", "md", "lg"] as const)(
+    "applies the %s size class",
+    (size) => {
+      render(<Button size={size}>Action</Button>);
+
+      expect(
+        screen.getByRole("button", { name: "Action" }),
+      ).toHaveClass(`aui-button--${size}`);
+    },
+  );
+
+  it("supports combining variant and size", () => {
     render(
       <Button variant="danger" size="lg">
         Delete
       </Button>,
     );
 
-    const button = screen.getByRole("button", {
-      name: "Delete",
-    });
-
-    expect(button).toHaveClass(
+    expect(
+      screen.getByRole("button", { name: "Delete" }),
+    ).toHaveClass(
       "aui-button--danger",
       "aui-button--lg",
     );

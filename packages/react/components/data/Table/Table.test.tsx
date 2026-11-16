@@ -1,4 +1,8 @@
 import {
+  createRef,
+} from "react";
+
+import {
   render,
   screen,
 } from "@testing-library/react";
@@ -14,22 +18,12 @@ import {
 } from "./Table";
 
 describe("Table", () => {
-  it("renders table content", () => {
+  it("renders the table title as a caption", () => {
     render(
-      <Table>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Alice</td>
-            <td>Active</td>
-          </tr>
-        </tbody>
+      <Table title="Users">
+        <Table.Row>
+          <Table.Head>Name</Table.Head>
+        </Table.Row>
       </Table>,
     );
 
@@ -38,64 +32,113 @@ describe("Table", () => {
     ).toBeInTheDocument();
 
     expect(
+      screen.getByText("Users"),
+    ).toBeInTheDocument();
+  });
+
+  it("automatically groups header and body rows", () => {
+    render(
+      <Table title="Users">
+        <Table.Row>
+          <Table.Head>Name</Table.Head>
+          <Table.Head>Email</Table.Head>
+        </Table.Row>
+
+        <Table.Row>
+          <Table.Cell>Alice</Table.Cell>
+          <Table.Cell>alice@example.com</Table.Cell>
+        </Table.Row>
+      </Table>,
+    );
+
+    const table = screen.getByRole("table");
+    const header = table.querySelector("thead");
+
+    expect(header).not.toBeNull();
+
+    expect(header).toContainElement(
       screen.getByRole("columnheader", {
         name: "Name",
       }),
-    ).toBeInTheDocument();
+    );
 
     expect(
       screen.getByRole("cell", {
         name: "Alice",
       }),
     ).toBeInTheDocument();
+
+    expect(
+      table.querySelectorAll("thead > tr"),
+    ).toHaveLength(1);
+
+    expect(
+      table.querySelectorAll("tbody > tr"),
+    ).toHaveLength(1);
   });
 
-  it("applies the striped variant", () => {
+  it("supports multiple header rows", () => {
     render(
-      <Table variant="striped">
-        <tbody>
-          <tr>
-            <td>Row 1</td>
-          </tr>
-        </tbody>
+      <Table>
+        <Table.Row>
+          <Table.Head>Group</Table.Head>
+        </Table.Row>
+
+        <Table.Row>
+          <Table.Head>Name</Table.Head>
+        </Table.Row>
+
+        <Table.Row>
+          <Table.Cell>Alice</Table.Cell>
+        </Table.Row>
       </Table>,
     );
+
+    const table = screen.getByRole("table");
+
+    expect(
+      table.querySelectorAll("thead > tr"),
+    ).toHaveLength(2);
+  });
+
+  it("applies default variant and density", () => {
+    render(<Table />);
+
+    expect(
+      screen.getByRole("table"),
+    ).toHaveClass(
+      "aui-table--default",
+      "aui-table--comfortable",
+    );
+  });
+
+  it("supports striped variant", () => {
+    render(<Table variant="striped" />);
 
     expect(
       screen.getByRole("table"),
     ).toHaveClass("aui-table--striped");
   });
 
-  it("applies compact density", () => {
-    render(
-      <Table density="compact">
-        <tbody>
-          <tr>
-            <td>Compact</td>
-          </tr>
-        </tbody>
-      </Table>,
-    );
+  it("supports compact density", () => {
+    render(<Table density="compact" />);
 
     expect(
       screen.getByRole("table"),
     ).toHaveClass("aui-table--compact");
   });
 
-  it("applies bordered styling", () => {
+  it("supports bordered and hoverable", () => {
     render(
-      <Table bordered>
-        <tbody>
-          <tr>
-            <td>Bordered</td>
-          </tr>
-        </tbody>
-      </Table>,
+      <Table bordered hoverable />,
     );
 
     expect(
       screen.getByRole("table"),
-    ).toHaveClass("aui-table--bordered");
+    ).toHaveClass(
+      "aui-table--bordered",
+      "aui-table--hoverable",
+    );
   });
 
   it("forwards native table attributes", () => {
@@ -103,102 +146,149 @@ describe("Table", () => {
       <Table
         data-testid="users-table"
         aria-label="Users"
-      >
-        <tbody>
-          <tr>
-            <td>User</td>
-          </tr>
-        </tbody>
-      </Table>,
+      />,
     );
 
-    const table =
-      screen.getByTestId("users-table");
-
-    expect(table).toHaveAttribute(
-      "aria-label",
-      "Users",
-    );
+    expect(
+      screen.getByTestId("users-table"),
+    ).toHaveAttribute("aria-label", "Users");
   });
 
-  it("forwards a ref to the table element", () => {
-    let tableElement:
-      | HTMLTableElement
-      | null = null;
+  it("forwards a ref to the table", () => {
+    const ref = createRef<HTMLTableElement>();
 
-    render(
-      <Table
-        ref={(element) => {
-          tableElement = element;
-        }}
-      >
-        <tbody>
-          <tr>
-            <td>User</td>
-          </tr>
-        </tbody>
-      </Table>,
-    );
+    render(<Table ref={ref} />);
 
-    expect(tableElement).toBeInstanceOf(
+    expect(ref.current).toBeInstanceOf(
       HTMLTableElement,
     );
   });
 
-  it("supports a caption", () => {
+  it("supports custom class names", () => {
     render(
-      <Table>
-        <caption>Users</caption>
-
-        <tbody>
-          <tr>
-            <td>Alice</td>
-          </tr>
-        </tbody>
-      </Table>,
-    );
-
-    expect(
-      screen.getByText("Users"),
-    ).toBeInTheDocument();
-  });
-
-  it("supports the default variant and density", () => {
-    render(
-      <Table>
-        <tbody>
-          <tr>
-            <td>Default</td>
-          </tr>
-        </tbody>
-      </Table>,
-    );
-
-    const table =
-      screen.getByRole("table");
-
-    expect(table).toHaveClass(
-      "aui-table--default",
-    );
-
-    expect(table).toHaveClass(
-      "aui-table--comfortable",
-    );
-  });
-
-  it("allows custom class names", () => {
-    render(
-      <Table className="custom-table">
-        <tbody>
-          <tr>
-            <td>Custom</td>
-          </tr>
-        </tbody>
-      </Table>,
+      <Table className="custom-table" />,
     );
 
     expect(
       screen.getByRole("table"),
     ).toHaveClass("custom-table");
+  });
+
+  it("supports Table.Caption", () => {
+    render(
+      <Table>
+        <Table.Caption>Team members</Table.Caption>
+      </Table>,
+    );
+
+    expect(
+      screen.getByText("Team members"),
+    ).toBeInTheDocument();
+  });
+
+  it("forwards attributes and class names to rows and cells", () => {
+    render(
+      <Table>
+        <Table.Row data-testid="table-row">
+          <Table.Head
+            data-testid="table-head"
+            className="custom-head"
+          >
+            Name
+          </Table.Head>
+
+          <Table.Cell
+            data-testid="table-cell"
+            className="custom-cell"
+          >
+            Alice
+          </Table.Cell>
+        </Table.Row>
+      </Table>,
+    );
+
+    expect(
+      screen.getByTestId("table-row"),
+    ).toHaveClass("aui-table__row");
+
+    expect(
+      screen.getByTestId("table-head"),
+    ).toHaveClass(
+      "aui-table__head",
+      "custom-head",
+    );
+
+    expect(
+      screen.getByTestId("table-cell"),
+    ).toHaveClass(
+      "aui-table__cell",
+      "custom-cell",
+    );
+  });
+
+  it("forwards refs to compound elements", () => {
+    const rowRef = createRef<HTMLTableRowElement>();
+    const headRef = createRef<HTMLTableCellElement>();
+    const cellRef = createRef<HTMLTableCellElement>();
+
+    render(
+      <Table>
+        <Table.Row ref={rowRef}>
+          <Table.Head ref={headRef}>
+            Name
+          </Table.Head>
+
+          <Table.Cell ref={cellRef}>
+            Alice
+          </Table.Cell>
+        </Table.Row>
+      </Table>,
+    );
+
+    expect(rowRef.current).toBeInstanceOf(
+      HTMLTableRowElement,
+    );
+
+    expect(headRef.current).toBeInstanceOf(
+      HTMLTableCellElement,
+    );
+
+    expect(cellRef.current).toBeInstanceOf(
+      HTMLTableCellElement,
+    );
+  });
+
+  it("supports wrapper attributes and class names", () => {
+    render(
+      <Table
+        wrapperClassName="custom-wrapper"
+        wrapperProps={{
+          className: "wrapper-props-class",
+          "data-testid": "table-wrapper",
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByTestId("table-wrapper"),
+    ).toHaveClass(
+      "aui-table__wrapper",
+      "custom-wrapper",
+      "wrapper-props-class",
+    );
+  });
+
+  it("defaults column headers to scope col", () => {
+    render(
+      <Table>
+        <Table.Row>
+          <Table.Head>Name</Table.Head>
+        </Table.Row>
+      </Table>,
+    );
+
+    expect(
+      screen.getByRole("columnheader"),
+    ).toHaveAttribute("scope", "col");
   });
 });

@@ -1,38 +1,34 @@
-import {
-  Stat,
-} from "@vnallmini/react";
+import { Stat } from "@vnallmini/react";
 
 export function StatDemo() {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns:
-          "repeat(3, minmax(0, 1fr))",
-        gap: "var(--aui-token-space-6)",
-        width: "100%",
-      }}
-    >
-      <Stat
-        label="Revenue"
-        value="$12,480"
-        description="This month"
-        trend="positive"
-      />
+    <div className="demo-preview aui-stat-demo">
+      <Stat>
+        <Stat.Label>Revenue</Stat.Label>
+        <Stat.Value>$12,480</Stat.Value>
+        <Stat.Description>This month</Stat.Description>
+        <Stat.Change variant="positive">
+          +12.5%
+        </Stat.Change>
+      </Stat>
 
-      <Stat
-        label="Users"
-        value="1,284"
-        description="Active users"
-        trend="neutral"
-      />
+      <Stat>
+        <Stat.Label>Users</Stat.Label>
+        <Stat.Value>1,284</Stat.Value>
+        <Stat.Description>Active users</Stat.Description>
+        <Stat.Change>
+          No change
+        </Stat.Change>
+      </Stat>
 
-      <Stat
-        label="Orders"
-        value="342"
-        description="This month"
-        trend="negative"
-      />
+      <Stat>
+        <Stat.Label>Orders</Stat.Label>
+        <Stat.Value>342</Stat.Value>
+        <Stat.Description>This month</Stat.Description>
+        <Stat.Change variant="negative">
+          -4.2%
+        </Stat.Change>
+      </Stat>
     </div>
   );
 }

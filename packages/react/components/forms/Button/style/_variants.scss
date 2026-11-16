@@ -1,0 +1,62 @@
+.aui-button--primary {
+  background: var(--aui-theme-primary);
+  color: var(--aui-theme-on-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-primary-hover);
+  }
+}
+
+.aui-button--secondary {
+  background: var(--aui-theme-secondary);
+  color: var(--aui-theme-on-secondary);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-secondary-hover);
+  }
+}
+
+.aui-button--success {
+  background: var(--aui-theme-success);
+  color: var(--aui-theme-on-success);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-success-hover);
+  }
+}
+
+.aui-button--warning {
+  background: var(--aui-theme-warning);
+  color: var(--aui-theme-on-warning);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-warning-hover);
+  }
+}
+
+.aui-button--danger {
+  background: var(--aui-theme-danger);
+  color: var(--aui-theme-on-danger);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-danger-hover);
+  }
+}
+
+.aui-button--info {
+  background: var(--aui-theme-info);
+  color: var(--aui-theme-on-info);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-info-hover);
+  }
+}
+
+.aui-button--ghost {
+  background: transparent;
+  color: var(--aui-theme-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--aui-theme-surface-2);
+  }
+}

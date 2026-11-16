@@ -12,6 +12,10 @@ export function StatsOverviewDemo() {
             label: "Người dùng",
             value: "2.480",
             description: "Tổng số tài khoản",
+            change: {
+              value: "+12.5%",
+              variant: "positive",
+            },
           },
           {
             id: "projects",
@@ -24,6 +28,10 @@ export function StatsOverviewDemo() {
             label: "Hoàn thành",
             value: "86%",
             description: "Tỷ lệ hoàn thành",
+            change: {
+              value: "Không thay đổi",
+              variant: "neutral",
+            },
           },
         ]}
       />

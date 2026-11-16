@@ -3,26 +3,17 @@ import type {
   ReactNode,
 } from "react";
 
-export interface AccordionItem {
-  id: string;
-  title: ReactNode;
-  content: ReactNode;
-  disabled?: boolean;
-}
-
 export interface AccordionProps
-  extends Omit<
-    HTMLAttributes<HTMLDivElement>,
-    "children"
-  > {
-  items: AccordionItem[];
-
+  extends HTMLAttributes<HTMLDivElement> {
   multiple?: boolean;
-
   openIds?: string[];
   defaultOpenIds?: string[];
+  onOpenChange?: (openIds: string[]) => void;
+}
 
-  onOpenChange?: (
-    openIds: string[],
-  ) => void;
+export interface AccordionItemProps
+  extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+  id: string;
+  title: ReactNode;
+  disabled?: boolean;
 }

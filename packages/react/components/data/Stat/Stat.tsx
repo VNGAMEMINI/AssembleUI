@@ -1,56 +1,118 @@
-import {
-  forwardRef,
-} from "react";
+import { forwardRef } from "react";
 
-import {
-  classNames,
-} from "../../../core/utils";
+import { classNames } from "../../../core/utils";
 
 import type {
+  StatChangeProps,
+  StatDescriptionProps,
+  StatLabelProps,
   StatProps,
+  StatValueProps,
 } from "./Stat.types";
 
-export const Stat = forwardRef<
-  HTMLElement,
-  StatProps
+const StatLabel = forwardRef<
+  HTMLDivElement,
+  StatLabelProps
+>(
+  ({ className, ...props }, ref) => (
+    <div
+      {...props}
+      ref={ref}
+      className={classNames(
+        "aui-stat__label",
+        className,
+      )}
+    />
+  ),
+);
+
+StatLabel.displayName = "Stat.Label";
+
+const StatValue = forwardRef<
+  HTMLDivElement,
+  StatValueProps
+>(
+  ({ className, ...props }, ref) => (
+    <div
+      {...props}
+      ref={ref}
+      className={classNames(
+        "aui-stat__value",
+        className,
+      )}
+    />
+  ),
+);
+
+StatValue.displayName = "Stat.Value";
+
+const StatDescription = forwardRef<
+  HTMLDivElement,
+  StatDescriptionProps
+>(
+  ({ className, ...props }, ref) => (
+    <div
+      {...props}
+      ref={ref}
+      className={classNames(
+        "aui-stat__description",
+        className,
+      )}
+    />
+  ),
+);
+
+StatDescription.displayName = "Stat.Description";
+
+const StatChange = forwardRef<
+  HTMLSpanElement,
+  StatChangeProps
 >(
   (
     {
-      label,
-      value,
-      description,
-      trend = "neutral",
+      variant = "neutral",
       className,
       ...props
     },
     ref,
-  ) => {
-    return (
-      <section
-        {...props}
-        ref={ref}
-        className={classNames(
-          "aui-stat",
-          `aui-stat--${trend}`,
-          className,
-        )}
-      >
-        <div className="aui-stat__label">
-          {label}
-        </div>
-
-        <div className="aui-stat__value">
-          {value}
-        </div>
-
-        {description !== undefined && (
-          <div className="aui-stat__description">
-            {description}
-          </div>
-        )}
-      </section>
-    );
-  },
+  ) => (
+    <span
+      {...props}
+      ref={ref}
+      className={classNames(
+        "aui-stat__change",
+        `aui-stat__change--${variant}`,
+        className,
+      )}
+    />
+  ),
 );
 
-Stat.displayName = "Stat";
+StatChange.displayName = "Stat.Change";
+
+const StatRoot = forwardRef<
+  HTMLElement,
+  StatProps
+>(
+  ({ className, ...props }, ref) => (
+    <article
+      {...props}
+      ref={ref}
+      className={classNames(
+        "aui-stat",
+        className,
+      )}
+    />
+  ),
+);
+
+StatRoot.displayName = "Stat";
+
+const Stat = Object.assign(StatRoot, {
+  Label: StatLabel,
+  Value: StatValue,
+  Description: StatDescription,
+  Change: StatChange,
+});
+
+export { Stat };

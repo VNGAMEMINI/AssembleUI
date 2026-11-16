@@ -1,17 +1,25 @@
 import type {
   HTMLAttributes,
-  ReactNode,
 } from "react";
 
-export type StatTrend =
+export type StatChangeVariant =
   | "positive"
   | "negative"
   | "neutral";
 
 export interface StatProps
-  extends HTMLAttributes<HTMLElement> {
-  label: ReactNode;
-  value: ReactNode;
-  description?: ReactNode;
-  trend?: StatTrend;
+  extends HTMLAttributes<HTMLElement> {}
+
+export interface StatLabelProps
+  extends HTMLAttributes<HTMLDivElement> {}
+
+export interface StatValueProps
+  extends HTMLAttributes<HTMLDivElement> {}
+
+export interface StatDescriptionProps
+  extends HTMLAttributes<HTMLDivElement> {}
+
+export interface StatChangeProps
+  extends HTMLAttributes<HTMLSpanElement> {
+  variant?: StatChangeVariant;
 }

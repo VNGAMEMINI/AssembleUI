@@ -9,9 +9,7 @@ import {
   it,
 } from "vitest";
 
-import {
-  StatsOverview,
-} from "./StatsOverview";
+import { StatsOverview } from "./StatsOverview";
 
 describe("StatsOverview", () => {
   it("renders all statistics", () => {
@@ -37,29 +35,12 @@ describe("StatsOverview", () => {
       />,
     );
 
-    expect(
-      screen.getByText("Users"),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText("12,400"),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText("Orders"),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText("842"),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText("Revenue"),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText("$24,500"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Users")).toBeInTheDocument();
+    expect(screen.getByText("12,400")).toBeInTheDocument();
+    expect(screen.getByText("Orders")).toBeInTheDocument();
+    expect(screen.getByText("842")).toBeInTheDocument();
+    expect(screen.getByText("Revenue")).toBeInTheDocument();
+    expect(screen.getByText("$24,500")).toBeInTheDocument();
   });
 
   it("renders the optional header", () => {
@@ -85,13 +66,11 @@ describe("StatsOverview", () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByText(
-        "Current account statistics.",
-      ),
+      screen.getByText("Current account statistics."),
     ).toBeInTheDocument();
   });
 
-  it("renders stat descriptions and trends", () => {
+  it("renders descriptions and changes", () => {
     render(
       <StatsOverview
         items={[
@@ -99,100 +78,79 @@ describe("StatsOverview", () => {
             id: "revenue",
             label: "Revenue",
             value: "$24,500",
-            description: "Up 12% this month",
-            trend: "positive",
+            description: "This month",
+            change: {
+              value: "+12%",
+              variant: "positive",
+            },
           },
           {
             id: "refunds",
             label: "Refunds",
             value: "$1,200",
-            description: "Down 4% this month",
-            trend: "negative",
+            description: "This month",
+            change: {
+              value: "-4%",
+              variant: "negative",
+            },
           },
         ]}
       />,
     );
 
-    expect(
-      screen.getByText("Up 12% this month"),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText("Down 4% this month"),
-    ).toBeInTheDocument();
-
-    expect(
-      document.querySelector(
-        ".aui-stat--positive",
-      ),
-    ).toBeInTheDocument();
-
-    expect(
-      document.querySelector(
-        ".aui-stat--negative",
-      ),
-    ).toBeInTheDocument();
+    expect(screen.getAllByText("This month")).toHaveLength(2);
+    expect(screen.getByText("+12%")).toHaveClass(
+      "aui-stat__change--positive",
+    );
+    expect(screen.getByText("-4%")).toHaveClass(
+      "aui-stat__change--negative",
+    );
   });
 
-  it("supports a custom class name", () => {
+  it("renders a change without a variant as neutral", () => {
     render(
       <StatsOverview
-        className="custom-stats-overview"
         items={[
           {
             id: "users",
             label: "Users",
             value: 100,
+            change: {
+              value: "No change",
+            },
           },
         ]}
       />,
     );
 
-    expect(
-      document.querySelector(
-        ".aui-stats-overview",
-      ),
-    ).toHaveClass(
+    expect(screen.getByText("No change")).toHaveClass(
+      "aui-stat__change--neutral",
+    );
+  });
+
+  it("supports a custom class name and section attributes", () => {
+    render(
+      <StatsOverview
+        className="custom-stats-overview"
+        data-testid="stats-overview"
+        items={[]}
+      />,
+    );
+
+    expect(screen.getByTestId("stats-overview")).toHaveClass(
       "custom-stats-overview",
     );
   });
 
-  it("supports section HTML attributes", () => {
-    render(
-      <StatsOverview
-        data-testid="stats-overview"
-        items={[
-          {
-            id: "users",
-            label: "Users",
-            value: 100,
-          },
-        ]}
-      />,
-    );
-
-    expect(
-      screen.getByTestId(
-        "stats-overview",
-      ),
-    ).toBeInTheDocument();
-  });
-
   it("renders an empty overview without statistics", () => {
-    render(
-      <StatsOverview items={[]} />,
-    );
+    render(<StatsOverview items={[]} />);
 
     expect(
-      document.querySelector(
-        ".aui-stats-overview__grid",
-      ),
+      document.querySelector(".aui-stats-overview__grid"),
     ).toBeInTheDocument();
 
     expect(
-      document.querySelector(
-        ".aui-stat",
-      ),
+      document.querySelector(".aui-stat"),
     ).not.toBeInTheDocument();
   });
 });

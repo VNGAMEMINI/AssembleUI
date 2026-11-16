@@ -1,40 +1,40 @@
-import {
-  Table,
-} from "@vnallmini/react";
+import { Table } from "@vnallmini/react";
 
 export function TableDemo() {
   return (
     <Table
-      variant="striped"
-      bordered
+      title="Project overview"
+      density="comfortable"
+      hoverable
     >
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Status</th>
-          <th>Value</th>
-        </tr>
-      </thead>
+      <Table.Row>
+        <Table.Head>Project</Table.Head>
+        <Table.Head>Status</Table.Head>
+        <Table.Head>Value</Table.Head>
+      </Table.Row>
 
-      <tbody>
-        <tr>
-          <td>Project Alpha</td>
-          <td>Active</td>
-          <td>$12,480</td>
-        </tr>
+      <Table.Row>
+        <Table.Cell>Project Alpha</Table.Cell>
+        <Table.Cell>Active</Table.Cell>
+        <Table.Cell>$12,480</Table.Cell>
+      </Table.Row>
 
-        <tr>
-          <td>Project Beta</td>
-          <td>Pending</td>
-          <td>$8,240</td>
-        </tr>
+      <Table.Row>
+        <Table.Cell>Project Beta</Table.Cell>
+        <Table.Cell>Pending</Table.Cell>
+        <Table.Cell>$8,240</Table.Cell>
+      </Table.Row>
 
-        <tr>
-          <td>Project Gamma</td>
-          <td>Completed</td>
-          <td>$19,620</td>
-        </tr>
-      </tbody>
+      <Table.Row>
+        <Table.Cell>Project Gamma</Table.Cell>
+        <Table.Cell>Completed</Table.Cell>
+        <Table.Cell>$19,620</Table.Cell>
+      </Table.Row>
+
+      <Table.Row>
+        <Table.Cell colSpan={2}>Total</Table.Cell>
+        <Table.Cell>$40,340</Table.Cell>
+      </Table.Row>
     </Table>
   );
 }

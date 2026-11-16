@@ -1,5 +1,6 @@
 import type {
   HTMLAttributes,
+  LiHTMLAttributes,
   ReactNode,
 } from "react";
 
@@ -11,6 +12,11 @@ export type ListDensity =
   | "comfortable"
   | "compact";
 
+export type ListMarker =
+  | "none"
+  | "disc"
+  | "decimal";
+
 export interface ListProps
   extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
@@ -18,4 +24,8 @@ export interface ListProps
   orientation?: ListOrientation;
   density?: ListDensity;
   divided?: boolean;
+  marker?: ListMarker;
 }
+
+export interface ListItemProps
+  extends LiHTMLAttributes<HTMLLIElement> {}

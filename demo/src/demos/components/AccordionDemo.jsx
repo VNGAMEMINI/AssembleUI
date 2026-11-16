@@ -1,44 +1,73 @@
-import { Accordion } from "@vnallmini/react";
-
-const items = [
-  {
-    id: "overview",
-    title: "Tổng quan",
-    content: "AssembleUI là thư viện React UI theo hướng Composition First.",
-  },
-  {
-    id: "components",
-    title: "Components",
-    content: "Component là các khối UI cơ bản, độc lập và có thể tái sử dụng.",
-  },
-  {
-    id: "patterns",
-    title: "Patterns",
-    content: "Pattern kết hợp nhiều UI để tạo ra một khối giao diện có ý nghĩa.",
-  },
-  {
-    id: "disabled",
-    title: "Mục bị vô hiệu hóa",
-    content: "Nội dung này không thể mở.",
-    disabled: true,
-  },
-];
+import { Accordion, Button } from "@vnallmini/react";
 
 export function AccordionDemo() {
   return (
     <div className="demo-preview">
       <Accordion
-        items={items}
         defaultOpenIds={["overview"]}
         aria-label="Thông tin AssembleUI"
-      />
+      >
+        <Accordion.Item
+          id="overview"
+          title="Tổng quan"
+        >
+          <p>
+            AssembleUI là thư viện React UI theo hướng
+            Composition First.
+          </p>
+        </Accordion.Item>
+
+        <Accordion.Item
+          id="components"
+          title="Components"
+        >
+          <p>
+            Component là các khối UI cơ bản, độc lập
+            và có thể tái sử dụng.
+          </p>
+          <Button size="sm" variant="primary">
+            Khám phá Components
+          </Button>
+        </Accordion.Item>
+
+        <Accordion.Item
+          id="patterns"
+          title="Patterns"
+        >
+          <p>
+            Pattern kết hợp nhiều UI để tạo ra một
+            khối giao diện có ý nghĩa.
+          </p>
+        </Accordion.Item>
+
+        <Accordion.Item
+          id="disabled"
+          title="Mục bị vô hiệu hóa"
+          disabled
+        >
+          Nội dung này không thể mở.
+        </Accordion.Item>
+      </Accordion>
 
       <Accordion
-        items={items}
         multiple
         defaultOpenIds={["components", "patterns"]}
         aria-label="Chi tiết AssembleUI"
-      />
+      >
+        <Accordion.Item
+          id="components"
+          title="Components"
+        >
+          Component là các khối UI cơ bản.
+        </Accordion.Item>
+
+        <Accordion.Item
+          id="patterns"
+          title="Patterns"
+        >
+          Pattern kết hợp nhiều component.
+        </Accordion.Item>
+      </Accordion>
     </div>
   );
 }

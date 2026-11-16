@@ -58,7 +58,8 @@
   padding: 0.45rem 0.7rem;
   color: var(--aui-theme-success);
   background: var(--aui-theme-success-bg);
-  border: 1px solid color-mix(in srgb, var(--aui-theme-success) 18%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--aui-theme-success) 18%, transparent);
   border-radius: 999px;
   font-size: 0.68rem;
   font-weight: 750;
@@ -148,13 +149,20 @@
   cursor: pointer;
   font-size: 0.7rem;
   font-weight: 680;
-  transition: color 140ms ease, background 140ms ease, border-color 140ms ease;
+  transition:
+    color 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease;
 }
 
 .demo-copy-button:hover {
   color: var(--aui-theme-primary);
   background: var(--demo-accent-soft);
-  border-color: color-mix(in srgb, var(--aui-theme-primary) 38%, var(--demo-border));
+  border-color: color-mix(
+    in srgb,
+    var(--aui-theme-primary) 38%,
+    var(--demo-border)
+  );
 }
 
 .demo-copy-button:disabled {
@@ -249,4 +257,21 @@
   flex: 1;
   min-height: 0;
   overflow: auto;
+}
+
+.demo-preview__canvas:has(.aui-stat-demo) {
+  min-height: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.aui-stat-demo {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--aui-token-space-4);
+  align-items: stretch;
+}
+
+@media (max-width: 40rem) {
+  .aui-stat-demo {
+    grid-template-columns: 1fr;
+  }
 }

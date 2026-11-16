@@ -14,18 +14,30 @@ const data = {
       label: "Tổng dự án",
       value: 24,
       description: "Dự án trong hệ thống",
+      change: {
+        value: "+12.5%",
+        variant: "positive",
+      },
     },
     {
       id: "active",
       label: "Đang thực hiện",
       value: 12,
       description: "Dự án đang hoạt động",
+      change: {
+        value: "+3 dự án",
+        variant: "positive",
+      },
     },
     {
       id: "completed",
       label: "Đã hoàn thành",
       value: 9,
       description: "Dự án hoàn tất",
+      change: {
+        value: "Không thay đổi",
+        variant: "neutral",
+      },
     },
   ],
   toolbar: {

@@ -1,0 +1,40 @@
+.aui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aui-token-space-2);
+
+  box-sizing: border-box;
+  min-height: var(--aui-token-space-10);
+  padding-inline: var(--aui-token-space-4);
+
+  border: 1px solid transparent;
+  border-radius: var(--aui-token-radius-md);
+
+  font-family: var(--aui-token-font-family-base);
+  font-size: var(--aui-token-font-size-md);
+  font-weight: var(--aui-token-font-weight-medium);
+  line-height: var(--aui-token-line-height-normal);
+
+  cursor: pointer;
+
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--aui-theme-state-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:active:not(:disabled) {
+    opacity: var(--aui-token-state-active-opacity);
+  }
+
+  &:disabled {
+    cursor: var(--aui-token-state-disabled-cursor);
+    opacity: var(--aui-token-state-disabled-opacity);
+  }
+}

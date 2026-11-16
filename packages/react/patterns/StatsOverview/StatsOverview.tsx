@@ -1,6 +1,4 @@
-import {
-  forwardRef,
-} from "react";
+import { forwardRef } from "react";
 
 import {
   Stat,
@@ -8,9 +6,7 @@ import {
   Text,
 } from "../../components";
 
-import {
-  classNames,
-} from "../../core/utils";
+import { classNames } from "../../core/utils";
 
 import type {
   StatsOverviewProps,
@@ -64,13 +60,29 @@ export const StatsOverview = forwardRef<
 
         <div className="aui-stats-overview__grid">
           {items.map((item) => (
-            <Stat
-              key={item.id}
-              label={item.label}
-              value={item.value}
-              description={item.description}
-              trend={item.trend}
-            />
+            <Stat key={item.id}>
+              <Stat.Label>
+                {item.label}
+              </Stat.Label>
+
+              <Stat.Value>
+                {item.value}
+              </Stat.Value>
+
+              {item.description != null && (
+                <Stat.Description>
+                  {item.description}
+                </Stat.Description>
+              )}
+
+              {item.change != null && (
+                <Stat.Change
+                  variant={item.change.variant}
+                >
+                  {item.change.value}
+                </Stat.Change>
+              )}
+            </Stat>
           ))}
         </div>
       </section>

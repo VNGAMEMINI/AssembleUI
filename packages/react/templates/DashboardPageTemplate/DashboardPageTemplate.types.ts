@@ -1,12 +1,19 @@
 import type { HTMLAttributes } from "react";
-import type { BreadcrumbItem, StatTrend } from "../../components";
+
+import type {
+  BreadcrumbItem,
+  StatChangeVariant,
+} from "../../components";
 
 export interface DashboardPageStatData {
   id: string;
   label: string;
   value: string | number;
   description?: string;
-  trend?: StatTrend;
+  change?: {
+    value: string | number;
+    variant?: StatChangeVariant;
+  };
 }
 
 export interface DashboardPageColumnData {

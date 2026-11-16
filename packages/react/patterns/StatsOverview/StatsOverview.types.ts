@@ -4,7 +4,7 @@ import type {
 } from "react";
 
 import type {
-  StatTrend,
+  StatChangeVariant,
 } from "../../components";
 
 export interface StatsOverviewItem {
@@ -12,7 +12,10 @@ export interface StatsOverviewItem {
   label: ReactNode;
   value: ReactNode;
   description?: ReactNode;
-  trend?: StatTrend;
+  change?: {
+    value: ReactNode;
+    variant?: StatChangeVariant;
+  };
 }
 
 export interface StatsOverviewProps

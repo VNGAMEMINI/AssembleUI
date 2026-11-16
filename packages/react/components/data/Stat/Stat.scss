@@ -1,44 +1,72 @@
 .aui-stat {
   display: flex;
   flex-direction: column;
-  gap: var(--aui-token-space-1);
+  align-items: flex-start;
+  gap: var(--aui-token-space-2);
 
-  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 8rem;
+  padding: var(--aui-token-space-4);
+
+  color: var(--aui-theme-text);
+  background: var(--aui-theme-surface);
+
+  border: var(--aui-token-border-width-thin) solid
+    var(--aui-theme-border);
+  border-radius: var(--aui-token-radius-lg);
 }
 
 .aui-stat__label {
-  color: var(--aui-theme-text);
-
+  color: var(--aui-theme-text-muted);
   font-size: var(--aui-token-font-size-sm);
+  font-weight: var(--aui-token-font-weight-medium);
+  line-height: 1.4;
 }
 
 .aui-stat__value {
   color: var(--aui-theme-text);
-
-  font-size: var(--aui-token-font-size-md);
-  font-weight: var(--aui-token-font-weight-medium);
+  font-size: var(--aui-token-font-size-2xl);
+  font-weight: var(--aui-token-font-weight-semibold);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .aui-stat__description {
-  color: var(--aui-theme-text);
+  color: var(--aui-theme-text-muted);
+  font-size: var(--aui-token-font-size-xs);
+  line-height: 1.5;
+}
+
+.aui-stat__change {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+  max-width: 100%;
+  margin-top: var(--aui-token-space-1);
 
   font-size: var(--aui-token-font-size-xs);
+  font-weight: var(--aui-token-font-weight-medium);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
-.aui-stat--positive {
-  .aui-stat__value {
-    color: var(--aui-theme-success);
-  }
+.aui-stat__change--positive {
+  color: var(--aui-theme-success);
 }
 
-.aui-stat--negative {
-  .aui-stat__value {
-    color: var(--aui-theme-danger);
-  }
+.aui-stat__change--negative {
+  color: var(--aui-theme-danger);
 }
 
-.aui-stat--neutral {
-  .aui-stat__value {
-    color: var(--aui-theme-text);
+.aui-stat__change--neutral {
+  color: var(--aui-theme-text-muted);
+}
+
+@media (max-width: 40rem) {
+  .aui-stat {
+    min-height: 7rem;
+    padding: var(--aui-token-space-3);
   }
 }

@@ -1,4 +1,5 @@
 .aui-list {
+  box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -32,7 +33,9 @@
   --aui-list-item-space: var(--aui-token-space-2);
 }
 
+.aui-list__item,
 .aui-list > li {
+  box-sizing: border-box;
   padding-top: var(--aui-list-item-space);
   padding-bottom: var(--aui-list-item-space);
 }
@@ -43,15 +46,40 @@
   padding-bottom: 0;
 }
 
+.aui-list--marker-disc > li {
+  display: list-item;
+  list-style-type: disc;
+}
+
+.aui-list--marker-decimal > li {
+  display: list-item;
+  list-style-type: decimal;
+}
+
+.aui-list--marker-disc,
+.aui-list--marker-decimal {
+  padding-inline-start: var(--aui-token-space-5);
+}
+
+.aui-list--horizontal.aui-list--marker-disc,
+.aui-list--horizontal.aui-list--marker-decimal {
+  padding-inline-start: 0;
+}
+
 .aui-list--divided > li + li {
-  border-top: var(--aui-token-border-width-thin) solid
+  border-top:
+    var(--aui-token-border-width-thin)
+    solid
     var(--aui-theme-border);
 }
 
 .aui-list--horizontal.aui-list--divided > li + li {
   border-top: 0;
-  border-left: var(--aui-token-border-width-thin) solid
+  border-left:
+    var(--aui-token-border-width-thin)
+    solid
     var(--aui-theme-border);
+
   padding-left: var(--aui-token-space-4);
 }
 

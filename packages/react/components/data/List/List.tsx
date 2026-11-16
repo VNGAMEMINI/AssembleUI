@@ -8,10 +8,35 @@ import {
 } from "../../../core/utils";
 
 import type {
+  ListItemProps,
   ListProps,
 } from "./List.types";
 
-export const List = forwardRef<
+const ListItem = forwardRef<
+  HTMLLIElement,
+  ListItemProps
+>(
+  (
+    {
+      className,
+      ...props
+    },
+    ref,
+  ) => (
+    <li
+      {...props}
+      ref={ref}
+      className={classNames(
+        "aui-list__item",
+        className,
+      )}
+    />
+  ),
+);
+
+ListItem.displayName = "List.Item";
+
+const ListRoot = forwardRef<
   HTMLElement,
   ListProps
 >(
@@ -21,6 +46,7 @@ export const List = forwardRef<
       orientation = "vertical",
       density = "comfortable",
       divided = false,
+      marker = "none",
       className,
       ...props
     },
@@ -39,6 +65,7 @@ export const List = forwardRef<
           "aui-list",
           `aui-list--${orientation}`,
           `aui-list--${density}`,
+          `aui-list--marker-${marker}`,
           divided &&
             "aui-list--divided",
           className,
@@ -48,4 +75,10 @@ export const List = forwardRef<
   },
 );
 
-List.displayName = "List";
+ListRoot.displayName = "List";
+
+const List = Object.assign(ListRoot, {
+  Item: ListItem,
+});
+
+export { List };

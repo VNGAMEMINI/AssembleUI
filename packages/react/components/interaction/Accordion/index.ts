@@ -1,6 +1,5 @@
 export { Accordion } from "./Accordion";
-
 export type {
-  AccordionItem,
+  AccordionItemProps,
   AccordionProps,
 } from "./Accordion.types";

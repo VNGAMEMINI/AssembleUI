@@ -2,7 +2,8 @@
 
 .aui-calendar {
   box-sizing: border-box;
-  width: min(100%, 20rem);
+  width: min(100%, 23rem);
+  padding: var(--aui-token-space-2);
   border: 1px solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-md);
   color: var(--aui-theme-text, var(--aui-theme-fg));
@@ -74,6 +75,7 @@
   min-width: 0;
   min-height: 2rem;
   padding: 0;
+  margin: var(--aui-token-space-1);
   border: 0;
   background: transparent;
   color: inherit;
@@ -124,7 +126,10 @@
       --aui-theme-primary,
       var(
         --aui-theme-accent,
-        var(--aui-theme-surface-2, var(--aui-theme-surface, var(--aui-theme-bg)))
+        var(
+          --aui-theme-surface-2,
+          var(--aui-theme-surface, var(--aui-theme-bg))
+        )
       )
     )
   );

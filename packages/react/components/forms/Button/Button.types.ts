@@ -6,7 +6,10 @@ import type {
 export type ButtonVariant =
   | "primary"
   | "secondary"
+  | "success"
+  | "warning"
   | "danger"
+  | "info"
   | "ghost";
 
 export type ButtonSize =

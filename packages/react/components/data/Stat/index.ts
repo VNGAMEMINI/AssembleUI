@@ -3,6 +3,10 @@ export {
 } from "./Stat";
 
 export type {
+  StatChangeProps,
+  StatChangeVariant,
+  StatDescriptionProps,
+  StatLabelProps,
   StatProps,
-  StatTrend,
+  StatValueProps,
 } from "./Stat.types";

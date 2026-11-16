@@ -14,7 +14,7 @@ import {
 } from "./List";
 
 describe("List", () => {
-  it("renders list items", () => {
+  it("renders native list items", () => {
     render(
       <List>
         <li>First</li>
@@ -22,64 +22,56 @@ describe("List", () => {
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("list")).toBeInTheDocument();
+    expect(screen.getByText("First")).toBeInTheDocument();
+    expect(screen.getByText("Second")).toBeInTheDocument();
+  });
 
-    expect(
-      screen.getByText("First"),
-    ).toBeInTheDocument();
+  it("renders compound list items", () => {
+    render(
+      <List>
+        <List.Item>First</List.Item>
+        <List.Item>Second</List.Item>
+      </List>,
+    );
 
-    expect(
-      screen.getByText("Second"),
-    ).toBeInTheDocument();
+    expect(screen.getAllByRole("listitem")).toHaveLength(2);
+    expect(screen.getByText("First")).toBeInTheDocument();
+    expect(screen.getByText("Second")).toBeInTheDocument();
   });
 
   it("renders an ordered list", () => {
     render(
       <List ordered>
-        <li>First</li>
-        <li>Second</li>
+        <List.Item>First</List.Item>
+        <List.Item>Second</List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveAttribute("class", expect.stringContaining("aui-list"));
-
-    expect(
-      screen.getByRole("list"),
-    ).toHaveProperty(
-      "tagName",
-      "OL",
-    );
+    expect(screen.getByRole("list").tagName).toBe("OL");
   });
 
-  it("uses the vertical orientation by default", () => {
+  it("uses vertical orientation by default", () => {
     render(
       <List>
-        <li>Item</li>
+        <List.Item>Item</List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveClass(
+    expect(screen.getByRole("list")).toHaveClass(
       "aui-list--vertical",
     );
   });
 
-  it("applies the horizontal orientation", () => {
+  it("applies horizontal orientation", () => {
     render(
       <List orientation="horizontal">
-        <li>One</li>
-        <li>Two</li>
+        <List.Item>One</List.Item>
+        <List.Item>Two</List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveClass(
+    expect(screen.getByRole("list")).toHaveClass(
       "aui-list--horizontal",
     );
   });
@@ -87,13 +79,11 @@ describe("List", () => {
   it("uses comfortable density by default", () => {
     render(
       <List>
-        <li>Item</li>
+        <List.Item>Item</List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveClass(
+    expect(screen.getByRole("list")).toHaveClass(
       "aui-list--comfortable",
     );
   });
@@ -101,13 +91,11 @@ describe("List", () => {
   it("applies compact density", () => {
     render(
       <List density="compact">
-        <li>Item</li>
+        <List.Item>Item</List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveClass(
+    expect(screen.getByRole("list")).toHaveClass(
       "aui-list--compact",
     );
   });
@@ -115,79 +103,141 @@ describe("List", () => {
   it("applies divided styling", () => {
     render(
       <List divided>
-        <li>First</li>
-        <li>Second</li>
+        <List.Item>First</List.Item>
+        <List.Item>Second</List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveClass(
+    expect(screen.getByRole("list")).toHaveClass(
       "aui-list--divided",
     );
   });
 
-  it("forwards native attributes", () => {
+  it("uses no marker by default", () => {
+    render(
+      <List>
+        <List.Item>Item</List.Item>
+      </List>,
+    );
+
+    expect(screen.getByRole("list")).toHaveClass(
+      "aui-list--marker-none",
+    );
+  });
+
+  it("applies disc markers", () => {
+    render(
+      <List marker="disc">
+        <List.Item>Item</List.Item>
+      </List>,
+    );
+
+    expect(screen.getByRole("list")).toHaveClass(
+      "aui-list--marker-disc",
+    );
+  });
+
+  it("applies decimal markers", () => {
+    render(
+      <List ordered marker="decimal">
+        <List.Item>Item</List.Item>
+      </List>,
+    );
+
+    expect(screen.getByRole("list")).toHaveClass(
+      "aui-list--marker-decimal",
+    );
+  });
+
+  it("forwards native root attributes", () => {
     render(
       <List
         data-testid="user-list"
         aria-label="Users"
       >
-        <li>User</li>
+        <List.Item>User</List.Item>
       </List>,
     );
 
-    const list =
-      screen.getByTestId("user-list");
-
-    expect(list).toHaveAttribute(
+    expect(screen.getByTestId("user-list")).toHaveAttribute(
       "aria-label",
       "Users",
     );
   });
 
-  it("forwards a ref to the list element", () => {
-    let listElement:
-      | HTMLElement
-      | null = null;
-
+  it("forwards native item attributes", () => {
     render(
-      <List
-        ref={(element) => {
-          listElement = element;
-        }}
-      >
-        <li>Item</li>
+      <List>
+        <List.Item data-testid="user-item">
+          User
+        </List.Item>
       </List>,
     );
 
-    expect(listElement).toBeInstanceOf(
-      HTMLElement,
+    expect(screen.getByTestId("user-item")).toBeInTheDocument();
+  });
+
+  it("forwards a ref to the root element", () => {
+    const ref = {
+      current: null as HTMLElement | null,
+    };
+
+    render(
+      <List ref={ref}>
+        <List.Item>Item</List.Item>
+      </List>,
     );
 
-    const renderedList =
-      screen.getByRole("list");
+    const renderedList = screen.getByRole("list");
 
-    expect(renderedList).toBe(
-      listElement,
+    expect(ref.current).toBeInstanceOf(HTMLElement);
+    expect(ref.current?.tagName).toBe("UL");
+    expect(ref.current).toBe(renderedList);
+  });
+
+  it("forwards a ref to the item element", () => {
+    let itemElement: HTMLLIElement | null = null;
+
+    render(
+      <List>
+        <List.Item
+          ref={(element) => {
+            itemElement = element;
+          }}
+        >
+          Item
+        </List.Item>
+      </List>,
     );
 
-    expect(renderedList.tagName).toBe(
-      "UL",
+    expect(itemElement).toBeInstanceOf(HTMLLIElement);
+    expect(itemElement).toBe(screen.getByRole("listitem"));
+  });
+
+  it("allows custom root class names", () => {
+    render(
+      <List className="custom-list">
+        <List.Item>Item</List.Item>
+      </List>,
+    );
+
+    expect(screen.getByRole("list")).toHaveClass(
+      "custom-list",
     );
   });
 
-  it("allows custom class names", () => {
+  it("allows custom item class names", () => {
     render(
-      <List className="custom-list">
-        <li>Item</li>
+      <List>
+        <List.Item className="custom-item">
+          Item
+        </List.Item>
       </List>,
     );
 
-    expect(
-      screen.getByRole("list"),
-    ).toHaveClass(
-      "custom-list",
+    expect(screen.getByRole("listitem")).toHaveClass(
+      "aui-list__item",
+      "custom-item",
     );
   });
 });

@@ -1,21 +1,121 @@
-import { forwardRef, useEffect, useId, useState } from "react";
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useId,
+  useState,
+} from "react";
 
 import { classNames } from "../../../core/utils";
 
-import {
-  getAdjacentEnabledItem,
-  getBoundaryEnabledItem,
-  normalizeOpenIds,
-} from "./module/_accordion.utils";
-
 import type { KeyboardEvent } from "react";
 
-import type { AccordionItem, AccordionProps } from "./Accordion.types";
+import type {
+  AccordionItemProps,
+  AccordionProps,
+} from "./Accordion.types";
 
-const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
+interface AccordionContextValue {
+  openIds: string[];
+  toggleItem: (id: string, disabled: boolean) => void;
+}
+
+const AccordionContext =
+  createContext<AccordionContextValue | null>(null);
+
+function useAccordionContext(): AccordionContextValue {
+  const context = useContext(AccordionContext);
+
+  if (!context) {
+    throw new Error(
+      "Accordion.Item must be used within Accordion.",
+    );
+  }
+
+  return context;
+}
+
+const AccordionItem = forwardRef<
+  HTMLElement,
+  AccordionItemProps
+>(
   (
     {
-      items,
+      id,
+      title,
+      disabled = false,
+      children,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const reactId = useId();
+    const { openIds, toggleItem } = useAccordionContext();
+
+    const open = !disabled && openIds.includes(id);
+    const triggerId = `${reactId}-trigger`;
+    const panelId = `${reactId}-panel`;
+
+    return (
+      <section
+        {...props}
+        ref={ref}
+        className={classNames(
+          "aui-accordion__item",
+          open && "aui-accordion__item--open",
+          disabled && "aui-accordion__item--disabled",
+          className,
+        )}
+      >
+        <h3 className="aui-accordion__heading">
+          <button
+            type="button"
+            id={triggerId}
+            data-accordion-trigger=""
+            aria-expanded={open}
+            aria-controls={panelId}
+            disabled={disabled}
+            className="aui-accordion__trigger"
+            onClick={() => toggleItem(id, disabled)}
+          >
+            <span className="aui-accordion__title">
+              {title}
+            </span>
+
+            <span
+              aria-hidden="true"
+              className="aui-accordion__icon"
+            >
+              +
+            </span>
+          </button>
+        </h3>
+
+        {open && (
+          <div
+            id={panelId}
+            role="region"
+            aria-labelledby={triggerId}
+            className="aui-accordion__panel"
+          >
+            {children}
+          </div>
+        )}
+      </section>
+    );
+  },
+);
+
+AccordionItem.displayName = "Accordion.Item";
+
+const AccordionRoot = forwardRef<
+  HTMLDivElement,
+  AccordionProps
+>(
+  (
+    {
+      children,
       multiple = false,
       openIds,
       defaultOpenIds = [],
@@ -26,21 +126,43 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     },
     ref,
   ) => {
-    const reactId = useId();
-
     const isControlled = openIds !== undefined;
 
-    const [internalOpenIds, setInternalOpenIds] = useState<string[]>(
-      defaultOpenIds.filter((id) =>
-        items.some((item) => item.id === id && !item.disabled),
-      ),
-    );
+    const [internalOpenIds, setInternalOpenIds] =
+      useState<string[]>(
+        multiple ? defaultOpenIds : defaultOpenIds.slice(0, 1),
+      );
 
-    const activeOpenIds = isControlled
-      ? normalizeOpenIds(items, openIds, multiple)
+    const currentOpenIds = isControlled
+      ? openIds
       : internalOpenIds;
 
-    const setOpenIds = (nextOpenIds: string[]) => {
+    const activeOpenIds = multiple
+      ? currentOpenIds
+      : currentOpenIds.slice(0, 1);
+
+    const toggleItem = (
+      id: string,
+      disabled: boolean,
+    ) => {
+      if (disabled) {
+        return;
+      }
+
+      const isOpen = activeOpenIds.includes(id);
+
+      let nextOpenIds: string[];
+
+      if (isOpen) {
+        nextOpenIds = activeOpenIds.filter(
+          (openId) => openId !== id,
+        );
+      } else if (multiple) {
+        nextOpenIds = [...activeOpenIds, id];
+      } else {
+        nextOpenIds = [id];
+      }
+
       if (!isControlled) {
         setInternalOpenIds(nextOpenIds);
       }
@@ -48,181 +170,99 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
       onOpenChange?.(nextOpenIds);
     };
 
-    const isOpen = (id: string) => activeOpenIds.includes(id);
-
-    const toggleItem = (item: AccordionItem) => {
-      if (item.disabled) {
-        return;
-      }
-
-      const currentlyOpen = isOpen(item.id);
-
-      if (currentlyOpen) {
-        setOpenIds(activeOpenIds.filter((id) => id !== item.id));
-
-        return;
-      }
-
-      if (multiple) {
-        setOpenIds([...activeOpenIds, item.id]);
-
-        return;
-      }
-
-      setOpenIds([item.id]);
-    };
-
-    const getItemIndex = (eventTarget: EventTarget | null) => {
-      if (!(eventTarget instanceof HTMLButtonElement)) {
-        return -1;
-      }
-
-      const itemId = eventTarget.dataset.accordionItemId;
-
-      return items.findIndex((item) => item.id === itemId);
-    };
-
-    const focusItem = (
-      item: AccordionItem | undefined,
-      rootElement: HTMLDivElement,
+    const handleKeyDown = (
+      event: KeyboardEvent<HTMLDivElement>,
     ) => {
-      if (!item || item.disabled) {
+      onKeyDown?.(event);
+
+      if (event.defaultPrevented) {
         return;
       }
 
-      requestAnimationFrame(() => {
-        rootElement
-          .querySelector<HTMLButtonElement>(
-            `[data-accordion-item-id="${CSS.escape(item.id)}"]`,
-          )
-          ?.focus();
-      });
-    };
-
-    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-      const currentIndex = getItemIndex(event.target);
-
-      if (currentIndex < 0) {
+      if (!(event.target instanceof Element)) {
         return;
       }
 
-      const currentItem = items[currentIndex];
+      const trigger = event.target.closest<HTMLButtonElement>(
+        "[data-accordion-trigger]",
+      );
+
+      if (
+        !trigger ||
+        !event.currentTarget.contains(trigger) ||
+        trigger.closest(".aui-accordion") !== event.currentTarget
+      ) {
+        return;
+      }
+
+      const triggers = Array.from(
+        event.currentTarget.querySelectorAll<HTMLButtonElement>(
+          "[data-accordion-trigger]:not(:disabled)",
+        ),
+      );
+
+      const currentIndex = triggers.indexOf(trigger);
+
+      if (currentIndex < 0 || triggers.length === 0) {
+        return;
+      }
+
+      let nextIndex: number;
 
       switch (event.key) {
         case "ArrowDown":
-          event.preventDefault();
-          focusItem(
-            getAdjacentEnabledItem(items, currentItem.id, 1),
-            event.currentTarget,
-          );
+          nextIndex = (currentIndex + 1) % triggers.length;
           break;
 
         case "ArrowUp":
-          event.preventDefault();
-          focusItem(
-            getAdjacentEnabledItem(items, currentItem.id, -1),
-            event.currentTarget,
-          );
+          nextIndex =
+            (currentIndex - 1 + triggers.length) %
+            triggers.length;
           break;
 
         case "Home":
-          event.preventDefault();
-          focusItem(
-            getBoundaryEnabledItem(items, "start"),
-            event.currentTarget,
-          );
+          nextIndex = 0;
           break;
 
         case "End":
-          event.preventDefault();
-          focusItem(getBoundaryEnabledItem(items, "end"), event.currentTarget);
+          nextIndex = triggers.length - 1;
           break;
 
         default:
-          break;
+          return;
       }
+
+      event.preventDefault();
+      triggers[nextIndex]?.focus();
     };
 
-    useEffect(() => {
-      const normalizedIds = normalizeOpenIds(items, activeOpenIds, multiple);
-
-      const hasChanged =
-        normalizedIds.length !== activeOpenIds.length ||
-        normalizedIds.some((id, index) => id !== activeOpenIds[index]);
-
-      if (hasChanged && !isControlled) {
-        setInternalOpenIds(normalizedIds);
-      }
-    }, [activeOpenIds, isControlled, items, multiple]);
+    const contextValue: AccordionContextValue = {
+      openIds: activeOpenIds,
+      toggleItem,
+    };
 
     return (
-      <div
-        {...props}
-        ref={ref}
-        className={classNames("aui-accordion", className)}
-        onKeyDown={(event) => {
-          onKeyDown?.(event);
-
-          if (!event.defaultPrevented) {
-            handleKeyDown(event);
-          }
-        }}
-      >
-        {items.map((item) => {
-          const open = isOpen(item.id);
-
-          const triggerId = `${reactId}-trigger-${item.id}`;
-
-          const panelId = `${reactId}-panel-${item.id}`;
-
-          return (
-            <section
-              key={item.id}
-              className={classNames(
-                "aui-accordion__item",
-                open && "aui-accordion__item--open",
-                item.disabled && "aui-accordion__item--disabled",
-              )}
-            >
-              <h3 className="aui-accordion__heading">
-                <button
-                  type="button"
-                  id={triggerId}
-                  data-accordion-item-id={item.id}
-                  aria-expanded={open}
-                  aria-controls={panelId}
-                  disabled={item.disabled}
-                  className="aui-accordion__trigger"
-                  onClick={() => {
-                    toggleItem(item);
-                  }}
-                >
-                  <span className="aui-accordion__title">{item.title}</span>
-
-                  <span aria-hidden="true" className="aui-accordion__icon">
-                    +
-                  </span>
-                </button>
-              </h3>
-
-              {open && (
-                <div
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={triggerId}
-                  className="aui-accordion__panel"
-                >
-                  {item.content}
-                </div>
-              )}
-            </section>
-          );
-        })}
-      </div>
+      <AccordionContext.Provider value={contextValue}>
+        <div
+          {...props}
+          ref={ref}
+          className={classNames(
+            "aui-accordion",
+            className,
+          )}
+          onKeyDown={handleKeyDown}
+        >
+          {children}
+        </div>
+      </AccordionContext.Provider>
     );
   },
 );
 
-Accordion.displayName = "Accordion";
+AccordionRoot.displayName = "Accordion";
+
+const Accordion = Object.assign(AccordionRoot, {
+  Item: AccordionItem,
+});
 
 export { Accordion };
