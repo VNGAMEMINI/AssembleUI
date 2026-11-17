@@ -4,7 +4,7 @@ import {
   Button,
   Card,
   Drawer,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 export function DrawerDemo() {
   const [open, setOpen] = useState(false);

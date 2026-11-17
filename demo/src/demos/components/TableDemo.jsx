@@ -1,4 +1,4 @@
-import { Table } from "@vnallmini/react";
+import { Table } from "@assemble-ui/react";
 
 export function TableDemo() {
   return (

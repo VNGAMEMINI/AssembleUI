@@ -1,4 +1,4 @@
-import { Tabs } from "@vnallmini/react";
+import { Tabs } from "@assemble-ui/react";
 
 const items = [
   {

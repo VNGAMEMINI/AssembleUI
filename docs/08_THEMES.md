@@ -357,19 +357,19 @@ Không cần sửa Component.
 Mặc định
 
 ```scss
-import "@vnallmini/react/styles";
+import "@assemble-ui/react/styles";
 ```
 
 Dark
 
 ```scss
-import "@vnallmini/react/themes/dark";
+import "@assemble-ui/react/themes/dark";
 ```
 
 Corporate
 
 ```scss
-import "@vnallmini/react/themes/corporate";
+import "@assemble-ui/react/themes/corporate";
 ```
 
 ---

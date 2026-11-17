@@ -33,10 +33,7 @@
   @include focus.focus-ring;
 
   &:focus-visible {
-    outline-color: var(
-      --aui-theme-state-focus-ring,
-      var(--aui-token-state-focus-ring)
-    );
+    outline-color: var(--aui-token-state-focus-ring);
   }
 
   &:hover {
@@ -84,10 +81,7 @@
   @include focus.focus-ring;
 
   &:focus-visible {
-    outline-color: var(
-      --aui-theme-state-focus-ring,
-      var(--aui-token-state-focus-ring)
-    );
+    outline-color: var(--aui-token-state-focus-ring);
   }
 
   &:hover:not(:disabled) {

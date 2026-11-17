@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input } from "@vnallmini/react";
+import { Input } from "@assemble-ui/react";
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

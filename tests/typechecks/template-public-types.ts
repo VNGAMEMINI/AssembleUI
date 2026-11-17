@@ -15,12 +15,12 @@ import type {
   ProfilePageSectionData,
   ProfilePageStatData,
   ProfilePageTemplateProps,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 import type {
   DashboardPageData as DashboardDataFromTemplates,
   ProfilePageData as ProfileDataFromTemplates,
-} from "@vnallmini/react/templates";
+} from "@assemble-ui/react/templates";
 
 const profile: ProfilePageData = {
   profile: { name: "Alex Morgan" },

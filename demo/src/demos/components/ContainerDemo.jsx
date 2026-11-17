@@ -1,4 +1,4 @@
-import { Container } from "@vnallmini/react";
+import { Container } from "@assemble-ui/react";
 
 const sizes = ["sm", "md", "lg", "xl", "full"];
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Menu } from "@vnallmini/react";
+import { Button, Menu } from "@assemble-ui/react";
 
 export function MenuDemo() {
   const [selected, setSelected] = useState("");

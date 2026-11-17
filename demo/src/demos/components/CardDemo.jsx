@@ -1,6 +1,6 @@
 import {
   Card,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 export function CardDemo() {
   return (

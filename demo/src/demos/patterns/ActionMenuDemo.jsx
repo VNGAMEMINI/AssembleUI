@@ -1,6 +1,6 @@
 import {
   ActionMenu,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 export function ActionMenuDemo() {
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Slider } from "@vnallmini/react";
+import { Slider } from "@assemble-ui/react";
 
 export function SliderDemo() {
   const [value, setValue] = useState(50);

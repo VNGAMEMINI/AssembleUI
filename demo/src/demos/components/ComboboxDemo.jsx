@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Combobox } from "@vnallmini/react";
+import { Combobox } from "@assemble-ui/react";
 
 const options = [
   { id: "react", label: "React" },

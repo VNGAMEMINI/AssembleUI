@@ -8,7 +8,7 @@ a new npm version has been published.
 ## [Unreleased]
 
 ### Changed
-- Normalized the package namespace to `@vnallmini/react`.
+- Normalized the package namespace to `@assemble-ui/react`.
 - Improved the package quick-start documentation.
 - Polished README formatting.
 

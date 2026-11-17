@@ -26,14 +26,14 @@ This project follows a release-ready workflow:
 
 - React 19
 - React DOM 19
-- Node.js 20+
+- Node.js 22.22.2+
 - npm 10+
 - A JavaScript or TypeScript project with npm-compatible package management
 
 ## Installation
 
 ```bash
-npm install @vnallmini/react react react-dom
+npm install @assemble-ui/react react react-dom
 ```
 
 ## Development

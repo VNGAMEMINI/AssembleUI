@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Button,
   Modal,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 export function ModalDemo() {
   const [open, setOpen] = useState(false);

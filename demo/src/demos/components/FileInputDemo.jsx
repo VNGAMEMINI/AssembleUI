@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileInput } from "@vnallmini/react";
+import { FileInput } from "@assemble-ui/react";
 
 export function FileInputDemo() {
   const [fileNames, setFileNames] = useState([]);

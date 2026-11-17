@@ -22,7 +22,7 @@ export function App() {
   const demo = resolveDemo(path);
   const DemoComponent = demo.component;
 
-  const importCode = `import { ${demo.name} } from "@vnallmini/react";`;
+  const importCode = `import { ${demo.name} } from "@assemble-ui/react";`;
 
   useEffect(() => {
     const handleHashChange = () => {

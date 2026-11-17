@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tree } from "@vnallmini/react";
+import { Tree } from "@assemble-ui/react";
 
 const data = [
   {

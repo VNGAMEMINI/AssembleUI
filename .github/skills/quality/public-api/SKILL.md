@@ -16,17 +16,17 @@ exports, package entry points, or published package interfaces.
 
 The package currently exposes these entry points:
 
-- `@vnallmini/react`
-- `@vnallmini/react/components`
-- `@vnallmini/react/patterns`
-- `@vnallmini/react/templates`
-- `@vnallmini/react/core`
-- `@vnallmini/react/styles`
-- `@vnallmini/react/primitives`
-- `@vnallmini/react/tokens`
-- `@vnallmini/react/themes`
-- `@vnallmini/react/themes/light`
-- `@vnallmini/react/themes/dark`
+- `@assemble-ui/react`
+- `@assemble-ui/react/components`
+- `@assemble-ui/react/patterns`
+- `@assemble-ui/react/templates`
+- `@assemble-ui/react/core`
+- `@assemble-ui/react/styles`
+- `@assemble-ui/react/primitives`
+- `@assemble-ui/react/tokens`
+- `@assemble-ui/react/themes`
+- `@assemble-ui/react/themes/light`
+- `@assemble-ui/react/themes/dark`
 
 Treat `packages/react/package.json` as the source of truth for
 published package subpaths and their build targets.

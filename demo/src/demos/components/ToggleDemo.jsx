@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Toggle } from "@vnallmini/react";
+import { Toggle } from "@assemble-ui/react";
 
 export function ToggleDemo() {
   const [pressed, setPressed] = useState(false);

@@ -1,4 +1,4 @@
-import { Form, Input, Button } from "@vnallmini/react";
+import { Form, Input, Button } from "@assemble-ui/react";
 
 export function FormDemo() {
   function handleSubmit(event) {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Checkbox } from "@vnallmini/react";
+import { Checkbox } from "@assemble-ui/react";
 
 export function CheckboxDemo() {
   const [checked, setChecked] = useState(true);

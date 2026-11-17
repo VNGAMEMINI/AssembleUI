@@ -1,4 +1,4 @@
-import { ProfilePageTemplate } from "@vnallmini/react";
+import { ProfilePageTemplate } from "@assemble-ui/react";
 
 export function ProfilePageTemplateDemo() {
   const data = {

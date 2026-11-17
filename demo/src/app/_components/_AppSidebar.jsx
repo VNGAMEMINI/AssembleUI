@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTheme } from "@vnallmini/react";
+import { useTheme } from "@assemble-ui/react";
 
 export function AppSidebar({
   demos,

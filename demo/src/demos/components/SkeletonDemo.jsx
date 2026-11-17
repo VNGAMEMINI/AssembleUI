@@ -1,4 +1,4 @@
-import { Skeleton } from "@vnallmini/react";
+import { Skeleton } from "@assemble-ui/react";
 
 export function SkeletonDemo() {
   return (

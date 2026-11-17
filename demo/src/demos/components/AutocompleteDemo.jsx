@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Autocomplete } from "@vnallmini/react";
+import { Autocomplete } from "@assemble-ui/react";
 
 const options = [
   { value: "react", label: "React" },

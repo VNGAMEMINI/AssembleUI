@@ -1,4 +1,4 @@
-import { Accordion, Button } from "@vnallmini/react";
+import { Accordion, Button } from "@assemble-ui/react";
 
 export function AccordionDemo() {
   return (

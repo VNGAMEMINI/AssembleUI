@@ -1,0 +1,50 @@
+.aui-box-grid {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+
+  gap: var(--aui-token-space-4);
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(
+      min(100%, var(--aui-box-grid-min-width, 16rem)),
+      1fr
+    )
+  );
+
+  &[data-columns] {
+    grid-template-columns: repeat(
+      var(--aui-box-grid-columns),
+      minmax(0, 1fr)
+    );
+  }
+
+  &[data-auto-flow="column"] {
+    grid-auto-flow: column;
+  }
+
+  &[data-spacing="none"] {
+    gap: var(--aui-token-space-0);
+  }
+
+  &[data-spacing="xs"] {
+    gap: var(--aui-token-space-2);
+  }
+
+  &[data-spacing="sm"] {
+    gap: var(--aui-token-space-3);
+  }
+
+  &[data-spacing="md"] {
+    gap: var(--aui-token-space-4);
+  }
+
+  &[data-spacing="lg"] {
+    gap: var(--aui-token-space-6);
+  }
+
+  &[data-spacing="xl"] {
+    gap: var(--aui-token-space-8);
+  }
+}

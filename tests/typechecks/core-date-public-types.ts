@@ -9,7 +9,7 @@ import {
   isBeforeDay,
   isSameDay,
   startOfMonth,
-} from "@vnallmini/react/core";
+} from "@assemble-ui/react/core";
 
 const date = new Date(2026, 10, 11);
 

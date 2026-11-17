@@ -1,4 +1,4 @@
-import { Status } from "@vnallmini/react";
+import { Status } from "@assemble-ui/react";
 
 export function StatusDemo() {
   return (

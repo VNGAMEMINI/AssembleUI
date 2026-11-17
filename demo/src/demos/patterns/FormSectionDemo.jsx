@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, FormSection, Input } from "@vnallmini/react";
+import { Button, FormSection, Input } from "@assemble-ui/react";
 
 export function FormSectionDemo() {
   const [saved, setSaved] = useState(false);

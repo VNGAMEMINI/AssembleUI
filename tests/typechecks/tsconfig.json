@@ -15,13 +15,13 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@vnallmini/react": [
+      "@assemble-ui/react": [
         "../../packages/react/index.ts"
       ],
-      "@vnallmini/react/templates": [
+      "@assemble-ui/react/templates": [
         "../../packages/react/templates/index.ts"
       ],
-      "@vnallmini/react/core": [
+      "@assemble-ui/react/core": [
         "../../packages/react/core/index.ts"
       ]
     }

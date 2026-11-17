@@ -24,12 +24,12 @@
 }
 
 .aui-autocomplete__input:hover {
-  border-color: var(--aui-theme-border-hover);
+  border-color: var(--aui-theme-input-border-hover);
 }
 
 .aui-autocomplete__input:focus {
-  border-color: var(--aui-theme-state-focus-ring);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-theme-state-focus-ring) 14%, transparent);
+  border-color: var(--aui-theme-input-border-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-token-state-focus-ring) 14%, transparent);
 }
 
 .aui-autocomplete__list {

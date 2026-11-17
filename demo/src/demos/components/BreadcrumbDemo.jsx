@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@vnallmini/react";
+import { Breadcrumb } from "@assemble-ui/react";
 
 const items = [
   {

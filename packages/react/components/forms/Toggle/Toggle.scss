@@ -45,7 +45,7 @@
 
   &:focus-visible {
     outline: var(--aui-token-border-width-medium) solid
-      var(--aui-theme-state-focus-ring);
+      var(--aui-token-state-focus-ring);
     outline-offset: var(--aui-token-space-1);
   }
 

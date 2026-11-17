@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar } from "@vnallmini/react";
+import { Calendar } from "@assemble-ui/react";
 
 export function CalendarDemo() {
   const [date, setDate] = useState(new Date(2026, 9, 8));

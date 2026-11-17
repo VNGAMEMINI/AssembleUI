@@ -1,3 +1,5 @@
+import { describe, expect, it } from "vitest";
+
 import { StrictMode, act, createElement, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 

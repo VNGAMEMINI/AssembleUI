@@ -86,7 +86,7 @@ import {
 
     Button
 
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 ```
 
 Bundle sẽ chỉ chứa
@@ -162,7 +162,7 @@ Chỉ tải khi cần.
 AssembleUI chỉ import Style **một lần**.
 
 ```tsx
-import "@vnallmini/react/styles";
+import "@assemble-ui/react/styles";
 ```
 
 Không import
@@ -529,7 +529,7 @@ import {
 
     SearchIcon
 
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 ```
 
 Không import toàn bộ bộ Icon.
@@ -607,7 +607,7 @@ padding:spacing(md);
 Sai
 
 ```tsx
-import * from "@vnallmini/react";
+import * from "@assemble-ui/react";
 ```
 
 Đúng
@@ -617,7 +617,7 @@ import {
 
 Button
 
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 ```
 
 ---

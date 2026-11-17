@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Textarea } from "@vnallmini/react";
+import { Textarea } from "@assemble-ui/react";
 
 export function TextareaDemo() {
   const [description, setDescription] = useState("");

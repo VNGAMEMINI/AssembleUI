@@ -1,4 +1,4 @@
-import { Button, Tooltip } from "@vnallmini/react";
+import { Button, Tooltip } from "@assemble-ui/react";
 
 export function TooltipDemo() {
   return (

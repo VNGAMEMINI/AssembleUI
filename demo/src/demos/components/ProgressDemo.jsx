@@ -1,4 +1,4 @@
-import { Progress } from "@vnallmini/react";
+import { Progress } from "@assemble-ui/react";
 
 export function ProgressDemo() {
   return (

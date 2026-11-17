@@ -297,7 +297,7 @@ export * from "./throttle";
 Người dùng chỉ import từ:
 
 ```ts
-import { classNames, debounce } from "@vnallmini/react";
+import { classNames, debounce } from "@assemble-ui/react";
 ```
 
 ---
@@ -517,7 +517,7 @@ Utils không được import ngược.
 # Ví dụ sử dụng
 
 ```tsx
-import { classNames } from "@vnallmini/react";
+import { classNames } from "@assemble-ui/react";
 
 const classes = classNames(
   "aui-button",

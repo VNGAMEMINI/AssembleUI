@@ -143,13 +143,13 @@
 
 .aui-tree__label--selected {
   color: var(--aui-theme-primary);
-  background: var(--aui-theme-primary-bg);
+  background: var(--aui-theme-selected);
   font-weight: 600;
 }
 
 .aui-tree__label--selected:hover:not(:disabled) {
   color: var(--aui-theme-primary);
-  background: var(--aui-theme-primary-bg);
+  background: var(--aui-theme-selected);
 }
 
 .aui-tree__children {

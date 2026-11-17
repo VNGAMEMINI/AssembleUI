@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DataToolbar } from "@vnallmini/react";
+import { DataToolbar } from "@assemble-ui/react";
 
 export function DataToolbarDemo() {
   const [status, setStatus] = useState("Tất cả trạng thái");

@@ -1,5 +1,5 @@
 {
-  "name": "@vnallmini/react",
+  "name": "@assemble-ui/react",
   "version": "0.1.2",
   "type": "module",
   "main": "./dist/index.js",

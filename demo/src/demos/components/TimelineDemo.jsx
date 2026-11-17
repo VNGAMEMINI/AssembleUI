@@ -1,4 +1,4 @@
-import { Timeline } from "@vnallmini/react";
+import { Timeline } from "@assemble-ui/react";
 
 const items = [
   {

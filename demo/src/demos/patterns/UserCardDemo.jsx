@@ -1,7 +1,7 @@
 import {
   Button,
   UserCard,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 export function UserCardDemo() {
   return (

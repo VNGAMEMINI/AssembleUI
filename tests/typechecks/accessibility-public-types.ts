@@ -1,13 +1,13 @@
 import {
   createAccessibilityMetadata,
   createAccessibilityMetadataFromId,
-} from "@vnallmini/react/core";
+} from "@assemble-ui/react/core";
 
 import type {
   AccessibilityMetadataOptions,
   AccessibilityOptions,
   AccessibilityResult,
-} from "@vnallmini/react/core";
+} from "@assemble-ui/react/core";
 
 const metadataOptions: AccessibilityMetadataOptions = {
   id: "email-input",

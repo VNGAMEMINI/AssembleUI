@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PaginationBar } from "@vnallmini/react";
+import { PaginationBar } from "@assemble-ui/react";
 
 export function PaginationBarDemo() {
   const [page, setPage] = useState(1);

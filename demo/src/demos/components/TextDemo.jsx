@@ -1,4 +1,4 @@
-import { Text } from "@vnallmini/react";
+import { Text } from "@assemble-ui/react";
 
 export function TextDemo() {
   return (

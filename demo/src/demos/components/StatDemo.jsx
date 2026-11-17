@@ -1,4 +1,4 @@
-import { Stat } from "@vnallmini/react";
+import { Stat } from "@assemble-ui/react";
 
 export function StatDemo() {
   return (

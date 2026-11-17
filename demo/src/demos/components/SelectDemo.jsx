@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Select } from "@vnallmini/react";
+import { Select } from "@assemble-ui/react";
 
 export function SelectDemo() {
   const [status, setStatus] = useState("");

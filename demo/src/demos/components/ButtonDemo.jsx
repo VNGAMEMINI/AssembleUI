@@ -1,4 +1,4 @@
-import { Button } from "@vnallmini/react";
+import { Button } from "@assemble-ui/react";
 
 export function ButtonDemo() {
   return (

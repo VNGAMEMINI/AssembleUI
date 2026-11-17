@@ -20,7 +20,7 @@ Its public API follows three composition levels:
 Install the package and its React peer dependencies:
 
 ```bash
-npm install @vnallmini/react react react-dom
+npm install @assemble-ui/react react react-dom
 ```
 
 ## Importing the public API
@@ -34,7 +34,7 @@ import {
   ProfilePageTemplate,
   ThemeProvider,
   useTheme,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 ```
 
 Use names that are exported by the library. The example illustrates
@@ -46,34 +46,130 @@ Import components, patterns, or templates separately when that makes
 your application imports easier to organize.
 
 ```tsx
-import { Button } from "@vnallmini/react/components";
-import { UserCard } from "@vnallmini/react/patterns";
-import { ProfilePageTemplate } from "@vnallmini/react/templates";
+import { Button } from "@assemble-ui/react/components";
+import { UserCard } from "@assemble-ui/react/patterns";
+import { ProfilePageTemplate } from "@assemble-ui/react/templates";
 ```
 
 The root entry also exports the public theme API:
 
 ```tsx
-import { ThemeProvider, useTheme } from "@vnallmini/react";
+import { ThemeProvider, useTheme } from "@assemble-ui/react";
 ```
 
 Theme configuration and component props should follow the API
 definitions provided by the installed package.
 
-## Styles
+## Styles and themes
 
-Import the compiled stylesheet once in your application's entry point.
-
-For example, in a Vite React application:
+Import the compiled component stylesheet once in your application's entry point:
 
 ```tsx
-// src/main.tsx
-import "@vnallmini/react/styles";
+import "@assemble-ui/react/styles";
 ```
 
-The `@vnallmini/react/styles` entry resolves to the package's
-compiled stylesheet. Applications do not need to import internal
-SCSS files from the library.
+The component stylesheet provides the styles used by AssembleUI components.
+It does not automatically import theme definitions.
+
+### Theme stylesheets
+
+Import the combined theme stylesheet:
+
+```tsx
+import "@assemble-ui/react/themes";
+```
+
+Or import only one built-in theme:
+
+```tsx
+import "@assemble-ui/react/themes/light";
+```
+
+```tsx
+import "@assemble-ui/react/themes/dark";
+```
+
+The theme stylesheets define CSS custom properties for the corresponding
+`data-aui-theme` values.
+
+### ThemeProvider
+
+`ThemeProvider` manages the active theme attribute. It does not import
+component or theme stylesheets automatically.
+
+```tsx
+import {
+  ThemeProvider,
+  useTheme,
+} from "@assemble-ui/react";
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <button
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+    >
+      Switch theme
+    </button>
+  );
+}
+
+export function App() {
+  return (
+    <ThemeProvider defaultTheme="light">
+      <ThemeToggle />
+    </ThemeProvider>
+  );
+}
+```
+
+By default, `ThemeProvider` uses global scope and applies the theme to
+the document root. Set `scope="local"` to apply it to a wrapper around
+its children instead.
+
+### Custom theme
+
+The `custom` theme is an extension point. The package provides the
+`data-aui-theme="custom"` selector but does not define a complete custom
+color palette.
+
+Define the CSS variables your application needs:
+
+```scss
+[data-aui-theme="custom"] {
+  --aui-theme-bg: #ffffff;
+  --aui-theme-fg: #111111;
+  --aui-theme-border: #dddddd;
+  --aui-theme-primary: #2563eb;
+}
+```
+
+Then activate it with:
+
+```tsx
+<ThemeProvider defaultTheme="custom">
+  {children}
+</ThemeProvider>
+```
+
+### Design tokens and Sass primitives
+
+Import compiled design tokens when you need the library's CSS custom properties:
+
+```tsx
+import "@assemble-ui/react/tokens";
+```
+
+For advanced Sass customization, use the primitives entry:
+
+```scss
+@use "pkg:@assemble-ui/react/primitives" as *;
+```
+
+Dart Sass supports the `pkg:` importer through `--pkg-importer=node`.
+Most applications only need the compiled component and theme stylesheets.
+
 
 ## Quick start
 
@@ -81,13 +177,13 @@ Import the components you need and the compiled stylesheet.
 
 ```tsx
 // src/main.tsx
-import "@vnallmini/react/styles";
+import "@assemble-ui/react/styles";
 ```
 
 Create a simple profile interface:
 
 ```tsx
-import { Button, ThemeProvider, UserCard } from "@vnallmini/react";
+import { Button, ThemeProvider, UserCard } from "@assemble-ui/react";
 
 export function App() {
   return (
@@ -122,7 +218,7 @@ import {
   UserCard,
   ProfilePageTemplate,
   ThemeProvider,
-} from "@vnallmini/react";
+} from "@assemble-ui/react";
 
 function ProfileExample() {
   return (
@@ -190,7 +286,7 @@ The components entry groups exports into these categories:
 - Navigation
 
 Import a component from the root entry or from
-`@vnallmini/react/components`.
+`@assemble-ui/react/components`.
 
 ### Patterns
 
@@ -209,7 +305,7 @@ The patterns entry currently exports:
 - `ContentHeader`
 - `StatsOverview`
 
-Import patterns from `@vnallmini/react/patterns` or the root entry.
+Import patterns from `@assemble-ui/react/patterns` or the root entry.
 
 ### Templates
 
@@ -218,7 +314,7 @@ The templates entry currently exports:
 - `ProfilePageTemplate`
 - `DashboardPageTemplate`
 
-Import templates from `@vnallmini/react/templates` or the root entry.
+Import templates from `@assemble-ui/react/templates` or the root entry.
 
 ### Theme API
 
@@ -240,13 +336,19 @@ declaration files for their public exports.
 
 ## Package exports
 
-| Import path                   | Purpose             |
-| ----------------------------- | ------------------- |
-| `@vnallmini/react`            | Root public API     |
-| `@vnallmini/react/components` | Components          |
-| `@vnallmini/react/patterns`   | Composed patterns   |
-| `@vnallmini/react/templates`  | Page templates      |
-| `@vnallmini/react/styles`     | Compiled stylesheet |
+| Import path | Purpose |
+| --- | --- |
+| `@assemble-ui/react` | Root public API |
+| `@assemble-ui/react/components` | Components |
+| `@assemble-ui/react/patterns` | Composed patterns |
+| `@assemble-ui/react/templates` | Page templates |
+| `@assemble-ui/react/core` | Core runtime exports |
+| `@assemble-ui/react/styles` | Compiled component stylesheet |
+| `@assemble-ui/react/themes` | Combined theme stylesheet |
+| `@assemble-ui/react/themes/light` | Light theme stylesheet |
+| `@assemble-ui/react/themes/dark` | Dark theme stylesheet |
+| `@assemble-ui/react/tokens` | Compiled design tokens |
+| `@assemble-ui/react/primitives` | Sass design primitives |
 
 ## Development
 

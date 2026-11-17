@@ -20,29 +20,29 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      "@vnallmini/react/components": path.join(
+      "@assemble-ui/react/components": path.join(
         packageRoot,
         "components/index.ts",
       ),
 
-      "@vnallmini/react/patterns": path.join(
+      "@assemble-ui/react/patterns": path.join(
         packageRoot,
         "patterns/index.ts",
       ),
 
-      "@vnallmini/react/templates": path.join(
+      "@assemble-ui/react/templates": path.join(
         packageRoot,
         "templates/index.ts",
       ),
 
-      "@vnallmini/react/core": path.join(
+      "@assemble-ui/react/core": path.join(
         packageRoot,
         "core/index.ts",
       ),
 
-      "@vnallmini/react/styles": path.join(packageRoot, "index.scss"),
+      "@assemble-ui/react/styles": path.join(packageRoot, "index.scss"),
 
-      "@vnallmini/react": path.join(packageRoot, "index.ts"),
+      "@assemble-ui/react": path.join(packageRoot, "index.ts"),
 
       "@": packageRoot,
     },

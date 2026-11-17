@@ -7,7 +7,7 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      "@vnallmini/react/core": path.resolve(
+      "@assemble-ui/react/core": path.resolve(
         "packages/react/core/index.ts",
       ),
     },

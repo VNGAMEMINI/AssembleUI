@@ -20,7 +20,7 @@ export function DemoDetails({ demo }) {
 
       <div className="demo-detail">
         <span>Package</span>
-        <strong>@vnallmini/react</strong>
+        <strong>@assemble-ui/react</strong>
       </div>
     </section>
   );

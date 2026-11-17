@@ -1,4 +1,4 @@
-import { SkipLink } from "@vnallmini/react";
+import { SkipLink } from "@assemble-ui/react";
 
 export function SkipLinkDemo() {
   return (

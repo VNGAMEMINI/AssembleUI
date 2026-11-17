@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Switch } from "@vnallmini/react";
+import { Switch } from "@assemble-ui/react";
 
 export function SwitchDemo() {
   const [enabled, setEnabled] = useState(true);
