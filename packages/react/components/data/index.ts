@@ -14,3 +14,4 @@ export * from "./Timeline";
 export * from "./Calendar";
 
 export * from "./Rating";
+export * from "./Marquee";
