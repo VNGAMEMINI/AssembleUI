@@ -81,7 +81,7 @@ body {
   min-width: 0;
   padding: var(--aui-token-space-6);
 
-  background: var(--aui-token-surface-elevated);
+  background: var(--aui-token-color-surface-elevated);
   color: var(--aui-theme-text);
 
   border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
@@ -128,7 +128,7 @@ body {
 
   padding-inline: var(--aui-token-space-3);
 
-  background: var(--aui-token-surface-default);
+  background: var(--aui-token-color-surface);
   color: var(--aui-theme-text);
 
   border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
@@ -148,7 +148,7 @@ body {
   margin: 0;
   padding: var(--aui-token-space-3);
 
-  background: var(--aui-token-surface-default);
+  background: var(--aui-token-color-surface);
   color: var(--aui-theme-text-muted);
 
   border-radius: var(--aui-token-radius-md);

@@ -1,12 +1,36 @@
-@use "../../primitives/border" as border;
-@use "../../primitives/colors" as colors;
-
 :root {
-  --aui-token-border-default: #{border.$border-width-default} solid var(--aui-token-color-border);
-  --aui-token-border-subtle: #{border.$border-width-thin} solid var(--aui-token-color-border);
-  --aui-token-border-focus: #{border.$border-width-medium} solid var(--aui-token-color-primary);
-  --aui-token-border-success: #{border.$border-width-default} solid #{colors.$green-500};
-  --aui-token-border-warning: #{border.$border-width-default} solid #{colors.$yellow-500};
-  --aui-token-border-danger: #{border.$border-width-default} solid #{colors.$red-500};
-  --aui-token-border-info: #{border.$border-width-default} solid #{colors.$cyan-500};
+  --aui-token-border-default:
+    var(--aui-token-border-width-default)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-border);
+
+  --aui-token-border-subtle:
+    var(--aui-token-border-width-thin)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-border);
+
+  --aui-token-border-focus:
+    var(--aui-token-border-width-medium)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-primary);
+
+  --aui-token-border-success:
+    var(--aui-token-border-width-default)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-success);
+
+  --aui-token-border-warning:
+    var(--aui-token-border-width-default)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-warning);
+
+  --aui-token-border-danger:
+    var(--aui-token-border-width-default)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-danger);
+
+  --aui-token-border-info:
+    var(--aui-token-border-width-default)
+    var(--aui-token-border-style-solid)
+    var(--aui-token-color-info);
 }

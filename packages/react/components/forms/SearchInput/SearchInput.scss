@@ -26,9 +26,9 @@
   }
 
   &:focus-within {
-    border-color: var(--aui-token-state-focus-ring);
+    border-color: var(--aui-token-color-primary);
     outline: var(--aui-token-border-width-medium) solid
-      var(--aui-token-state-focus-ring);
+      var(--aui-token-color-primary);
     outline-offset: var(--aui-token-space-1);
   }
 

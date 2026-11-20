@@ -1,33 +1,35 @@
-@use "../../primitives/motion" as motion;
-
 :root {
-  --aui-token-transition-property-colors:
-    color, background-color, border-color, fill, stroke;
-
-  --aui-token-transition-property-opacity: opacity;
-  --aui-token-transition-property-transform: transform;
-
-  --aui-token-transition-property-common:
-    color, background-color, border-color, opacity, box-shadow, transform;
-
   --aui-token-transition-colors:
-    color  #{motion.$duration-fast} #{motion.$ease-standard},
-    background-color #{motion.$duration-fast} #{motion.$ease-standard},
-    border-color #{motion.$duration-fast} #{motion.$ease-standard},
-    fill #{motion.$duration-fast} #{motion.$ease-standard},
-    stroke #{motion.$duration-fast} #{motion.$ease-standard};
+    color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    background-color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    border-color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    fill var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    stroke var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard);
 
   --aui-token-transition-opacity:
-    opacity #{motion.$duration-normal} #{motion.$ease-standard};
+    opacity var(--aui-token-motion-duration-normal)
+      var(--aui-token-motion-ease-standard);
 
   --aui-token-transition-transform:
-    transform #{motion.$duration-normal} #{motion.$ease-out};
+    transform var(--aui-token-motion-duration-normal)
+      var(--aui-token-motion-ease-out);
 
   --aui-token-transition-common:
-    color #{motion.$duration-fast} #{motion.$ease-standard},
-    background-color #{motion.$duration-fast} #{motion.$ease-standard},
-    border-color #{motion.$duration-fast} #{motion.$ease-standard},
-    opacity #{motion.$duration-fast} #{motion.$ease-standard},
-    box-shadow #{motion.$duration-fast} #{motion.$ease-standard},
-    transform #{motion.$duration-fast} #{motion.$ease-standard};
+    color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    background-color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    border-color var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    opacity var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    box-shadow var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard),
+    transform var(--aui-token-motion-duration-fast)
+      var(--aui-token-motion-ease-standard);
 }

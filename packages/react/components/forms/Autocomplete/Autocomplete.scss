@@ -29,7 +29,7 @@
 
 .aui-autocomplete__input:focus {
   border-color: var(--aui-theme-input-border-focus);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-token-state-focus-ring) 14%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aui-token-color-primary) 14%, transparent);
 }
 
 .aui-autocomplete__list {
@@ -50,7 +50,7 @@
   background: var(--aui-theme-surface);
   border: 1px solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-md);
-  box-shadow: var(--aui-token-shadow-sm);
+  box-shadow: var(--aui-theme-shadow-sm);
   animation: aui-autocomplete-appear 140ms ease-out;
 }
 

@@ -1,45 +1,56 @@
-@use "../../primitives/colors" as colors;
-
 :root {
-  /* Primary and accent */
+  /* Brand */
   --aui-token-gradient-primary: linear-gradient(
-    135deg, #{colors.$blue-500}, #{colors.$blue-600}
+    135deg,
+    var(--aui-token-color-primary),
+    var(--aui-token-color-primary-hover)
   );
+
   --aui-token-gradient-primary-subtle: linear-gradient(
-    135deg, #{colors.$blue-50}, #{colors.$gray-50}
-  );
-  --aui-token-gradient-accent: linear-gradient(
-    135deg, #{colors.$blue-500}, #{colors.$blue-600}
+    135deg,
+    var(--aui-token-color-background),
+    color-mix(
+      in srgb,
+      var(--aui-token-color-primary) 8%,
+      var(--aui-token-color-background)
+    )
   );
 
   /* Surfaces */
   --aui-token-gradient-surface: linear-gradient(
-    180deg, #{colors.$white}, #{colors.$gray-50}
+    180deg,
+    var(--aui-token-color-background),
+    var(--aui-token-color-surface-muted)
   );
-  --aui-token-gradient-surface-elevated: linear-gradient(
-    180deg, #{colors.$white}, #{colors.$gray-50}
-  );
+
   --aui-token-gradient-neutral: linear-gradient(
-    135deg, #{colors.$gray-50}, #{colors.$gray-100}
+    135deg,
+    var(--aui-token-color-surface-muted),
+    var(--aui-token-color-border)
   );
 
-  /* Semantic status gradients */
+  /* Semantic status */
   --aui-token-gradient-success: linear-gradient(
-    135deg, #{colors.$green-500}, #{colors.$green-600}
-  );
-  --aui-token-gradient-warning: linear-gradient(
-    135deg, #{colors.$yellow-500}, #{colors.$orange-500}
-  );
-  --aui-token-gradient-danger: linear-gradient(
-    135deg, #{colors.$red-500}, #{colors.$red-600}
-  );
-  --aui-token-gradient-info: linear-gradient(
-    135deg, #{colors.$cyan-500}, #{colors.$blue-500}
+    135deg,
+    var(--aui-token-color-success-subtle),
+    var(--aui-token-color-success)
   );
 
-  /* Utility */
-  --aui-token-gradient-transparent: linear-gradient(
-    180deg, transparent, transparent
+  --aui-token-gradient-warning: linear-gradient(
+    135deg,
+    var(--aui-token-color-warning-subtle),
+    var(--aui-token-color-warning)
   );
-  --aui-token-gradient-none: none;
+
+  --aui-token-gradient-danger: linear-gradient(
+    135deg,
+    var(--aui-token-color-danger-subtle),
+    var(--aui-token-color-danger)
+  );
+
+  --aui-token-gradient-info: linear-gradient(
+    135deg,
+    var(--aui-token-color-info-subtle),
+    var(--aui-token-color-info)
+  );
 }

@@ -35,7 +35,7 @@
   text-align: start;
 
   pointer-events: none;
-  box-shadow: var(--aui-token-shadow-md, 0 4px 12px rgb(0 0 0 / 18%));
+  box-shadow: var(--aui-theme-shadow-md, var(--aui-token-shadow-md));
 }
 
 .aui-tooltip__content--top {

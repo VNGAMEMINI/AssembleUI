@@ -1,547 +1,403 @@
 # 08. Themes
 
-> Theme là cơ chế thay đổi giao diện của AssembleUI mà **không cần sửa bất kỳ Component nào**. Theme chỉ có một nhiệm vụ duy nhất: **ghi đè (Override) Design Tokens**.
+Theme là hệ thống cung cấp các giá trị giao diện phụ thuộc vào chế độ hiển thị
+đang hoạt động của AssembleUI.
+
+Theme sử dụng CSS Custom Properties với namespace `--aui-theme-*`, tách biệt
+hoàn toàn với Design Tokens có namespace `--aui-token-*`.
+
+Theme switching chỉ thay đổi Theme roles. Nó không thay đổi, ghi đè hoặc
+ánh xạ lại Design Tokens.
 
 ---
 
-# Mục tiêu
+## 1. Mục tiêu
 
-Theme được xây dựng để:
+Themes chịu trách nhiệm:
 
-- Thay đổi giao diện toàn bộ ứng dụng.
-- Không thay đổi Component.
-- Không thay đổi Logic.
-- Không thay đổi API.
-- Cho phép tạo nhiều giao diện khác nhau.
-- Hỗ trợ Dark Mode.
-- Hỗ trợ White Label.
-- Hỗ trợ Brand Customization.
+- Cung cấp các giá trị giao diện cho Light Theme và Dark Theme.
+- Cho phép thay đổi giao diện trong thời gian chạy.
+- Hỗ trợ tùy chỉnh Theme theo thương hiệu.
+- Hỗ trợ White Label thông qua Theme roles.
+- Giữ nguyên Component API và Business Logic khi chuyển Theme.
+- Tách các giá trị giao diện phụ thuộc Theme khỏi Design Tokens.
+
+Themes không chịu trách nhiệm:
+
+- Định nghĩa hoặc thay đổi Design Tokens.
+- Chứa React Components, Hooks hoặc Business Logic.
+- Quy định cấu trúc và hành vi của Components.
+- Định nghĩa CSS layout cho Components.
 
 ---
 
-# Vai trò trong kiến trúc
+## 2. Vị trí trong kiến trúc
 
-```
+```text
 Foundation
-      │
-      ▼
+    |
+    v
 Design System
-      │
-      ▼
-Themes
-      │
-      ▼
-Style Engine
-      │
-      ▼
-Components
+    |
+    +--------------------+
+    |                    |
+    v                    v
+Design Tokens          Themes
+    |                    |
+    +----------+---------+
+               |
+               v
+          Style Engine
+               |
+               v
+          Components
+               |
+               v
+            Patterns
+               |
+               v
+           Templates
 ```
 
-Theme chỉ tác động đến **Design Tokens**.
+Design Tokens và Themes là hai hệ thống độc lập trong Design System.
 
----
+- Design Tokens cung cấp các giá trị thiết kế mặc định ổn định.
+- Themes cung cấp các giá trị giao diện thay đổi theo Theme đang hoạt động.
+- Style Engine và các tầng UI phía trên có thể sử dụng cả hai hệ thống.
 
-# Nguyên lý hoạt động
+Hai hệ thống không phụ thuộc hoặc ánh xạ giá trị cho nhau.
 
-Component không biết Theme.
+## 3. Namespace
 
-Component chỉ biết Token.
+### Design Tokens
 
-Ví dụ
+Design Tokens sử dụng namespace:
 
-```
-Button
-
-↓
-
-background
-
-↓
-
-var(--aui-token-color-primary)
+```scss
+--aui-token-\*
 ```
 
-Khi đổi Theme
+Đây là các giá trị thiết kế mặc định của thư viện.
 
-```
-Theme
+Theme switching không được thay đổi các giá trị này.
 
-↓
+### Theme roles
 
---aui-token-color-primary
+Themes sử dụng namespace:
 
-↓
-
-Button tự đổi màu
+```scss
+--aui-theme-\*
 ```
 
-Component không thay đổi.
+Đây là các giá trị giao diện có thể thay đổi giữa Light, Dark và Custom Theme.
 
----
+Ví dụ:
 
-# Cấu trúc thư mục
+```scss
+background: var(--aui-theme-bg);
+color: var(--aui-theme-text);
+border-color: var(--aui-theme-border);
+```
+
+Component có thể sử dụng Theme roles cho những thuộc tính cần thay đổi theo Theme.
+
+## 4. Cấu trúc thư mục
+
+Cấu trúc hiện tại trong `packages/react/design/themes/`:
 
 ```
 themes/
-
-├── default.scss
-├── light.scss
-├── dark.scss
-├── corporate.scss
-├── custom.scss
-└── index.scss
+├── index.scss
+├── custom/
+│ └── index.scss
+├── dark/
+│ ├── alert.scss
+│ ├── background.scss
+│ ├── border.scss
+│ ├── chart.scss
+│ ├── index.scss
+│ ├── interact.scss
+│ ├── selection-area.scss
+│ ├── shadow.scss
+│ └── text.scss
+└── light/
+├── alert.scss
+├── background.scss
+├── border.scss
+├── chart.scss
+├── index.scss
+├── interact.scss
+├── selection-area.scss
+├── shadow.scss
+└── text.scss
 ```
 
----
-
-# Theme mặc định
-
-Theme mặc định được sử dụng nếu người dùng không cấu hình.
-
-Ví dụ
+`themes/index.scss` tổng hợp các Theme:
 
 ```scss
-:root {
-  --aui-token-color-primary: #2563eb;
+@forward "./light";
+@forward "./dark";
+@forward "./custom";
+```
 
-  --aui-token-color-surface: #ffffff;
+Theme stylesheets được build và export riêng, không được nạp thông qua
+`design/index.scss`.
 
-  --aui-token-color-text: #111827;
+## 5. Theme roles
+
+Các Theme roles được tổ chức theo nhóm thuộc tính giao diện.
+
+| Nhóm       | Vai trò                                |
+| ---------- | -------------------------------------- |
+| Alert      | Màu sắc và trạng thái của Alert        |
+| Background | Background, Surface và Foreground      |
+| Border     | Border, Divider và các đường phân cách |
+| Chart      | Màu sắc dành cho biểu đồ               |
+| Interact   | Hover, Active, Selected và Input       |
+| Selection  | Area Selection và Scrollbar            |
+| Shadow     | Shadow theo từng cấp độ                |
+| Text       | Text, Placeholder, Link và Code        |
+
+Các nhóm này cung cấp giá trị giao diện dùng chung. Chúng không định nghĩa
+cấu trúc hoặc layout của Components.
+
+## 6. Light Theme và Dark Theme
+
+AssembleUI cung cấp hai Theme được định nghĩa sẵn:
+
+- Light Theme: giao diện sáng.
+- Dark Theme: giao diện tối.
+
+Mỗi Theme cung cấp các giá trị cho cùng hệ thống Theme roles.
+
+Ví dụ sử dụng:
+
+```scss
+.example {
+  background: var(--aui-theme-bg);
+  color: var(--aui-theme-text);
+  border: 1px solid var(--aui-theme-border);
 }
 ```
 
----
+Component sử dụng cùng một Theme role. Giá trị hiển thị phụ thuộc vào Theme
+được áp dụng tại thời điểm render.
 
-# Dark Theme
+## 7. Custom Theme
 
-Ví dụ
+Custom Theme là điểm mở rộng để người dùng định nghĩa các Theme roles riêng.
+
+File `themes/custom/index.scss` cung cấp selector:
 
 ```scss
-:root {
-  --aui-token-color-primary: #60a5fa;
-
-  --aui-token-color-surface: #18181b;
-
-  --aui-token-color-text: #f8fafc;
+[data-aui-theme="custom"] {
+  // Custom Theme roles
 }
 ```
 
-Mọi Component sẽ tự cập nhật giao diện.
-
----
-
-# Corporate Theme
-
-Ví dụ
+Người dùng có thể định nghĩa các giá trị cần thiết:
 
 ```scss
-:root {
-  --aui-token-color-primary: #0057b8;
-
-  --aui-token-radius-md: 2px;
+[data-aui-theme="custom"] {
+  --aui-theme-bg: #ffffff;
+  --aui-theme-text: #172033;
+  --aui-theme-border: #d8deea;
+  --aui-theme-primary: #2563eb;
 }
 ```
 
-Theme có thể thay đổi:
+Đây là ví dụ về cách mở rộng Theme roles. Người dùng chỉ cần định nghĩa
+những roles mà giao diện của họ cần tùy chỉnh.
 
-- Brand Color
-- Radius
-- Shadow
-- Font
-- Motion
-- Spacing
+Custom Theme không được ghi đè hoặc ánh xạ sang `--aui-token-\*`.
 
----
+## 8. Theme Provider
 
-# Theme không chứa
+`ThemeProvider` quản lý Theme state và áp dụng Theme thông qua thuộc tính
+`data-aui-theme`.
 
-Theme không được chứa
+Props hiện tại:
 
-- Component
-- JSX
-- React
-- Hook
-- Utility
-- Business Logic
+| Prop           | Type                  | Default    | Mô tả                       |
+| -------------- | --------------------- | ---------- | --------------------------- |
+| `defaultTheme` | `Theme`               | `"light"`  | Theme ban đầu               |
+| `scope`        | `"global" \| "local"` | `"global"` | Phạm vi áp dụng Theme       |
+| `children`     | `ReactNode`           | -          | Nội dung bên trong Provider |
 
-Theme chỉ ghi đè Design Tokens.
+Theme type:
 
----
-
-# Những gì Theme được phép thay đổi
-
-Ví dụ
-
-```
-Color
-
-Spacing
-
-Radius
-
-Shadow
-
-Typography
-
-Opacity
-
-Motion
-
-Border
-
-Surface
+```ts
+type Theme = "light" | "dark" | "custom";
 ```
 
----
+### Global scope
 
-# Những gì Theme KHÔNG được thay đổi
+Mặc định, `ThemeProvider` sử dụng global scope.
 
-Sai
+Theme được áp dụng lên phần tử `document.documentElement` thông qua
+`data-aui-theme`.
 
-```scss
-.aui-button {
-  padding: 20px;
-}
-```
-
-Sai
-
-```scss
-.aui-card {
-  display: flex;
-}
-```
-
-Sai
-
-```scss
-.aui-modal {
-  position: fixed;
-}
-```
-
-Theme không được sửa Component.
-
----
-
-# Quy trình hoạt động
-
-```
-Theme
-
-↓
-
-Override Tokens
-
-↓
-
-Style Engine
-
-↓
-
-Components
-
-↓
-
-Browser
-```
-
----
-
-# Ví dụ
-
-Button
-
-```scss
-background: var(--aui-token-color-primary);
-```
-
-Light Theme
-
-```css
---aui-token-color-primary: #2563eb;
-```
-
-Dark Theme
-
-```css
---aui-token-color-primary: #60a5fa;
-```
-
-Button sẽ đổi màu mà không cần sửa CSS.
-
----
-
-# Theme Switching
-
-Có thể chuyển Theme động.
-
-Ví dụ
-
-```
-Light
-
-↓
-
-Dark
-
-↓
-
-Corporate
-
-↓
-
-Custom
-```
-
-Toàn bộ Component sẽ cập nhật giao diện.
-
----
-
-# White Label
-
-Theme cho phép nhiều thương hiệu sử dụng cùng một Component.
-
-Ví dụ
-
-```
-Brand A
-
-↓
-
-Blue
-
-↓
-
-Rounded
-```
-
-```
-Brand B
-
-↓
-
-Green
-
-↓
-
-Square
-```
-
-Logic hoàn toàn giống nhau.
-
----
-
-# Custom Theme
-
-Người dùng có thể tự tạo Theme.
-
-Ví dụ
-
-```scss
-:root {
-  --aui-token-color-primary: #ff5722;
-
-  --aui-token-radius-md: 20px;
-
-  --aui-token-font-family-base: Inter;
-}
-```
-
-Không cần sửa Component.
-
----
-
-# Import Theme
-
-Mặc định
-
-```scss
-import "@assemble-ui/react/styles";
-```
-
-Dark
-
-```scss
-import "@assemble-ui/react/themes/dark";
-```
-
-Corporate
-
-```scss
-import "@assemble-ui/react/themes/corporate";
-```
-
----
-
-# Theme Provider
-
-Khi cần đổi Theme trong thời gian chạy.
-
-Ví dụ
-
-```jsx
-<ThemeProvider theme="dark">
+```tsx
+<ThemeProvider defaultTheme="dark">
   <App />
 </ThemeProvider>
 ```
 
-ThemeProvider chỉ thay đổi Tokens.
+Khi Provider bị tháo khỏi cây React, thuộc tính Theme trước đó của document
+được khôi phục.
 
-Không Render lại Component nếu không cần thiết.
+### Local scope
 
----
+Local scope áp dụng Theme lên một wrapper element thay vì document root.
 
-# Mối quan hệ
-
-```
-Foundation
-
-↓
-
-Design Tokens
-
-↓
-
-Theme
-
-↓
-
-Style Engine
-
-↓
-
-Components
-
-↓
-
-Patterns
-
-↓
-
-Templates
+```tsx
+<ThemeProvider defaultTheme="dark" scope="local">
+  <App />
+</ThemeProvider>
 ```
 
----
+Phạm vi CSS của Theme được giới hạn theo phần tử wrapper và các phần tử con
+của nó.
 
-# Quy tắc
+## 9. Runtime Theme Switching
 
-## Chỉ Override Token
+Có thể thay đổi Theme trong thời gian chạy thông qua `useTheme`.
 
-Đúng
+Hook trả về:
+
+- `theme`: Theme hiện tại.
+- `setTheme`: Hàm cập nhật Theme.
+
+Ví dụ:
+
+```tsx
+import { useTheme } from "@assemble-ui/react";
+
+function ThemeSwitcher() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        setTheme(theme === "dark" ? "light" : "dark");
+      }}
+    >
+      Current theme: {theme}
+    </button>
+  );
+}
+```
+
+`useTheme` phải được sử dụng bên trong `ThemeProvider`.
+
+ThemeProvider quản lý state và thuộc tính `data-aui-theme`. Việc cập nhật
+React state vẫn tuân theo cơ chế render thông thường của React.
+
+## 10. Import Theme
+
+Theme stylesheets được export độc lập với component styles.
+
+### Import toàn bộ Themes
+
+```ts
+import "@assemble-ui/react/themes";
+```
+
+### Import riêng Light Theme
+
+```ts
+import "@assemble-ui/react/themes/light";
+```
+
+### Import riêng Dark Theme
+
+```ts
+import "@assemble-ui/react/themes/dark";
+```
+
+### Import Component styles
+
+```ts
+import "@assemble-ui/react/styles";
+```
+
+ThemeProvider chỉ quản lý Theme state và thuộc tính `data-aui-theme`.
+Provider không tự động import stylesheet.
+
+Ứng dụng cần import stylesheet tương ứng để các Theme roles có hiệu lực.
+
+## 11. White Label và Brand Customization
+
+White Label được thực hiện bằng cách tùy chỉnh Theme roles.
+
+Các thương hiệu có thể sử dụng chung Components, Patterns và Templates
+nhưng cung cấp các giá trị Theme khác nhau.
+
+Ví dụ, mỗi thương hiệu có thể định nghĩa:
+
+- Primary và các màu trạng thái.
+- Background và Surface.
+- Text và Border.
+- Shadow và các giá trị giao diện khác đã được hỗ trợ bởi Theme roles.
+
+Việc tùy chỉnh chỉ tác động đến các Theme roles được định nghĩa.
+Không thay đổi Design Tokens hoặc Component API.
+
+## 12. Quy tắc kiến trúc
+
+### Tách biệt Tokens và Themes
+
+Đúng:
 
 ```scss
+.component {
+  padding: var(--aui-token-space-4);
+  background: var(--aui-theme-bg);
+}
+```
+
+Không được ánh xạ Theme roles sang Design Tokens:
+
+```scss
+// Không sử dụng cách ánh xạ này.
 :root {
-  --aui-token-color-primary: #3b82f6;
+  --aui-token-color-primary: var(--aui-theme-primary);
 }
 ```
 
-Sai
+### Không định nghĩa Component layout trong Theme
 
-```scss
-.button {
-  background: red;
-}
-```
+Theme không chịu trách nhiệm định nghĩa:
 
----
+- Display và Position.
+- Width và Height của Component.
+- Padding và Margin của Component.
+- Cấu trúc layout.
+- Component behavior.
 
-## Không sửa Component
+Các trách nhiệm này thuộc các tầng Style Engine và Component tương ứng.
 
-Sai
+### Không chứa React hoặc Business Logic
 
-```scss
-.card {
-  padding: 40px;
-}
-```
+Theme chỉ cung cấp các giá trị giao diện thông qua CSS Custom Properties.
 
-Đúng
+Không đặt JSX, React Hooks, Utility hoặc Business Logic trong Theme.
 
-```scss
-:root {
-  --aui-token-space-8: 40px;
-}
-```
+### Không phụ thuộc Theme trong Design Tokens
 
----
+Design Tokens phải giữ nguyên giá trị mặc định và không được phụ thuộc vào
+Theme đang hoạt động.
 
-## Không chứa CSS Layout
+## 13. Tóm tắt
 
-Sai
+Themes cung cấp các giá trị giao diện có thể thay đổi theo chế độ hiển thị
+của ứng dụng.
 
-```scss
-.container {
-  max-width: 1200px;
-}
-```
-
-Layout thuộc Style Engine.
-
----
-
-## Không Hardcode trong Component
-
-Sai
-
-```scss
-background: #2563eb;
-```
-
-Đúng
-
-```scss
-background: var(--aui-token-color-primary);
-```
-
----
-
-# Best Practices
-
-✔ Theme chỉ Override Design Tokens.
-
-✔ Không sửa CSS của Component.
-
-✔ Không thay đổi Logic.
-
-✔ Không chứa JSX.
-
-✔ Có thể tạo nhiều Theme khác nhau.
-
-✔ Hỗ trợ White Label.
-
-✔ Hỗ trợ Dark Mode.
-
-✔ Hỗ trợ Runtime Switching.
-
----
-
-# Tóm tắt
-
-Theme là tầng chịu trách nhiệm thay đổi giao diện của AssembleUI.
-
-```
-Design Tokens
-
-↓
-
-Themes
-
-↓
-
-Style Engine
-
-↓
-
-Components
-
-↓
-
-Patterns
-
-↓
-
-Templates
-```
-
-Nhờ tách Theme khỏi Component, AssembleUI có thể thay đổi toàn bộ giao diện của ứng dụng chỉ bằng cách thay đổi Design Tokens. Điều này giúp hệ thống dễ bảo trì, dễ mở rộng và phù hợp với nhiều thương hiệu, nhiều sản phẩm mà vẫn sử dụng chung một bộ Component.
+- Design Tokens là các giá trị mặc định ổn định.
+- Themes là hệ thống Theme roles độc lập.
+- Theme switching thay đổi `--aui-theme-\*`.
+- Theme switching không thay đổi `--aui-token-\*`.
+- ThemeProvider quản lý Theme state và phạm vi áp dụng.
+- Components, Patterns và Templates có thể sử dụng Theme roles mà không
+  cần thay đổi API hoặc Business Logic.

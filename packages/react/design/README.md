@@ -2,84 +2,99 @@
 
 ## 1. Purpose
 
-The design system owns design tokens and theme definitions.
-Components consume the public tokens instead of defining their own
-application-wide color palettes.
+The Design System provides foundational design values, fixed Design Tokens,
+and independent Theme definitions.
+
+Components, Patterns, and Templates consume the appropriate public
+design variables. They do not define application-wide design systems.
 
 ## 2. Architecture
 
-- `primitives/`: foundational design values.
-- `tokens/semantic/`: semantic tokens consumed by components.
-- `themes/light/`: default light theme.
-- `themes/dark/`: dark palette and semantic-token mappings.
-- `themes/custom/`: extension point for consumer-defined overrides.
+- `primitives/`: foundational Sass design values.
+- `tokens/semantic/`: individual semantic design properties.
+- `tokens/synthetic/`: composite design values built from multiple properties.
+- `themes/light/`: Light Theme role definitions.
+- `themes/dark/`: Dark Theme role definitions.
+- `themes/custom/`: extension point for consumer-defined Theme roles.
 
-## 3. Theme Runtime
+Design Tokens and Themes are independent systems.
 
-`ThemeProvider` is the application-level owner of the active theme.
+## 3. Design Token Contract
 
-Supported theme values:
+`--aui-token-*` variables represent fixed default design values.
+
+- Semantic Tokens represent individual design properties.
+- Synthetic Tokens represent composite values derived from multiple properties.
+- Tokens do not depend on the active Theme.
+- Theme switching must never modify or remap Design Tokens.
+
+Components use Design Tokens when they need fixed design values.
+
+## 4. Theme Contract
+
+`--aui-theme-*` variables represent visual roles supplied by a Theme.
+
+Themes may provide different values for the same role without changing
+the Design Token system.
+
+Components use Theme roles for visual properties that should respond
+to Theme switching.
+
+### Light
+
+The Light Theme provides the light appearance.
+
+### Dark
+
+The Dark Theme provides the dark appearance.
+
+### Custom
+
+The Custom Theme is an extension point for consumer-defined Theme roles.
+Consumers may define only the roles they need.
+
+Custom Theme definitions use the `--aui-theme-*` namespace.
+They must not redefine or remap `--aui-token-*` variables.
+
+## 5. Theme Runtime
+
+`ThemeProvider` manages the active Theme and synchronizes it through
+the `data-aui-theme` attribute.
+
+Supported Theme values:
 
 - `light`
 - `dark`
 - `custom`
 
 `ThemeContext` exposes `theme` and `setTheme`.
-The provider synchronizes the active theme to the root HTML element
-through the `data-aui-theme` attribute.
 
-Use one application-level `ThemeProvider` unless nested-provider
-behavior has been explicitly designed and tested.
+`ThemeProvider` manages the Theme attribute. It does not automatically
+import component stylesheets or Theme stylesheets.
 
-## 4. Token Contract
+Import the required stylesheets separately.
 
-### Semantic tokens
+## 6. Stylesheet Responsibilities
 
-`--aui-token-*` variables are the stable semantic token contract.
+- `@assemble-ui/react/styles`: component, pattern, and template styles.
+  It consumes Theme roles but does not define Theme palettes.
+- `@assemble-ui/react/tokens`: compiled Design Token definitions.
+- `@assemble-ui/react/themes`: combined Light, Dark, and Custom Theme definitions.
+- `@assemble-ui/react/themes/light`: Light Theme definitions.
+- `@assemble-ui/react/themes/dark`: Dark Theme definitions.
 
-Components should prefer semantic tokens instead of hard-coded
-theme-specific color values.
+## 7. Architectural Rules
 
-### Theme palette tokens
+1. Design Tokens are fixed defaults and never depend on Themes.
+2. Themes define `--aui-theme-*` roles independently of Design Tokens.
+3. Never map `--aui-token-*` variables to `--aui-theme-*` variables.
+4. Components may consume both Token values and Theme roles.
+5. Theme switching changes Theme roles, not Design Tokens.
+6. `ThemeProvider` manages the active Theme attribute, not stylesheet imports.
+7. Custom Themes must not redefine Design Tokens.
+8. Changes to public design contracts must be covered by appropriate tests.
 
-`--aui-theme-*` variables represent values supplied by a theme.
-
-The dark theme maps its palette to the semantic color tokens.
-
-### Legacy aliases
-
-`--aui-color-*` variables are compatibility aliases.
-
-Do not remove or rename these aliases without a migration plan and
-appropriate compatibility tests.
-
-## 5. Theme Responsibilities
-
-### Light
-
-The light theme uses the default semantic token values.
-
-### Dark
-
-The dark theme defines its palette and maps semantic tokens to it.
-
-### Custom
-
-The custom theme is an extension point for consumers.
-Consumers can override public semantic tokens without having to
-redefine every token.
-
-## 6. Architectural Rules
-
-1. Components consume design tokens; they do not own global themes.
-2. Theme switching is managed through `ThemeProvider` and `ThemeContext`.
-3. Semantic token names are the stable interface between themes and components.
-4. Theme-specific palette values belong in the theme layer.
-5. Legacy aliases remain until a deliberate migration is completed.
-6. Changes to the token contract must be covered by architecture tests.
-7. Nested provider behavior must be explicitly defined before implementation.
-
-## 7. Validation
+## 8. Validation
 
 Run the following checks from the repository root:
 
@@ -89,4 +104,3 @@ npm run typecheck:public
 npm test -- --run
 npm run build
 git diff --check
-```

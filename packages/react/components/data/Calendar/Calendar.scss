@@ -33,7 +33,7 @@
   @include focus.focus-ring;
 
   &:focus-visible {
-    outline-color: var(--aui-token-state-focus-ring);
+    outline-color: var(--aui-token-color-primary);
   }
 
   &:hover {
@@ -81,7 +81,7 @@
   @include focus.focus-ring;
 
   &:focus-visible {
-    outline-color: var(--aui-token-state-focus-ring);
+    outline-color: var(--aui-token-color-primary);
   }
 
   &:hover:not(:disabled) {

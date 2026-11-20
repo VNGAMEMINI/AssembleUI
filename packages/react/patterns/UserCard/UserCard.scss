@@ -11,7 +11,7 @@
   background: var(--aui-theme-surface-elevated);
   border: var(--aui-token-border-width-thin) solid var(--aui-theme-border);
   border-radius: var(--aui-token-radius-lg);
-  box-shadow: var(--aui-token-shadow-sm);
+  box-shadow: var(--aui-theme-shadow-sm);
 
   &__content {
     display: grid;
